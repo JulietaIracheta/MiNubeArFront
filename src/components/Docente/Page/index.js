@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import DocentePage from '../EscuelasDocente.js'
+import EscuelasDocente from '../EscuelasDocente.js'
 import NavDocente from '../../NavDocente'
 
 const Docente = () => {
@@ -7,7 +7,7 @@ const Docente = () => {
         return (
             <div>
            <NavDocente />
-           <DocentePage />
+           <EscuelasDocente />
            </div>
         )
     

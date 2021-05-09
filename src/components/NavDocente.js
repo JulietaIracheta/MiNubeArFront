@@ -9,6 +9,7 @@ import {
   NavbarText,
 } from "reactstrap";
 import { ChatSquareQuoteFill, Bell, PersonCircle } from "react-bootstrap-icons";
+import {Link} from 'react-router-dom'
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,8 +23,8 @@ const NavBar = (props) => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
             <Nav className="mr-auto"></Nav>
+           <Link to='/docente' className="text-decoration-none misCursos text-white">Mis Escuelas</Link>
             <Nav>
-            <NavbarText className="misCursos">Mis Escuelas</NavbarText>
             <NavbarText className="misCursos">|</NavbarText>
             </Nav>
             <Nav navbar>
