@@ -224,3 +224,51 @@ color: white;
 .login-button{
   width: 100%;
 }
+
+/*css estudiantes asignados*/
+.card-docente{
+  border: 2px solid #2d2f85 !important;
+  border-radius: 10px !important;
+}
+
+.borde-avatar-alumno{
+  object-fit: cover;
+  border: 5px solid #2d2f85 !important;
+}
+.informes-docentes-container{
+  height: 250px;
+	width: 200px;
+	overflow-y: scroll;
+}
+.informes-docentes-container::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+.informes-docentes-container::-webkit-scrollbar:vertical {
+  width:10px;
+  height: 10px;
+}
+.informes-docentes-container::-webkit-scrollbar-thumb {
+  background-color: #797979;
+  border-radius: 20px;
+  border: 2px solid #f1f2f3;
+}
+.informes-docentes-container::-webkit-scrollbar-track {
+  border-radius: 10px;  
+}
+
+.titulo-docente{
+  font-size: 1.7rem;
+  color:#2d2f85;
+  font-weight: 500;
+}
+.evenly{
+  justify-content: space-evenly;
+}
+.hr-docente{
+  color:#2d2f85;
+  background-color: #2d2f85;
+  height: 2px;
+}
+.color-docente{
+  color:#2d2f85 !important;
+}

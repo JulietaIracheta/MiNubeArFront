@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import MateriaPrincipal from './MateriaPrincipal'
-import NavEstudiante from './NavEstudiante'
+import MateriaPrincipal from '../../MateriaPrincipal'
+import NavEstudiante from '../../NavEstudiante'
 
 const Estudiante = () => {
     

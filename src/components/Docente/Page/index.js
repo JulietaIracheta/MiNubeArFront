@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import DocentePage from './DocentePage'
-import NavDocente from './NavDocente'
+import DocentePage from '../EscuelasDocente.js'
+import NavDocente from '../../NavDocente'
 
 const Docente = () => {
     

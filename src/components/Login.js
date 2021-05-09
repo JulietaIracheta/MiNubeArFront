@@ -17,7 +17,7 @@ export default class Login extends Component {
                 <FormGroup>
                     <Input type="password" placeholder="Password"></Input>
                 </FormGroup>
-                <Button className="btn-lg btn-dark btn-block">Ingresar</Button>
+                <a href="/docente" className="btn btn-lg btn-dark btn-block">Ingresar</a>
                 <div className="text-center pt-3">O ingresa con: </div>
                 <div class="btn-group login-button">
                 <MicrosoftLoginButton>Microsoft</MicrosoftLoginButton><GoogleLoginButton>Google</GoogleLoginButton>
