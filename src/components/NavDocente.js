@@ -10,10 +10,13 @@ import {
 } from "reactstrap";
 import { ChatSquareQuoteFill, Bell, PersonCircle } from "react-bootstrap-icons";
 import {Link} from 'react-router-dom'
+import '../assets/nav.css';
+import { useCookies } from 'react-cookie';
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const [cookies, setCookie] = useCookies(['usuario']);
+  
   const toggle = () => setIsOpen(!isOpen);
 
   return (
@@ -35,7 +38,7 @@ const NavBar = (props) => {
               <Bell className="icon-menu" />{" "}
             </NavItem>
             <NavItem className="marginMN">
-            <PersonCircle className="icon-menu"/>{" "}
+            <img src={cookies.img}  className='rounded-circle avatar-logo'></img>
             </NavItem>
           </Nav>
         </Collapse>
@@ -45,3 +48,5 @@ const NavBar = (props) => {
 };
 
 export default NavBar;
+
+// <PersonCircle className="icon-menu"/>{" "}

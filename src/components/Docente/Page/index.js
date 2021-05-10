@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component, useState} from 'react'
 import EscuelasDocente from '../EscuelasDocente.js'
 import NavDocente from '../../NavDocente'
 
 const Docente = () => {
-    
         return (
             <div>
            <NavDocente />
