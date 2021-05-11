@@ -1,0 +1,193 @@
+.menuNavBarEstudiante {
+  background-color: rgb(177, 5, 5);
+}
+
+.marginMN {
+  margin-left: 15px;
+}
+.hr-color{
+    color: #f00;
+  background-color: #f00;
+  height: 5px;
+  }
+
+.size{
+    font-size: x-large;
+  }
+
+.color-nav {
+  background-color: firebrick;
+}
+
+.cardContainer {
+  margin-top: 30px;
+}
+
+.icon-menu {
+  width: 40px;
+  height: auto;
+  color: white;
+  margin-top: 15px;
+  margin-right: 10px;
+}
+.icon-perfil {
+  width: 40px;
+  height: auto;
+  color: white;
+  margin-top: 8px;
+  margin-right: 10px;
+}
+
+.notif {
+  position: relative;
+}
+
+#notificacion-numero {
+  position: absolute;
+  top: 15%;
+  left: 45%;
+  background: red;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 2px;
+}
+
+.navBarBrand {
+  color: white;
+  font-size: 20px;
+}
+.menuLeft {
+  position: absolute;
+  right: 100px;
+}
+.colorBrand {
+  margin-left: 20px;
+  color: white !important;
+}
+.misCursos {
+  margin-right: 15px;
+  color: white;
+}
+
+.cardMatematica {
+  height: 95%;
+  padding: auto;
+  margin-top: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: salmon;
+  color: white;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+}
+
+.cardLiteratura {
+  height: 95%;
+  margin-top: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background-color: cadetblue;
+  color: white;
+}
+
+.cardComputacion {
+  height: 95%;
+  margin-top: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background-color: rgb(148, 3, 46);
+  color: white;
+}
+.cardNaturales {
+  height: 95%;
+  margin-top: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background-color: rgb(3, 116, 41);
+  color: white;
+}
+.cardJuegos {
+  height: 95%;
+  margin-top: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background-color: rgb(9, 212, 19);
+  color: white;
+}
+.cardDibujo {
+  height: 95%;
+  margin-top: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background-color: rgb(238, 203, 5);
+  color: white;
+}
+.cardGeografia {
+  height: 95%;
+  margin-top: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background-color: rgb(69, 4, 247);
+  color: white;
+}
+.cardMusica {
+  height: 95%;
+  margin-top: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background-color: rgb(221, 6, 149);
+  color: white;
+}
+.cardCiencia {
+  height: 95%;
+  margin-top: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background-color: rgb(53, 81, 82);
+  color: white;
+}
+
+.bigIcon {
+  width: 60px;
+  height: auto;
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+}
+
+.smallIcon {
+  width: 30px;
+  height: auto;
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+}
+
+.espacio {
+  padding-bottom: 30%;
+}
