@@ -5,19 +5,21 @@ import Estudiante from './components/Estudiante/Page/index';
 import Docente from './components/Docente/Page/index.js';
 import EstudiantesAsignados from './components/Estudiante/EstudiantesAsignados';
 import PerfilEstudiante from './components/Estudiante/PerfilEstudiante';
-import Tutor from './components/Tutor/Page/index.js';
+import Rol from './components/Rol';
 import Registro from './components/Registro';
 
 function App() {
+   
+
+
   return (
     <Router>
       <Switch>
       <Route path='/' exact component={Login} />
         <Route path='/login' exact component={Login} />
         <Route path='/registro' exact component={Registro} />
-        <Route path='/estudiante' exact component={Estudiante} />
-        <Route path='/docente' exact component={Docente} /> 
-        <Route path='/tutor' exact component={Tutor} /> 
+        <Route path='/rol' exact component={Rol} />
+       
         <Route path='/docente/estudiantesAsignados' exact component={EstudiantesAsignados} />        
         <Route path='/estudiante/:id' exact component={PerfilEstudiante}></Route>
       </Switch>

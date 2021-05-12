@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {Link} from 'react-router-dom';
 import {
   Collapse,
   Navbar,
@@ -15,8 +16,14 @@ import { ChatSquareQuoteFill, Bell, PersonCircle } from "react-bootstrap-icons";
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-
   const toggle = () => setIsOpen(!isOpen);
+  const logout = async () => {
+    await fetch('http://localhost:60671/api/usuario/logout', {
+      method: 'POST',
+      headers: { "Content-type": "application/json" },
+      credentials: "include",
+    });
+  }
 
   return (
     <div >
@@ -47,7 +54,7 @@ const NavBar = (props) => {
                 </DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem>
-                 <a href="../login">Logout</a> 
+                 <Link to='/login' onClick={logout}>Logout</Link> 
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>

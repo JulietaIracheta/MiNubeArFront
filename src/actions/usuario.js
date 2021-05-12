@@ -59,4 +59,5 @@ export const Delete = (id, onSuccess) => dispatch => {
             onSuccess()
         })
         .catch(err => console.log(err))
-}
+    }
+

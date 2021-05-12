@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import {Calculator, Book, Controller, MusicNoteList, Palette, Laptop, Globe, Flower1, Flower2, ThermometerSun, VectorPen} from 'react-bootstrap-icons';
 import '../../assets/css/css-estudiante.css';
 
-export default class Materias extends Component {
-  render() {
+const Materias = (params) => {
+   
     return (
         
     <div className="container cardContainer">
         <div>
-            <h2>Hola Lolo!, ¿Que estudiamos hoy?</h2>
+            <h2>Hola {params.name}, ¿Que estudiamos hoy?</h2>
             <hr className="hr-color"/>
         </div>
         
@@ -101,4 +101,6 @@ export default class Materias extends Component {
       </div>
     );
   }
-}
+
+
+  export default Materias;

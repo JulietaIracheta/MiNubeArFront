@@ -144,19 +144,20 @@ const UsuarioForm = ({ classes, ...props }) => {
                         onChange={handleInputChange}
                         {...(errors.email && { error: true, helperText: errors.email })}
                     />
+                    <TextField
+                        name="password"
+                        type="password"
+                        variant="outlined"
+                        label="Password"
+                        value={values.password}
+                        onChange={handleInputChange}
+                    />
 
                     <TextField
                         name="edad"
                         variant="outlined"
                         label="Edad"
                         value={values.edad}
-                        onChange={handleInputChange}
-                    />
-                    <TextField
-                        name="direccion"
-                        variant="outlined"
-                        label="Direccion"
-                        value={values.direccion}
                         onChange={handleInputChange}
                     />
                     <div>

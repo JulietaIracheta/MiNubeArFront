@@ -1,12 +1,14 @@
+import userEvent from "@testing-library/user-event";
 import React from "react";
 import {Gear} from 'react-bootstrap-icons';
 import {Calendar} from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import '../../assets/css/css-docente.css';
+import Notificaciones from "./Notificaciones";
 
 export default function EscuelasDocente () {
 
-    
+  
     return (
         
     <div className="container cardContainer ">
@@ -32,33 +34,13 @@ export default function EscuelasDocente () {
               </div>
             </div>
           </div>
-          <div className="col-md-6 ">
-                  <h2 className="font-weight-bold colorDoc">Ultimas Notificaciones</h2>
-                  <br />
-                  <ul className="colorNotificaciones">
-                      <li>[12:05] Comentario de Lolo, Matematicas clase 2</li>
-                      <li>[12:05] Comentario de Lolo, Matematicas clase 2</li>
-
-                      <li>[12:05] Comentario de Lolo, Matematicas clase 2</li>
-
-                      <li>[12:05] Comentario de Lolo, Matematicas clase 2</li>
-
-                      <li>[12:05] Comentario de Lolo, Matematicas clase 2</li>
-
-                      <li>[12:05] Comentario de Lolo, Matematicas clase 2</li>
-
-                      <li>[12:05] Comentario de Lolo, Matematicas clase 2</li>
-
-                  </ul>
-         <br></br>
-         
-          </div>
+          <Notificaciones />
           <div className="col-md-12 colorDoc font-weight-bold" >
             <div className="row">
               <div className="col-md-3 ">
                 <div className="bordes">
                   <div className="card-body escuela1">
-                    <h5 className="card-title size espacio font-weight-bold">Escuela Nº 8</h5>
+                    <h5 className="card-title size espacio font-weight-bold">Escuela Nº 8 </h5>
                     <div class="d-flex flex-row-reverse"> 
                     <Gear />
                 </div>
