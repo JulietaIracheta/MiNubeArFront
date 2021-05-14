@@ -1,0 +1,19 @@
+.comunicado{
+    height: 95vh;
+}
+
+.docente__titulo{
+    font-size: 1.4em;
+}
+
+.comunicado__nav{
+    background-color:#eee
+}
+
+
+@media (min-width: 768px) { 
+    .comunicado__contenido{
+        height: 70vh;
+    }
+}
+
