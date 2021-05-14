@@ -1,6 +1,8 @@
 import React from 'react'
 import NavDocente from '../NavDocente'
 import '../../assets/comunicado.css'
+import ModalNuevoComunicado from './ModalNuevoComunicado'
+
 
 const DocenteComunicado = () => {
     return(
@@ -41,7 +43,7 @@ const DocenteComunicado = () => {
                             <div className="comunicado__contenido--navbar border-right border-bottom pt-3 pl-0 pr-0 col-12 col-sm-3 col-lg-2">
                                 <ul className="nav flex-column justify-content-start p-0 text-center">
                                     <li className="nav-item pl-2 pr-2 pl-lg-3 pr-lg-3 pt-1 pb-1">
-                                        <button type="button" class="btn btn-outline-primary btn-lg pl-3 pr-3 pt-1 pb-1">Nuevo +</button>
+                                        <ModalNuevoComunicado></ModalNuevoComunicado>                                    
                                     </li>
                                     <li className="nav-item mt-4"  Style="background-color:#eee">
                                         <a className="nav-link pl-0" href="/#">Grupales</a>
