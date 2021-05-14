@@ -2,6 +2,7 @@ import React from 'react'
 import NavDocente from '../NavDocente'
 import '../../assets/comunicado.css'
 import ModalNuevoComunicado from './ModalNuevoComunicado'
+import MenuLateralPrincipal from './MenuLateralPrincipal'
 
 
 const DocenteComunicado = () => {
@@ -10,19 +11,7 @@ const DocenteComunicado = () => {
             <NavDocente></NavDocente>  
             <div className="container-fuid comunicado">
                 <div className="d-sm-flex h-100">
-                    <div className="menu-lateral col-12 col-md-2 pt-3 border-right d-none d-md-block" > 
-                        <ul className="nav flex-column justify-content-start ">
-                            <li className="nav-item">
-                                <a className="nav-link text-dark" href="/#">Actividad Reciente</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link text-dark font-weight-bold" href="/#">Cursos</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link text-dark" href="/#">Calificaciones</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <MenuLateralPrincipal></MenuLateralPrincipal>
                     <div className="docente-comunicado-cuerpo col-12 col-md-9 pt-3">
                         <h2 className="docente__titulo pb-2 font-weight-bold">Escuela Primaria N° 12 - Primero C</h2>
                         <div className="comunicado__nav mb-3">
