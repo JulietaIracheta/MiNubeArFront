@@ -11,6 +11,11 @@
 }
 
 
+.comunicado__contenido--link-activo{
+    background-color:#eee;
+}
+
+
 @media (min-width: 768px) { 
     .comunicado__contenido{
         height: 70vh;

@@ -34,7 +34,7 @@ const DocenteComunicado = () => {
                                     <li className="nav-item pl-2 pr-2 pl-lg-3 pr-lg-3 pt-1 pb-1">
                                         <ModalNuevoComunicado></ModalNuevoComunicado>                                    
                                     </li>
-                                    <li className="nav-item mt-4"  Style="background-color:#eee">
+                                    <li className="nav-item mt-4 comunicado__contenido--link-activo">
                                         <a className="nav-link pl-0" href="/#">Grupales</a>
                                     </li>
                                     <li className="nav-item">

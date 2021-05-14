@@ -32,25 +32,25 @@ class ModalNuevoComunicado extends Component{
                 >
                     <ModalBody>
                     <form>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="exampleFormControlInput1">Para*</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@gmail.com" />
+                            <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@gmail.com" />
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="exampleFormControlInput1">Asunto*</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="escriba su asunto" />
+                            <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="escriba su asunto" />
                         </div>
 
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="exampleFormControlTextarea1">Mensaje*</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="imagen">Adjunte un archivo</label>
-                            <input type="file" class="form-control-file" id="imagen" />
+                            <input type="file" className="form-control-file" id="imagen" />
                         </div>
-                        <button type="submit" class="btn btn-outline-primary float-right ml-1">Guardar</button>
-                        <button class="btn btn-secondary float-right" onClick={this.toogleAlert.bind(this)}>Cancelar</button> 
+                        <button type="submit" className="btn btn-outline-primary float-right ml-1">Guardar</button>
+                        <button className="btn btn-secondary float-right" onClick={this.toogleAlert.bind(this)}>Cancelar</button> 
                     </form>
                     </ModalBody>
                 </Modal>
