@@ -66,7 +66,7 @@ const Login = () => {
           ></Input>
         </FormGroup>
         <Button className="btn btn-lg btn-dark btn-block">Ingresar</Button>
-        <div className="text-center pt-3">O ingresa con: </div>
+        <div className="text-center pt-3">O ingresa con : </div>
         <div className="btn-group login-button">
           <MicrosoftLoginButton>Microsoft</MicrosoftLoginButton>
           <GoogleLoginButton clientId="1008891152271-jvlq4r789kf6mlihar2uekqthgn30dob.apps.googleusercontent.com"
