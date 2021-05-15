@@ -1,5 +1,6 @@
 import userEvent from "@testing-library/user-event";
 import React from "react";
+import {Link} from 'react-router-dom'
 import {Gear} from 'react-bootstrap-icons';
 import {Calendar} from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
@@ -20,6 +21,7 @@ export default function EscuelasDocente () {
         
         <div className="row">
           <div className="col-md-6 border-derecho">
+          <Link to='/curso/1' className='text-decoration-none'>
             <div className="bordes mb-3">
               <div className="card-body colorDoc font-weight-bold">
                 <h5 className="card-title size espacio font-weight-bold colorDoc">Escuela Nº 148</h5>
@@ -27,12 +29,11 @@ export default function EscuelasDocente () {
                 <p>3 grupos</p>
                 <span>32 estudiantes</span>   
                 <div class="d-flex flex-row-reverse">          
-                <Gear /></div>
+                <Gear />
                 </div>
-
-
+                </div>
               </div>
-            </div>
+                       </div></Link>
           </div>
           <Notificaciones />
           <div className="col-md-12 colorDoc font-weight-bold" >
@@ -59,13 +60,13 @@ export default function EscuelasDocente () {
               </div>
               <div className="col-md-6 ">
                 <div>
-                  <div>
-                  <Calendar />
-              </div></div></div>  
+                  <div className="card-body">
+                    <Calendar className='w-100' />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-
-        </div>
-      </div>
+</div></div>
     );
   }

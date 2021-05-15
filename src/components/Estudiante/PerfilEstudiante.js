@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router';
 import GetEstudiante from '../../services/estudiantes/getEstudiante';
-import NavEstudiante from "../Docente/NavDocente"
+import NavDocente from "../Docente/NavDocente";
 import { Link } from 'react-router-dom';
 import { PencilSquare, Trash } from "react-bootstrap-icons";
 
@@ -13,7 +13,7 @@ export default function PerfilEstudiante({ match }) {
     }, [id]);
     return (
         <div>
-            <NavEstudiante></NavEstudiante>
+            <NavDocente></NavDocente>
             <div className="container py-4">
                 <h4 className="titulo-docente">
                     <Link to='/docente/estudiantesAsignados' 

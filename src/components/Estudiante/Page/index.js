@@ -25,6 +25,5 @@ function Estudiante() {
       <Materias name={nombre} rol={rol}/>
     </div>
   );
-}
-
+  }
 export default Estudiante;
