@@ -7,19 +7,12 @@ import { Redirect, useHistory } from 'react-router';
 import { useCookies } from 'react-cookie';
 
 export default function Login() {
-    /*state={
-        image:''
-    }
-    setear=(img)=>{
-        this.setState({image:img})
-    }*/
-    const [name, setName] = useState('');
-    const [img, setImg] = useState('');
     const [cookies, setCookie] = useCookies(['usuario']);
     const history = useHistory();
-
+    setCookie('Name', '', { path: '/' });
+    setCookie('img', '', { path: '/' });
     const responseGoogle = (res) => {
-        console.log(res)
+       
         setCookie('Name', res.profileObj.name, { path: '/' });
         setCookie('img', res.profileObj.imageUrl, { path: '/' });
         history.push('/docente')
