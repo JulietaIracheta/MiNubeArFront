@@ -1,5 +1,6 @@
 import React from 'react'
-import NavDocente from '../NavDocente'
+import NavDocente from './NavDocente'
+
 import { Calculator, Gear, Palette, Laptop, Globe, Flower1, Flower2, ThermometerSun, VectorPen } from 'react-bootstrap-icons';
 import { Calendar } from 'react-calendar';
 import { Link } from 'react-router-dom';
