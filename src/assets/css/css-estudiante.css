@@ -191,3 +191,12 @@
 .espacio {
   padding-bottom: 30%;
 }
+
+.imagen{
+  width: auto;
+  height: 250px;
+  margin-bottom: 30px;
+}
+.containerReg{
+  text-align: center;
+}

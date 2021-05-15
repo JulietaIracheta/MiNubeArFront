@@ -13,9 +13,11 @@ import {
   DropdownItem,
 } from "reactstrap";
 import { ChatSquareQuoteFill, Bell, PersonCircle } from "react-bootstrap-icons";
+import { useCookies } from 'react-cookie';
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [cookies, setCookie] = useCookies(['usuario']);
 
   const toggle = () => setIsOpen(!isOpen);
   const logout = async () => {
@@ -47,7 +49,7 @@ const NavBar = (props) => {
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav>
-            <PersonCircle className="icon-perfil"/>
+              <PersonCircle className="icon-perfil"/>
             </DropdownToggle>
             <DropdownMenu right>
                 <DropdownItem>
@@ -63,3 +65,4 @@ const NavBar = (props) => {
 };
 
 export default NavBar;
+

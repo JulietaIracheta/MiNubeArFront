@@ -1,6 +1,6 @@
-const url='https://reqres.in/api/users?page=2'
+const url = 'https://reqres.in/api/users?page=2'
 
-export default function getEstudiantes(){
+export default function getEstudiantes() {
     return fetch(url, {
         method: 'GET'
     }).then(res => {

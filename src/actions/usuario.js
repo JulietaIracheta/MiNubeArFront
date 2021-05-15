@@ -33,7 +33,7 @@ export const create = (data, onSuccess) => dispatch => {
             })
             onSuccess()
         })
-        .catch(err => console.log(err))
+        .catch(err => alert(err))
 }
 
 export const update = (id, data, onSuccess) => dispatch => {
