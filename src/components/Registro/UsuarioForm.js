@@ -14,6 +14,7 @@ import useForm from "./useForm";
 import { connect } from "react-redux";
 import * as actions from "../../actions/usuario";
 import { useToasts } from "react-toast-notifications";
+import "../../assets/css/css.css";
 
 const styles = (theme) => ({
   root: {
@@ -37,13 +38,10 @@ const initialFieldValues = {
   apellido: "",
   email: "",
   edad: "",
-  password: ""
+  password: "",
 };
 
-
-
 const UsuarioForm = ({ classes, ...props }) => {
-
   //toast msg.
   const { addToast } = useToasts();
 
@@ -57,10 +55,10 @@ const UsuarioForm = ({ classes, ...props }) => {
       temp.nombre = fieldValues.nombre ? "" : "Este campo es requerido.";
     if ("apellido" in fieldValues)
       temp.apellido = fieldValues.apellido ? "" : "Este campo es requerido.";
-      if ("password" in fieldValues)
+    if ("password" in fieldValues)
       temp.password = fieldValues.password ? "" : "Este campo es requerido.";
-    
-      if ("email" in fieldValues)
+
+    if ("email" in fieldValues)
       temp.email = /^$|.+@.+..+/.test(fieldValues.email)
         ? ""
         : "Email no es valido.";
@@ -77,9 +75,6 @@ const UsuarioForm = ({ classes, ...props }) => {
   //material-ui select
   const inputLabel = React.useRef(0);
   const [labelWidth, setLabelWidth] = React.useState(0);
-  const [estForm, setEst] = useState(false);
-  const [docForm, setDoc] = useState(false);
-  const [tutForm, setTut] = useState(false);
 
   useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth);
@@ -106,39 +101,17 @@ const UsuarioForm = ({ classes, ...props }) => {
     }
   }, [props.currentId]);
 
-    const setEstForm = () => {
-        setEst(!estForm);
-        setDoc(false);
-        setTut(false)
-    } 
-
-    const setDocForm = () => {
-        setEst(false);
-        setDoc(!docForm);
-        setTut(false)
-    } 
-
-    const setTutForm = () => {
-        setEst(false);
-        setDoc(false);
-        setTut(!tutForm);
-    } 
-
   return (
     <div>
-      <div>
-        <button className="btn btn-danger mr-3" onClick={() => setEstForm()}>Estudiante</button>
-        <button className="btn btn-success mr-3" onClick={() => setDocForm()}>Docente</button>
-        <button className="btn btn-primary mr-3" onClick={() => setTutForm()}>Tutor</button>
-        </div>
-      {estForm && <form
+      <h6 className="mt-5">Complete el formulario para registrar un usuario </h6>
+      <form
         autoComplete="off"
         noValidate
         className={classes.root}
         onSubmit={handleSubmit}
       >
         <Grid container>
-          <Grid item xs={6}>
+          <Grid item xs={12}>
             <FormControl
               variant="outlined"
               className={classes.formControl}
@@ -152,191 +125,7 @@ const UsuarioForm = ({ classes, ...props }) => {
                 labelWidth={labelWidth}
               >
                 <MenuItem value="Estudiante">Estudiante</MenuItem>
-              </Select>
-              {errors.rol && <FormHelperText>{errors.rol}</FormHelperText>}
-            </FormControl>
-
-            <TextField
-              name="nombre"
-              variant="outlined"
-              label="Nombre"
-              value={values.nombre}
-              onChange={handleInputChange}
-              {...(errors.nombre && { error: true, helperText: errors.nombre })}
-            />
-            <TextField
-              name="apellido"
-              variant="outlined"
-              label="Apellido"
-              value={values.apellido}
-              onChange={handleInputChange}
-              {...(errors.apellido && {
-                error: true,
-                helperText: errors.apellido,
-              })}
-            />
-          </Grid>
-          <Grid item xs={6}>
-            <TextField
-              name="email"
-              variant="outlined"
-              label="Email"
-              value={values.email}
-              onChange={handleInputChange}
-              {...(errors.email && { error: true, helperText: errors.email })}
-            />
-            <TextField
-              name="password"
-              type="password"
-              variant="outlined"
-              label="Password"
-              value={values.password}
-              onChange={handleInputChange}
-              {...(errors.password && { error: true, helperText: errors.password })}
-            />
-
-            <TextField
-              name="edad"
-              variant="outlined"
-              label="Edad"
-              value={values.edad}
-              onChange={handleInputChange}
-            />
-            <div>
-              <Button
-                variant="contained"
-                color="primary"
-                type="submit"
-                className={classes.smMargin}
-              >
-                Enviar
-              </Button>
-              <Button
-                variant="contained"
-                className={classes.smMargin}
-                onClick={resetForm}
-              >
-                Reset
-              </Button>
-            </div>
-          </Grid>
-        </Grid>
-      </form>}
-      
-      {docForm &&   <form
-        autoComplete="off"
-        noValidate
-        className={classes.root}
-        onSubmit={handleSubmit}
-      >
-        <Grid container>
-          <Grid item xs={6}>
-            <FormControl
-              variant="outlined"
-              className={classes.formControl}
-              {...(errors.rol && { error: true })}
-            >
-              <InputLabel ref={inputLabel}></InputLabel>
-              <Select
-                name="rol"
-                value={values.rol}
-                onChange={handleInputChange}
-                labelWidth={labelWidth}
-              >
-                <MenuItem value="Docente" selected>Docente</MenuItem>{" "}
-              </Select>
-              {errors.rol && <FormHelperText>{errors.rol}</FormHelperText>}
-            </FormControl>
-
-            <TextField
-              name="nombre"
-              variant="outlined"
-              label="Nombre"
-              value={values.nombre}
-              onChange={handleInputChange}
-              {...(errors.nombre && { error: true, helperText: errors.nombre })}
-            />
-            <TextField
-              name="apellido"
-              variant="outlined"
-              label="Apellido"
-              value={values.apellido}
-              onChange={handleInputChange}
-              {...(errors.apellido && {
-                error: true,
-                helperText: errors.apellido,
-              })}
-            />
-          </Grid>
-          <Grid item xs={6}>
-            <TextField
-              name="email"
-              variant="outlined"
-              label="Email"
-              value={values.email}
-              onChange={handleInputChange}
-              {...(errors.email && { error: true, helperText: errors.email })}
-            />
-            <TextField
-              name="password"
-              type="password"
-              variant="outlined"
-              label="Password"
-              value={values.password}
-              onChange={handleInputChange}
-              {...(errors.password && { error: true, helperText: errors.password })}
-            />
-
-            <TextField
-              name="edad"
-              variant="outlined"
-              label="Edad"
-              value={values.edad}
-              onChange={handleInputChange}
-            />
-            <div>
-              <Button
-                variant="contained"
-                color="primary"
-                type="submit"
-                className={classes.smMargin}
-              >
-                Enviar
-              </Button>
-              <Button
-                variant="contained"
-                className={classes.smMargin}
-                onClick={resetForm}
-              >
-                Reset
-              </Button>
-            </div>
-          </Grid>
-        </Grid>
-      </form>
-    }
-      
-      {tutForm && 
-      <form
-        autoComplete="off"
-        noValidate
-        className={classes.root}
-        onSubmit={handleSubmit}
-      >
-        <Grid container>
-          <Grid item xs={6}>
-            <FormControl
-              variant="outlined"
-              className={classes.formControl}
-              {...(errors.rol && { error: true })}
-            >
-              <InputLabel ref={inputLabel}></InputLabel>
-              <Select
-                name="rol"
-                value={values.rol}
-                onChange={handleInputChange}
-                labelWidth={labelWidth}
-              >
+                <MenuItem value="Docente">Docente</MenuItem>
                 <MenuItem value="Tutor">Tutor</MenuItem>
               </Select>
               {errors.rol && <FormHelperText>{errors.rol}</FormHelperText>}
@@ -362,7 +151,7 @@ const UsuarioForm = ({ classes, ...props }) => {
               })}
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12}>
             <TextField
               name="email"
               variant="outlined"
@@ -378,7 +167,10 @@ const UsuarioForm = ({ classes, ...props }) => {
               label="Password"
               value={values.password}
               onChange={handleInputChange}
-              {...(errors.password && { error: true, helperText: errors.password })}
+              {...(errors.password && {
+                error: true,
+                helperText: errors.password,
+              })}
             />
 
             <TextField
@@ -408,9 +200,6 @@ const UsuarioForm = ({ classes, ...props }) => {
           </Grid>
         </Grid>
       </form>
-}
-      
-      
     </div>
   );
 };

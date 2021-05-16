@@ -1,13 +1,12 @@
-:root{
-    background-color: #f5f5f5 ;
-}
-    
 .login-form{
-    width: 100%;
-    max-width: 330px;
-    padding: 10px;
-    margin: auto;
-    height: 100%;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 800px;
+  padding: 10px;
+  margin: auto;
+  height: 100%;
+  margin-top: 3em;
   }
   
   .logo{
@@ -15,12 +14,41 @@
     max-width: 330px;
   }
 
-  .back{
-    height: 100%;
-    width: 100%;
-    background-color: #f5f5f5 ;
-  }
-
   .login-button{
     width: 100%;
+  }
+  .logo-container{
+    height: 500px;
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    background: #f5f5f5;
+    padding: 50px;
+    margin-right: 4em;
+  }
+  .boton-login{
+    background: #555250 !important;
+    font-size: 1em;
+  }
+
+  @media only screen and (max-width: 600px) {
+    /* For tablets: */
+    .login-form{
+      display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 400px;
+    margin: 0 auto;
+    height: 100%;
+      }
+    .logo-container {
+        display: flex;
+        align-items: center;
+        border: 1px solid black;
+        background: #f5f5f5;
+        padding: 50px;
+        margin-right: 0px;
+        margin-bottom: 2em;
+        height: 250px;
+    }
   }

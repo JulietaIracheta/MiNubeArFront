@@ -1,0 +1,19 @@
+.card-actividad-estudiante{
+    margin-top: 1em;
+    min-width: 30em;
+    min-height: 10rem;
+    border:2px solid #37a23b;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.chart-container{
+    width: 10em;
+}
+.card-actividad-estudiante-chart{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}

@@ -6,13 +6,13 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavItem,
-  NavbarText, UncontrolledDropdown,
+  NavItem, UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
 import { ChatLeftTextFill, Bell, PersonCircle } from "react-bootstrap-icons";
+import logo from '../../assets/img/logoGris.png'
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,16 +28,13 @@ const NavBar = (props) => {
 
   return (
     <div >
-      <Navbar className="menuNavBarTutor" expand="md">
-        <NavbarBrand className="colorBrand" href="/tutor">Mi Nube AR</NavbarBrand>
+      <Navbar className="menuNavBarReg" expand="md">
+        <img src={logo}/>
+        <NavbarBrand className="colorBrand" href="/registro">MI NUBE AR</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
             <Nav className="mr-auto"></Nav>
-            <Nav>
-            <NavbarText className="misCursos">Mis Estudiantes</NavbarText>
-            <NavbarText className="misCursos">|</NavbarText>
-            </Nav>
-            <Nav navbar>
+           <Nav navbar>
             <NavItem className="marginMN">
               <ChatLeftTextFill className="icon-menu"/>
             </NavItem>

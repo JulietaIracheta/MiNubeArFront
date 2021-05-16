@@ -1,63 +1,170 @@
-import React, { useState, useEffect } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as actions from "../../actions/usuario";
-import { Grid, Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, withStyles, ButtonGroup, Button } from "@material-ui/core";
-import UsuarioForm from "./UsuarioForm";
-import EditIcon from "@material-ui/icons/Edit";
-import DeleteIcon from "@material-ui/icons/Delete";
-import { useToasts } from "react-toast-notifications";
+import { create } from "../../actions/usuario";
+
+class AddUsuario extends Component {
+  constructor(props) {
+    super(props);
+    this.onChangeRol = this.onChangeRol.bind(this);
+    this.onChangeNombre = this.onChangeNombre.bind(this);
+    this.onChangeApellido = this.onChangeApellido.bind(this);
+    this.onChangeEmail = this.onChangeEmail.bind(this);
+    this.onChangePassword = this.onChangePassword.bind(this);
+    this.saveUsuario = this.saveUsuario.bind(this);
+    this.newUsuario = this.newUsuario.bind(this);
+
+    this.state = {
+      rol: "",
+      nombre: "",
+      apellido: "",
+      email: "",
+      password: "",
+
+      submitted: false,
+    };
+  }
+
+  onChangeRol(e) {
+    this.setState({
+      rol: e.target.value,
+    });
+  }
+
+  onChangeNombre(e) {
+    this.setState({
+      nombre: e.target.value,
+    });
+  }
+  onChangeApellido(e) {
+    this.setState({
+      apellido: e.target.value,
+    });
+  }
+  onChangeEmail(e) {
+    this.setState({
+      email: e.target.value,
+    });
+  }
+  onChangePassword(e) {
+    this.setState({
+      password: e.target.value,
+    });
+  }
 
 
+  saveUsuario() {
+    const { rol, nombre, apellido, email, password } = this.state;
 
-const styles = theme => ({
-    root: {
-        "& .MuiTableCell-head": {
-            fontSize: "1.25rem"
-        }
-    },
-    paper: {
-        margin: theme.spacing(2),
-        padding: theme.spacing(2)
-    }
-})
+    this.props
+      .create(rol, nombre, apellido, email, password)
+      .then((data) => {
+        this.setState({
+          rol: data.rol,
+          nombre: data.nombre,
+          apellido: data.apellido,
+          email: data.email,
+          password: data.password,
 
-const Usuarios = ({ classes, ...props }) => {
-    const [currentId, setCurrentId] = useState(0)
+          submitted: true,
+        });
+        console.log(data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
 
-    useEffect(() => {
-        props.fetchAllUsuarios()
-    }, [])//componentDidMount
-    
-    //toast msg.
-    const { addToast } = useToasts()
+  newUsuario() {
+    this.setState({
+      rol: "",
+      nombre: "",
+      apellido: "",
+      email: "",
+      password: "",
 
-    const onDelete = id => {
-        if (window.confirm('Estas seguro de eliminarlo'))
-            props.deleteUsuario(id,()=>addToast("Eliminado correctamente", { appearance: 'info' }))
-    }
+      submitted: false,
+    });
+  }
+
+  render() {
     return (
+      <div className="submit-form">
+        {this.state.submitted ? (
+          <div>
+            <h4>You submitted successfully!</h4>
+            <button className="btn btn-success" onClick={this.newTutorial}>
+              Add
+            </button>
+          </div>
+        ) : (
+          <div>
+            <div className="form-group">
+              <label htmlFor="nombre">Nombre</label>
+              <input
+                type="text"
+                className="form-control"
+                id="nombre"
+                required
+                value={this.state.nombre}
+                onChange={this.onChangeNombre}
+                name="nombre"
+              />
+            </div>
 
-        <Paper className={classes.paper} elevation={3}>
-            
-            <Grid container>
-            <Grid item xs={6}>
-            <h1>Registro de Usuarios</h1>
-            </Grid>
-                <Grid item xs={6}>
-                    <UsuarioForm {...({ currentId, setCurrentId })} />
-                </Grid>
-             </Grid>
-        </Paper>
+            <div className="form-group">
+              <label htmlFor="apellido">Apellido</label>
+              <input
+                type="text"
+                className="form-control"
+                id="apellido"
+                required
+                value={this.state.apellido}
+                onChange={this.onChangeApellido}
+                name="apellido"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input
+                type="text"
+                className="form-control"
+                id="email"
+                required
+                value={this.state.email}
+                onChange={this.onChangeEmail}
+                name="email"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                className="form-control"
+                id="password"
+                required
+                value={this.state.password}
+                onChange={this.onChangePassword}
+                name="password"
+              />
+            </div>
+            <div className="form-group">
+            <select>
+            <option value="Estudiante">Estudiante</option>
+            <option value="Docente">Docente</option>
+            <option value="Tutor">Tutor</option>
+
+            </select>
+            </div>
+
+            <button onClick={this.saveUsuario} className="btn btn-success">
+              Enviar
+            </button>
+          </div>
+        )}
+      </div>
     );
+  }
 }
 
-const mapStateToProps = state => ({
-    usuarioList: state.usuario.list
-})
-
-const mapActionToProps = {
-    fetchAllUsuarios: actions.fetchAll,
-    deleteUsuario: actions.Delete
-}
-
-export default connect(mapStateToProps, mapActionToProps)(withStyles(styles)(Usuarios));
+export default connect(null, { create })(AddUsuario);

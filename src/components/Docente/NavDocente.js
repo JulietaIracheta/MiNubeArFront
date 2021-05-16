@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Link} from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
@@ -12,15 +12,21 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
-import { ChatSquareQuoteFill, Bell, PersonCircle } from "react-bootstrap-icons";
+import { ChatLeftTextFill, Bell, PersonCircle } from "react-bootstrap-icons";
 import { useCookies } from 'react-cookie';
+import '../../assets/nav.css';
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [cookies, setCookie] = useCookies(['usuario']);
-
+  const history = useHistory();
+  console.log(cookies);
   const toggle = () => setIsOpen(!isOpen);
   const logout = async () => {
+  /*  setCookie('Name', '', { path: '/' });
+    setCookie('img', '', { path: '/' });
+    history.push('/login')
+*/
     await fetch('http://localhost:60671/api/usuario/logout', {
       method: 'POST',
       headers: { "Content-type": "application/json" },
@@ -31,29 +37,29 @@ const NavBar = (props) => {
   return (
     <div >
       <Navbar className="menuNavBarDocente" expand="md">
-        <NavbarBrand className="colorBrand" href="/docente">Mi Nube AR</NavbarBrand>
+        <NavbarBrand className="colorBrand color-negro" href="/docente">Mi Nube AR</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-            <Nav className="mr-auto"></Nav>
-            <Nav>
-            <NavbarText className="misCursos">Mis Escuelas</NavbarText>
-            <NavbarText className="misCursos">|</NavbarText>
-            </Nav>
-            <Nav navbar>
+          <Nav className="mr-auto"></Nav>
+          <Nav>
+            <NavbarText className="misCursos color-negro">Mis Escuelas</NavbarText>
+            <NavbarText className="misCursos color-negro">|</NavbarText>
+          </Nav>
+          <Nav navbar>
             <NavItem className="marginMN">
-              <ChatSquareQuoteFill className="icon-menu"/>
+              <ChatLeftTextFill className="icon-menu color-negro" />
             </NavItem>
-            <NavItem className="marginMN notif"> 
-             <a href="/notificaciones"> <Bell className="icon-menu" /></a>
+            <NavItem className="marginMN notif">
+              <a href="/notificaciones"> <Bell className="icon-menu color-negro" /></a>
               <span id="notificacion-numero" className="badge rounded-circle">2</span>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav>
-              <PersonCircle className="icon-perfil"/>
+                 <PersonCircle className="icon-perfil color-negro" />
             </DropdownToggle>
-            <DropdownMenu right>
+              <DropdownMenu right>
                 <DropdownItem>
-                <Link to='/login' onClick={logout}>Logout</Link> 
+                  <Link className="text-decoration-none" to='/login' className="color-negro text-decoration-none" onClick={logout}>Logout</Link>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
@@ -65,4 +71,3 @@ const NavBar = (props) => {
 };
 
 export default NavBar;
-
