@@ -9,6 +9,7 @@ import CursosAsignadosDocente from './components/Docente/CursosAsignadosDocente'
 import Registro from './components/Registro/Registro';
 import Rol from './components/Rol';
 import Tutor from './components/Tutor/Page/index.js';
+import ActividadEstudiante from './components/Estudiante/ActividadEstudiante/ActividadEstudiante';
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
         <Route path='/docente/estudiantesAsignados' exact component={EstudiantesAsignados} />        
         <Route path='/estudiante/:id' exact component={PerfilEstudiante}/>
         <Route path='/curso/:id' exact component={CursosAsignadosDocente}/>
+        <Route path='/docente/ActividadEstudiante' exact component={ActividadEstudiante}/>
+        <Route path='/tutor/ActividadEstudiante' exact component={ActividadEstudiante}/>
+
       </Switch>
     </Router>
 

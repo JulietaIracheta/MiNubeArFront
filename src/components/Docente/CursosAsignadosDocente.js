@@ -20,7 +20,7 @@ export default function CursosAsignadosDocente({ match, institucion = 'UNLAM' })
 
                 </div>
                 <div className="row">
-                    <div className="col-md-6 border-derecho">
+                    <div className="col-md-6 border-derecho-docente">
                         <Link to='/docente/estudiantesAsignados' className='text-decoration-none'>
                             <div className="bordes mb-3">
                                 <div className="card-body colorDoc font-weight-bold">
@@ -60,25 +60,21 @@ export default function CursosAsignadosDocente({ match, institucion = 'UNLAM' })
                     </div>
                     <div className="col-md-12 colorDoc font-weight-bold" >
                         <div className="row">
-                            <div className="col-md-3 ">
-                                <div className="bordes">
+                            <div className="col-md-3 ">                               
                                     <div className="card-body escuela1">
                                         <h5 className="card-title size espacio font-weight-bold">Segundo B</h5>
                                         <div class="d-flex flex-row-reverse">
                                             <Gear />
                                         </div>
                                     </div>
-                                </div>
                             </div>
-                            <div className="col-md-3 border-derecho">
-                                <div className="bordes">
+                            <div className="col-md-3 border-derecho-docente">                               
                                     <div className="card-body  escuela2">
                                         <h5 className="card-title size espacio font-weight-bold">Segundo A</h5>
                                         <div class="d-flex flex-row-reverse">
                                             <Gear />
                                         </div>
                                     </div>
-                                </div>
                             </div>
                             <div className="col-md-6 ">
                                 <div>

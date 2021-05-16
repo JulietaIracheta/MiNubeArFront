@@ -1,11 +1,5 @@
-:root{
-  background-color: #f5f5f5 ;
-}
-.back{
-  height: 100%;
-  width: 100%;
-  background-color: #f5f5f5 ;
-}
+
+
 
 .menuNavBarEstudiante{
   background-color: rgb(177, 5, 5);
@@ -51,7 +45,6 @@
 }
 .colorBrand{
   margin-left: 20px;
-  color: white !important;
 }
 .misCursos{
   margin-right: 10px;
@@ -84,7 +77,7 @@ height: 5px;
  }
 
 .border-derecho {
-  border-right: 5px solid #2d2f85 !important;
+  border-right: 5px solid hsl(239, 49%, 35%) !important;
 }
  .bordes{
    border-radius: 5px;
@@ -230,7 +223,7 @@ color: white;
   border-radius: 10px !important;
 }
 
-.borde-avatar-alumno{
+.borde-avatar-docente{
   object-fit: cover;
   border: 5px solid #2d2f85 !important;
 }
@@ -273,4 +266,8 @@ color: white;
 }
 .react-calendar{
   font-size: 0.8rem !important;
+}
+
+#chart{
+  width: 12rem;
 }

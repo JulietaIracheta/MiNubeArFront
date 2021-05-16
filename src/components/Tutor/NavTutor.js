@@ -29,7 +29,7 @@ const NavBar = (props) => {
   return (
     <div >
       <Navbar className="menuNavBarTutor" expand="md">
-        <NavbarBrand className="colorBrand" href="/tutor">Mi Nube AR</NavbarBrand>
+        <NavbarBrand className="colorBrand color-negro" href="/tutor">Mi Nube AR</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
             <Nav className="mr-auto"></Nav>

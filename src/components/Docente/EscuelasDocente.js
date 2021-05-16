@@ -20,7 +20,7 @@ export default function EscuelasDocente () {
         </div>
         
         <div className="row">
-          <div className="col-md-6 border-derecho">
+          <div className="col-md-6 border-derecho-docente">
           <Link to='/curso/1' className='text-decoration-none'>
             <div className="bordes mb-3">
               <div className="card-body colorDoc font-weight-bold">
@@ -47,7 +47,7 @@ export default function EscuelasDocente () {
                   </div>
            
               </div>
-              <div className="col-md-3 border-derecho">               
+              <div className="col-md-3 border-derecho-docente">               
                   <div className="card-body  escuela2">
                     <h5 className="card-title size espacio font-weight-bold">Escuela Nº 1</h5>
                     <div class="d-flex flex-row-reverse"> 

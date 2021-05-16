@@ -5,6 +5,8 @@ import NavDocente from "../Docente/NavDocente";
 import { Link } from 'react-router-dom';
 import { PencilSquare, Trash } from "react-bootstrap-icons";
 
+
+
 export default function PerfilEstudiante({ match }) {
     const id = match.params.id
     const [estudiante, SetEstudiante] = useState([])
@@ -24,7 +26,7 @@ export default function PerfilEstudiante({ match }) {
                 <hr className="hr-docente"/>
                 <div className="row mt-4">
                     <div className="col-md-2 ">
-                        <img src={estudiante.avatar} className="rounded-circle borde-avatar-alumno" alt={estudiante.first_name}>
+                        <img src={estudiante.avatar} className="rounded-circle borde-avatar-docente" alt={estudiante.first_name}>
                         </img>
                     </div>
                     <div className="col-md-10">
@@ -40,7 +42,8 @@ export default function PerfilEstudiante({ match }) {
                                         </div>
                                         <div className="d-flex flex-column">
                                          <span className="circle f"></span>
-                                            <span className="circle"></span><p>Al dia</p>
+                                            <span className="circle"></span>
+                                           <p>Al dia</p>
                                             <p>A mejorar</p>
                                         </div>
                                     </div>

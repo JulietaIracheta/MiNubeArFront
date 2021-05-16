@@ -24,7 +24,7 @@ const Login = () => {
     setCookie('Name', res.profileObj.name, { path: '/' });
     setCookie('img', res.profileObj.imageUrl, { path: '/' });
     history.push('/docente')
-}
+  }
 
   const submit = async (e, rol) => {
     e.preventDefault();
@@ -48,41 +48,40 @@ const Login = () => {
   return (
     <div className="back">
       <Form className="login-form" onSubmit={submit}>
-        <div>
+        <div className="logo-container">
           <img src={logo} className="logo"></img>
         </div>
-        <div>
+        <div className="w-100">
+          <FormGroup>
+            <Input
+              type="email"
+              placeholder="Email"
+              onChange={(e) => setEmail(e.target.value)}
+            ></Input>
+          </FormGroup>
+          <FormGroup>
+            <Input
+              type="password"
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+            ></Input>
+          </FormGroup>
+          <Button className="btn btn-lg boton-login btn-block">Ingresar</Button>
+          <div className="text-center pt-3">Ingresá con: </div>
 
-        <FormGroup>
-          <Input
-            type="email"
-            placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
-            ></Input>
-        </FormGroup>
-        <FormGroup>
-          <Input
-            type="password"
-            placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
-            ></Input>
-        </FormGroup>
-        <Button className="btn btn-lg btn-dark btn-block">Ingresar</Button>
-        <div className="text-center pt-3">O ingresa con : </div>
-        <div className="btn-group login-button">
-          <MicrosoftLoginButton>Microsoft</MicrosoftLoginButton>
           <GoogleLogin clientId="1008891152271-jvlq4r789kf6mlihar2uekqthgn30dob.apps.googleusercontent.com"
-                        buttonText="Google"
-                        onSuccess={responseGoogle}
-                        onFailure={responseGoogle}
-                        cookiePolicy={'single_host_origin'} />
+            buttonText="Ingresar con Google"
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            cookiePolicy={'single_host_origin'}
+            className="w-100 mt-3" />
+
+          <div className="text-center pt-2">
+            <a href="/registrarse" className="text-decoration-none">Registrarse</a>
+            <span className="pt-2"> | </span>
+            <a href="/recuperar_password" className="text-decoration-none">¿Olvidó su contraseña?</a>
+          </div>
         </div>
-        <div className="text-center pt-2">
-          <a href="/registrarse">Registrese</a>
-          <span className="pt-2"> | </span>
-          <a href="/recuperar_password">Olvido su password?</a>
-        </div>
-                        </div>
       </Form>
     </div>
   );

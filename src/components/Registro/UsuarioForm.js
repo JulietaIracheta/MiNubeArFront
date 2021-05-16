@@ -145,14 +145,14 @@ const UsuarioForm = ({ classes, ...props }) => {
               {...(errors.rol && { error: true })}
             >
               <InputLabel ref={inputLabel}></InputLabel>
-              <Select
+              <TextField
                 name="rol"
-                value={values.rol}
+                value="Estudiante"
                 onChange={handleInputChange}
                 labelWidth={labelWidth}
+                disabled= {true}
               >
-                <MenuItem value="Estudiante">Estudiante</MenuItem>
-              </Select>
+              </TextField>
               {errors.rol && <FormHelperText>{errors.rol}</FormHelperText>}
             </FormControl>
 
