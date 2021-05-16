@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
@@ -32,26 +32,28 @@ const NavBar = (props) => {
         <NavbarBrand className="colorBrand color-negro" href="/tutor">Mi Nube AR</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-            <Nav className="mr-auto"></Nav>
-            <Nav>
-            <NavbarText className="misCursos">Mis Estudiantes</NavbarText>
-            <NavbarText className="misCursos">|</NavbarText>
-            </Nav>
-            <Nav navbar>
+          <Nav className="mr-auto"></Nav>
+          <Nav>
+            <NavbarText className="misCursos color-negro">Mis Estudiantes</NavbarText>
+            <NavbarText className="misCursos color-negro">|</NavbarText>
+          </Nav>
+          <Nav navbar>
             <NavItem className="marginMN">
-              <ChatSquareQuoteFill className="icon-menu"/>
+              <ChatSquareQuoteFill className="icon-menu color-negro" />
             </NavItem>
-            <NavItem className="marginMN notif"> 
-             <a href="/notificaciones"> <Bell className="icon-menu" /></a>
+            <NavItem className="marginMN notif">
+              <a href="/notificaciones"> <Bell className="icon-menu color-negro" /></a>
               <span id="notificacion-numero" className="badge rounded-circle">2</span>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav>
-            <PersonCircle className="icon-perfil"/>
-            </DropdownToggle>
-            <DropdownMenu right>
+                <PersonCircle className="icon-perfil color-negro" />
+              </DropdownToggle>
+              <DropdownMenu right>
                 <DropdownItem>
-                <Link to='/login' onClick={logout}>Logout</Link> 
+                  <Link to='/login'
+                    onClick={logout}
+                    className="color-negro text-decoration-none">Logout</Link>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>

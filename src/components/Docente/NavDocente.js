@@ -59,7 +59,7 @@ const NavBar = (props) => {
             </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>
-                  <Link className="text-decoration-none" to='/login' onClick={logout}>Logout</Link>
+                  <Link className="text-decoration-none" to='/login' className="color-negro text-decoration-none" onClick={logout}>Logout</Link>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
