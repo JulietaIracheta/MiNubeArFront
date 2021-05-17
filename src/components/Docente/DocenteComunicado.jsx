@@ -11,7 +11,13 @@ const DocenteComunicado = () => {
             <NavDocente></NavDocente>  
             <div className="container-fuid comunicado">
                 <div className="d-sm-flex h-100">
-                    <MenuLateralPrincipal></MenuLateralPrincipal>
+                    <MenuLateralPrincipal
+                        items= {[{nombre : 'Actividad Reciente', activo: false },
+                                 {nombre: 'Cursos', activo: true},
+                                 {nombre: 'Calificaciones', activo: false}
+                                ]}
+                    >
+                    </MenuLateralPrincipal>
                     <div className="docente-comunicado-cuerpo col-12 col-md-9 pt-3">
                         <h2 className="docente__titulo pb-2 font-weight-bold">Escuela Primaria N° 12 - Primero C</h2>
                         <div className="comunicado__nav mb-3">
