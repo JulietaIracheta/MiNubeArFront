@@ -12,7 +12,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
-import { ChatSquareQuoteFill, Bell, PersonCircle } from "react-bootstrap-icons";
+import { ChatLeftTextFill, Bell, PersonCircle } from "react-bootstrap-icons";
 import { useCookies } from 'react-cookie';
 import '../../assets/nav.css';
 
@@ -28,10 +28,15 @@ const NavBar = (props) => {
     history.push('/login')
 
     /*await fetch('http://localhost:60671/api/usuario/logout', {
+    setCookie('Name', '', { path: '/' });
+    setCookie('img', '', { path: '/' });
+    history.push('/login')*/
+    
+    await fetch('http://localhost:60671/api/usuario/logout', {
       method: 'POST',
       headers: { "Content-type": "application/json" },
       credentials: "include",
-    });*/
+    });
   }
 
   return (
@@ -48,6 +53,7 @@ const NavBar = (props) => {
           <Nav navbar>
             <NavItem className="marginMN">
               <ChatSquareQuoteFill className="icon-menu color-negro" />
+              <ChatLeftTextFill className="icon-menu color-negro" />
             </NavItem>
             <NavItem className="marginMN notif">
               <a href="/notificaciones"> <Bell className="icon-menu color-negro" /></a>
@@ -71,4 +77,3 @@ const NavBar = (props) => {
 };
 
 export default NavBar;
-

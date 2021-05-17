@@ -2,7 +2,7 @@ import React, { useState, useEffect} from 'react';
 import Docente from './Docente/Page';
 import Estudiante from './Estudiante/Page';
 import Tutor from './Tutor/Page';
-
+import Registro from './Registro/Registro'; 
 
 export default function Rol(){
   const [rol, setRol] = useState("");
@@ -23,6 +23,8 @@ return (
         {rol === 'Estudiante' && <Estudiante />}
         {rol === 'Docente' && <Docente />}
         {rol === 'Tutor' && <Tutor />}
+        {rol === 'Admin' && <Registro />}
+
     </div>
     );
 

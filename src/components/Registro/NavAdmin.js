@@ -6,16 +6,17 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavItem,
-  NavbarText, UncontrolledDropdown,
+  NavItem, UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
 import { ChatLeftTextFill, Bell, PersonCircle } from "react-bootstrap-icons";
+import logo from '../../assets/img/logoGris.png'
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
+
   const toggle = () => setIsOpen(!isOpen);
   const logout = async () => {
     await fetch('http://localhost:60671/api/usuario/logout', {
@@ -27,16 +28,13 @@ const NavBar = (props) => {
 
   return (
     <div >
-      <Navbar className="menuNavBarEstudiante" expand="md">
-        <NavbarBrand className="colorBrand" href="/estudiante">Mi Nube AR</NavbarBrand>
+      <Navbar className="menuNavBarReg" expand="md">
+        <img src={logo}/>
+        <NavbarBrand className="colorBrand" href="/registro">MI NUBE AR</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
             <Nav className="mr-auto"></Nav>
-            <Nav>
-            <NavbarText className="misCursos">Mis Cursos</NavbarText>
-            <NavbarText className="misCursos">|</NavbarText>
-            </Nav>
-            <Nav navbar>
+           <Nav navbar>
             <NavItem className="marginMN">
               <ChatLeftTextFill className="icon-menu"/>
             </NavItem>
@@ -50,11 +48,7 @@ const NavBar = (props) => {
             </DropdownToggle>
             <DropdownMenu right>
                 <DropdownItem>
-                <a href="/estudiante/1">Ver Perfil</a> 
-                </DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>
-                 <Link to='/login' onClick={logout}>Logout</Link> 
+                <Link to='/login' onClick={logout}>Logout</Link> 
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>

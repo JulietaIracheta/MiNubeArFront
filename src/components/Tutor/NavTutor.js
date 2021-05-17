@@ -12,7 +12,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
-import { ChatSquareQuoteFill, Bell, PersonCircle } from "react-bootstrap-icons";
+import { ChatLeftTextFill, Bell, PersonCircle } from "react-bootstrap-icons";
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,6 +40,7 @@ const NavBar = (props) => {
           <Nav navbar>
             <NavItem className="marginMN">
               <ChatSquareQuoteFill className="icon-menu color-negro" />
+              <ChatLeftTextFill className="icon-menu"/>
             </NavItem>
             <NavItem className="marginMN notif">
               <a href="/notificaciones"> <Bell className="icon-menu color-negro" /></a>

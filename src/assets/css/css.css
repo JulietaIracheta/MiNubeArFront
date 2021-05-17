@@ -1,0 +1,21 @@
+.figure{
+    float: left;
+}
+.figure-caption{
+    text-align: center;
+    text-decoration: solid;
+    font-weight: bold;
+}
+.foto{
+    float:left;
+    height: 150px;
+    width: 250px;
+    border-radius: 10%;
+    margin-right: 10px;
+}
+
+.titulo{
+    border-bottom: 3px solid grey;
+    margin-bottom: 30px;
+    font-family:'Times New Roman', Times, serif;
+}
