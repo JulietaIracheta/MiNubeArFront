@@ -8,7 +8,7 @@ const MenuLateralPrincipal = ({items}) =>{
         <div className="menu-lateral col-12 col-md-2 pt-3 border-right d-none d-md-block" > 
             <ul className="nav flex-column justify-content-start ">
                 {items && items.map( item => 
-                    <li className="nav-item">
+                    <li className="nav-item" key={item.nombre}>
                         <a className={item.activo? classname + ' font-weight-bold' : classname } href="/#">{item.nombre}</a>
                     </li>   
                 )
@@ -17,7 +17,5 @@ const MenuLateralPrincipal = ({items}) =>{
         </div>
     )
 }     
-    
-
 
 export default MenuLateralPrincipal;

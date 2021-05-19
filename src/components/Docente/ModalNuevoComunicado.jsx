@@ -31,26 +31,25 @@ class ModalNuevoComunicado extends Component{
                     centered
                 >
                     <ModalBody>
-                    <form>
+                    <form className="p-3">
                         <div className="form-group">
-                            <label for="exampleFormControlInput1">Para*</label>
-                            <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@gmail.com" />
+                            <label for="exampleFormControlInput1">Para</label>
+                            <input type="email" className="form-control" id="exampleFormControlInput1" />
                         </div>
                         <div className="form-group">
-                            <label for="exampleFormControlInput1">Asunto*</label>
-                            <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="escriba su asunto" />
+                            <label for="exampleFormControlInput1">Asunto</label>
+                            <input type="email" className="form-control" id="exampleFormControlInput1" />
                         </div>
 
                         <div className="form-group">
-                            <label for="exampleFormControlTextarea1">Mensaje*</label>
+                            <label for="exampleFormControlTextarea1">Mensaje</label>
                             <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
                         <div className="form-group">
-                            <label for="imagen">Adjunte un archivo</label>
                             <input type="file" className="form-control-file" id="imagen" />
                         </div>
-                        <button type="submit" className="btn btn-outline-primary float-right ml-1">Guardar</button>
-                        <button className="btn btn-secondary float-right" onClick={this.toogleAlert.bind(this)}>Cancelar</button> 
+                        <button type="submit" className="btn btn-outline-primary float-right ml-1 mt-2">Guardar</button>
+                        <button className="btn btn-secondary float-right mt-2" onClick={this.toogleAlert.bind(this)}>Cancelar</button> 
                     </form>
                     </ModalBody>
                 </Modal>
