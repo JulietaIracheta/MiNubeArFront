@@ -40,7 +40,7 @@ const NavBar = (props) => {
             </NavItem>
             <NavItem className="marginMN notif"> 
              <a href="/notificaciones"> <Bell className="icon-menu" /></a>
-              <span id="notificacion-numero" className="badge rounded-circle">2</span>
+
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav>

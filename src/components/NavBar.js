@@ -24,7 +24,6 @@ const NavBar = (props) => {
           <Nav className="mr-auto" navbar>
             <NavItem>
               <NavLink href="/login">Login</NavLink>
-              
             </NavItem>
             <NavItem>
               <NavLink href="/registro">Registrarse</NavLink>
