@@ -13,6 +13,7 @@ import {
   DropdownItem,
 } from "reactstrap";
 import { ChatLeftTextFill, Bell, PersonCircle } from "react-bootstrap-icons";
+import logo from '../../assets/img/logoGris.png'
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,8 +29,9 @@ const NavBar = (props) => {
 
   return (
     <div >
-      <Navbar className="menuNavBarTutor" expand="md">
-        <NavbarBrand className="colorBrand" href="/tutor">Mi Nube AR</NavbarBrand>
+      <Navbar className="menuNavBarTutor" expand="md" light>
+        <img src={logo}/>
+        <NavbarBrand className="colorBrand navbar-brand" href="/tutor">MI NUBE AR</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
             <Nav className="mr-auto"></Nav>

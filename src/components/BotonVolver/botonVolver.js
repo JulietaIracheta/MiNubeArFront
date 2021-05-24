@@ -4,7 +4,7 @@ import {ArrowLeftCircleFill} from "react-bootstrap-icons";
 
 export default function botonVolver() {
     return (
-        <div>
+        <div className="mr-2">
             <Link to={"/"} 
             className="text-decoration-none btn-volver"
             >
