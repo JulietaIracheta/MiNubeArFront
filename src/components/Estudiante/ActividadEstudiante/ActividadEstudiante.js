@@ -3,7 +3,7 @@ import ReactApexChart from 'react-apexcharts'
 import Chart from '../../Chart/chart';
 import NavTutor from '../../Tutor/NavTutor';
 import '../../../assets/css/css-actividad-estudiante.css'
-
+import BotonVolver from "../../BotonVolver/botonVolver";
 export default function ApexChart() {
     const chart = Chart({ series: 56 });
     console.log(chart)
@@ -11,7 +11,10 @@ export default function ApexChart() {
         <div>
             <NavTutor></NavTutor>
             <div className="container">
-                <h3>Matemáticas</h3>
+                <div className="d-flex align-items-center mt-1">
+                <BotonVolver></BotonVolver>
+                <h3 className="m-0 p-0">Matemáticas</h3>
+                </div>
                 <div className="row">
                     <div className="col-md-6 d-flex align-items-center flex-column">
                         <p className="font-weight-bold">Clases vistas</p>
