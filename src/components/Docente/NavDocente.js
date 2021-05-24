@@ -23,15 +23,10 @@ const NavBar = (props) => {
   console.log(cookies);
   const toggle = () => setIsOpen(!isOpen);
   const logout = async () => {
-    setCookie('Name', '', { path: '/' });
+  /*  setCookie('Name', '', { path: '/' });
     setCookie('img', '', { path: '/' });
     history.push('/login')
-
-    /*await fetch('http://localhost:60671/api/usuario/logout', {
-    setCookie('Name', '', { path: '/' });
-    setCookie('img', '', { path: '/' });
-    history.push('/login')*/
-    
+*/
     await fetch('http://localhost:60671/api/usuario/logout', {
       method: 'POST',
       headers: { "Content-type": "application/json" },
@@ -42,7 +37,7 @@ const NavBar = (props) => {
   return (
     <div >
       <Navbar className="menuNavBarDocente" expand="md">
-        <NavbarBrand className="colorBrand color-negro" href="/docente">Mi Nube AR</NavbarBrand>
+        <NavbarBrand className="colorBrand color-negro" href="/rol">Mi Nube AR</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto"></Nav>
@@ -52,7 +47,6 @@ const NavBar = (props) => {
           </Nav>
           <Nav navbar>
             <NavItem className="marginMN">
-              <ChatSquareQuoteFill className="icon-menu color-negro" />
               <ChatLeftTextFill className="icon-menu color-negro" />
             </NavItem>
             <NavItem className="marginMN notif">

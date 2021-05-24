@@ -77,8 +77,6 @@ const Login = () => {
             className="w-100 mt-3" />
 
           <div className="text-center pt-2">
-            <a href="/registrarse" className="text-decoration-none">Registrarse</a>
-            <span className="pt-2"> | </span>
             <a href="/recuperar_password" className="text-decoration-none">¿Olvidó su contraseña?</a>
           </div>
         </div>

@@ -14,6 +14,7 @@ import {
 import { ChatLeftTextFill, Bell, PersonCircle } from "react-bootstrap-icons";
 import logo from '../../assets/img/logoGris.png'
 
+
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -28,19 +29,19 @@ const NavBar = (props) => {
 
   return (
     <div >
-      <Navbar className="menuNavBarReg" expand="md">
+      <Navbar className="menuNavBarReg" expand="md" light>
         <img src={logo}/>
         <NavbarBrand className="colorBrand" href="/registro">MI NUBE AR</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
             <Nav className="mr-auto"></Nav>
-           <Nav navbar>
+           <Nav navbar className="iconos-nav">
             <NavItem className="marginMN">
               <ChatLeftTextFill className="icon-menu"/>
             </NavItem>
             <NavItem className="marginMN notif"> 
              <a href="/notificaciones"> <Bell className="icon-menu" /></a>
-              <span id="notificacion-numero" className="badge rounded-circle">2</span>
+
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav>

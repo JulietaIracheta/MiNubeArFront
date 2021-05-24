@@ -1,100 +1,26 @@
 .menuNavBarTutor {
-    background-color: #f5f5f5;
-    border-bottom:10px solid #67a147;
-  }
-  
-  .marginMN {
-    margin-left: 15px;
-  }
-  
-  .icon-menu {
-    width: 40px;
-    height: auto;
-    color: white;
-    margin-top: 15px;
-    margin-right: 10px;
-  }
-  
-  .icon-perfil {
-    width: 40px;
-    height: auto;
-    color: white;
-    margin-top: 8px;
-    margin-right: 10px;
-  }
-  
-  .notif {
-    position: relative;
-  }
-  
-  #notificacion-numero {
-    position: absolute;
-    top: 15%;
-    left: 45%;
-    background: red;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    padding: 2px;
-  }
-  
-  .navBarBrand {
-    color: white;
-    font-size: 20px;
-  }
-  .menuLeft {
-    position: absolute;
-    right: 100px;
-  }
-  .colorBrand {
-    margin-left: 20px;
-  }
-  .misCursos {
-    margin-right: 15px;
-    color: white;
-  }
-  
-  
-  .hr-colorTut {
-    color: #67a147;
-    background-color: #67a147;
-    height: 5px;
-  }
-  .colorNotificacionesTutor{
-      color:darkseagreen;
-    }
-  
-  .size{
-      font-size: x-large;
-    }
-  .colorTut {
-    color: #67a147;
-  }
-  
-  .cardContainer {
-    margin-top: 30px;
-  }
-  
-  .espacio {
-    padding-bottom: 30%;
-  }
-  
-  .border-derecho {
-    border-right: 5px solid #67a147 !important;
-  }
-  .bordes {
-    border-radius: 5px;
-    border: 3px solid #545251 !important;
-  }
- 
+  background-color: #f5f5f5;
+  border-bottom:10px solid #67a147;
+}
 
+@media only screen and (max-width: 800px) {
+  .marginMN {
+    margin-left: 0px !important;
+  }
+  }
 .marginMN {
   margin-left: 15px;
 }
+@media only screen and (max-width: 800px) {
+  .icon-menu {
+    width: 20px !important;
+    margin-right: 5px !important;
+}
+}
+.large-menu-classname ul li{
+  display: inline-block;
+  margin-top: 10px;
+  }
 
 .icon-menu {
   width: 40px;
@@ -103,7 +29,12 @@
   margin-top: 15px;
   margin-right: 10px;
 }
-
+@media only screen and (max-width: 800px) {
+  .icon-perfil {
+    width: 20px !important;
+    margin-right: 5px !important;
+  }
+}
 .icon-perfil {
   width: 40px;
   height: auto;

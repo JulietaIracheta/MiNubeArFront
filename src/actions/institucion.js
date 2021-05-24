@@ -8,12 +8,11 @@ export const ACTION_TYPES = {
 }
 
 const formateData = data => ({
-    ...data,
-    edad: parseInt(data.edad ? data.edad : 0)
+    ...data
 })
 
 export const fetchAll = () => dispatch => {
-    api.usuario().fetchAll()
+    api.institucion().fetchAll()
         .then(response => {
             dispatch({
                 type: ACTION_TYPES.FETCH_ALL,
@@ -25,7 +24,7 @@ export const fetchAll = () => dispatch => {
 
 export const create = (data, onSuccess) => dispatch => {
     data = formateData(data)
-    api.usuario().create(data)
+    api.institucion().create(data)
         .then(res => {
             dispatch({
                 type: ACTION_TYPES.CREATE,
@@ -38,7 +37,7 @@ export const create = (data, onSuccess) => dispatch => {
 
 export const update = (id, data) => dispatch => {
     data = formateData(data)
-    api.usuario().update(id, data)
+    api.institucion().update(id, data)
         .then(res => {
             dispatch({
                 type: ACTION_TYPES.UPDATE,
@@ -50,7 +49,7 @@ export const update = (id, data) => dispatch => {
 }
 
 export const Delete = (id) => dispatch => {
-    api.usuario().delete(id)
+    api.institucion().delete(id)
         .then(res => {
             dispatch({
                 type: ACTION_TYPES.DELETE,
