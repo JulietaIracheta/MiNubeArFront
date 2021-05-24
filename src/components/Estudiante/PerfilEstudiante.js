@@ -4,8 +4,8 @@ import GetEstudiante from '../../services/estudiantes/getEstudiante';
 import NavDocente from "../Docente/NavDocente";
 import { Link } from 'react-router-dom';
 import { PencilSquare, Trash } from "react-bootstrap-icons";
-
-
+import "../../assets/css/docente/docente.css"
+import Sidebar from "../Sidebar";
 
 export default function PerfilEstudiante({ match }) {
     const id = match.params.id
@@ -16,7 +16,10 @@ export default function PerfilEstudiante({ match }) {
     return (
         <div>
             <NavDocente></NavDocente>
-            <div className="container py-4">
+            <div className="d-flex mt-1">
+                <Sidebar/>
+                <div className="container">
+
                 <h4 className="titulo-docente">
                     <Link to='/docente/estudiantesAsignados' 
                         className="text-decoration-none titulo-docente">
@@ -32,7 +35,7 @@ export default function PerfilEstudiante({ match }) {
                     <div className="col-md-10">
                         <div className="card min-w card-docente">
                             <div className="card-body row p-3">
-                                <div className="col-md-4">
+                                <div className="col-md-6">
                                     <p className="titulo-docente">Resumen</p>
                                     <div className=" d-flex flex-row justify-content-between">
 
@@ -49,19 +52,15 @@ export default function PerfilEstudiante({ match }) {
                                     </div>
 
                                 </div>
-                                <div className="col-md-8">
-                                    <p className="titulo-docente">Boletín</p>
-
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="mt-4 d-flex w-100 evenly">
-                    <div className="col-md-7 card-docente">
+                    <div className="col-md-12 card-docente">
                         <div className="d-flex mt-2 px-2 pt-2 w-100 justify-content-between align-items-center">
                             <p className="titulo-docente m-0">Informes</p>
-                            <button className="btn btn-outline-dark btn-sm">Nuevo +</button>
+                            <button className="btn btn-outline-dark btn-accion">Nuevo +</button>
                         </div>
                         <hr/>
                         <div className="w-100 p-2 informes-docentes-container">
@@ -125,10 +124,7 @@ export default function PerfilEstudiante({ match }) {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-4 card-docente p-4 text-center">
-                        <p className="titulo-docente">Comunicados directos</p>
-                    </div> 
-
+                </div>
                 </div>
             </div>
         </div>

@@ -263,7 +263,7 @@ color: white;
 /*css estudiantes asignados*/
 .card-docente{
   border: 2px solid #2d2f85 !important;
-  border-radius: 10px !important;
+  border-radius: 5px !important;
 }
 
 .borde-avatar-alumno{

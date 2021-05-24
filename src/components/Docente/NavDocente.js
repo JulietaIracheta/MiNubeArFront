@@ -15,6 +15,7 @@ import {
 import { ChatLeftTextFill, Bell, PersonCircle } from "react-bootstrap-icons";
 import { useCookies } from 'react-cookie';
 import '../../assets/nav.css';
+import logo from '../../assets/img/logoGris.png'
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,8 +37,9 @@ const NavBar = (props) => {
 
   return (
     <div >
-      <Navbar className="menuNavBarDocente" expand="md">
-        <NavbarBrand className="colorBrand color-negro" href="/rol">Mi Nube AR</NavbarBrand>
+      <Navbar className="menuNavBarDocente" expand="md" light>
+        <img src={logo}/>
+        <NavbarBrand className="colorBrand navbar-brand" href="/rol">MI NUBE AR</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto"></Nav>
