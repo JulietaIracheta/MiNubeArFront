@@ -3,9 +3,24 @@
   border-bottom:10px solid #67a147;
 }
 
+@media only screen and (max-width: 800px) {
+  .marginMN {
+    margin-left: 0px !important;
+  }
+  }
 .marginMN {
   margin-left: 15px;
 }
+@media only screen and (max-width: 800px) {
+  .icon-menu {
+    width: 20px !important;
+    margin-right: 5px !important;
+}
+}
+.large-menu-classname ul li{
+  display: inline-block;
+  margin-top: 10px;
+  }
 
 .icon-menu {
   width: 40px;
@@ -14,7 +29,12 @@
   margin-top: 15px;
   margin-right: 10px;
 }
-
+@media only screen and (max-width: 800px) {
+  .icon-perfil {
+    width: 20px !important;
+    margin-right: 5px !important;
+  }
+}
 .icon-perfil {
   width: 40px;
   height: auto;

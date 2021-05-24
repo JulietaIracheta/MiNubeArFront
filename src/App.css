@@ -24,14 +24,11 @@
 .marginMN{
   margin-right: 10px;
 }
-
-.icon-menu{
-  
-  width: 30px;
-  height: auto;
-  color: rgb(59, 59, 59);
-  margin-top: 5px;
-  margin-right: 10px;
+@media only screen and (max-width: 800px) {
+.iconos-nav{
+float: right !important;
+flex-direction: row !important;
+}
 }
 .navBarBrand{
   color: white;
@@ -45,6 +42,11 @@
   margin-top: 5px;
   margin-right: 25px;
 }
+@media only screen and (max-width: 800px) {
+  .tituloadmin{
+    font-size: 25px !important;
+  }
+}  
 .tituloadmin{
   margin-left: 20px;
   font-size: 35px;
@@ -63,11 +65,19 @@
 #coco{
   border-left: 1px solid #7e7e7c;
 }
+
+
+@media only screen and (max-width: 800px) {
+.adminContent{
+  margin-top: -40px !important;
+  border-bottom: #545251 solid 2px;
+}
+}
 .adminContent{
   margin-top: -60px;
   border-bottom: #545251 solid 2px;
- 
-}
+} 
+
 .menuLeft{
   position: absolute;
   right: 100px; 
@@ -303,13 +313,21 @@ color: white;
 #chart{
   width: 12rem;
 }
+
 .colorTab{
   background-color: #545251;
   color: white !important;
 }
 .Sidebar{
-  height: 100%;
-  width: 200px;
+  height: 720px;
+  width: 150px;
+  border-right: 2px solid lightgray;
+}
+@media only screen and (max-width: 800px) {
+.Sidebar{
+  width: 70px;
+  font-size: smaller;
+}
 }
 
 .SidebarList{

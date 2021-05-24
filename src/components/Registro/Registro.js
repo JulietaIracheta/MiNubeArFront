@@ -78,8 +78,8 @@ function ResponsiveDrawer(props) {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <div className="adminContent"><span className="tituloadmin">Bienvenido Admin</span>
-        {userOn && <Button className="btn btn-primary menuadmin" onClick={() => setEstForm()}>Nuevo +</Button> }
-        <Search className="lupa"/>
+        {userOn && <Button className="btn btn-primary menuadmin" onClick={() => setEstForm()}>Nuevo +</Button> &&
+        <Search className="lupa"/>}
         </div>  
   
         {userOn &&
