@@ -24,10 +24,8 @@ const NavBar = (props) => {
   console.log(cookies);
   const toggle = () => setIsOpen(!isOpen);
   const logout = async () => {
-  /*  setCookie('Name', '', { path: '/' });
-    setCookie('img', '', { path: '/' });
-    history.push('/login')
-*/
+  
+    
     await fetch('http://localhost:60671/api/usuario/logout', {
       method: 'POST',
       headers: { "Content-type": "application/json" },

@@ -8,21 +8,22 @@ function Estudiante() {
   const [rol, setRol] = useState("");
   useEffect(() => {
     (async () => {
-      const response = await fetch("http://localhost:60671/api/usuario/user", {
+      const response = await fetch("http://localhost:60671/api/persona/getPersonaByUsuario", {
+        method: "GET",
         headers: { "Content-type": "application/json" },
-        credentials: "include",
+        credentials: "include"
       });
 
       const content = await response.json();
+      console.log(content);
       setNombre(content.nombre);
-      setRol(content.rol);
 })();
   });
 
   return (
     <div>
       <NavEstudiante />
-      <Materias name={nombre} rol={rol}/>
+      <Materias name={nombre}/>
     </div>
   );
   }

@@ -19,11 +19,25 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
 
-  const responseGoogle = (res) => {
+  const responseGoogle = async (res) => {
     console.log(res)
+    let emailGoogle=res.profileObj.email;
+    setEmail(res.profileObj.email);
     setCookie('Name', res.profileObj.name, { path: '/' });
     setCookie('img', res.profileObj.imageUrl, { path: '/' });
-    history.push('/docente')
+
+    const response = await fetch("http://localhost:60671/api/usuario/loginGoogle?email="+emailGoogle, {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      credentials: "include",
+    });
+    if(response.status === 200){
+      setRedirect(true);
+    }
+    if(response.status===400)
+      alert("Datos erróneos")
+    else
+      alert("Algo salió mal")
   }
 
   const submit = async (e, rol) => {
@@ -34,7 +48,7 @@ const Login = () => {
       headers: { "Content-type": "application/json" },
       credentials: "include",
       body: JSON.stringify({
-        email,
+        UsuarioNombre:email,
         password,
       }),
     });

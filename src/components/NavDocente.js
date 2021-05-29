@@ -16,7 +16,8 @@ import { useCookies } from 'react-cookie';
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [cookies, setCookie] = useCookies(['usuario']);
-
+  setCookie('Name', '', { path: '/' });
+  setCookie('img', '', { path: '/' });
   const toggle = () => setIsOpen(!isOpen);
 
   return (

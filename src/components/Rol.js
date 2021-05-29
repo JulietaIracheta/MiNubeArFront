@@ -8,22 +8,22 @@ export default function Rol(){
   const [rol, setRol] = useState("");
   useEffect(() => {
     (async () => {
-      const response = await fetch("http://localhost:60671/api/usuario/user", {
+      const response = await fetch("http://localhost:60671/api/rol/getRolByUsuario", {
         headers: { "Content-type": "application/json" },
         credentials: "include",
       });
 
       const content = await response.json();
-      setRol(content.rol);
+      setRol(content);
 })();
   },[]);
   
 return (
     <div>
-        {rol === 'Estudiante' && <Estudiante />}
-        {rol === 'Docente' && <Docente />}
-        {rol === 'Tutor' && <Tutor />}
-        {rol === 'Admin' && <Registro />}
+        {rol === 1 && <Estudiante />}
+        {rol === 2 && <Docente />}
+        {rol === 3 && <Tutor />}
+        {rol === 4 && <Registro />}
 
     </div>
     );
