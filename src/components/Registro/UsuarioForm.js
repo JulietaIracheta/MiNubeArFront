@@ -120,7 +120,7 @@ const UsuarioForm = ({ classes, ...props }) => {
               <InputLabel ref={inputLabel}></InputLabel>
               <TextField
                 name="rol"
-                value="Estudiante"
+                value="estudiante"
                 onChange={handleInputChange}
                 labelWidth={labelWidth}
                 disabled= {true}
@@ -129,7 +129,6 @@ const UsuarioForm = ({ classes, ...props }) => {
 
               {errors.rol && <FormHelperText>{errors.rol}</FormHelperText>}
             </FormControl>
-
             <TextField
               name="nombre"
               variant="outlined"

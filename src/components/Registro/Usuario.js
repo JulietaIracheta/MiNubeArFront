@@ -121,7 +121,7 @@ const showModal = (rol, nombre) => {
 
   useEffect(() => {
     props.fetchAllUsuarios();
-  }, ); 
+  },[]); 
 
   const onDelete = (id) => {
     if (window.confirm("Estas seguro de eliminarlo"))
@@ -176,6 +176,8 @@ const showModal = (rol, nombre) => {
                     <TableCell className="colorTab">Nombre</TableCell>
                     <TableCell className="colorTab">Apellido</TableCell>
                     <TableCell className="colorTab">Email</TableCell>
+                    <TableCell className="colorTab">Nombre de Usuario</TableCell>
+                    <TableCell className="colorTab">Teléfono</TableCell>
                     <TableCell className="colorTab">Rol</TableCell>
                     <TableCell className="colorTab"></TableCell>
                   </TableRow>
@@ -187,6 +189,8 @@ const showModal = (rol, nombre) => {
                         <TableCell>{record.nombre}</TableCell>
                         <TableCell>{record.apellido}</TableCell>
                         <TableCell>{record.email}</TableCell>
+                        <TableCell>{record.nombreUsuario}</TableCell>
+                        <TableCell>{record.telefono}</TableCell>
                         <TableCell>{record.rol}</TableCell>
                         <TableCell>
                           <UncontrolledDropdown direction="left" nav inNavbar className="menu3dots">
