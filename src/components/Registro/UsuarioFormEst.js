@@ -41,6 +41,7 @@ const initialFieldValues = {
   email: "",
   edad: "",
   password: "",
+  rol:"Estudiante"
 };
 
 const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
