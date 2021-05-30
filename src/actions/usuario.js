@@ -13,7 +13,7 @@ const formateData = data => ({
 })
 
 export const fetchAll = () => dispatch => {
-    api.usuario().fetchAll()
+    api.persona().fetchAll()
         .then(response => {
             dispatch({
                 type: ACTION_TYPES.FETCH_ALL,

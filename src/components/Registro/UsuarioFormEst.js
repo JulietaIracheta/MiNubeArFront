@@ -35,7 +35,7 @@ const styles = (theme) => ({
 });
 
 const initialFieldValues = {
-  rol: "Estudiante",
+  rolId: "1",
   nombre: "",
   apellido: "",
   email: "",
@@ -89,7 +89,7 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
         resetForm();
         addToast("Registrado correctamente", { appearance: "success" });
       };
-    props.createUsuario(values, onSuccess);
+      props.createUsuario(values, onSuccess);
     }
     handleClose();
   };
@@ -106,9 +106,9 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
   const [instituciones, setInstituciones] = useState([])
   useEffect(() => {
     fetch('http://localhost:60671/api/institucion').then(response => response.json())
-     .then(data => setInstituciones(data));
-     console.log(instituciones);
-  }, );
+      .then(data => setInstituciones(data));
+    console.log(instituciones);
+  },[]);
 
   return (
     <div>
@@ -121,7 +121,7 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
       >
         <Grid container>
           <Grid item xs={12}>
-         
+
             <TextField
               name="nombre"
               variant="outlined"
@@ -151,11 +151,11 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
               onChange={handleInputChange}
               {...(errors.email && { error: true, helperText: errors.email })}
             />
-            
+
             <select name="institucion" className="form-control">
               {instituciones.map((el) => {
-              <option key={el.id} value={el.id}>{el.nombre}</option>
-            })}
+                <option key={el.id} value={el.id}>{el.nombre}</option>
+              })}
             </select>
             <TextField
               name="password"
@@ -169,7 +169,6 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
                 helperText: errors.password,
               })}
             />
-
             <TextField
               name="edad"
               variant="outlined"
@@ -216,7 +215,7 @@ const mapStateToProps = (state) => ({
 const mapActionToProps = {
   createUsuario: actions.create,
   updateUsuario: actions.update,
-  fetchAllInstituciones : actions2.fetchAll
+  fetchAllInstituciones: actions2.fetchAll
 };
 
 export default connect(
