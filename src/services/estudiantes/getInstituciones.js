@@ -8,6 +8,6 @@ export default function getInstituciones() {
         return res.json()
     }).then(res => {
         const instituciones = res.data
-        return instituciones
+        console.log(instituciones)
     });
 }

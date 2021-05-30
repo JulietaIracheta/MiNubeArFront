@@ -190,7 +190,7 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
               <Button
                 variant="contained"
                 className={classes.smMargin}
-                onClick={resetForm}
+                onClick={getInstituciones()}
               >
                 Reset
               </Button>
