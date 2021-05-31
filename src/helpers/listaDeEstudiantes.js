@@ -4,11 +4,11 @@ import DatoEstudiante from "../components/Estudiante/DatoEstudiante"
 export default function ListaDeEstudiantes({estudiantes}){
     return estudiantes.map(estudiante => {
         return <DatoEstudiante
-            key={estudiante.id}
+            key={estudiante.idPersona}
             avatar={estudiante.avatar}
-            nombre={estudiante.first_name}
-            apellido={estudiante.last_name}
-            id={estudiante.id}
+            nombre={estudiante.nombre}
+            apellido={estudiante.apellido}
+            id={estudiante.idPersona}
         />
     })
 }

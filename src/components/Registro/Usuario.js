@@ -61,6 +61,7 @@ const styles = (theme) => ({
     flexGrow: 1,
     padding: theme.spacing(1),
     margin: 0,
+    width:"100%",
     paddingTop: 0,
   },
   paper: {
@@ -167,7 +168,6 @@ const Usuarios = ({ classes, ...props }) => {
                     <TableCell className="colorTab">Nombre</TableCell>
                     <TableCell className="colorTab">Apellido</TableCell>
                     <TableCell className="colorTab">Email</TableCell>
-                    <TableCell className="colorTab">Nombre de Usuario</TableCell>
                     <TableCell className="colorTab">Teléfono</TableCell>
                     <TableCell className="colorTab">Rol</TableCell>
                     <TableCell className="colorTab"></TableCell>
@@ -180,7 +180,10 @@ const Usuarios = ({ classes, ...props }) => {
                         <TableCell>{record.nombre}</TableCell>
                         <TableCell>{record.apellido}</TableCell>
                         <TableCell>{record.email}</TableCell>
+<<<<<<< HEAD
                         <TableCell>{record.usuarioNombre}</TableCell>
+=======
+>>>>>>> 7f7efb93c81f39706d8038a0be69621cb57f1d77
                         <TableCell>{record.telefono}</TableCell>
                         <TableCell>{record.rol}</TableCell>
                         <TableCell>

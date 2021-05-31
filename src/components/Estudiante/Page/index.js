@@ -15,7 +15,6 @@ function Estudiante() {
       });
 
       const content = await response.json();
-      console.log(content);
       setNombre(content.nombre);
 })();
   });

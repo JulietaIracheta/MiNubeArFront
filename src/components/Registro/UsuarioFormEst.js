@@ -40,8 +40,12 @@ const initialFieldValues = {
   email: "",
   telefono: "",
   password: "",
+<<<<<<< HEAD
   rol: "Estudiante",
   usuarioNombre : ""
+=======
+  rol:"Estudiante"
+>>>>>>> 7f7efb93c81f39706d8038a0be69621cb57f1d77
 };
 
 const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
