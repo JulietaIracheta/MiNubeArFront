@@ -110,15 +110,6 @@ const Usuarios = ({ classes, ...props }) => {
     setOpenTut(false);
   };
 
-const showModal = (rol, nombre) => {
-  console.log(rol)
-  if(rol === "Tutor") {
-    setOpenTut(true);
-    setNombre(nombre);
-    return (<ModalDialogTut open={openTut} handleClose={handleClose} /> ) }
-  }
-
-
   useEffect(() => {
     props.fetchAllUsuarios();
   },[]); 
@@ -189,7 +180,7 @@ const showModal = (rol, nombre) => {
                         <TableCell>{record.nombre}</TableCell>
                         <TableCell>{record.apellido}</TableCell>
                         <TableCell>{record.email}</TableCell>
-                        <TableCell>{record.nombreUsuario}</TableCell>
+                        <TableCell>{record.usuarioNombre}</TableCell>
                         <TableCell>{record.telefono}</TableCell>
                         <TableCell>{record.rol}</TableCell>
                         <TableCell>
@@ -198,13 +189,13 @@ const showModal = (rol, nombre) => {
                               <MoreVert />
                             </DropdownToggle>
                             <DropdownMenu >
-                              <DropdownItem  
-                              onClick={() => showModal(record.rol)}>
+                              <DropdownItem>
+                              
                                   Editar
                                 
                                 </DropdownItem>
                                 <DropdownItem
-                                onClick={() => onDelete(record.id)}>
+                                onClick={() => onDelete(record.idPersona)}>
                                   Eliminar
                                 
                               </DropdownItem>

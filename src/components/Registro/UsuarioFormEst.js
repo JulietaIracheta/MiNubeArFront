@@ -16,7 +16,6 @@ import * as actions from "../../actions/usuario";
 import * as actions2 from "../../actions/institucion";
 import { useToasts } from "react-toast-notifications";
 import "../../assets/css/css.css";
-import getInstituciones from "../../services/estudiantes/getInstituciones";
 
 const styles = (theme) => ({
   root: {
@@ -39,14 +38,16 @@ const initialFieldValues = {
   nombre: "",
   apellido: "",
   email: "",
-  edad: "",
+  telefono: "",
   password: "",
+  rol: "Estudiante",
+  usuarioNombre : ""
 };
 
 const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
   //toast msg.
   const { addToast } = useToasts();
-
+  const [usuarioNombre, setUsuarioNombre] = useState("");
   //validate()
   //validate({fullName:'jenny'})
   const validate = (fieldValues = values) => {
@@ -87,9 +88,12 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
     if (validate()) {
       const onSuccess = () => {
         resetForm();
+        
         addToast("Registrado correctamente", { appearance: "success" });
       };
       props.createUsuario(values, onSuccess);
+      setUsuarioNombre(values.email);
+      console.log(usuarioNombre)
     }
     handleClose();
   };
@@ -103,12 +107,14 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
     }
   }, [props.currentId]);
 
-  const [instituciones, setInstituciones] = useState([])
+
+
+/*  const [instituciones, setInstituciones] = useState([])
   useEffect(() => {
     fetch('http://localhost:60671/api/institucion').then(response => response.json())
       .then(data => setInstituciones(data));
     console.log(instituciones);
-  },[]);
+  },[]);*/
 
   return (
     <div>
@@ -152,11 +158,6 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
               {...(errors.email && { error: true, helperText: errors.email })}
             />
 
-            <select name="institucion" className="form-control">
-              {instituciones.map((el) => {
-                <option key={el.id} value={el.id}>{el.nombre}</option>
-              })}
-            </select>
             <TextField
               name="password"
               type="password"
@@ -170,10 +171,10 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
               })}
             />
             <TextField
-              name="edad"
+              name="telefono"
               variant="outlined"
-              label="Edad"
-              value={values.edad}
+              label="Telefono"
+              value={values.telefono}
               onChange={handleInputChange}
             />
 
@@ -189,7 +190,7 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
               <Button
                 variant="contained"
                 className={classes.smMargin}
-                onClick={getInstituciones()}
+                onClick={resetForm}
               >
                 Reset
               </Button>

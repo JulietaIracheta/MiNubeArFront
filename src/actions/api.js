@@ -6,9 +6,19 @@ const baseUrl = "http://localhost:60671/api/"
 
 export default {
 
+    persona(url = baseUrl + 'persona/') {
+        return {
+            fetchAll: () => axios.get(url),
+            fetchById: id => axios.get(url + id),
+            create: newRecord => axios.post(url, newRecord),
+            update: (id, updateRecord) => axios.put(url + id, updateRecord),
+            delete: id => axios.delete(url + id)
+        }
+    },
+
     usuario(url = baseUrl + 'usuario/') {
         return {
-            //fetchAll: () => axios.get(url),
+            fetchAll: () => axios.get(url),
             fetchById: id => axios.get(url + id),
             create: newRecord => axios.post(url, newRecord),
             update: (id, updateRecord) => axios.put(url + id, updateRecord),
@@ -23,11 +33,5 @@ export default {
                 update: (id, updateRecord) => axios.put(url + id, updateRecord),
                 delete: id => axios.delete(url + id)
             }
-    },
-    persona(url = baseUrl + 'persona/') {
-        return {
-            fetchAll: () => axios.get(url),
-            fetchById: id => axios.get(url + id)
-        }
     }
 }
