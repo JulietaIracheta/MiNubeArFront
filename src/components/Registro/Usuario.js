@@ -180,10 +180,6 @@ const Usuarios = ({ classes, ...props }) => {
                         <TableCell>{record.nombre}</TableCell>
                         <TableCell>{record.apellido}</TableCell>
                         <TableCell>{record.email}</TableCell>
-<<<<<<< HEAD
-                        <TableCell>{record.usuarioNombre}</TableCell>
-=======
->>>>>>> 7f7efb93c81f39706d8038a0be69621cb57f1d77
                         <TableCell>{record.telefono}</TableCell>
                         <TableCell>{record.rol}</TableCell>
                         <TableCell>

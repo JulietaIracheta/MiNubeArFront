@@ -33,12 +33,15 @@ const styles = (theme) => ({
 });
 
 const initialFieldValues = {
-  rol: "Docente",
+  rolId: "2",
   nombre: "",
   apellido: "",
   email: "",
-  edad: "",
+  telefono: "",
   password: "",
+  rol: "Docente",
+  usuarioNombre : ""
+
 };
 
 const UsuarioFormDoc = ({ handleClose, classes, ...props }) => {
@@ -156,10 +159,10 @@ const UsuarioFormDoc = ({ handleClose, classes, ...props }) => {
             />
 
             <TextField
-              name="edad"
+              name="telefono"
               variant="outlined"
-              label="Edad"
-              value={values.edad}
+              label="Telefono"
+              value={values.telefono}
               onChange={handleInputChange}
             />
             <div>
