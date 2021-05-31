@@ -61,6 +61,7 @@ const styles = (theme) => ({
     flexGrow: 1,
     padding: theme.spacing(1),
     margin: 0,
+    width:"100%",
     paddingTop: 0,
   },
   paper: {
@@ -176,7 +177,6 @@ const showModal = (rol, nombre) => {
                     <TableCell className="colorTab">Nombre</TableCell>
                     <TableCell className="colorTab">Apellido</TableCell>
                     <TableCell className="colorTab">Email</TableCell>
-                    <TableCell className="colorTab">Nombre de Usuario</TableCell>
                     <TableCell className="colorTab">Teléfono</TableCell>
                     <TableCell className="colorTab">Rol</TableCell>
                     <TableCell className="colorTab"></TableCell>
@@ -189,7 +189,6 @@ const showModal = (rol, nombre) => {
                         <TableCell>{record.nombre}</TableCell>
                         <TableCell>{record.apellido}</TableCell>
                         <TableCell>{record.email}</TableCell>
-                        <TableCell>{record.nombreUsuario}</TableCell>
                         <TableCell>{record.telefono}</TableCell>
                         <TableCell>{record.rol}</TableCell>
                         <TableCell>

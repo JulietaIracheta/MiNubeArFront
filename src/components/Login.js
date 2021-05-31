@@ -20,7 +20,6 @@ const Login = () => {
   const [redirect, setRedirect] = useState(false);
 
   const responseGoogle = async (res) => {
-    console.log(res)
     let emailGoogle=res.profileObj.email;
     setEmail(res.profileObj.email);
     setCookie('Name', res.profileObj.name, { path: '/' });
@@ -31,13 +30,12 @@ const Login = () => {
       headers: { "Content-type": "application/json" },
       credentials: "include",
     });
+    console.log(response);
     if(response.status === 200){
       setRedirect(true);
     }
-    if(response.status===400)
+    if(response.status === 400)
       alert("Datos erróneos")
-    else
-      alert("Algo salió mal")
   }
 
   const submit = async (e, rol) => {

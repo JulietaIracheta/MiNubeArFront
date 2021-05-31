@@ -1,8 +1,5 @@
 import axios from "axios";
-
 const baseUrl = "http://localhost:60671/api/"
-
-
 
 export default {
 
