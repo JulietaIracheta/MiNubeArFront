@@ -7,7 +7,7 @@ export default function getInstituciones() {
         if (!res.ok) throw new Error('Response is NOT ok')
         return res.json()
     }).then(res => {
-        const instituciones = res.data
-        console.log(instituciones)
+        const instituciones = res
+        return instituciones
     });
 }
