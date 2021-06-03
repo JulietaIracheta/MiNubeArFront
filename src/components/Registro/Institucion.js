@@ -118,6 +118,7 @@ const Instituciones = ({ classes, ...props }) => {
                 <TableHead>
                   <TableRow className="colorTab">
                     <TableCell className="colorTab">Nombre</TableCell>
+                    <TableCell className="colorTab">Dirección</TableCell>
                     <TableCell className="colorTab">Email</TableCell>
                     <TableCell className="colorTab"></TableCell>
                   </TableRow>
@@ -127,6 +128,7 @@ const Instituciones = ({ classes, ...props }) => {
                     return (
                       <TableRow key={index} hover>
                         <TableCell>{record.nombre}</TableCell>
+                        <TableCell>{record.direccion}</TableCell>
                         <TableCell>{record.email}</TableCell>
                         <TableCell>
                           <UncontrolledDropdown direction="left" nav inNavbar className="menu3dots">

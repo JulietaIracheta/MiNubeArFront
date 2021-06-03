@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Notificaciones() {
         return (
-            <div className="col-md-6 ">
+            <div>
             <h2 className="font-weight-bold colorDoc">Ultimas Notificaciones</h2>
             <br />
             <ul className="colorNotificaciones">

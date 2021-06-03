@@ -41,6 +41,7 @@ const InstitucionForm = ({ handleClose, classes, ...props }) => {
   const validate = (fieldValues = values) => {
     let temp = { ...errors };
     if ("nombre" in fieldValues)
+    if ("direccion" in fieldValues)
     if ("email" in fieldValues)
       temp.email = /^$|.+@.+..+/.test(fieldValues.email)
         ? ""
@@ -105,6 +106,18 @@ const InstitucionForm = ({ handleClose, classes, ...props }) => {
               {...(errors.nombre && { error: true, helperText: errors.nombre })}
             />
           </Grid>
+          <Grid item xs={12}>
+         
+            <TextField
+              name="direccion"
+              variant="outlined"
+              label="Dirección"
+              value={values.direccion}
+              onChange={handleInputChange}
+              {...(errors.direccion && { error: true, helperText: errors.direccion })}
+            />
+          </Grid>
+          
           <Grid item xs={12}>
             <TextField
               name="email"

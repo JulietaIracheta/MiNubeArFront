@@ -3,18 +3,18 @@ import {
   Grid,
   TextField,
   withStyles,
-  FormControl,
-  InputLabel,
+  Button,
   Select,
   MenuItem,
-  Button,
-  FormHelperText,
+  FormControl,
+  InputLabel
 } from "@material-ui/core";
 import useForm from "./useForm";
 import { connect } from "react-redux";
 import * as actions from "../../actions/usuario";
 import { useToasts } from "react-toast-notifications";
 import "../../assets/css/css.css";
+import getInstituciones from "../../services/estudiantes/getInstituciones";
 
 const styles = (theme) => ({
   root: {
@@ -40,7 +40,8 @@ const initialFieldValues = {
   telefono: "",
   password: "",
   rol: "Docente",
-  usuarioNombre : ""
+  usuarioNombre : "",
+  idInstitucion: "0"
 
 };
 
@@ -104,6 +105,12 @@ const UsuarioFormDoc = ({ handleClose, classes, ...props }) => {
     }
   }, [props.currentId]);
 
+  const [instituciones, setInstituciones] = useState([]);
+
+  useEffect(function () {
+    getInstituciones().then((instituciones) => setInstituciones(instituciones));
+  }, []);
+
   return (
     <div>
       <h6 className="mt-5 ml-5">Complete el formulario para registrar un docente </h6>
@@ -165,6 +172,22 @@ const UsuarioFormDoc = ({ handleClose, classes, ...props }) => {
               value={values.telefono}
               onChange={handleInputChange}
             />
+                <FormControl variant="outlined" className={classes.formControl}>
+            <InputLabel id="demo-simple-select-outlined-label">Institución</InputLabel>
+            <Select
+              name="idInstitucion"
+              id="demo-simple-select-outlined"
+              value={values.idInstitucion}
+              onChange={handleInputChange}
+              label="Institucion"
+            >
+              {instituciones.map((institucion) => (
+                <MenuItem value={institucion.idInstitucion}>
+                  {institucion.nombre}
+                </MenuItem>
+              ))}
+            </Select>
+            </FormControl>
             <div>
               <Button
                 variant="contained"

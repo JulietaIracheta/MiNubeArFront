@@ -3,19 +3,18 @@ import {
   Grid,
   TextField,
   withStyles,
-  FormControl,
-  InputLabel,
+  Button,
   Select,
   MenuItem,
-  Button,
-  FormHelperText,
+  FormControl,
+  InputLabel
 } from "@material-ui/core";
 import useForm from "./useForm";
 import { connect } from "react-redux";
 import * as actions from "../../actions/usuario";
-import * as actions2 from "../../actions/institucion";
 import { useToasts } from "react-toast-notifications";
 import "../../assets/css/css.css";
+import getInstituciones from "../../services/estudiantes/getInstituciones";
 
 const styles = (theme) => ({
   root: {
@@ -41,7 +40,8 @@ const initialFieldValues = {
   telefono: "",
   password: "",
   rol: "Estudiante",
-  usuarioNombre : ""
+  usuarioNombre: "",
+  idInstitucion: "0"
 };
 
 const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
@@ -88,12 +88,11 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
     if (validate()) {
       const onSuccess = () => {
         resetForm();
-        
+
         addToast("Registrado correctamente", { appearance: "success" });
       };
       props.createUsuario(values, onSuccess);
       setUsuarioNombre(values.email);
-      console.log(usuarioNombre)
     }
     handleClose();
   };
@@ -107,18 +106,17 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
     }
   }, [props.currentId]);
 
+  const [instituciones, setInstituciones] = useState([]);
 
-
-/*  const [instituciones, setInstituciones] = useState([])
-  useEffect(() => {
-    fetch('http://localhost:60671/api/institucion').then(response => response.json())
-      .then(data => setInstituciones(data));
-    console.log(instituciones);
-  },[]);*/
+  useEffect(function () {
+    getInstituciones().then((instituciones) => setInstituciones(instituciones));
+  }, []);
 
   return (
     <div>
-      <h6 className="mt-5 ml-5">Complete el formulario para registrar un estudiante </h6>
+      <h6 className="mt-5 ml-5">
+        Complete el formulario para registrar un estudiante{" "}
+      </h6>
       <form
         autoComplete="off"
         noValidate
@@ -127,7 +125,6 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
       >
         <Grid container>
           <Grid item xs={12}>
-
             <TextField
               name="nombre"
               variant="outlined"
@@ -177,7 +174,22 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
               value={values.telefono}
               onChange={handleInputChange}
             />
-
+            <FormControl variant="outlined" className={classes.formControl}>
+            <InputLabel id="demo-simple-select-outlined-label">Institución</InputLabel>
+            <Select
+              name="idInstitucion"
+              id="demo-simple-select-outlined"
+              value={values.idInstitucion}
+              onChange={handleInputChange}
+              label="Institucion"
+            >
+              {instituciones.map((institucion) => (
+                <MenuItem value={institucion.idInstitucion}>
+                  {institucion.nombre}
+                </MenuItem>
+              ))}
+            </Select>
+            </FormControl>
             <div>
               <Button
                 variant="contained"
@@ -216,7 +228,6 @@ const mapStateToProps = (state) => ({
 const mapActionToProps = {
   createUsuario: actions.create,
   updateUsuario: actions.update,
-  fetchAllInstituciones: actions2.fetchAll
 };
 
 export default connect(
