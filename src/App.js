@@ -11,6 +11,7 @@ import Institucion from './components/Registro/Institucion';
 import { Provider } from 'react-redux'
 import {store} from './actions/store'
 import VideoConference from './components/Registro/VideoConference';
+import EstudiantesTutor from './components/Tutor/EstudiantesTutor';
 
 function App() {
   return (
@@ -28,6 +29,8 @@ function App() {
         <Route path='/curso/:id' exact component={CursosAsignadosDocente}/>
         <Route path='/docente/ActividadEstudiante' exact component={ActividadEstudiante}/>
         <Route path='/tutor/ActividadEstudiante' exact component={ActividadEstudiante}/>
+        <Route path='/tutor/EstudiantesAsignados' exact component={EstudiantesTutor}/>
+
       </Switch>
     </Router>
     </Provider>

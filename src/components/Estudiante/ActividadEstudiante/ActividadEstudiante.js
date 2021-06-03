@@ -6,33 +6,57 @@ import '../../../assets/css/css-actividad-estudiante.css'
 import BotonVolver from "../../BotonVolver/botonVolver";
 import Sidebar from "../../Sidebar";
 import ReactPlayer from 'react-player'
+import axios from 'axios';
+
 export default function ApexChart() {
     const chart = Chart({ series: 56 });
-    const [video,setVideo]=useState([]);
-    const urlBase = 'http://localhost:60671/api/contenido/?id=2'
+    const [video, setVideo] = useState([]);
+    const urlBase = 'http://localhost:60671/api/contenido/?id=3'
     const [videoFilePath, setVideoFilePath] = useState(null);
+    const [archivo, setFile] = useState();
+    var urlVideo = 'http://localhost:60671/videos/';
 
-    var urlVideo='/videos/';
-    useEffect(function(){
-        fetch(urlBase,{
+    useEffect(function () {
+        fetch(urlBase, {
             method: 'GET'
         }).then(res => {
             if (!res.ok) alert('video no encontrado')
             return res.json()
         }).then(res => {
-            setVideoFilePath(urlVideo+video.video);
+            setVideoFilePath(urlVideo + video.video);
             setVideo(res);
         });
-    },[]);
-    urlVideo=urlVideo+video.video;
+    }, []);
+    const subirArchivos = e => {
+        console.log(e[0]);
+        setFile(e);
+    }
+    const insertarArchivos = async () => {
+        const f = new FormData();
+        f.append("file", archivo[0]);
+        console.log(archivo[0]);
+        console.log(f);
+
+        await axios.post("http://localhost:60671/api/contenido/cargarVideo", f)
+            .then(response => {
+                console.log(response);
+            }).catch(err => {
+                console.log(err);
+            })
+    }
+    //<ReactPlayer url={urlVideo} controls width="500px" height="300px" />
+    /* <input type="file" name="file"  onChange={(e)=>subirArchivos(e.target.files)} />
+                    <button onClick={()=>{insertarArchivos()}}>Insertar Archivos</button> */
+    urlVideo = urlVideo + video.video;
+    console.log(urlVideo);
     return (
         <div>
             <NavTutor></NavTutor>
             <div className="d-flex mt-1 borde-tutor">
                 <Sidebar />
-                <div className="container">
+                <div className="container-fluid mt-2 ">
                     <div className="d-flex align-items-center mt-1">
-                        <BotonVolver></BotonVolver>
+                        <BotonVolver ruta="/tutor/estudiantesAsignados"></BotonVolver>
                         <h3 className="m-0 p-0"
                             style={{
                                 borderBottom: "2px solid #67A147", width: "100%", fontWeight: "bold", color: "#67A147"
@@ -40,9 +64,7 @@ export default function ApexChart() {
                         >Matemáticas
                         </h3>
                     </div>
-                    <ReactPlayer url={urlVideo} controls width="500px" height="300px" />
-
-                    <div className="row mt-1">
+                    <div className="row mt-2">
 
                         <div className="col-md-6 d-flex align-items-center flex-column">
                             <p className="font-weight-bold">Clases vistas</p>
@@ -121,7 +143,6 @@ export default function ApexChart() {
                     </div>
                 </div>
             </div>
-
-        </div >
+        </div>
     );
 }

@@ -82,7 +82,7 @@
 .hr-colorTut {
   color: #67a147;
   background-color: #67a147;
-  height: 5px;
+  height: 2px;
 }
 .colorNotificacionesTutor{
     color:darkseagreen;
@@ -118,8 +118,8 @@
 }
 
 .card-tutor{
-  border: 5px solid #67a147 !important;
-  border-radius: 10px !important;
+  border: 2px solid #67a147 !important;
+  border-radius: 5px !important;
 }
 
 .alumno{

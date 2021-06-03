@@ -40,7 +40,7 @@ const VideoConference = () => {
                 displayName={name}
                 width="100%"
                 height="100%"
-                onMeetingEnd={() => console.log('La reunión ha finalizado')}
+                onMeetingEnd={() => window.location.reload()}
                 loadingComponent={<p>ʕ •ᴥ•ʔ jitsi está cargando ...</p>} />
             </div>
           ): (
