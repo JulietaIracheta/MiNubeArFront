@@ -6,7 +6,6 @@ import '../../../assets/css/css-actividad-estudiante.css'
 import BotonVolver from "../../BotonVolver/botonVolver";
 import Sidebar from "../../Sidebar";
 import ReactPlayer from 'react-player'
-import Video from '../../Contenido/Videos/video.mp4'
 export default function ApexChart() {
     const chart = Chart({ series: 56 });
     const [video,setVideo]=useState([]);
