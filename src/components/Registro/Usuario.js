@@ -177,7 +177,7 @@ const Usuarios = ({ classes, ...props }) => {
                   {props.usuarioList.map((record, index) => {
                     return (
                       <TableRow key={index} hover>
-                        <TableCell>{record.nombre}</TableCell>
+                        <TableCell>{record.nombre}{console.log(record.idPersona)}</TableCell>
                         <TableCell>{record.apellido}</TableCell>
                         <TableCell>{record.email}</TableCell>
                         <TableCell>{record.telefono}</TableCell>
