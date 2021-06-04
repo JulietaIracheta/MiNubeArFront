@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Gear } from "react-bootstrap-icons";
+import { Gear, PersonCircle } from "react-bootstrap-icons";
 import { Calendar } from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
+import { Link } from "react-router-dom";
 import "../../assets/css/css-tutor.css";
 import GetEstudiante from "../../services/estudiantes/getEstudiante";
 import Notificaciones from "../Docente/Notificaciones";
+import Sidebar from "../Sidebar";
+import NavTutor from './NavTutor';
 
 export default function EstudiantesTutor() {
   const [estudiante, SetEstudiante] = useState([]);
@@ -15,51 +18,47 @@ export default function EstudiantesTutor() {
     function () {
       GetEstudiante(id).then((estudiante) => SetEstudiante(estudiante));
       GetEstudiante(id2).then((estudiante2) => SetEstudiante2(estudiante2));
+      console.log(estudiante);
     },
     [id]
   );
 
 
   return (
-    <div className="container">
-      <div>
-        <h2 className="font-weight-bold colorTut">Mis Estudiantes</h2>
-        <hr className="hr-colorTut" />
-      </div>
-      <div className="row">
-        <div className="col-md-6 border-derecho colorTut alumno">
-          <div>
-            <div className="mb-3">
-              <div className="col-md-12">
-                <div className="card min-w card-tutor">
-                  <div className="card-body row">
-                    <div className="col-md-4 col-sm-12">
-                      <img
-                        src={estudiante.avatar}
-                        title={estudiante.first_name}
-                        className="rounded-circle h-55 borde-avatar-alumno"
-                      ></img>
-                    </div>
-                    <div className="col-md-8 col-sm-12 d-flex flex-column justify-content-around">
-                      <p className="font-weight-bold">
-                        {estudiante.first_name}{" "}
-                        {estudiante.last_name}
-                      </p>
-                      
-                        <div className="btn-group float-right">
-                      <a
-                        href="/"
-                        className="text-decoration-none btn mr-3 btn-secondary rounded-pill"
-                      >
-                        Ver Actividad
-                      </a>
+    <div>
+      <NavTutor></NavTutor>
+      <div className="d-flex mt-1 borde-tutor">
+        <Sidebar />
 
-                      <a
-                        href="/"
-                        className="text-decoration-none btn btn-outline-dark border border-secondary rounded-pill"
-                      >
-                        Ver Perfil
-                      </a>
+        <div className="container mt-2">
+          <h2 className="font-weight-bold colorTut">Mis Estudiantes</h2>
+          <hr className="hr-colorTut" />
+          <div className="row">
+            <div className="container">
+
+              <div className="col-md-4 alumno mt-2">
+                <div className="row w-100">
+                  <div className="card min-w card-tutor" style={{ minHeight: "10rem" }}>
+                    <div className="card-body row">
+                      <div className="col-md-4 col-sm-12">
+                        {estudiante.avatar ?
+                          <img
+                            src={estudiante.avatar}
+                            title={estudiante.nombre}
+                            className="rounded-circle h-55 borde-avatar-alumno"
+                          ></img>
+                          :
+                          <PersonCircle className="w-100 h-100" ></PersonCircle>}
+                      </div>
+                      <div className="col-md-8 col-sm-12 d-flex flex-column justify-content-around">
+                        <span className="font-weight-bold" style={{fontSize:"1.4rem"}}>
+                          {estudiante.nombre}{", "}
+                          {estudiante.apellido}
+                        </span>
+
+                        <div className="btn-group float-right">
+                          <Link to={`/tutor/actividadEstudiante`} className="text-decoration-none btn btn-outline-dark btn-sm x">Actividad</Link>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -67,65 +66,12 @@ export default function EstudiantesTutor() {
               </div>
             </div>
           </div>
-          
-        </div>
-      <Notificaciones /> 
-      </div>
-      <div>
-      <div className="row">
-        <div className="col-md-6 border-derecho colorTut alumno">
+
           <div>
-            <div className="mb-3">
-              <div className="col-md-12">
-                <div className="card min-w card-tutor">
-                  <div className="card-body row">
-                    <div className="col-md-4 col-sm-12">
-                      <img
-                        src={estudiante2.avatar}
-                        title={estudiante2.first_name}
-                        className="rounded-circle h-55 borde-avatar-alumno"
-                      ></img>
-                    </div>
-                    <div className="col-md-8 col-sm-12 d-flex flex-column justify-content-around">
-                      <p className="font-weight-bold">
-                        {estudiante2.first_name}{" "}
-                        {estudiante2.last_name}
-                      </p>
-                      
-                        <div className="btn-group float-right">
-                      <a
-                        href="/"
-                        className="text-decoration-none btn mr-3 btn-secondary rounded-pill"
-                      >
-                        Ver Actividad
-                      </a>
-
-                      <a
-                        href="/"
-                        className="text-decoration-none btn btn-outline-dark border-secondary rounded-pill"
-                      >
-                        Ver Perfil
-                      </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-        </div>
-          <div className="col-md-6 ">
-            <div>
-              <div>
-              <h2 className="font-weight-bold colorTut">Calendario</h2>
-
-                <Calendar />
-              </div>
-            </div>
           </div>
         </div>
       </div>
+
     </div>
   );
 }

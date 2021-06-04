@@ -194,7 +194,7 @@ const Usuarios = ({ classes, ...props }) => {
                                 
                                 </DropdownItem>
                                 <DropdownItem
-                                onClick={() => onDelete(record.idPersona)}>
+                                onClick={() => onDelete(record.idUsuario)}>
                                   Eliminar
                                 
                               </DropdownItem>

@@ -12,6 +12,7 @@ import { Provider } from 'react-redux'
 import {store} from './actions/store'
 import VideoConference from './components/Registro/VideoConference';
 import Calendario from './components/Calendario/Calendario';
+import EstudiantesTutor from './components/Tutor/EstudiantesTutor';
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
         <Route path='/curso/:inst/:id' exact component={CursosAsignadosDocente}/>
         <Route path='/docente/ActividadEstudiante' exact component={ActividadEstudiante}/>
         <Route path='/tutor/ActividadEstudiante' exact component={ActividadEstudiante}/>
-        <Route path='/calendario' exact component={Calendario} />
+        <Route path='/tutor/EstudiantesAsignados' exact component={EstudiantesTutor}/>
       </Switch>
     </Router>
     </Provider>
