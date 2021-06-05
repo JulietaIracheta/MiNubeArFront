@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { PencilSquare, Trash, PersonCircle } from "react-bootstrap-icons";
 import "../../assets/css/docente/docente.css"
 import Sidebar from "../Sidebar";
+import {SidebarDataDocente} from '../sideBar/SidebarDataDocente';
 
 export default function PerfilEstudiante({ match }) {
     const id = match.params.id
@@ -17,7 +18,7 @@ export default function PerfilEstudiante({ match }) {
         <div>
             <NavDocente></NavDocente>
             <div className="d-flex mt-1">
-                <Sidebar />
+                <Sidebar data={SidebarDataDocente}/>
                 <div className="container">
 
                     <h4 className="titulo-docente">

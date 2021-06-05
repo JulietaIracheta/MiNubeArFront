@@ -8,6 +8,7 @@ import GetEstudiante from "../../services/estudiantes/getEstudiante";
 import Notificaciones from "../Docente/Notificaciones";
 import Sidebar from "../Sidebar";
 import NavTutor from './NavTutor';
+import {SidebarDataTutor} from '../sideBar/SidebarDataTutor';
 
 export default function EstudiantesTutor() {
   const [estudiante, SetEstudiante] = useState([]);
@@ -28,7 +29,7 @@ export default function EstudiantesTutor() {
     <div>
       <NavTutor></NavTutor>
       <div className="d-flex mt-1 borde-tutor">
-        <Sidebar />
+        <Sidebar data={SidebarDataTutor}/>
 
         <div className="container mt-2">
           <h2 className="font-weight-bold colorTut">Mis Estudiantes</h2>

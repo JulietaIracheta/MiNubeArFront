@@ -7,6 +7,7 @@ import BotonVolver from "../../BotonVolver/botonVolver";
 import Sidebar from "../../Sidebar";
 import ReactPlayer from 'react-player'
 import axios from 'axios';
+import {SidebarDataTutor} from '../../sideBar/SidebarDataTutor';
 
 export default function ApexChart() {
     const chart = Chart({ series: 56 });
@@ -53,7 +54,7 @@ export default function ApexChart() {
         <div>
             <NavTutor></NavTutor>
             <div className="d-flex mt-1 borde-tutor">
-                <Sidebar />
+                <Sidebar data={SidebarDataTutor} />
                 <div className="container-fluid mt-2 ">
                     <div className="d-flex align-items-center mt-1">
                         <BotonVolver ruta="/tutor/estudiantesAsignados"></BotonVolver>

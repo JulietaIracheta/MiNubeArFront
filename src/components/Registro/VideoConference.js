@@ -3,6 +3,7 @@ import { Jutsu } from 'react-jutsu'
 import BotonVolver from "../BotonVolver/botonVolver";
 import NavDocente from '../Docente/NavDocente';
 import Sidebar from "../Sidebar";
+import {SidebarDataDocente} from "../sideBar/SidebarDataDocente";
 
 const VideoConference = () => {
   const [room, setRoom] = useState('')
@@ -20,7 +21,7 @@ const VideoConference = () => {
       <NavDocente></NavDocente>
 
       <div className="d-flex ">
-        <Sidebar />
+        <Sidebar data={SidebarDataDocente} />
         <div className="container-fluid mt-4">
           <div className="d-flex align-items-center mt-1">
             <BotonVolver></BotonVolver>

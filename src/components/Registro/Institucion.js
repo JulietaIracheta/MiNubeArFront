@@ -24,6 +24,7 @@ import { Search } from "react-bootstrap-icons";
 import Sidebar from "../Sidebar";
 import ModalDialog from "./ModalDialog";
 import { MoreVert } from "@material-ui/icons";
+import {SidebarData}   from '../SidebarData';
 
 const drawerWidth = 200;
 
@@ -96,7 +97,7 @@ const Instituciones = ({ classes, ...props }) => {
     <Provider store={store}>
       <NavAdmin />
       <div className={classes.root}>
-        <Sidebar />
+        <Sidebar data={SidebarData} />
         <main className={classes.content}>
           <div className={classes.toolbar} id="coco" />
           <div id="coco">

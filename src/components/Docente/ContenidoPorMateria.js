@@ -7,6 +7,7 @@ import '../../assets/css/docente/docente.css'
 import getContenidos from '../../services/contenido/getContenidos';
 import { Link } from "react-router-dom";
 import ModalDialogContenido from '../Contenido/ModalDialogContenido';
+import {SidebarDataDocente} from '../sideBar/SidebarDataDocente';
 
 export default function ContenidoPorMateria({...props}) {
 
@@ -27,7 +28,7 @@ export default function ContenidoPorMateria({...props}) {
         <div>
             <NavDocente></NavDocente>
             <div className="d-flex mt-1 borde-tutor">
-                <Sidebar />
+                <Sidebar data={SidebarDataDocente} />
                 <div className="container-fluid mt-2 ">
                     <div className="d-flex align-items-center mt-1 w-100 justify-content-between">
                         <div className="w-100 d-flex justify-content-center">

@@ -4,6 +4,7 @@ import NavDocente from "../Docente/NavDocente"
 
 import ListaDeEStudiantes from "../../helpers/listaDeEstudiantes"
 import Sidebar from "../Sidebar";
+import {SidebarDataDocente} from '../sideBar/SidebarDataDocente';
 
 export default function EstudiantesAsignados({ institucion = 'unlam' }) {
     const [estudiantes, setEstudiantes] = useState([])
@@ -16,7 +17,7 @@ export default function EstudiantesAsignados({ institucion = 'unlam' }) {
         <div>
             <NavDocente></NavDocente>
             <div className="d-flex mt-1">
-                <Sidebar />
+                <Sidebar data={SidebarDataDocente}/>
                 <div className="container">
                     <h2>Estudiantes asignados de {institucion}</h2>
                     <div className="row">

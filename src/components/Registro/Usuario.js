@@ -10,7 +10,7 @@ import {
   TableBody,
   withStyles,
 } from "@material-ui/core";
-
+import {SidebarData}   from '../SidebarData';
 import {
   Collapse,
   Navbar,
@@ -127,7 +127,7 @@ const Usuarios = ({ classes, ...props }) => {
     <Provider store={store}>
       <NavAdmin />
       <div className={classes.root}>
-        <Sidebar />
+        <Sidebar data={SidebarData} />
 
         <main className={classes.content}>
           <div className={classes.toolbar} id="coco" />

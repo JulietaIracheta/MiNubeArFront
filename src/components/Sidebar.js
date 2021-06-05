@@ -3,7 +3,7 @@ import {SidebarData} from './SidebarData';
 import ResponsiveMenu from 'react-responsive-navbar';
 import { FaBars,FaTimes } from 'react-icons/fa';
 
-function Sidebar () {
+function Sidebar ({data}) {
     return(
         <div className="Sidebar">
             <ResponsiveMenu
@@ -14,7 +14,7 @@ function Sidebar () {
               smallMenuClassName="small-menu-classname"
               menu={
             <ul className="SidebarList">
-                {SidebarData.map((val, key) => {
+                {data.map((val, key) => {
                     return(
                         <li 
                         key={key}
