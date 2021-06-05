@@ -11,7 +11,6 @@ import Institucion from './components/Registro/Institucion';
 import { Provider } from 'react-redux'
 import {store} from './actions/store'
 import VideoConference from './components/Registro/VideoConference';
-import Calendario from './components/Calendario/Calendario';
 import EstudiantesTutor from './components/Tutor/EstudiantesTutor';
 
 function App() {

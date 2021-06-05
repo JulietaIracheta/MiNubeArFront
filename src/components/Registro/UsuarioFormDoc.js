@@ -12,9 +12,9 @@ import {
 import useForm from "./useForm";
 import { connect } from "react-redux";
 import * as actions from "../../actions/usuario";
-import { useToasts } from "react-toast-notifications";
 import "../../assets/css/css.css";
 import getInstituciones from "../../services/estudiantes/getInstituciones";
+import swal from 'sweetalert';
 
 const styles = (theme) => ({
   root: {
@@ -46,11 +46,6 @@ const initialFieldValues = {
 };
 
 const UsuarioFormDoc = ({ handleClose, classes, ...props }) => {
-  //toast msg.
-  const { addToast } = useToasts();
-
-  //validate()
-  //validate({fullName:'jenny'})
   const validate = (fieldValues = values) => {
     let temp = { ...errors };
     if ("rol" in fieldValues)
@@ -89,11 +84,11 @@ const UsuarioFormDoc = ({ handleClose, classes, ...props }) => {
     if (validate()) {
       const onSuccess = () => {
         resetForm();
-        addToast("Registrado correctamente", { appearance: "success" });
       };
     props.createUsuario(values, onSuccess);
     }
     handleClose();
+    swal("Usuario Registrado Correctamente!",'' , "success");
   };
 
   useEffect(() => {

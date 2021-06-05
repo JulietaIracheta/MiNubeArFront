@@ -12,9 +12,9 @@ import {
 import useForm from "./useForm";
 import { connect } from "react-redux";
 import * as actions from "../../actions/usuario";
-import { useToasts } from "react-toast-notifications";
 import "../../assets/css/css.css";
 import getInstituciones from "../../services/estudiantes/getInstituciones";
+import swal from 'sweetalert';
 
 const styles = (theme) => ({
   root: {
@@ -45,8 +45,7 @@ const initialFieldValues = {
 };
 
 const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
-  //toast msg.
-  const { addToast } = useToasts();
+
   const [usuarioNombre, setUsuarioNombre] = useState("");
   //validate()
   //validate({fullName:'jenny'})
@@ -83,19 +82,25 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = e => {
+    e.preventDefault()
+    
     if (validate()) {
-      const onSuccess = () => {
-        resetForm();
-
-        addToast("Registrado correctamente", { appearance: "success" });
-      };
-      props.createUsuario(values, onSuccess);
-      setUsuarioNombre(values.email);
+        const onSuccess = () => {
+            resetForm()
+        }
+        if (props.currentId == 0){
+          console.log(e)
+            props.createUsuario(values, onSuccess)
+         
+            handleClose();
+            swal("Usuario Registrado Correctamente!",'' , "success");
+            onSuccess();}
+            
+            
     }
-    handleClose();
-  };
+  }
+
 
   useEffect(() => {
     if (props.currentId != 0) {
