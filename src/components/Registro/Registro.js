@@ -13,7 +13,7 @@ import { Button } from 'reactstrap';
 import {Search} from 'react-bootstrap-icons'
 import Usuario from './Usuario';
 import Sidebar from '../Sidebar';
-
+import {SidebarData} from '../SidebarData';
 const drawerWidth = 200;
 
 const useStyles = makeStyles((theme) => ({
@@ -74,7 +74,7 @@ function ResponsiveDrawer(props) {
     <NavAdmin />
     <div className={classes.root}>
       <CssBaseline />
-    <Sidebar />
+    <Sidebar data={SidebarData}/>
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <div className="adminContent"><span className="tituloadmin">Bienvenido Admin</span>
