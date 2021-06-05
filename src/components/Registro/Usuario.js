@@ -10,6 +10,7 @@ import {
   TableBody,
   withStyles,
 } from "@material-ui/core";
+
 import {
   Collapse,
   Navbar,
@@ -120,8 +121,6 @@ const Usuarios = ({ classes, ...props }) => {
       props.deleteUsuario(id)
       handleMenuClose();
   };
-
-
 
 
   return (

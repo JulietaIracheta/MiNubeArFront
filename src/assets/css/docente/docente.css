@@ -1,3 +1,11 @@
 .btn-accion{
     padding: 0.3rem 1.6rem !important;
 }
+.color-docente {
+    color: #2d2f85;
+}
+.borde-docente{
+    border-bottom: 2px solid #2d2f85;
+    width: 100%;
+    font-weight: bold;
+}
