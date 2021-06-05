@@ -12,22 +12,12 @@ import {
 } from "@material-ui/core";
 import {SidebarData}   from '../SidebarData';
 import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
-import { Link } from "react-router-dom";
-import { Button, ButtonGroup } from "reactstrap";
-import MenuItem from "@material-ui/core/MenuItem";
-import IconButton from "@material-ui/core/IconButton";
-import Menu from "@material-ui/core/Menu";
+import { Button } from "reactstrap";
 import { store } from "../../actions/store";
 import { Provider } from "react-redux";
 import NavAdmin from "./NavAdmin";
@@ -37,8 +27,7 @@ import ModalDialogDoc from "./ModalDialogDoc";
 import ModalDialogEst from "./ModalDialogEst";
 import ModalDialogTut from "./ModalDialogTut";
 import { MoreVert } from "@material-ui/icons";
-import { useToasts } from "react-toast-notifications";
-import { ToastProvider } from "react-toast-notifications";
+import Swal from 'sweetalert2';
 
 const drawerWidth = 200;
 
@@ -62,7 +51,7 @@ const styles = (theme) => ({
     flexGrow: 1,
     padding: theme.spacing(1),
     margin: 0,
-    width:"100%",
+    width: "100%",
     paddingTop: 0,
   },
   paper: {
@@ -78,7 +67,7 @@ const Usuarios = ({ classes, ...props }) => {
   const [openEst, setOpenEst] = useState(false);
   const [openTut, setOpenTut] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [nombre, setNombre] = useState('');
+  const [nombre, setNombre] = useState("");
   const open = Boolean(anchorEl);
 
   const handleMenu = (event) => {
@@ -112,16 +101,34 @@ const Usuarios = ({ classes, ...props }) => {
     setOpenTut(false);
   };
 
+ const reload = () => {
+    window.location.reload(true);
+}
+
   useEffect(() => {
     props.fetchAllUsuarios();
-  },[]); 
+  }, []);
 
   const onDelete = (id) => {
-    if (window.confirm("Estas seguro de eliminarlo"))
-      props.deleteUsuario(id)
-      handleMenuClose();
-  };
+    Swal.fire({
+      title: 'Estas seguro de eliminarlo?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: `Sí`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire('Eliminado!', '', 'success')
+        props.deleteUsuario(id);
+        handleMenuClose();
+        
+      }
+      reload();
+    })
 
+  };
 
   return (
     <Provider store={store}>
@@ -182,20 +189,27 @@ const Usuarios = ({ classes, ...props }) => {
                         <TableCell>{record.telefono}</TableCell>
                         <TableCell>{record.rol}</TableCell>
                         <TableCell>
-                          <UncontrolledDropdown direction="left" nav inNavbar className="menu3dots">
+                          <UncontrolledDropdown
+                            direction="left"
+                            nav
+                            inNavbar
+                            className="menu3dots"
+                          >
                             <DropdownToggle nav>
                               <MoreVert />
                             </DropdownToggle>
-                            <DropdownMenu >
-                              <DropdownItem>
-                              
-                                  Editar
-                                
+                            <DropdownMenu>
+                              <DropdownItem>      
+                                  Editar                                
                                 </DropdownItem>
-                                <DropdownItem
-                                onClick={() => onDelete(record.idUsuario)}>
-                                  Eliminar
-                                
+                              <DropdownItem
+                                onClick={() => onDelete(record.idUsuario)}>                               
+                             Editar
+                              </DropdownItem>
+                              <DropdownItem
+                                onClick={() => onDelete(record.idUsuario)}
+                              >
+                                Eliminar
                               </DropdownItem>
                             </DropdownMenu>
                           </UncontrolledDropdown>
@@ -220,7 +234,7 @@ const mapStateToProps = (state) => ({
 const mapActionToProps = {
   fetchAllUsuarios: actions.fetchAll,
   deleteUsuario: actions.Delete,
-  updateUsuario : actions.update
+  updateUsuario: actions.update,
 };
 
 export default connect(

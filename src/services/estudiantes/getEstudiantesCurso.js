@@ -1,6 +1,8 @@
-const url = 'http://localhost:60671/api/persona/getEstudiantesAsignados/1'
+const urlBase = 'http://localhost:60671/api/persona/getEstudiantesCurso/'
 
-export default function getEstudiantes() {
+export default function getEstudiantesCurso(id) {
+   
+    const url=urlBase+`${id}`;
     return fetch(url, {
         method: 'GET'
     }).then(res => {

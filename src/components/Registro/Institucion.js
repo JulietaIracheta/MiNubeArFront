@@ -85,7 +85,7 @@ const Instituciones = ({ classes, ...props }) => {
 
   useEffect(() => {
     props.fetchAllInstituciones();
-  }, ); 
+  },[] ); 
 
   const onDelete = (id) => {
     if (window.confirm("Estas seguro de eliminarlo"))

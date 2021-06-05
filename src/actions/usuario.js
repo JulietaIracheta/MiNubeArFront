@@ -7,6 +7,7 @@ export const ACTION_TYPES = {
     FETCH_ALL: 'FETCH_ALL'
 }
 
+
 const formateData = data => ({
     ...data,
     telefono: parseInt(data.telefono ? data.telefono : 0)
@@ -19,11 +20,13 @@ export const fetchAll = () => dispatch => {
                 type: ACTION_TYPES.FETCH_ALL,
                 payload: response.data
             })
+            
         })
         .catch(err => console.log(err))
 }
 
 export const create = (data, onSuccess) => dispatch => {
+
     data = formateData(data)
     api.usuario().create(data)
         .then(res => {
@@ -33,30 +36,30 @@ export const create = (data, onSuccess) => dispatch => {
             })
             onSuccess()
         })
-        .catch(err => alert(err))
+        .catch(err => console.log(err))
 }
 
-export const update = (id, data) => dispatch => {
+export const update = (id, data, onSuccess) => dispatch => {
     data = formateData(data)
-    api.usuario().update(id, data)
+    api.usuario().update(id, data )
         .then(res => {
             dispatch({
                 type: ACTION_TYPES.UPDATE,
                 payload: { id, ...data }
             })
-        //    onSuccess()
+            onSuccess()
         })
         .catch(err => console.log(err))
 }
 
-export const Delete = (id) => dispatch => {
+export const Delete = (id, onSuccess) => dispatch => {
     api.usuario().delete(id)
         .then(res => {
             dispatch({
                 type: ACTION_TYPES.DELETE,
                 payload: id
             })
-     //       onSuccess()
+           onSuccess()
         })
         .catch(err => console.log(err))
     }

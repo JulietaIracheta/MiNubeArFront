@@ -7,9 +7,9 @@ import "react-calendar/dist/Calendar.css";
 import "../../assets/css/css-docente.css";
 import getInstitucionDocente from "../../services/estudiantes/getInstitucionDocente";
 import getCursoDocente from "../../services/estudiantes/getCursoDocente";
-import Notificaciones from "./Notificaciones";
+import Sidebar from "./Sidebar";
 
-export default function EscuelasDocente() {
+const EscuelasDocente = () => {
   const id = 28;
   const [institucion, SetInstitucion] = useState([]);
   const [curso, SetCurso] = useState([]);
@@ -33,41 +33,42 @@ export default function EscuelasDocente() {
   );
 
   return (
-    <div className="container cardContainer ">
+    <div className="d-flex mt-1">
+    <Sidebar />
+      <div className="container cardContainer ">
       <div>
         <h2 className="font-weight-bold colorDoc">Mis Escuelas</h2>
         <hr className="hr-colorDoc" />
       </div>
 
-      <div className="row">
-        <div className="col-md-6 border-derecho-docente">
+      
           {institucion.map((inst) => (
-            <Link to="/curso/1" className="text-decoration-none">
-            {curso.map((c) =>            
+            <span>
+            {curso.map((c) =>       
+                  
+            <div>
               <div className="bordes mb-3">
                 <div className="card-body colorDoc font-weight-bold">
-                  <h5 className="card-title size espacio font-weight-bold colorDoc">
-                    {inst}
-                    {"--"}
-                     <>{c}</>
+                  <h5 className="card-title font-weight-bold colorDoc">
+                 Curso : <>{c.nombre}</>
+                  <hr />
+                   Institución : {inst.nombre}
+                   <hr />              
+                     
                   </h5>
                   <div className="text-left">
                     <div class="d-flex flex-row-reverse">
-                      <Gear />
+                    <a href={`/curso/${inst.nombre}/${c.nombre}`}><Gear /></a>
                     </div>
+                  </div>
                   </div>
                 </div>
               </div>
               )}
-            </Link>
+            </span>
           ))}
         </div>
-        <div className="col">
-          <Notificaciones />
-          <h2 className="font-weight-bold colorTut">Calendario</h2>
-          <Calendar />
         </div>
-      </div>
-    </div>
   );
 }
+export default EscuelasDocente;

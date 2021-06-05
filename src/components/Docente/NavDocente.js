@@ -21,7 +21,6 @@ const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [cookies, setCookie] = useCookies(['usuario']);
   const history = useHistory();
-  console.log(cookies);
   const toggle = () => setIsOpen(!isOpen);
   const logout = async () => {
   
@@ -51,7 +50,7 @@ const NavBar = (props) => {
             </NavItem>
             <NavItem className="marginMN notif">
               <a href="/notificaciones"> <Bell className="icon-menu color-negro" /></a>
-              <span id="notificacion-numero" className="badge rounded-circle">2</span>
+           
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav>

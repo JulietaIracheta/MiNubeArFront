@@ -5,11 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { CookiesProvider } from "react-cookie";
+import { Provider } from 'react-redux';
+import {store} from './actions/store'
 
 ReactDOM.render(
   <React.StrictMode>
     <CookiesProvider>
+      <Provider store={store}>
       <App />
+      </Provider>
     </CookiesProvider>
   </React.StrictMode>,
   document.getElementById('root')

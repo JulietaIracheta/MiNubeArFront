@@ -30,7 +30,6 @@ export default function EstudiantesTutor() {
       <NavTutor></NavTutor>
       <div className="d-flex mt-1 borde-tutor">
         <Sidebar data={SidebarDataTutor}/>
-
         <div className="container mt-2">
           <h2 className="font-weight-bold colorTut">Mis Estudiantes</h2>
           <hr className="hr-colorTut" />

@@ -24,25 +24,6 @@
   margin-right: 10px;
 }
 
-.notif {
-  position: relative;
-}
-
-#notificacion-numero {
-  position: absolute;
-  top: 15%;
-  left: 45%;
-  background: red;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  padding: 2px;
-}
-
 .navBarBrand {
   color: white;
   font-size: 20px;
@@ -84,14 +65,7 @@
   }
 .colorDoc {
   color: #2d2f85;
-}
-
-.cardContainer {
-  margin-top: 30px;
-}
-
-.espacio {
-  padding-bottom: 30%;
+  
 }
 
 .border-derecho-docente {
@@ -100,6 +74,10 @@
 .bordes {
   border-radius: 5px;
   border: 3px solid #545251 !important;
+  width: 40%;
+  display: flex;
+  float: left;
+  margin-right: 15px;
 }
 
 .react-calendar{

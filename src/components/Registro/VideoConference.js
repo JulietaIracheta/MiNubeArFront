@@ -22,6 +22,7 @@ const VideoConference = () => {
 
       <div className="d-flex ">
         <Sidebar data={SidebarDataDocente} />
+
         <div className="container-fluid mt-4">
           <div className="d-flex align-items-center mt-1">
             <BotonVolver></BotonVolver>

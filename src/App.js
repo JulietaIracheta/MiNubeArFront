@@ -14,6 +14,7 @@ import VideoConference from './components/Registro/VideoConference';
 import EstudiantesTutor from './components/Tutor/EstudiantesTutor';
 import contenidoPorMateria from './components/Docente/ContenidoPorMateria';
 
+
 function App() {
   return (
     <Provider store={store}>
@@ -27,12 +28,11 @@ function App() {
         <Route path='/rol' exact component={Rol} />     
         <Route path='/docente/estudiantesAsignados' exact component={EstudiantesAsignados} />        
         <Route path='/estudiante/:id' exact component={PerfilEstudiante}/>
-        <Route path='/curso/:id' exact component={CursosAsignadosDocente}/>
+        <Route path='/curso/:inst/:id' exact component={CursosAsignadosDocente}/>
         <Route path='/docente/ActividadEstudiante' exact component={ActividadEstudiante}/>
         <Route path='/tutor/ActividadEstudiante' exact component={ActividadEstudiante}/>
         <Route path='/tutor/EstudiantesAsignados' exact component={EstudiantesTutor}/>
         <Route path='/docente/:cursoId/:materiaId/contenido' exact component={contenidoPorMateria} />        
-
       </Switch>
     </Router>
     </Provider>
