@@ -22,7 +22,7 @@ export const institucion = (state = initialState, action) => {
         case ACTION_TYPES.UPDATE:
             return {
                 ...state,
-                list: state.list.map(x => x.id == action.payload.id ? action.payload : x)
+                list: state.list.map(institucion => institucion.idInstitucion === action.payload.id ? action.payload : institucion)
             }
 
         case ACTION_TYPES.DELETE:
