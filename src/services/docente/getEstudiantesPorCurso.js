@@ -1,6 +1,6 @@
-const urlBase = 'http://localhost:60671/api/docente/getEstudiantesPorCurso/'
+const url = 'http://localhost:60671/api/docente/getEstudiantesPorCurso/'
 
-export default function getEstudiantesCurso(id) {
+export default function getEstudiantes(id) {
     const url=urlBase+`${id}`;
     return fetch(url, {
         method: 'GET'
@@ -8,8 +8,7 @@ export default function getEstudiantesCurso(id) {
         if (!res.ok) throw new Error('Response is NOT ok')
         return res.json()
     }).then(res => {
-        const usuarios = res
-        return usuarios
+        return res;
     });
 }
 

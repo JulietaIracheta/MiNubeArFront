@@ -1,36 +1,32 @@
 import React from 'react'
 import NavDocente from './NavDocente'
 import { Link } from 'react-router-dom';
-import {ArrowLeftCircleFill} from "react-bootstrap-icons";
-import { useHistory } from "react-router-dom";
+import { ArrowLeftCircleFill } from "react-bootstrap-icons";
 import { Button } from '@material-ui/core';
-import Sidebar from './Sidebar';
+import Sidebar from '../Sidebar';
 import TabMenu from './TabMenu';
-
+import BotonVolver from '../BotonVolver/botonVolver';
+import {SidebarDataDocente} from '../sideBar/SidebarDataDocente';
 
 export default function CursosAsignadosDocente({ match }) {
-    const history = useHistory();
-    
+    const idCurso = match.params;
     return (
         <div>
             <NavDocente></NavDocente>
             <div className="d-flex mt-1">
-            <Sidebar />
-            <div className="container cardContainer ">
-                <div>
-                <Button onClick={() => {
-                    history.goBack();
-                }} 
-            className="text-decoration-none btn-volver"
-            >
-            <ArrowLeftCircleFill fill="black" fontSize="2rem"></ArrowLeftCircleFill>
-            </Button> <h2 className="font-weight-bold colorDoc">{match.params.inst} - {match.params.id}</h2>
-                    <hr className="hr-colorDoc" />
-                    <TabMenu />
+                <Sidebar data={SidebarDataDocente}/>
+                <div className="container cardContainer ">
+                    <div>
+                      <div className="w-100 d-flex justify-content-center mb-4">
+                            <BotonVolver ruta="/rol"></BotonVolver>
+                                <h3 className="m-0 p-0 color-docente borde-docente">{match.params.inst} - {match.params.curso}</h3>
+                                <hr className="hr-colorDoc" />
+                            </div>
+                        <TabMenu curso={idCurso}/>
+                    </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        </div>
     );
 
 }

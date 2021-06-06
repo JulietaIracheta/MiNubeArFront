@@ -195,7 +195,7 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
               ))}
             </Select>
             </FormControl>
-            <div>
+            <div className="w-100 d-flex justify-content-center">
               <Button
                 variant="contained"
                 color="primary"

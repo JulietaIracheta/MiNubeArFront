@@ -7,10 +7,10 @@ import "react-calendar/dist/Calendar.css";
 import "../../assets/css/css-docente.css";
 import getInstitucionDocente from "../../services/estudiantes/getInstitucionDocente";
 import getCursoDocente from "../../services/estudiantes/getCursoDocente";
-import Sidebar from "./Sidebar";
-
+import Sidebar from "../Sidebar";
+import {SidebarDataDocente} from '../sideBar/SidebarDataDocente';
 const EscuelasDocente = () => {
-  const id = 28;
+  const id = 5;
   const [institucion, SetInstitucion] = useState([]);
   const [curso, SetCurso] = useState([]);
   useEffect(
@@ -18,7 +18,6 @@ const EscuelasDocente = () => {
       getInstitucionDocente(id).then((institucion) =>
         SetInstitucion(institucion)
       );
-  
     },
     [id]
   );
@@ -27,14 +26,12 @@ const EscuelasDocente = () => {
       getCursoDocente(id).then((curso) =>
       SetCurso(curso)
       );
-    
     },
     [id]
   );
-
   return (
     <div className="d-flex mt-1">
-    <Sidebar />
+    <Sidebar data={SidebarDataDocente}/>
       <div className="container cardContainer ">
       <div>
         <h2 className="font-weight-bold colorDoc">Mis Escuelas</h2>
@@ -42,10 +39,9 @@ const EscuelasDocente = () => {
       </div>
 
       
-          {institucion.map((inst) => (
+          {institucion.map((inst)=> ( 
             <span>
-            {curso.map((c) =>       
-                  
+            {curso.map((c) =>    
             <div>
               <div className="bordes mb-3">
                 <div className="card-body colorDoc font-weight-bold">
@@ -54,11 +50,10 @@ const EscuelasDocente = () => {
                   <hr />
                    Institución : {inst.nombre}
                    <hr />              
-                     
-                  </h5>
+                  </h5>{console.log(c)}
                   <div className="text-left">
                     <div class="d-flex flex-row-reverse">
-                    <a href={`/curso/${inst.nombre}/${c.nombre}`}><Gear /></a>
+                    <Link to={`/curso/${inst.nombre}/${c.nombre}/${c.idCurso}`}><Gear /></Link>
                     </div>
                   </div>
                   </div>

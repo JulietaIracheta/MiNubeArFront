@@ -5,7 +5,7 @@ import { PersonCircle } from 'react-bootstrap-icons';
 
 export default function DatoEstudiante({ avatar, nombre, apellido, id}) {
     return (
-        <div className="col-md-3 p-3">
+        <div className="col-md-4 p-3">
             <div className="card min-w card-docente">
                 <div className="card-body row">
                     <div className="col-md-6 col-sm-12">

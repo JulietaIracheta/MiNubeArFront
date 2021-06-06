@@ -3,9 +3,9 @@ import React from 'react'
 
 export const SidebarDataDocente = [
     {
-        title: 'Cursos', 
+        title: 'Escuelas', 
         icon: <Business />,
-        link: "/cursos"
+        link: "/rol"
     },
     {
         title: 'Calificaciones', 

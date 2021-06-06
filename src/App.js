@@ -26,10 +26,8 @@ function App() {
         <Route path='/instituciones' exact component={Institucion} />     
         <Route path='/video' exact component={VideoConference} />   
         <Route path='/rol' exact component={Rol} />     
-        <Route path='/docente/estudiantesAsignados' exact component={EstudiantesAsignados} />        
         <Route path='/estudiante/:id' exact component={PerfilEstudiante}/>
-        <Route path='/curso/:inst/:id' exact component={CursosAsignadosDocente}/>
-        <Route path='/docente/ActividadEstudiante' exact component={ActividadEstudiante}/>
+        <Route path='/curso/:inst/:curso/:idCurso' exact component={CursosAsignadosDocente}/>
         <Route path='/tutor/ActividadEstudiante' exact component={ActividadEstudiante}/>
         <Route path='/tutor/EstudiantesAsignados' exact component={EstudiantesTutor}/>
         <Route path='/docente/:cursoId/:materiaId/contenido' exact component={contenidoPorMateria} />        
