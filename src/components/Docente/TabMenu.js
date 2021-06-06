@@ -7,6 +7,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import EstudiantesCurso from './EstudiantesCurso';
 import EstudiantesAsignados from '../Estudiante/EstudiantesAsignados';
+import Comunicado from '../Comunicados/comunicado';
 function TabContainer(props) {
   return (
     <Typography component="div" style={{ padding: 8 * 3 }}>
@@ -58,7 +59,7 @@ console.log(curso);
         </AppBar>
         {value === 0 && <TabContainer><EstudiantesAsignados idCurso={curso.idCurso} /></TabContainer>}
         {value === 1 && <TabContainer>Item Two</TabContainer>}
-        {value === 2 && <TabContainer>Item Three</TabContainer>}
+        {value === 2 && <TabContainer><Comunicado></Comunicado></TabContainer>}
       </div>
     );
   }

@@ -17,11 +17,11 @@ export default function CursosAsignadosDocente({ match }) {
                 <Sidebar data={SidebarDataDocente}/>
                 <div className="container cardContainer ">
                     <div>
-                      <div className="w-100 d-flex justify-content-center mb-4">
+                      <div className="w-100 d-flex justify-content-center mb-3">
                             <BotonVolver ruta="/rol"></BotonVolver>
                                 <h3 className="m-0 p-0 color-docente borde-docente">{match.params.inst} - {match.params.curso}</h3>
                                 <hr className="hr-colorDoc" />
-                            </div>
+                        </div>
                         <TabMenu curso={idCurso}/>
                     </div>
                     </div>

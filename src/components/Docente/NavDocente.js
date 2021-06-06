@@ -23,7 +23,7 @@ const NavBar = (props) => {
   const [cookies, setCookie] = useCookies(['usuario']);
   const history = useHistory();
   const toggle = () => setIsOpen(!isOpen);
-  console.log(cookies);
+
   const logout = async () => {
     await fetch('http://localhost:60671/api/usuario/logout', {
       method: 'POST',
@@ -54,11 +54,11 @@ const NavBar = (props) => {
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav>
-                <Avatar className="icon-perfil color-negro" classname="colordocente">MC</Avatar>
+                <Avatar className="icon-perfil text-white" style={{background:"#212888"}}>{cookies.avatar}</Avatar>
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>
-                  <Link className="text-decoration-none" to='/login' className="color-negro text-decoration-none" onClick={logout}>Logout</Link>
+                  <Link to='/login' className="color-negro text-decoration-none" onClick={logout}>Logout</Link>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>

@@ -28,7 +28,7 @@ const styles = (theme) => ({
 });
 
 const initialFieldValues = {
-  file:  null,
+  file: null,
 };
 
 const ContenidoForm = ({ handleClose, classes, ...props }) => {
@@ -64,16 +64,27 @@ const ContenidoForm = ({ handleClose, classes, ...props }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const urlCargarVideo = "http://localhost:60671/api/contenido/cargarVideo";
     const f = new FormData();
-    console.log(archivo);
-    f.append("file", archivo[0]);
-    console.log(values);
+    f.append("File", archivo[0]);
     if (validate()) {
       const onSuccess = () => {
         resetForm();
         addToast("Registrado correctamente", { appearance: "success" });
       };
-      await axios.post("http://localhost:60671/api/contenido/cargarVideo", f)
+      
+      const obj = {
+        unidad: 0,
+        descripcion: 'prueba',
+        titulo: 'a',
+        video: 'video.mp4',
+        file: archivo[0]
+      }
+      console.log("ar:", archivo[0]);
+      console.log("file:", f);
+      console.log("en obj:", obj);
+
+      await axios.post("http://localhost:60671/api/contenido/crearContenido", obj)
       .then(response => {
           console.log(response);
       }).catch(err => {

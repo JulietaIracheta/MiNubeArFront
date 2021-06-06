@@ -8,23 +8,23 @@ import logo from "../assets/img/logo.png";
 import GoogleLogin from "react-google-login";
 import "../assets/css/css-login.css";
 import { Redirect, useHistory } from "react-router";
-import { useCookies } from "react-cookie";
+import { Cookies, useCookies } from "react-cookie";
 
 const Login = () => {
   const [name, setName] = useState("");
   const [img, setImg] = useState("");
-  const [cookies, setCookie] = useCookies(["usuario"]);
   const history = useHistory();
+  const [cookies, setCookie] = useCookies(["usuario"]);
+//  const [nombreAvatar, setNombreAvatar] = useCookies(["avatar"]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
-
+  
   const responseGoogle = async (res) => {
     let emailGoogle=res.profileObj.email;
     setEmail(res.profileObj.email);
     setCookie('Name', res.profileObj.name, { path: '/' });
     setCookie('img', res.profileObj.imageUrl, { path: '/' });
-
     const response = await fetch("http://localhost:60671/api/usuario/loginGoogle?email="+emailGoogle, {
       method: "POST",
       headers: { "Content-type": "application/json" },
@@ -49,6 +49,13 @@ const Login = () => {
         UsuarioNombre:email,
         password,
       }),
+    })
+    .then(res => {
+      if (!res.ok) throw new Error('Response is NOT ok')
+      return res.json()
+  }).then(res => {
+      const nombre=res.nombre.charAt(0)+res.apellido.charAt(0);
+      setCookie('avatar', nombre, { path: '/' });
     });
     setRedirect(true);
   };

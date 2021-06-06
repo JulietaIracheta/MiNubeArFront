@@ -1,4 +1,4 @@
-const url = 'http://localhost:60671/api/docente/getEstudiantesPorCurso/'
+const urlBase = 'http://localhost:60671/api/docente/getEstudiantesPorCurso/'
 
 export default function getEstudiantes(id) {
     const url=urlBase+`${id}`;
