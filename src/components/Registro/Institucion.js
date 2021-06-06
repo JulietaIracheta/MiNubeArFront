@@ -24,6 +24,7 @@ import { Search } from "react-bootstrap-icons";
 import Sidebar from "../Sidebar";
 import ModalDialog from "./ModalDialog";
 import { MoreVert } from "@material-ui/icons";
+import InstitucionModalEditar from "./InstitucionModalEditar";
 
 const drawerWidth = 200;
 
@@ -105,20 +106,6 @@ const Instituciones = ({ classes, ...props }) => {
     modalFadeState()
   }
 
-  const update = () => {
-    if( datos.idInstitucion !== null){
-      props.updateInstitucion(datos.idInstitucion, datos);
-      modalFadeState()
-    }
-  }
-
-  const handleInputChange = (event) => {
-    setDatos({
-        ...datos,
-        [event.target.name] : event.target.value
-    })
-  }
-
   return (
     <Provider store={store}>
       <NavAdmin />
@@ -169,7 +156,8 @@ const Instituciones = ({ classes, ...props }) => {
                                   Editar
                               </DropdownItem>
                                 <DropdownItem
-                                onClick={() => onDelete(record.id)}>
+                                  onClick={() => onDelete(record.id)}
+                                >
                                   Eliminar
                               </DropdownItem>
                             </DropdownMenu>
@@ -183,43 +171,12 @@ const Instituciones = ({ classes, ...props }) => {
             </TableContainer>
           </div>
         </main>
-        <Modal 
-            isOpen={openChangeModalUpdate} 
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-        > 
-            <ModalBody className="p-3">
-              <div className="form-group">
-                    <label>Id</label>
-                    <input type="text" name="id" className="form-control" id="id" readOnly
-                           value = {datos.idInstitucion}
-                    />
-                </div>
-                <div className="form-group">
-                    <label>Nombre</label>
-                    <input type="text" name="nombre" className="form-control" id="nombre" 
-                           value = {datos.nombre}
-                           onChange = { handleInputChange }
-                    />
-                </div>
-               <div className="form-group">
-                    <label>Dirección</label>
-                    <input type="text" name="direccion" className="form-control" id="direccion" 
-                           value = {datos.direccion}
-                           onChange = { handleInputChange }
-                    />
-                </div>
-                 <div className="form-group">
-                    <label>Email</label>
-                    <input type="text" name="email" className="form-control" id="email" 
-                           value = {datos.email}
-                           onChange = { handleInputChange }
-                    />
-                </div>
-                <button type="submit" className="btn btn-outline-primary float-right ml-1 mt-2" onClick = { update }>Guardar</button>
-                <button className="btn btn-secondary float-right mt-2" onClick={ modalFadeState }>Cancelar</button> 
-            </ModalBody>
-        </Modal>
+        <InstitucionModalEditar
+          open = {openChangeModalUpdate}
+          datos = {datos}
+          modalFadeState = {modalFadeState}
+        >
+        </InstitucionModalEditar>
       </div>
     </Provider>
   );
@@ -235,7 +192,6 @@ const mapActionToProps = {
   fetchAllInstituciones: actions.fetchAll,
   deleteInstitucion: actions.Delete,
   updateInstitucion : actions.update,
-  // getInstitucion : actions.update,
 };
 
 
