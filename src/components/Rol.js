@@ -17,7 +17,6 @@ export default function Rol(){
       setRol(content);
 })();
   },[]);
-  
 return (
     <div>
         {rol === 1 && <Estudiante />}

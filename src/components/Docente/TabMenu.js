@@ -6,7 +6,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import EstudiantesCurso from './EstudiantesCurso';
-
+import EstudiantesAsignados from '../Estudiante/EstudiantesAsignados';
 function TabContainer(props) {
   return (
     <Typography component="div" style={{ padding: 8 * 3 }}>
@@ -31,7 +31,6 @@ class ScrollableTabsButtonAuto extends React.Component {
   state = {
     value: 0,
   };
-
   handleChange = (event, value) => {
     this.setState({ value });
   };
@@ -39,7 +38,8 @@ class ScrollableTabsButtonAuto extends React.Component {
   render() {
     const { classes } = this.props;
     const { value } = this.state;
-
+    const {curso}=this.props;
+console.log(curso);
     return (
       <div className={classes.root}>
         <AppBar position="static" color="default">
@@ -56,7 +56,7 @@ class ScrollableTabsButtonAuto extends React.Component {
             <Tab label="Comunicados" />
           </Tabs>
         </AppBar>
-        {value === 0 && <TabContainer><EstudiantesCurso /></TabContainer>}
+        {value === 0 && <TabContainer><EstudiantesAsignados idCurso={curso.idCurso} /></TabContainer>}
         {value === 1 && <TabContainer>Item Two</TabContainer>}
         {value === 2 && <TabContainer>Item Three</TabContainer>}
       </div>

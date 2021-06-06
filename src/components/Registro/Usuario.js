@@ -124,6 +124,9 @@ const Usuarios = ({ classes, ...props }) => {
         props.deleteUsuario(id);
         handleMenuClose();
         
+      }else{
+        handleMenuClose();
+        return;
       }
       reload();
     })
@@ -198,10 +201,7 @@ const Usuarios = ({ classes, ...props }) => {
                             <DropdownToggle nav>
                               <MoreVert />
                             </DropdownToggle>
-                            <DropdownMenu>
-                              <DropdownItem>      
-                                  Editar                                
-                                </DropdownItem>
+                            <DropdownMenu>                              
                               <DropdownItem
                                 onClick={() => onDelete(record.idUsuario)}>                               
                              Editar

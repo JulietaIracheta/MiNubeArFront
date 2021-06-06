@@ -22,7 +22,7 @@ export default function PerfilEstudiante({ match }) {
                 <div className="container">
 
                     <h4 className="titulo-docente">
-                        <Link to='/docente/estudiantesAsignados'
+                        <Link to="/rol"
                             className="text-decoration-none titulo-docente">
                             Estudiantes
                     </Link> {'>'} {estudiante?.nombre}, {estudiante?.apellido}

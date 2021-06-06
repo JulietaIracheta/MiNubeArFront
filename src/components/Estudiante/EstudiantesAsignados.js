@@ -1,29 +1,24 @@
 import React, { useState, useEffect } from "react";
 import getEstudiantes from '../../services/estudiantes/getEstudiantes';
-import NavDocente from "../Docente/NavDocente"
-
 import ListaDeEStudiantes from "../../helpers/listaDeEstudiantes"
-import Sidebar from "../Sidebar";
-import {SidebarDataDocente} from '../sideBar/SidebarDataDocente';
+import getEstudiantesCurso from "../../services/estudiantes/getEstudiantesCurso";
 
-export default function EstudiantesAsignados({ institucion = 'unlam' }) {
+export default function EstudiantesAsignados({ institucion = 'unlam', idCurso }) {
     const [estudiantes, setEstudiantes] = useState([])
-
+   
     useEffect(function () {
-        getEstudiantes().then(estudiantes => setEstudiantes(estudiantes))       //setUsuarios(img)
+        getEstudiantesCurso(idCurso).then(estudiantes => setEstudiantes(estudiantes))   
+    console.log(estudiantes);    
+        
     }, [])
+    console.log(estudiantes);    
 
     return (
         <div>
-            <NavDocente></NavDocente>
-            <div className="d-flex mt-1">
-                <Sidebar data={SidebarDataDocente}/>
-                <div className="container">
-                    <h2>Estudiantes asignados de {institucion}</h2>
-                    <div className="row">
-                        <ListaDeEStudiantes estudiantes={estudiantes}>
-                        </ListaDeEStudiantes>
-                    </div>
+            <div className="container">
+                <div className="row">
+                    <ListaDeEStudiantes estudiantes={estudiantes}>
+                    </ListaDeEStudiantes>
                 </div>
             </div>
         </div>

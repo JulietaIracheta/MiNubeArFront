@@ -42,7 +42,7 @@ export default function RecipeReviewCard({ descripcion, titulo }) {
 
     return (
         <Card className={classes.root}>
-            <ReactPlayer url='/videos/video.mp4' controls width="100%" height="100%" />
+            <ReactPlayer url='http://localhost:60671/videos/_06052021_160616%20video.mp4' controls width="100%" height="100%" />
             <CardContent>
                 <p className="font-weight-bold">{titulo}</p>
                 <p>{descripcion}</p>

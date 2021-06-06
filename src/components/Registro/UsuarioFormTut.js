@@ -155,7 +155,7 @@ const UsuarioFormTut = ({ handleClose, classes, ...props }) => {
               value={values.telefono}
               onChange={handleInputChange}
             />
-            <div>
+            <div className="w-100 d-flex justify-content-center">
               <Button
                 variant="contained"
                 color="primary"
