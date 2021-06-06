@@ -13,6 +13,8 @@ import {store} from './actions/store'
 import VideoConference from './components/Registro/VideoConference';
 import EstudiantesTutor from './components/Tutor/EstudiantesTutor';
 import contenidoPorMateria from './components/Docente/ContenidoPorMateria';
+import Calendario from './components/Calendario/Calendario'
+import Curso from './components/Registro/Curso'
 
 
 function App() {
@@ -28,7 +30,9 @@ function App() {
         <Route path='/rol' exact component={Rol} />     
         <Route path='/docente/estudiantesAsignados' exact component={EstudiantesAsignados} />        
         <Route path='/estudiante/:id' exact component={PerfilEstudiante}/>
+        <Route path='/cursos' exact component={Curso}/>
         <Route path='/curso/:inst/:id' exact component={CursosAsignadosDocente}/>
+        <Route path='/calendario' exact component={Calendario}/>
         <Route path='/docente/ActividadEstudiante' exact component={ActividadEstudiante}/>
         <Route path='/tutor/ActividadEstudiante' exact component={ActividadEstudiante}/>
         <Route path='/tutor/EstudiantesAsignados' exact component={EstudiantesTutor}/>

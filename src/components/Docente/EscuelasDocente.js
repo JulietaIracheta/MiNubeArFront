@@ -10,7 +10,7 @@ import getCursoDocente from "../../services/estudiantes/getCursoDocente";
 import Sidebar from "./Sidebar";
 
 const EscuelasDocente = () => {
-  const id = 28;
+  const id = 29;
   const [institucion, SetInstitucion] = useState([]);
   const [curso, SetCurso] = useState([]);
   useEffect(

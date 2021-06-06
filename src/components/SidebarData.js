@@ -11,5 +11,16 @@ export const SidebarData = [
         title: 'Usuarios', 
         icon: <Group />,
         link: "/usuarios"
-    }
+    },
+    {
+        title: 'Cursos', 
+        icon: <BorderColor />,
+        link: "/cursos"
+    },
+    {
+        title: 'Materias', 
+        icon: <BorderColor />,
+        link: "/materias"
+    },
+
 ] 

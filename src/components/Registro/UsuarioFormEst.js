@@ -84,7 +84,6 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
 
   const handleSubmit = e => {
     e.preventDefault()
-    
     if (validate()) {
         const onSuccess = () => {
             resetForm()
