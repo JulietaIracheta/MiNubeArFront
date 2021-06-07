@@ -12,7 +12,8 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
-import { ChatLeftTextFill, Bell, PersonCircle } from "react-bootstrap-icons";
+import { Calendar2Event, Bell, PersonCircle } from "react-bootstrap-icons";
+import logo from '../../assets/img/logoGris.png'
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,6 +29,7 @@ const NavBar = (props) => {
   return (
     <div >
       <Navbar className="menuNavBarEstudiante" expand="md">
+      <img src={logo} />
         <NavbarBrand className="colorBrand" href="/estudiante">Mi Nube AR</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
@@ -38,7 +40,7 @@ const NavBar = (props) => {
             </Nav>
             <Nav navbar>
             <NavItem className="marginMN">
-              <ChatLeftTextFill className="icon-menu"/>
+            <a href="/calendarioestudiante"> <Calendar2Event className="icon-menu color-negro" /></a>
             </NavItem>
             <NavItem className="marginMN notif"> 
              <a href="/notificaciones"> <Bell className="icon-menu" /></a>

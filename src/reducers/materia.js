@@ -1,10 +1,10 @@
-import { ACTION_TYPES } from "../actions/usuario";
+import { ACTION_TYPES } from "../actions/materia";
 const initialState = {
     list: []
 }
 
 
-export const usuario = (state = initialState, action) => {
+export const materias = (state = initialState, action) => {
 
     switch (action.type) {
         case ACTION_TYPES.FETCH_ALL:
@@ -22,13 +22,13 @@ export const usuario = (state = initialState, action) => {
         case ACTION_TYPES.UPDATE:
             return {
                 ...state,
-                list: state.list.map(x => x.id === action.payload.id ? action.payload : x)
+                list: state.list.map(x => x.id == action.payload.id ? action.payload : x)
             }
 
         case ACTION_TYPES.DELETE:
             return {
                 ...state,
-                list: state.list.filter(x => x.id !== action.payload)
+                list: state.list.filter(x => x.id != action.payload)
             }
             
         default:

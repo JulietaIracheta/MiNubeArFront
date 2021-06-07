@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import getEstudiantesCurso from '../../services/estudiantes/getEstudiantesCurso';
-import ListaDeEStudiantes from "../../helpers/listaDeEstudiantes"
 import { Link } from 'react-router-dom';
 import { PersonCircle } from 'react-bootstrap-icons';
 
 export default function EstudiantesCurso () {
     const [estudiantes, setEstudiantes] = useState([])
-    const id = 32;
+    const id = 1;
     useEffect(function () {
         getEstudiantesCurso(id).then(estudiantes => setEstudiantes(estudiantes))
     }, [id])

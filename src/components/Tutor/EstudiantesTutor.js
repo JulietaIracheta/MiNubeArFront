@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Gear, PersonCircle } from "react-bootstrap-icons";
-import { Calendar } from "react-calendar";
+import { PersonCircle } from "react-bootstrap-icons";
 import 'react-calendar/dist/Calendar.css';
 import { Link } from "react-router-dom";
 import "../../assets/css/css-tutor.css";
 import GetEstudiante from "../../services/estudiantes/getEstudiante";
-import Notificaciones from "../Docente/Notificaciones";
 import Sidebar from "../Sidebar";
 import NavTutor from './NavTutor';
 import {SidebarDataTutor} from '../sideBar/SidebarDataTutor';

@@ -1,4 +1,4 @@
-const url = 'http://localhost:60671/api/contenido/getContenidoByMateria/3'
+const url = 'http://localhost:60671/api/contenido/getContenidoByMateria/1'
 
 export default function getContenidos() {
     return fetch(url, {

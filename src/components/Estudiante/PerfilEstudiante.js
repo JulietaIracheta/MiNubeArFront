@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router';
 import GetEstudiante from '../../services/estudiantes/getEstudiante';
 import NavDocente from "../Docente/NavDocente";
 import { Link } from 'react-router-dom';

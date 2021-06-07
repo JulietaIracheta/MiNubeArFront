@@ -24,7 +24,6 @@ const NavBar = (props) => {
     <div >
       <div className="navBar">
                     <button onClick={toggle}>
-                        <FaAlignRight />
                     </button>
                     <ul className={toggle ? "nav-links show-nav" : "nav-links"}>
                         <li href="/docente">Home</li>

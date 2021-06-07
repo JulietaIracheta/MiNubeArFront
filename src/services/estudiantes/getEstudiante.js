@@ -1,4 +1,4 @@
-import React from 'react'
+
 const urlBase = 'http://localhost:60671/api/persona/getPerfil/'
 
 export default function getEstudiante(id) {

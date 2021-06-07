@@ -5,9 +5,9 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
-import EstudiantesCurso from './EstudiantesCurso';
 import EstudiantesAsignados from '../Estudiante/EstudiantesAsignados';
 import Comunicado from '../Comunicados/comunicado';
+
 function TabContainer(props) {
   return (
     <Typography component="div" style={{ padding: 8 * 3 }}>

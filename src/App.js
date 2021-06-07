@@ -1,7 +1,6 @@
 import './App.css';
 import Login from './components/Login';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import EstudiantesAsignados from './components/Estudiante/EstudiantesAsignados';
 import PerfilEstudiante from './components/Estudiante/PerfilEstudiante';
 import CursosAsignadosDocente from './components/Docente/CursosAsignadosDocente';
 import Rol from './components/Rol';
@@ -13,6 +12,10 @@ import {store} from './actions/store'
 import VideoConference from './components/Registro/VideoConference';
 import EstudiantesTutor from './components/Tutor/EstudiantesTutor';
 import contenidoPorMateria from './components/Docente/ContenidoPorMateria';
+import Calendario from './components/Calendario/Calendario'
+import CalendarioEst from './components/CalendarioEst/Calendario/CalendarioEst'
+import Curso from './components/Registro/Curso';
+import Materia from './components/Registro/Materia';
 
 
 function App() {
@@ -27,6 +30,10 @@ function App() {
         <Route path='/video' exact component={VideoConference} />   
         <Route path='/rol' exact component={Rol} />     
         <Route path='/estudiante/:id' exact component={PerfilEstudiante}/>
+        <Route path='/calendario' exact component={Calendario} />  
+        <Route path='/calendarioestudiante' exact component={CalendarioEst} />     
+        <Route path='/cursos/' exact component={Curso}/>
+        <Route path='/materias/' exact component={Materia}/>
         <Route path='/curso/:inst/:curso/:idCurso' exact component={CursosAsignadosDocente}/>
         <Route path='/tutor/ActividadEstudiante' exact component={ActividadEstudiante}/>
         <Route path='/tutor/EstudiantesAsignados' exact component={EstudiantesTutor}/>

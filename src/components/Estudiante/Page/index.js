@@ -5,7 +5,7 @@ import NavEstudiante from "../NavEstudiante";
 
 function Estudiante() {
   const [nombre, setNombre] = useState("");
-  const [rol, setRol] = useState("");
+  
   useEffect(() => {
     (async () => {
       const response = await fetch("http://localhost:60671/api/persona/getPersonaByUsuario", {

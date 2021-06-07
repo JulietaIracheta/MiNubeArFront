@@ -1,12 +1,9 @@
 import React from 'react'
 import NavDocente from './NavDocente'
-import { Link } from 'react-router-dom';
-import { ArrowLeftCircleFill } from "react-bootstrap-icons";
-import { Button } from '@material-ui/core';
 import Sidebar from '../Sidebar';
 import TabMenu from './TabMenu';
 import BotonVolver from '../BotonVolver/botonVolver';
-import {SidebarDataDocente} from '../sideBar/SidebarDataDocente';
+import { SidebarDataDocente } from '../sideBar/SidebarDataDocente';
 
 export default function CursosAsignadosDocente({ match }) {
     const idCurso = match.params;
@@ -14,19 +11,19 @@ export default function CursosAsignadosDocente({ match }) {
         <div>
             <NavDocente></NavDocente>
             <div className="d-flex mt-1">
-                <Sidebar data={SidebarDataDocente}/>
+                <Sidebar data={SidebarDataDocente} />
                 <div className="container cardContainer ">
                     <div>
-                      <div className="w-100 d-flex justify-content-center mb-3">
+                        <div className="w-100 d-flex justify-content-center mb-4">
                             <BotonVolver ruta="/rol"></BotonVolver>
-                                <h3 className="m-0 p-0 color-docente borde-docente">{match.params.inst} - {match.params.curso}</h3>
-                                <hr className="hr-colorDoc" />
+                            <h3 className="m-0 p-0 color-docente borde-docente">{match.params.inst} - {match.params.curso}</h3>
+                            <hr className="hr-colorDoc" />
                         </div>
-                        <TabMenu curso={idCurso}/>
-                    </div>
+                        <TabMenu curso={idCurso} />
                     </div>
                 </div>
             </div>
+        </div>
     );
 
 }

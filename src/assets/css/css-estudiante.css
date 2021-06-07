@@ -1,13 +1,14 @@
 .menuNavBarEstudiante {
-  background-color: rgb(177, 5, 5);
+  background-color: white;
+  border-bottom: 8px solid firebrick;
 }
 
 .marginMN {
   margin-left: 15px;
 }
 .hr-color{
-    color: #f00;
-  background-color: #f00;
+    color: firebrick;
+  background-color: firebrick;
   height: 5px;
   }
 

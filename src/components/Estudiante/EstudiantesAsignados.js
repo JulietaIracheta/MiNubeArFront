@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import getEstudiantes from '../../services/estudiantes/getEstudiantes';
 import ListaDeEStudiantes from "../../helpers/listaDeEstudiantes"
 import getEstudiantesCurso from "../../services/estudiantes/getEstudiantesCurso";
 
