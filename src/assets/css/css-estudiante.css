@@ -1,13 +1,35 @@
 .menuNavBarEstudiante {
-  background-color: rgb(177, 5, 5);
+  background-color: #f5f5f5;
+  border-bottom:10px solid #B61915;
+}
+
+.flex{
+  display: flex;
+}
+
+.content{    
+  width: 80%;
+  margin-left: 5%;
+}
+
+.icon-mat{
+  padding-left: 85%;
+}
+
+.MuiButtonBase-root{
+  border-color: #B61915 !important;
+  border-width: 2px !important;
+  border-style: solid !important;
+
+  border-radius: 5px !important;
 }
 
 .marginMN {
   margin-left: 15px;
 }
 .hr-color{
-    color: #f00;
-  background-color: #f00;
+    color: #B0211D;
+  background-color: #B0211D;
   height: 5px;
   }
 
