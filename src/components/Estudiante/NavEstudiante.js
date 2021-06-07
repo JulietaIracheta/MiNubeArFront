@@ -13,9 +13,13 @@ import {
   DropdownItem,
 } from "reactstrap";
 import { ChatLeftTextFill, Bell, PersonCircle } from "react-bootstrap-icons";
+import { useCookies } from 'react-cookie';
+import logo from '../../assets/img/logoGris.png'
+import "../../assets/css/css-estudiante.css";
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [cookies, setCookie] = useCookies(['usuario']);
   const toggle = () => setIsOpen(!isOpen);
   const logout = async () => {
     await fetch('http://localhost:60671/api/usuario/logout', {
@@ -27,15 +31,12 @@ const NavBar = (props) => {
 
   return (
     <div >
-      <Navbar className="menuNavBarEstudiante" expand="md">
-        <NavbarBrand className="colorBrand" href="/estudiante">Mi Nube AR</NavbarBrand>
+      <Navbar className="menuNavBarEstudiante" expand="md" light>
+        <img src={logo}/>
+        <NavbarBrand className="colorBrand navbar-brand" href="/estudiante/Materias">MI NUBE AR</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
             <Nav className="mr-auto"></Nav>
-            <Nav>
-            <NavbarText className="misCursos">Mis Cursos</NavbarText>
-            <NavbarText className="misCursos">|</NavbarText>
-            </Nav>
             <Nav navbar>
             <NavItem className="marginMN">
               <ChatLeftTextFill className="icon-menu"/>
@@ -50,11 +51,7 @@ const NavBar = (props) => {
             </DropdownToggle>
             <DropdownMenu right>
                 <DropdownItem>
-                <a href="/estudiante/1">Ver Perfil</a> 
-                </DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>
-                 <Link to='/login' onClick={logout}>Logout</Link> 
+                <Link to='/login' onClick={logout}>Logout</Link> 
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>

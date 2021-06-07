@@ -51,11 +51,19 @@ const Login = () => {
         UsuarioNombre:email,
         password,
       }),
+    })
+    .then(res => {
+      if (!res.ok) throw new Error('Response is NOT ok')
+      return res.json()
+  }).then(res => {
+      console.log("login: "+ email);
+      setCookie('email', email, { path: '/' });
     });
     setRedirect(true);
   };
 
   if (redirect) {
+    
     return <Redirect to="/rol" />;
   }
 
