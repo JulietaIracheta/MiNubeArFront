@@ -59,7 +59,7 @@ console.log(curso);
         </AppBar>
         {value === 0 && <TabContainer><EstudiantesAsignados idCurso={curso.idCurso} /></TabContainer>}
         {value === 1 && <TabContainer>Item Two</TabContainer>}
-        {value === 2 && <TabContainer><Comunicado></Comunicado></TabContainer>}
+        {value === 2 && <TabContainer><Comunicado idCurso={curso.idCurso}></Comunicado></TabContainer>}
       </div>
     );
   }

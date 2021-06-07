@@ -47,3 +47,14 @@ export const Delete = (id) => dispatch => {
         })
         .catch(err => console.log(err))
 }
+
+export const fetchAll = () => dispatch => {
+    api.comunicado().fetchAll()
+        .then(response => {
+            dispatch({
+                type: ACTION_TYPES.FETCH_ALL,
+                payload: response.data
+            })
+        })
+        .catch(err => console.log(err))
+}

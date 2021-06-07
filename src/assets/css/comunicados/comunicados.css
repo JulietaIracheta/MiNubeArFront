@@ -1,0 +1,21 @@
+.comunicados-container{
+    height: 30rem;
+  }
+  .comunicados-overflow{
+    overflow-y: scroll;
+  }
+  .comunicados-overflow::-webkit-scrollbar {
+    -webkit-appearance: none;
+  }
+  .comunicados-overflow::-webkit-scrollbar:vertical {
+    width:10px;
+    height: 10px;
+  }
+  .comunicados-overflow::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+  }
+  .comunicados-overflow::-webkit-scrollbar-track {
+    border-radius: 10px;  
+  }

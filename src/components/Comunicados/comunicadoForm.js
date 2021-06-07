@@ -34,10 +34,9 @@ const initialFieldValues = {
   idUsuario: 0
 };
 
-const ComunicadoForm = ({ handleClose, classes, ...props }) => {
+const ComunicadoForm = ({ handleClose, classes,idCurso, ...props}) => {
   //toast msg.
   const { addToast } = useToasts();
-
   //validate()
   //validate({fullName:'jenny'})
   const validate = (fieldValues = values) => {
@@ -57,7 +56,7 @@ const ComunicadoForm = ({ handleClose, classes, ...props }) => {
   const inputLabel = React.useRef(0);
   const [labelWidth, setLabelWidth] = React.useState(0);
   const [estudiantes, setEstudiantes] = useState([]);
-  const [idUsuarioSelect, setIdUsuarioSelect] = useState(0);
+  const [idUsuarioSelect, setIdUsuarioSelect] = useState([]);
 
   useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth);
@@ -74,14 +73,17 @@ const ComunicadoForm = ({ handleClose, classes, ...props }) => {
       const onSuccess = () => {
         resetForm();
         addToast("Registrado correctamente", { appearance: "success" });
+        props.fetchAllComunicado()
       };
       values.idUsuario=idUsuarioSelect;
+      values.idCurso=idCurso;
       props.createComunicado(values, onSuccess)
     }
     handleClose();
   };
   const cambiaSelect=(e)=>{
-    setIdUsuarioSelect(e.value)
+    let ids = Array.from(e, option => option.value);
+    setIdUsuarioSelect(ids);
   }
   const options = [];
   estudiantes.map(e => {
@@ -98,8 +100,9 @@ const ComunicadoForm = ({ handleClose, classes, ...props }) => {
         <Grid container>
           <Grid item xs={12}>
             <div class="form-group p-3">
-              <label for="idUsuario">Seleccione su estudiante</label>
-              <Select options={options} placeholder="Estudiantes" onChange={cambiaSelect}/>
+              <h5 className="color-docente font-weight-bold">Nuevo Comunicado</h5>
+              <label for="idUsuario">Si desea envíar a todos los estudiantes deje este campo vacío.</label>
+              <Select options={options} isMulti placeholder="Estudiantes" onChange={cambiaSelect}/>
             </div>
           </Grid>
           <Grid item xs={12}>
@@ -142,6 +145,7 @@ const mapStateToProps = (state) => ({
 const mapActionToProps = {
   createComunicado: actions.create,
   updateComunicado: actions.update,
+  fetchAllComunicado:actions.fetchAll,
 };
 
 export default connect(
