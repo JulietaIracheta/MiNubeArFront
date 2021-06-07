@@ -1,20 +1,14 @@
 import React, { useState } from "react";
-import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-import {
-  GoogleLoginButton,
-  MicrosoftLoginButton,
-} from "react-social-login-buttons";
+import { Button, Form, FormGroup, Input } from "reactstrap";
 import logo from "../assets/img/logo.png";
 import GoogleLogin from "react-google-login";
 import "../assets/css/css-login.css";
-import { Redirect, useHistory } from "react-router";
+import { Redirect} from "react-router";
 import { useCookies } from "react-cookie";
 
 const Login = () => {
-  const [name, setName] = useState("");
-  const [img, setImg] = useState("");
+
   const [cookies, setCookie] = useCookies(["usuario"]);
-  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);

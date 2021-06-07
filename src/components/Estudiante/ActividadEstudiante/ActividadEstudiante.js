@@ -5,7 +5,6 @@ import NavTutor from '../../Tutor/NavTutor';
 import '../../../assets/css/css-actividad-estudiante.css'
 import BotonVolver from "../../BotonVolver/botonVolver";
 import Sidebar from "../../Sidebar";
-import ReactPlayer from 'react-player'
 import axios from 'axios';
 import {SidebarDataTutor} from '../../sideBar/SidebarDataTutor';
 

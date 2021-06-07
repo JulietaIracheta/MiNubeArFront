@@ -29,7 +29,7 @@ const styles = (theme) => ({
 });
 
 const initialFieldValues = {
-  nombre: "",
+  nombreCurso: "",
 };
 
 const CursoForm = ({ classes, ...props }) => {
@@ -65,7 +65,7 @@ const CursoForm = ({ classes, ...props }) => {
       };
     props.createCursos(values, onSuccess);
     }
-    swal("Usuario Registrado Correctamente!",'' , "success");
+    swal("Curso Registrado Correctamente!",'' , "success");
   };
 
   useEffect(() => {
@@ -90,16 +90,14 @@ const CursoForm = ({ classes, ...props }) => {
           <TextField
               name="nombre"
               label="Nombre del Curso"
-              value={values.nombre}
+              value={values.nombreCurso}
               onChange={handleInputChange}
               {...(errors.nombre && { error: true, helperText: errors.nombre })}
             />
             <div className="agregarCurso">
             <Add />
             <Button
-                
                 type="submit"
-                
               >
                 Agregar Curso
               </Button>

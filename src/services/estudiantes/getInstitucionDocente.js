@@ -1,4 +1,4 @@
-import React from 'react'
+
 const urlBase='http://localhost:60671/api/docente/';
 
 export default function getInstitucionDocente(id) {

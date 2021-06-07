@@ -5,9 +5,10 @@ import {
   withStyles,
   Button,
 } from "@material-ui/core";
-import useForm from "./useForm";
+import useForm from "../Registro/useForm";
 import { connect } from "react-redux";
-import * as actions from "../../actions/institucion";
+import * as actions from "../../actions/evento";
+import swal from 'sweetalert';
 import "../../assets/css/css.css";
 
 const styles = (theme) => ({
@@ -27,23 +28,20 @@ const styles = (theme) => ({
 });
 
 const initialFieldValues = {
-  nombre: "",
-  email: "",
+  title: "",
+  start: "",
+  url: "#",
+  notes: ""
 };
 
-const InstitucionForm = ({ handleClose, classes, ...props }) => {
-
+const EventoForm = ({ handleClose, classes, ...props }) => {
 
   //validate()
   //validate({fullName:'jenny'})
   const validate = (fieldValues = values) => {
     let temp = { ...errors };
-    if ("nombre" in fieldValues)
-    if ("direccion" in fieldValues)
-    if ("email" in fieldValues)
-      temp.email = /^$|.+@.+..+/.test(fieldValues.email)
-        ? ""
-        : "Email no es valido.";
+    if ("title" in fieldValues)
+    if ("start" in fieldValues)
     setErrors({
       ...temp,
     });
@@ -62,21 +60,29 @@ const InstitucionForm = ({ handleClose, classes, ...props }) => {
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
 
+  const reload = () => {
+    window.location.reload(true);
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
       const onSuccess = () => {
         resetForm();
       };
-    props.createInstitucion(values, onSuccess);
-    }
+    props.createEvento(values, onSuccess);
     handleClose();
+    swal("Evento Registrado Correctamente!",'' , "success");
+    }
+
+    reload();
+
   };
 
   useEffect(() => {
     if (props.currentId != 0) {
       setValues({
-        ...props.institucionList.find((x) => x.id == props.currentId),
+        ...props.eventoList.find((x) => x.id == props.currentId),
       });
       setErrors({});
     }
@@ -84,7 +90,7 @@ const InstitucionForm = ({ handleClose, classes, ...props }) => {
 
   return (
     <div>
-      <h6 className="mt-5 ml-5">Complete el formulario para registrar una institucion </h6>
+      <h6 className="mt-5 ml-5">Cree un evento </h6>
       <form
         autoComplete="off"
         noValidate
@@ -95,34 +101,29 @@ const InstitucionForm = ({ handleClose, classes, ...props }) => {
           <Grid item xs={12}>
          
             <TextField
-              name="nombre"
+              name="title"
               variant="outlined"
-              label="Nombre"
-              value={values.nombre}
+              label="Nombre Evento"
+              value={values.title}
               onChange={handleInputChange}
-              {...(errors.nombre && { error: true, helperText: errors.nombre })}
-            />
-          </Grid>
-          <Grid item xs={12}>
-         
-            <TextField
-              name="direccion"
-              variant="outlined"
-              label="Dirección"
-              value={values.direccion}
-              onChange={handleInputChange}
-              {...(errors.direccion && { error: true, helperText: errors.direccion })}
+              {...(errors.title && { error: true, helperText: errors.title })}
             />
           </Grid>
           
           <Grid item xs={12}>
             <TextField
-              name="email"
-              variant="outlined"
-              label="Email"
-              value={values.email}
+              name="start"
+              type="datetime-local"
+              label=""
+              value={values.start}
               onChange={handleInputChange}
-              {...(errors.email && { error: true, helperText: errors.email })}
+              {...(errors.start && { error: true, helperText: errors.start })}
+            /><Grid item xs={12}>
+            <TextField
+              name="url"
+              label="Url Clase en Vivo (Opcional)"
+              value={values.url}
+              onChange={handleInputChange}
             />
             <div>
               <Button
@@ -150,21 +151,22 @@ const InstitucionForm = ({ handleClose, classes, ...props }) => {
             </div>
           </Grid>
         </Grid>
+        </Grid>
       </form>
     </div>
   );
 };
 
 const mapStateToProps = (state) => ({
-  institucionList: state.institucion.list,
+  eventoList: state.evento.list,
 });
 
 const mapActionToProps = {
-  createInstitucion: actions.create,
-  updateInstitucion: actions.update,
+  createEvento: actions.create,
+  updateEvento: actions.update,
 };
 
 export default connect(
   mapStateToProps,
   mapActionToProps
-)(withStyles(styles)(InstitucionForm));
+)(withStyles(styles)(EventoForm));

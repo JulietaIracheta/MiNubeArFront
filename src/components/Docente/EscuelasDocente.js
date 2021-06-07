@@ -2,20 +2,30 @@ import userEvent from "@testing-library/user-event";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Gear } from "react-bootstrap-icons";
-import { Calendar } from "react-calendar";
-import "react-calendar/dist/Calendar.css";
 import "../../assets/css/css-docente.css";
 import getInstitucionDocente from "../../services/estudiantes/getInstitucionDocente";
 import getCursoDocente from "../../services/estudiantes/getCursoDocente";
 import Sidebar from "../Sidebar";
 import {SidebarDataDocente} from '../sideBar/SidebarDataDocente';
+import getId from '../../services/docente/getId'
 
 const EscuelasDocente = () => {
-  const id = 29;
+ const [id, setId] = useState(0);
   const [institucion, SetInstitucion] = useState([]);
   const [curso, SetCurso] = useState([]);
+
   useEffect(
     function () {
+      getId().then((id) =>
+        setId(id)
+      );
+    },
+    []
+  );
+
+  useEffect(
+    function () {
+      console.log(id)
       getInstitucionDocente(id).then((institucion) =>
         SetInstitucion(institucion)
       );
@@ -51,7 +61,7 @@ const EscuelasDocente = () => {
                   <hr />
                    Institución : {inst.nombre}
                    <hr />              
-                  </h5>{console.log(c)}
+                  </h5>
                   <div className="text-left">
                     <div class="d-flex flex-row-reverse">
                     <Link to={`/curso/${inst.nombre}/${c.nombre}/${c.idCurso}`}><Gear /></Link>

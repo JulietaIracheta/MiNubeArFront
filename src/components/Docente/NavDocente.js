@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useHistory } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import {
   Collapse,
   Navbar,
@@ -12,18 +12,14 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
-import { ChatLeftTextFill, Bell, PersonCircle } from "react-bootstrap-icons";
-import { useCookies } from 'react-cookie';
+import {  Bell, Calendar2Event} from "react-bootstrap-icons";
 import '../../assets/nav.css';
 import logo from '../../assets/img/logoGris.png'
 import { Avatar } from "@material-ui/core";
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [cookies, setCookie] = useCookies(['usuario']);
-  const history = useHistory();
   const toggle = () => setIsOpen(!isOpen);
-  console.log(cookies);
   const logout = async () => {
     await fetch('http://localhost:60671/api/usuario/logout', {
       method: 'POST',
@@ -46,7 +42,8 @@ const NavBar = (props) => {
           </Nav>
           <Nav navbar>
             <NavItem className="marginMN">
-              <ChatLeftTextFill className="icon-menu color-negro" />
+              
+              <a href="/calendario"> <Calendar2Event className="icon-menu color-negro" /></a>
             </NavItem>
             <NavItem className="marginMN notif">
               <a href="/notificaciones"> <Bell className="icon-menu color-negro" /></a>

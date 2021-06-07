@@ -1,22 +1,18 @@
 import React, {useState, useEffect} from 'react'
 import { connect } from "react-redux";
-import * as actions from "../../actions/evento";
-import FullCalendar, { formatDate } from '@fullcalendar/react'
+import * as actions from "../../../actions/evento";
+import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
-import axios from "axios";
-import NavDocente from '../Docente/NavDocente'
-import Sidebar from '../Sidebar'
-import {SidebarDataDocente} from '../sideBar/SidebarDataDocente'
-import ModalDialog from "./ModalDialog";
-import { Button } from "reactstrap";
+import NavEstudiante from '../../Estudiante/NavEstudiante'
+import Sidebar from '../../Sidebar'
+import {SidebarDataDocente} from '../../sideBar/SidebarDataDocente'
 import esLocale from '@fullcalendar/core/locales/es';
-import getEventos from '../../services/docente/getEventos'
+import getEventos from '../../../services/docente/getEventos'
 import {
   withStyles
 } from "@material-ui/core";
-import Swal from 'sweetalert2';
 
 const drawerWidth = 200;
 
@@ -48,55 +44,18 @@ const styles = (theme) => ({
   },
 });
 
-const Calendario = ({ classes, ...props }) => {
+const CalendarioEst = ({ classes, ...props }) => {
   const [eventos, setEventos] = useState([]);
-  const [open, setOpen] = useState(false);
-    // function to handle modal open
-    const handleOpen = () => {
-      setOpen(true);      
-    };
-  
-    // function to handle modal close
-    const handleClose = () => {
-      setOpen(false);
-    };
   
   useEffect(function () {
     getEventos().then(even => setEventos(even))   
     console.log(eventos)    
 }, [])
 
-const reload = () => {
-  window.location.reload(true);
-}
-
-const onDelete = (id) => {
-  Swal.fire({
-    title: 'Estas seguro de eliminarlo?',
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: `Sí`,
-  }).then((result) => {
-    /* Read more about isConfirmed, isDenied below */
-    if (result.isConfirmed) {
-      Swal.fire('Eliminado!', '', 'success')
-      props.deleteEvento(id)
-       
-    }
-  else{
-    return;
-  }
-  reload();
-})
-
-};
-
   
   return (
       <div>
-      <NavDocente />
+      <NavEstudiante />
     <div className="d-flex mt-1">
       <Sidebar data={SidebarDataDocente}/>
       <main className={classes.content}>
@@ -104,14 +63,7 @@ const onDelete = (id) => {
           <div id="coco">
             <div className="adminContent">
               <span className="tituloadmin">Calendario</span>
-           <Button
-                className="btn btn-danger menuadmin"
-                onClick={handleOpen}
-              >
-                Nuevo Evento
-              </Button>
-              <ModalDialog open={open} handleClose={handleClose} />
-        <hr className="hr-colorDoc" />
+        <hr className="hr-color" />
       </div>
       <div className='demo-app'>
         <div className='demo-app-main'>
@@ -124,7 +76,7 @@ const onDelete = (id) => {
               right: 'dayGridMonth,timeGridWeek,timeGridDay'
             }}
             initialView='dayGridMonth'
-            editable={true}
+            editable={false}
             selectable={true}
             selectMirror={true}
             dayMaxEvents={true}
@@ -198,4 +150,4 @@ const mapActionToProps = {
 export default connect(
   mapStateToProps,
   mapActionToProps
-)(withStyles(styles)(Calendario));
+)(withStyles(styles)(CalendarioEst));

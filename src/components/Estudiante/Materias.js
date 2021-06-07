@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import {Calculator, Book, Controller, MusicNoteList, Palette, Laptop, Globe, Flower1, Flower2, ThermometerSun, VectorPen} from 'react-bootstrap-icons';
+import React from "react";
+import {Calculator, Controller, MusicNoteList, Palette, Laptop, Globe, Flower2, ThermometerSun, VectorPen} from 'react-bootstrap-icons';
 import '../../assets/css/css-estudiante.css';
 
 const Materias = (params) => {
