@@ -3,7 +3,7 @@ import { Button, Form, FormGroup, Input } from "reactstrap";
 import logo from "../assets/img/logo.png";
 import GoogleLogin from "react-google-login";
 import "../assets/css/css-login.css";
-import { Redirect} from "react-router";
+import { Redirect } from "react-router";
 import { useCookies } from "react-cookie";
 
 const Login = () => {
@@ -11,22 +11,22 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
-  
+
   const responseGoogle = async (res) => {
-    let emailGoogle=res.profileObj.email;
+    let emailGoogle = res.profileObj.email;
     setEmail(res.profileObj.email);
     setCookie('Name', res.profileObj.name, { path: '/' });
     setCookie('img', res.profileObj.imageUrl, { path: '/' });
-    const response = await fetch("http://localhost:60671/api/usuario/loginGoogle?email="+emailGoogle, {
+    const response = await fetch("http://localhost:60671/api/usuario/loginGoogle?email=" + emailGoogle, {
       method: "POST",
       headers: { "Content-type": "application/json" },
       credentials: "include",
     });
     console.log(response);
-    if(response.status === 200){
+    if (response.status === 200) {
       setRedirect(true);
     }
-    if(response.status === 400)
+    if (response.status === 400)
       alert("Datos erróneos")
   }
 
@@ -38,21 +38,23 @@ const Login = () => {
       headers: { "Content-type": "application/json" },
       credentials: "include",
       body: JSON.stringify({
-        UsuarioNombre:email,
+        UsuarioNombre: email,
         password,
       }),
     })
-    .then(res => {
-      if (!res.ok) throw new Error('Response is NOT ok')
-      return res.json()
-  }).then(res => {
-      const nombre=res.nombre.charAt(0)+res.apellido.charAt(0);
-      setCookie('avatar', nombre, { path: '/' });
-    });
+      .then(res => {
+        if (!res.ok) throw new Error('Response is NOT ok')
+        return res.json()
+      }).then(res => {
+        const nombre = res.nombre.charAt(0) + res.apellido.charAt(0);
+        setCookie('avatar', nombre, { path: '/' });
+        setCookie('email', email, { path: '/' });
+      });
     setRedirect(true);
   };
 
   if (redirect) {
+
     return <Redirect to="/rol" />;
   }
 

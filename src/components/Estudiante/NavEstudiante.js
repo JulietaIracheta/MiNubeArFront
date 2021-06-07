@@ -7,16 +7,19 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavbarText, UncontrolledDropdown,
+  UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
 import { Calendar2Event, Bell, PersonCircle } from "react-bootstrap-icons";
+import { useCookies } from 'react-cookie';
 import logo from '../../assets/img/logoGris.png'
+import "../../assets/css/css-estudiante.css";
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [cookies, setCookie] = useCookies(['usuario']);
   const toggle = () => setIsOpen(!isOpen);
   const logout = async () => {
     await fetch('http://localhost:60671/api/usuario/logout', {
@@ -27,17 +30,13 @@ const NavBar = (props) => {
   }
 
   return (
-    <div >
+    <div>
       <Navbar className="menuNavBarEstudiante" expand="md">
       <img src={logo} />
         <NavbarBrand className="colorBrand" href="/estudiante">Mi Nube AR</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
             <Nav className="mr-auto"></Nav>
-            <Nav>
-            <NavbarText className="misCursos">Mis Cursos</NavbarText>
-            <NavbarText className="misCursos">|</NavbarText>
-            </Nav>
             <Nav navbar>
             <NavItem className="marginMN">
             <a href="/calendarioestudiante"> <Calendar2Event className="icon-menu color-negro" /></a>
@@ -52,11 +51,7 @@ const NavBar = (props) => {
             </DropdownToggle>
             <DropdownMenu right>
                 <DropdownItem>
-                <a href="/estudiante/1">Ver Perfil</a> 
-                </DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>
-                 <Link to='/login' onClick={logout}>Logout</Link> 
+                <Link to='/login' onClick={logout}>Logout</Link> 
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
