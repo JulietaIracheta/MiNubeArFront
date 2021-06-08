@@ -67,6 +67,7 @@ const ContenidoForm = ({ handleClose, classes, ...props }) => {
     const urlCargarVideo = "http://localhost:60671/api/contenido/cargarVideo";
     const f = new FormData();
     f.append("File", archivo[0]);
+
     await axios.post(urlCargarVideo,f);
     if (validate()) {
       const onSuccess = () => {
@@ -81,11 +82,15 @@ const ContenidoForm = ({ handleClose, classes, ...props }) => {
         video: 'video.mp4',
         file: archivo[0]
       }
+
       console.log("ar:", archivo[0]);
       console.log("file:", f);
       console.log("en obj:", obj);
 
-      await axios.post("http://localhost:60671/api/contenido/crearContenido", obj)
+      await axios.post("http://localhost:60671/api/contenido/crearContenido",
+      JSON.stringify(obj),
+      {headers: {'Content-Type':'application/json'}}  
+      )
       .then(response => {
           console.log(response);
       }).catch(err => {

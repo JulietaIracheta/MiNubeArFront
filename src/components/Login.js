@@ -12,7 +12,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
   const cookie = new Cookies();
-  const nombrePersona=cookie.get('');
   const responseGoogle = async (res) => {
     let emailGoogle = res.profileObj.email;
     setEmail(res.profileObj.email);
@@ -47,7 +46,7 @@ const Login = () => {
         if (!res.ok) throw new Error('Response is NOT ok')
         return res.json()
       }).then(res => {
-        cookieNombrePersona.set('nombrePersona',res.nombre)
+        //nombrePersona.set('nombrePersona',res.nombre)
         const nombre = res.nombre.charAt(0) + res.apellido.charAt(0);
         setCookie('avatar', nombre, { path: '/' });
         setCookie('email', email, { path: '/' });
