@@ -67,6 +67,7 @@ const ContenidoForm = ({ handleClose, classes, ...props }) => {
     const urlCargarVideo = "http://localhost:60671/api/contenido/cargarVideo";
     const f = new FormData();
     f.append("File", archivo[0]);
+    await axios.post(urlCargarVideo,f);
     if (validate()) {
       const onSuccess = () => {
         resetForm();

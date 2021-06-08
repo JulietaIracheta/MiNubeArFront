@@ -15,6 +15,7 @@ function Sidebar({ data }) {
                 smallMenuClassName="small-menu-classname"
                 menu={
                     <ul className="SidebarList">
+                        <li className="row">MENU</li>
                         {data.map((val, key) => {
                             return (
                                 <li

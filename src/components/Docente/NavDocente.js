@@ -16,10 +16,11 @@ import {  Bell, Calendar2Event} from "react-bootstrap-icons";
 import '../../assets/nav.css';
 import logo from '../../assets/img/logoGris.png'
 import { Avatar } from "@material-ui/core";
-
+import { useCookies } from 'react-cookie';
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+  const [cookies, setCookie] = useCookies(['usuario']);
 
   const logout = async () => {
     await fetch('http://localhost:60671/api/usuario/logout', {
@@ -43,11 +44,10 @@ const NavBar = (props) => {
           </Nav>
           <Nav navbar>
             <NavItem className="marginMN">
-              
-              <a href="/calendario"> <Calendar2Event className="icon-menu color-negro" /></a>
+              <Link to="/calendario"> <Calendar2Event className="icon-menu color-negro" /></Link>
             </NavItem>
             <NavItem className="marginMN notif">
-              <a href="/notificaciones"> <Bell className="icon-menu color-negro" /></a>
+              <Link to="/notificaciones"> <Bell className="icon-menu color-negro" /></Link>
 
             </NavItem>
             <UncontrolledDropdown nav inNavbar>

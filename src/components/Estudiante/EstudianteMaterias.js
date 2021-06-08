@@ -13,10 +13,11 @@ import { Grid } from "@material-ui/core";
 
 const baseUrl = "http://localhost:60671/api/"
 
-const EstudianteMaterias = () => {
-
+const EstudianteMaterias = (params) => {
   const cookie = new Cookies();
   const cookiesEmail = cookie.get('email');
+  const cookiesNombre = cookie.get('nombreEstudiante');
+
   let listMaterias = [];
 
   const url = baseUrl + 'usuario/materias?email=' + cookiesEmail;
@@ -53,7 +54,7 @@ const EstudianteMaterias = () => {
 
   return (
     <Fragment>
-      <Encabezado nombre="Maria" />      
+      <Encabezado nombre={cookiesNombre} />      
       <Grid container spacing={3}>
         { loading ? (listMaterias) : "LOADING ..."}
       </Grid>      

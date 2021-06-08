@@ -13,7 +13,7 @@ import {
   DropdownItem,
 } from "reactstrap";
 import { Calendar2Event, Bell, PersonCircle } from "react-bootstrap-icons";
-import { useCookies } from 'react-cookie';
+import { Cookies, useCookies } from 'react-cookie';
 import logo from '../../assets/img/logoGris.png'
 import "../../assets/css/css-estudiante.css";
 
@@ -21,12 +21,15 @@ const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [cookies, setCookie] = useCookies(['usuario']);
   const toggle = () => setIsOpen(!isOpen);
+  const cookieNombreEstudiante = new Cookies();
+
   const logout = async () => {
     await fetch('http://localhost:60671/api/usuario/logout', {
       method: 'POST',
       headers: { "Content-type": "application/json" },
       credentials: "include",
     });
+    cookieNombreEstudiante.remove("nombrePersona");
   }
 
   return (
@@ -39,7 +42,7 @@ const NavBar = (props) => {
             <Nav className="mr-auto"></Nav>
             <Nav navbar>
             <NavItem className="marginMN">
-            <a href="/calendarioestudiante"> <Calendar2Event className="icon-menu color-negro" /></a>
+            <Link to="/calendarioestudiante"> <Calendar2Event className="icon-menu color-negro" /></Link>
             </NavItem>
             <NavItem className="marginMN notif"> 
              <a href="/notificaciones"> <Bell className="icon-menu" /></a>

@@ -8,15 +8,15 @@
 }
 
 .content{    
-  width: 80%;
-  margin-left: 5%;
+  width: 100%;
+  margin:0 2%;
 }
 
 .icon-mat{
   padding-left: 85%;
 }
 
-.MuiButtonBase-root{
+.card-materia-estudiante{
   border-color: #B61915 !important;
   border-width: 2px !important;
   border-style: solid !important;

@@ -30,8 +30,7 @@ const styles = (theme) => ({
 const initialFieldValues = {
   title: "",
   start: "",
-  url: "#",
-  notes: ""
+  url: "#"
 };
 
 const EventoForm = ({ handleClose, classes, ...props }) => {
@@ -41,10 +40,10 @@ const EventoForm = ({ handleClose, classes, ...props }) => {
   const validate = (fieldValues = values) => {
     let temp = { ...errors };
     if ("title" in fieldValues)
-    if ("start" in fieldValues)
-    setErrors({
-      ...temp,
-    });
+      if ("start" in fieldValues)
+        setErrors({
+          ...temp,
+        });
 
     if (fieldValues == values) return Object.values(temp).every((x) => x == "");
   };
@@ -61,22 +60,20 @@ const EventoForm = ({ handleClose, classes, ...props }) => {
   }, []);
 
   const reload = () => {
-    window.location.reload(true);
+    window.location.reload();
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit =  async (e) => {
     e.preventDefault();
     if (validate()) {
       const onSuccess = () => {
         resetForm();
       };
-    props.createEvento(values, onSuccess);
-    handleClose();
-    swal("Evento Registrado Correctamente!",'' , "success");
+      props.createEvento(values, onSuccess);
+      handleClose();
+      await swal("Evento Registrado Correctamente!", '', "success");
+      reload();
     }
-
-    reload();
-
   };
 
   useEffect(() => {
@@ -99,7 +96,7 @@ const EventoForm = ({ handleClose, classes, ...props }) => {
       >
         <Grid container>
           <Grid item xs={12}>
-         
+
             <TextField
               name="title"
               variant="outlined"
@@ -109,7 +106,7 @@ const EventoForm = ({ handleClose, classes, ...props }) => {
               {...(errors.title && { error: true, helperText: errors.title })}
             />
           </Grid>
-          
+
           <Grid item xs={12}>
             <TextField
               name="start"
@@ -119,38 +116,38 @@ const EventoForm = ({ handleClose, classes, ...props }) => {
               onChange={handleInputChange}
               {...(errors.start && { error: true, helperText: errors.start })}
             /><Grid item xs={12}>
-            <TextField
-              name="url"
-              label="Url Clase en Vivo (Opcional)"
-              value={values.url}
-              onChange={handleInputChange}
-            />
-            <div>
-              <Button
-                variant="contained"
-                color="primary"
-                type="submit"
-                className={classes.smMargin}
-              >
-                Enviar
+              <TextField
+                name="url"
+                label="Url Clase en Vivo (Opcional)"
+                value={values.url}
+                onChange={handleInputChange}
+              />
+              <div>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  type="submit"
+                  className={classes.smMargin}
+                >
+                  Enviar
               </Button>
-              <Button
-                variant="contained"
-                className={classes.smMargin}
-                onClick={resetForm}
-              >
-                Reset
+                <Button
+                  variant="contained"
+                  className={classes.smMargin}
+                  onClick={resetForm}
+                >
+                  Reset
               </Button>
-              <Button
-                variant="contained"
-                className={classes.smMargin}
-                onClick={handleClose}
-              >
-                Salir
+                <Button
+                  variant="contained"
+                  className={classes.smMargin}
+                  onClick={handleClose}
+                >
+                  Salir
               </Button>
-            </div>
+              </div>
+            </Grid>
           </Grid>
-        </Grid>
         </Grid>
       </form>
     </div>
