@@ -16,7 +16,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
-import { Button, ButtonGroup } from "reactstrap";
+import { Button, Modal, ModalBody } from "reactstrap";
 import { store } from "../../actions/store";
 import { Provider } from "react-redux";
 import NavAdmin from "./NavAdmin";
@@ -25,6 +25,7 @@ import Sidebar from "../Sidebar";
 import ModalDialog from "./ModalDialog";
 import { MoreVert } from "@material-ui/icons";
 import {SidebarData}   from '../SidebarData';
+import InstitucionModalEditar from "./InstitucionModalEditar";
 
 const drawerWidth = 200;
 
@@ -57,16 +58,22 @@ const styles = (theme) => ({
 });
 
 const Instituciones = ({ classes, ...props }) => {
-  const [currentId, setCurrentId] = useState(0);
+  // const [currentId, setCurrentId] = useState(0);
   // declare a new state variable for modal open
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [nombre, setNombre] = useState('');
-  const opens = Boolean(anchorEl);
+  const [openChangeModalUpdate, setOpenChangeModalUpdate] = useState(false);
+  const [datos, setDatos] = useState({
+    id: '',
+    nombre: '',
+    direccion: '',
+    email: ''
+  });
+  // const opens = Boolean(anchorEl);
 
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  // const handleMenu = (event) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
@@ -74,7 +81,6 @@ const Instituciones = ({ classes, ...props }) => {
   // function to handle modal open
   const handleOpen = () => {
     setOpen(true);
-    
   };
 
   // function to handle modal close
@@ -82,16 +88,24 @@ const Instituciones = ({ classes, ...props }) => {
     setOpen(false);
   };
 
-
   useEffect(() => {
     props.fetchAllInstituciones();
-  },[] ); 
+  },[]); 
 
   const onDelete = (id) => {
     if (window.confirm("Estas seguro de eliminarlo"))
       props.deleteInstitucion(id)
       handleMenuClose();
   };
+
+  const modalFadeState = () =>{
+    setOpenChangeModalUpdate(!openChangeModalUpdate)
+  }
+
+  const onChange = (institucion) => {
+    setDatos(institucion)
+    modalFadeState()
+  }
 
   return (
     <Provider store={store}>
@@ -137,15 +151,15 @@ const Instituciones = ({ classes, ...props }) => {
                               <MoreVert />
                             </DropdownToggle>
                             <DropdownMenu >
-                              <DropdownItem  
+                              <DropdownItem 
+                                 onClick = { () => onChange(record)}
                               >
                                   Editar
-                                
-                                </DropdownItem>
+                              </DropdownItem>
                                 <DropdownItem
-                                onClick={() => onDelete(record.id)}>
+                                  onClick={() => onDelete(record.id)}
+                                >
                                   Eliminar
-                                
                               </DropdownItem>
                             </DropdownMenu>
                           </UncontrolledDropdown>
@@ -158,20 +172,29 @@ const Instituciones = ({ classes, ...props }) => {
             </TableContainer>
           </div>
         </main>
+        <InstitucionModalEditar
+          open = {openChangeModalUpdate}
+          datos = {datos}
+          modalFadeState = {modalFadeState}
+        >
+        </InstitucionModalEditar>
       </div>
     </Provider>
   );
 };
 
+
 const mapStateToProps = (state) => ({
   institucionList: state.institucion.list,
 });
 
+
 const mapActionToProps = {
   fetchAllInstituciones: actions.fetchAll,
   deleteInstitucion: actions.Delete,
-  updateInstitucion : actions.update
+  updateInstitucion : actions.update,
 };
+
 
 export default connect(
   mapStateToProps,
