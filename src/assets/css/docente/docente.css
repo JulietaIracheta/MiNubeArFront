@@ -9,3 +9,9 @@
     width: 100%;
     font-weight: bold;
 }
+.card-materia-docente{
+    border-color: #2d2f85 !important;
+    border-width: 2px !important;
+    border-style: solid !important;
+    border-radius: 5px !important;
+}

@@ -16,11 +16,12 @@ import {  Bell, Calendar2Event} from "react-bootstrap-icons";
 import '../../assets/nav.css';
 import logo from '../../assets/img/logoGris.png'
 import { Avatar } from "@material-ui/core";
-import { useCookies } from 'react-cookie';
+import { Cookies, useCookies } from 'react-cookie';
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   const [cookies, setCookie] = useCookies(['usuario']);
+  const cookieNombreEstudiante = new Cookies();
 
   const logout = async () => {
     await fetch('http://localhost:60671/api/usuario/logout', {
@@ -28,6 +29,8 @@ const NavBar = (props) => {
       headers: { "Content-type": "application/json" },
       credentials: "include",
     });
+    cookieNombreEstudiante.remove("nombrePersona");
+
   }
 
   return (
@@ -47,7 +50,7 @@ const NavBar = (props) => {
               <Link to="/calendario"> <Calendar2Event className="icon-menu color-negro" /></Link>
             </NavItem>
             <NavItem className="marginMN notif">
-              <Link to="/notificaciones"> <Bell className="icon-menu color-negro" /></Link>
+              <Link to="#"> <Bell className="icon-menu color-negro" /></Link>
 
             </NavItem>
             <UncontrolledDropdown nav inNavbar>

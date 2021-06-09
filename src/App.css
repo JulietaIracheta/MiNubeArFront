@@ -1,8 +1,10 @@
+body{
+  background-color: #f5f5f5 ;
 
+}
 .back{
   height: 100%;
   width: 100%;
-  background-color: #f5f5f5 ;
 }
 
 .login-form{
@@ -398,4 +400,7 @@ background-color: #797979;
 .active-comunicado{
   background: #EFEFEF;
   color: #212888;
+}
+button.bg-docente.border.btn.btn-secondary.menuadmin{
+  background:#212888 !important;
 }

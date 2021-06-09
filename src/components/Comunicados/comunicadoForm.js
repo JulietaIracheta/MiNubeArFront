@@ -35,10 +35,7 @@ const initialFieldValues = {
 };
 
 const ComunicadoForm = ({ handleClose, classes,idCurso, ...props}) => {
-  //toast msg.
   const { addToast } = useToasts();
-  //validate()
-  //validate({fullName:'jenny'})
   const validate = (fieldValues = values) => {
     let temp = { ...errors };
     if ("descripcion" in fieldValues)

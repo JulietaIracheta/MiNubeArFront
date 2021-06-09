@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 function Sidebar({ data }) {
     return (
-        <div className="Sidebar">
+        <div className="Sidebar pt-2">
             <ResponsiveMenu
                 menuOpenButton={<FaBars />}
                 menuCloseButton={<FaTimes />}
@@ -15,7 +15,6 @@ function Sidebar({ data }) {
                 smallMenuClassName="small-menu-classname"
                 menu={
                     <ul className="SidebarList">
-                        <li className="row">MENU</li>
                         {data.map((val, key) => {
                             return (
                                 <li

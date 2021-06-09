@@ -3,7 +3,7 @@ import ModalDialogComunicado from './ModalDialogComunicado';
 import getComunicados from '../../services/comunicados/getComunicados';
 import  '../../assets/css/comunicados/comunicados.css';
 
-export default function Comunicado({idCurso}) {
+export default function Comunicado({idCurso}){
     const [dialogComunicado, setDialogComunicado] = useState(false);
     const [comunicados, setComunicados] = useState([]);
 
@@ -44,3 +44,6 @@ export default function Comunicado({idCurso}) {
         </div>
     </div>
 }
+
+
+  

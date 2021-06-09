@@ -7,9 +7,9 @@ export const SidebarDataDocente = [
         icon: <Business />,
         link: "/rol"
     },
-    {
+    /*{
         title: 'Calificaciones', 
         icon: <Group />,
         link: "/calificaciones"
-    }
+    }*/
 ] 

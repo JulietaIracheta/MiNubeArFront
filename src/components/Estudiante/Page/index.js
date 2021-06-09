@@ -5,7 +5,6 @@ import Sidebar from "../Sidebar";
 import NavEstudiante from "../NavEstudiante";
 import EstudianteMaterias from "../EstudianteMaterias";
 import { Route } from "react-router-dom";
-import Cookies from "universal-cookie";
 
 function Estudiante() {
   const [nombre, setNombre] = useState("");

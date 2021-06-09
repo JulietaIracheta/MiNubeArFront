@@ -28,7 +28,10 @@ const styles = (theme) => ({
 });
 
 const initialFieldValues = {
-  file: null,
+  file: undefined,
+  titulo: "",
+  unidad: 0,
+  descripcion: ""
 };
 
 const ContenidoForm = ({ handleClose, classes, ...props }) => {
@@ -39,10 +42,14 @@ const ContenidoForm = ({ handleClose, classes, ...props }) => {
   //validate({fullName:'jenny'})
   const validate = (fieldValues = values) => {
     let temp = { ...errors };
-    if ("file" in fieldValues)
-      setErrors({
-        ...temp,
-      });
+   
+    if ("titulo" in fieldValues)
+      temp.titulo = fieldValues.titulo ? "" : "Este campo es requerido.";
+    if ("descripcion" in fieldValues)
+      temp.descripcion = fieldValues.descripcion ? "" : "Este campo es requerido.";
+    setErrors({
+      ...temp,
+    });
 
     if (fieldValues == values) return Object.values(temp).every((x) => x == "");
   };
@@ -64,46 +71,36 @@ const ContenidoForm = ({ handleClose, classes, ...props }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const urlCargarVideo = "http://localhost:60671/api/contenido/cargarVideo";
-    const f = new FormData();
-    f.append("File", archivo[0]);
-
-    await axios.post(urlCargarVideo,f);
+    const urlCargaVideo = "http://localhost:60671/api/contenido/crearContenido";
+    
     if (validate()) {
       const onSuccess = () => {
         resetForm();
-        addToast("Registrado correctamente", { appearance: "success" });
       };
-      
-      const obj = {
-        unidad: 0,
-        descripcion: 'prueba',
-        titulo: 'a',
-        video: 'video.mp4',
-        file: archivo[0]
-      }
+      const f = new FormData();
+      const form = new FormData();
 
-      console.log("ar:", archivo[0]);
-      console.log("file:", f);
-      console.log("en obj:", obj);
-
+      f.append("File", archivo[0]);
+      form.append("titulo", values.titulo);
+      form.append("descripcion", values.descripcion);
+      form.append("unidad", 1);
+      form.append("file", archivo[0]);
+      console.log("boke:",form);
       await axios.post("http://localhost:60671/api/contenido/crearContenido",
-      JSON.stringify(obj),
-      {headers: {'Content-Type':'application/json'}}  
-      )
-      .then(response => {
+        form)
+        .then(response => {
           console.log(response);
-      }).catch(err => {
+        }).catch(err => {
           console.log(err);
-      })
+        })
     }
     handleClose();
   };
 
 
   return (
-    <div>
-      <h6 className="mt-5 ml-5">cargue video </h6>
+    <div className="d-flex w-100 align-items-center flex-column">
+      <h6 className="mt-5 ml-5">Crear contenido</h6>
       <form
         autoComplete="off"
         noValidate
@@ -112,37 +109,60 @@ const ContenidoForm = ({ handleClose, classes, ...props }) => {
       >
         <Grid container>
           <Grid item xs={12}>
-            <input
-              name="file"
-              type="file"
-              value={values.file}
-              onChange={(e) => subirArchivos(e.target.files)}
-              {...(errors.titulo && { error: true, helperText: errors.titulo })}
-            />
+            <div class="form-group p-3">
+              <label for="titulo">Título</label>
+              <input
+                name="titulo"
+                type="text"
+                class="form-control"
+                value={values.titulo}
+                onChange={handleInputChange}
+                {...(errors.titulo && { error: true, helperText: errors.titulo })}
+              />
+            </div>
           </Grid>
-          <div>
-            <Button
+          <Grid item xs={12}>
+            <div class="form-group p-3">
+              <label for="descripcion">Descripción</label>
+              <input
+                name="descripcion"
+                type="text"
+                class="form-control"
+                value={values.descripcion}
+                onChange={handleInputChange}
+                {...(errors.descripcion && { error: true, helperText: errors.descripcion })}
+              />
+            </div>
+          </Grid>
+          <Grid item xs={12}>
+            <div class="form-group p-3">
+            <label for="file">Elija el video...</label>
+                <input
+                  name="file"
+                  type="file"
+                  class="fomr-control-input"
+                  value={values.file}
+                  onChange={(e) => subirArchivos(e.target.files)}
+                  {...(errors.file && { error: true, helperText: errors.file })}
+                />
+            </div>
+          </Grid>
+          <div className="w-100 d-flex justify-content-center p-3">
+            <button
               variant="contained"
               color="primary"
               type="submit"
-              className={classes.smMargin}
+              className="btn btn-lg btn-outline-dark mr-3"
             >
-              Enviar
-                </Button>
-            <Button
+              Crear
+                </button>
+            <button
               variant="contained"
-              className={classes.smMargin}
-              onClick={resetForm}
-            >
-              Reset
-                </Button>
-            <Button
-              variant="contained"
-              className={classes.smMargin}
+              className="btn btn-lg btn-outline-danger"
               onClick={handleClose}
             >
               Salir
-                </Button>
+                </button>
           </div>
         </Grid>
       </form>

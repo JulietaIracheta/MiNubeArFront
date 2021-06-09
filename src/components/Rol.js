@@ -3,9 +3,12 @@ import Docente from './Docente/Page';
 import Estudiante from './Estudiante/Page';
 import Tutor from './Tutor/Page';
 import Registro from './Registro/Registro'; 
+import Cookies from 'universal-cookie';
 
 export default function Rol(){
   const [rol, setRol] = useState("");
+  const cookie = new Cookies();
+  
   useEffect(() => {
     (async () => {
       const response = await fetch("http://localhost:60671/api/rol/getRolByUsuario", {

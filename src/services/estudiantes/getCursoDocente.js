@@ -1,9 +1,9 @@
 import React from 'react'
 const urlBase='http://localhost:60671/api/docente/getCursos/';
 
-export default function getCursoDocente(id) {
+export default async function getCursoDocente(id) {
     const url=urlBase+`${id}`
-    return fetch(url, {
+    return await fetch(url, {
         method: 'GET'
     }).then(res => {
         if (!res.ok) throw new Error('Response is NOT ok')

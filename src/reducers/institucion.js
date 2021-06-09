@@ -3,7 +3,6 @@ const initialState = {
     list: []
 }
 
-
 export const institucion = (state = initialState, action) => {
 
     switch (action.type) {

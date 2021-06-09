@@ -7,7 +7,7 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import NavEstudiante from '../../Estudiante/NavEstudiante'
 import Sidebar from '../../Sidebar'
-import {SidebarDataDocente} from '../../sideBar/SidebarDataDocente'
+import {SidebarDataEstudiante} from '../../sideBar/SidebarDataEstudiante'
 import esLocale from '@fullcalendar/core/locales/es';
 import getEventos from '../../../services/docente/getEventos'
 import {
@@ -57,7 +57,7 @@ const CalendarioEst = ({ classes, ...props }) => {
       <div>
       <NavEstudiante />
     <div className="d-flex mt-1">
-      <Sidebar data={SidebarDataDocente}/>
+      <Sidebar data={SidebarDataEstudiante}/>
       <main className={classes.content}>
           <div className={classes.toolbar} id="coco" />
           <div id="coco">

@@ -152,7 +152,7 @@ const Usuarios = ({ classes, ...props }) => {
               </Button>
               <ModalDialogEst open={openEst} handleClose={handleClose} />
               <Button
-                className="btn btn-success border menuadmin"
+                className="btn bg-docente border menuadmin"
                 onClick={handleOpenDoc}
               >
                 Nuevo Docente
@@ -160,7 +160,7 @@ const Usuarios = ({ classes, ...props }) => {
               <ModalDialogDoc open={openDoc} handleClose={handleClose} />
 
               <Button
-                className="btn btn-info menuadmin"
+                className="btn btn-success menuadmin"
                 onClick={handleOpenTut}
               >
                 Nuevo Tutor

@@ -17,17 +17,20 @@ const Login = () => {
     setEmail(res.profileObj.email);
     setCookie('Name', res.profileObj.name, { path: '/' });
     setCookie('img', res.profileObj.imageUrl, { path: '/' });
+
     const response = await fetch("http://localhost:60671/api/usuario/loginGoogle?email=" + emailGoogle, {
       method: "POST",
       headers: { "Content-type": "application/json" },
       credentials: "include",
-    });
-    console.log(response);
-    if (response.status === 200) {
-      setRedirect(true);
-    }
-    if (response.status === 400)
-      alert("Datos erróneos")
+    }).then(res => {
+      if (!res.ok) throw new Error('Response is NOT ok')
+      return res.json()
+    }).then(res => {
+      cookie.set('nombrePersona', res.nombre)
+      const nombre = res.nombre.charAt(0) + res.apellido.charAt(0);
+      setCookie('avatar', nombre, { path: '/' });
+    });;
+    setRedirect(true);
   }
 
   const submit = async (e, rol) => {
@@ -46,7 +49,7 @@ const Login = () => {
         if (!res.ok) throw new Error('Response is NOT ok')
         return res.json()
       }).then(res => {
-        //nombrePersona.set('nombrePersona',res.nombre)
+        cookie.set('nombrePersona', res.nombre)
         const nombre = res.nombre.charAt(0) + res.apellido.charAt(0);
         setCookie('avatar', nombre, { path: '/' });
         setCookie('email', email, { path: '/' });
@@ -91,12 +94,11 @@ const Login = () => {
             className="w-100 mt-3" />
 
           <div className="text-center pt-2">
-            <a href="/recuperar_password" className="text-decoration-none">¿Olvidó su contraseña?</a>
           </div>
         </div>
       </Form>
     </div>
   );
 };
-
+//<a href="/recuperar_password" className="text-decoration-none">¿Olvidó su contraseña?</a>
 export default Login;

@@ -25,7 +25,6 @@ const VideoConference = () => {
 
         <div className="container-fluid mt-4">
           <div className="d-flex align-items-center mt-1">
-            <BotonVolver></BotonVolver>
             <h3 className="m-0 p-0"
               style={{
                 borderBottom: "2px solid #2d2f85", width: "100%", fontWeight: "bold", color: "#2d2f85"

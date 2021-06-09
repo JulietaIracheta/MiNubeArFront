@@ -121,7 +121,7 @@ const Instituciones = ({ classes, ...props }) => {
                 className="btn btn-danger menuadmin"
                 onClick={handleOpen}
               >
-                Nueva Institucion
+                Nueva Institución
               </Button>
               <ModalDialog open={open} handleClose={handleClose} />
               

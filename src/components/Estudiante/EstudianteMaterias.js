@@ -16,8 +16,7 @@ const baseUrl = "http://localhost:60671/api/"
 const EstudianteMaterias = (params) => {
   const cookie = new Cookies();
   const cookiesEmail = cookie.get('email');
-  const cookiesNombre = cookie.get('nombreEstudiante');
-
+  const nombre=cookie.get('nombrePersona');
   let listMaterias = [];
 
   const url = baseUrl + 'usuario/materias?email=' + cookiesEmail;
@@ -38,7 +37,7 @@ const EstudianteMaterias = (params) => {
             }).catch(error => {
                 console.log("getMateriasError: ");
                 console.log(error);
-            });          
+            });     
   }, [])
 
   if (loading) {
@@ -54,7 +53,7 @@ const EstudianteMaterias = (params) => {
 
   return (
     <Fragment>
-      <Encabezado nombre={cookiesNombre} />      
+      <Encabezado nombre={nombre} />      
       <Grid container spacing={3}>
         { loading ? (listMaterias) : "LOADING ..."}
       </Grid>      

@@ -13,11 +13,9 @@ export default function EstudiantesCurso () {
     return (
         
                <div className="row">
-                            
                         {estudiantes.map((est) => 
                         <div className="col-md-3 p-3">
                         <div className="card min-w card-docente">
-                           { console.log(est.idUsuarioNavigation.idPersonaNavigation)}
                             <div className="card-body row">
                                 <div className="col-md-6 col-sm-12">
                                     <PersonCircle className="rounded-circle w-100 h-100"/>

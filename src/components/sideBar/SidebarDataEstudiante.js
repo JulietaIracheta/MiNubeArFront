@@ -3,17 +3,13 @@ import React from 'react'
 
 export const SidebarDataEstudiante = [
     {
-        title: 'Menu', 
-        icon: <Business />
-    },
-    {
         title: 'Materias', 
         icon: <Business />,
-        link: "/materias"
-    },
-    {
+        link: "/rol"
+    }
+   /* {
         title: 'Calificaciones', 
         icon: <Group />,
         link: "/calificaciones"
-    }
+    }*/
 ] 

@@ -7,9 +7,9 @@ import '../../assets/css/docente/docente.css'
 import getContenidos from '../../services/contenido/getContenidos';
 import { Link } from "react-router-dom";
 import ModalDialogContenido from '../Contenido/ModalDialogContenido';
-import {SidebarDataDocente} from '../sideBar/SidebarDataDocente';
+import { SidebarDataDocente } from '../sideBar/SidebarDataDocente';
 
-export default function ContenidoPorMateria({...props}) {
+export default function ContenidoPorMateria({ ...props }) {
 
     const [contenidos, setContenidos] = useState([]);
     const [dialogContenido, setDialogContenido] = useState(false);
@@ -32,7 +32,6 @@ export default function ContenidoPorMateria({...props}) {
                 <div className="container-fluid mt-2 ">
                     <div className="d-flex align-items-center mt-1 w-100 justify-content-between">
                         <div className="w-100 d-flex justify-content-center">
-                            <BotonVolver ruta="/docente/estudiantesAsignados"></BotonVolver>
                             <h3 className="m-0 p-0 color-docente borde-docente">Matemáticas</h3>
                         </div>
                         <div className="w-50 d-flex justify-content-around">
@@ -42,24 +41,16 @@ export default function ContenidoPorMateria({...props}) {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="mt-4 col-md-4" style={{ height: "10rem" }}>
-                            <Contenido
-                                titulo={contenidos.titulo}
-                                descripcion={contenidos.descripcion}
-                            />
-                        </div>
-                        <div className="mt-4 col-md-4" style={{ height: "10rem" }}>
-                            <Contenido
-                                titulo={contenidos.titulo}
-                                descripcion={contenidos.descripcion}
-                            />
-                        </div>
-                        <div className="mt-4 col-md-4" style={{ height: "10rem" }}>
-                            <Contenido
-                                titulo={contenidos.titulo}
-                                descripcion={contenidos.descripcion}
-                            />
-                        </div>
+                        {contenidos?.map(contenido => {
+                            return <div className="mt-4 col-md-4" style={{ minHeight: "10rem" }}>
+                                <Contenido
+                                    titulo={contenido.titulo}
+                                    descripcion={contenido.descripcion}
+                                    video={contenido.video}
+                                />
+                            </div>
+                        })}
+
                     </div>
                 </div>
             </div>

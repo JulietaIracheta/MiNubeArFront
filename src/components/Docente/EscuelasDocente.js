@@ -13,16 +13,31 @@ const EscuelasDocente = () => {
   const [institucion, SetInstitucion] = useState([]);
   const [curso, SetCurso] = useState([]);
 
-  useEffect(
-    function () {
-      getId().then((id) =>
-        setId(id)
-      );
-    },
-    []
-  );
-
-  useEffect(
+  useEffect(async () => {
+    const result = await fetch('http://localhost:60671/api/docente/1', {
+      method: 'GET',
+      headers: { "Content-type": "application/json" },
+      credentials: "include",
+    }).then(function (response) {
+      return response.json();
+    })
+      .then(response => {
+        SetInstitucion(response);
+      });
+  }, [])
+  useEffect(async () => {
+    const result = await fetch('http://localhost:60671/api/docente/getCursos/1', {
+      method: 'GET',
+      headers: { "Content-type": "application/json" },
+      credentials: "include",
+    }).then(function (response) {
+      return response.json();
+    })
+      .then(response => {
+        SetCurso(response);
+      });
+  }, [])
+  /*useEffect(
     function () {
       console.log(id)
       getInstitucionDocente(id).then((institucion) =>
@@ -38,7 +53,7 @@ const EscuelasDocente = () => {
       );
     },
     [id]
-  );
+  );*/
   return (
     <div className="d-flex mt-1">
       <Sidebar data={SidebarDataDocente} />
@@ -47,8 +62,6 @@ const EscuelasDocente = () => {
           <h2 className="font-weight-bold colorDoc">Mis Escuelas</h2>
           <hr className="hr-colorDoc" />
         </div>
-
-
         {institucion.map((inst) => (
           <span>
             {curso.map((c) =>
