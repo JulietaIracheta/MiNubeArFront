@@ -56,9 +56,19 @@ export default {
             fetchById: id => axios.get(url + id),
             create: newRecord => axios.post(url, newRecord),
             update: (id, updateRecord) => axios.put(url + id, updateRecord),
-            delete: id => axios.delete(url + id)
+            delete: id => axios.delete(url + id),
         }
     },
+    institucionCurso(url = baseUrl + 'institucioncurso/') {
+        return {
+            fetchAll: () => axios.get(url),
+            fetchById: id => axios.get(url + id),
+            create: newRecord => axios.post(url, newRecord),
+            update: (id, updateRecord) => axios.put(url + id, updateRecord),
+            delete: id => axios.delete(url + id),
+        }
+    },
+
     materias(url = baseUrl + 'materias/') {
         return {
             fetchAll: () => axios.get(url),

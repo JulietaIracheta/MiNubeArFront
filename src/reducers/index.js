@@ -5,6 +5,7 @@ import {persona} from './persona';
 import {cursos} from './curso';
 import {materias} from './materia'
 import {evento} from './evento'
+import {institucionCurso} from './institucionCurso'
 
 export const reducers = combineReducers({
     usuario,
@@ -12,6 +13,7 @@ export const reducers = combineReducers({
     persona,
     cursos,
     materias,
-    evento
+    evento,
+    institucionCurso
     
 })

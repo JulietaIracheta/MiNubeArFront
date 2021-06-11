@@ -16,6 +16,10 @@ import Calendario from './components/Calendario/Calendario'
 import CalendarioEst from './components/CalendarioEst/Calendario/CalendarioEst'
 import Curso from './components/Registro/Curso';
 import Materia from './components/Registro/Materia';
+import CursoInstitucion from './components/Registro/CursoInstitucion';
+import Actividades from './components/Actividades/Actividades'
+import Whiteboard from './components/Pizarra/index';
+import ChatMiNube from './components/Chat/ChatMiNube'
 
 
 function App() {
@@ -28,11 +32,15 @@ function App() {
         <Route path='/usuarios' exact component={Usuario} />
         <Route path='/instituciones' exact component={Institucion} />     
         <Route path='/video' exact component={VideoConference} />   
-        <Route path='/rol' exact component={Rol} />     
+        <Route path='/rol' exact component={Rol} />  
+        <Route path='/chatHub' exact component={ChatMiNube} />     
         <Route path='/estudiante/:id' exact component={PerfilEstudiante}/>
+        <Route path='/actividades' exact component={Actividades}/>
+        <Route path='/pizarra' exact component={Whiteboard} />
         <Route path='/calendario' exact component={Calendario} />  
         <Route path='/calendarioestudiante' exact component={CalendarioEst} />     
         <Route path='/cursos/' exact component={Curso}/>
+        <Route path='/cursosInstitucion/' exact component={CursoInstitucion}/>
         <Route path='/materias/' exact component={Materia}/>
         <Route path='/curso/:inst/:curso/:idCurso' exact component={CursosAsignadosDocente}/>
         <Route path='/tutor/ActividadEstudiante' exact component={ActividadEstudiante}/>

@@ -30,7 +30,7 @@ const styles = (theme) => ({
 const initialFieldValues = {
   title: "",
   start: "",
-  url: "#"
+  url: "#",
 };
 
 const EventoForm = ({ handleClose, classes, ...props }) => {
@@ -40,10 +40,10 @@ const EventoForm = ({ handleClose, classes, ...props }) => {
   const validate = (fieldValues = values) => {
     let temp = { ...errors };
     if ("title" in fieldValues)
-      if ("start" in fieldValues)
-        setErrors({
-          ...temp,
-        });
+    if ("start" in fieldValues)
+    setErrors({
+      ...temp,
+    });
 
     if (fieldValues == values) return Object.values(temp).every((x) => x == "");
   };
@@ -60,20 +60,23 @@ const EventoForm = ({ handleClose, classes, ...props }) => {
   }, []);
 
   const reload = () => {
-    window.location.reload();
+    window.location.reload(true);
   }
 
-  const handleSubmit =  async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
       const onSuccess = () => {
         resetForm();
       };
-      props.createEvento(values, onSuccess);
-      handleClose();
-      await swal("Evento Registrado Correctamente!", '', "success");
-      reload();
-    }
+    props.createEvento(values, onSuccess);
+    handleClose();
+    swal("Evento Registrado Correctamente!",'' , "success");
+    reload();  
+  }
+
+    
+
   };
 
   useEffect(() => {
@@ -87,26 +90,25 @@ const EventoForm = ({ handleClose, classes, ...props }) => {
 
   return (
     <div>
-      <h6 className="mt-5 ml-5">Cree un evento </h6>
+      <h6 className="mt-5 ml-5">Crear un evento </h6>
       <form
         autoComplete="off"
         noValidate
         className={classes.root}
         onSubmit={handleSubmit}
       >
-        <Grid container>
+        <Grid container-fluid>
           <Grid item xs={12}>
-
+         
             <TextField
               name="title"
-              variant="outlined"
               label="Nombre Evento"
               value={values.title}
               onChange={handleInputChange}
               {...(errors.title && { error: true, helperText: errors.title })}
             />
           </Grid>
-
+          
           <Grid item xs={12}>
             <TextField
               name="start"
@@ -116,38 +118,38 @@ const EventoForm = ({ handleClose, classes, ...props }) => {
               onChange={handleInputChange}
               {...(errors.start && { error: true, helperText: errors.start })}
             /><Grid item xs={12}>
-              <TextField
-                name="url"
-                label="Url Clase en Vivo (Opcional)"
-                value={values.url}
-                onChange={handleInputChange}
-              />
-              <div>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  type="submit"
-                  className={classes.smMargin}
-                >
-                  Enviar
+            <TextField
+              name="url"
+              label="Url Clase en Vivo (Opcional)"
+              value={values.url}
+              onChange={handleInputChange}
+            />
+            <div>
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+                className={classes.smMargin}
+              >
+                Enviar
               </Button>
-                <Button
-                  variant="contained"
-                  className={classes.smMargin}
-                  onClick={resetForm}
-                >
-                  Reset
+              <Button
+                variant="contained"
+                className={classes.smMargin}
+                onClick={resetForm}
+              >
+                Reset
               </Button>
-                <Button
-                  variant="contained"
-                  className={classes.smMargin}
-                  onClick={handleClose}
-                >
-                  Salir
+              <Button
+                variant="contained"
+                className={classes.smMargin}
+                onClick={handleClose}
+              >
+                Salir
               </Button>
-              </div>
-            </Grid>
+            </div>
           </Grid>
+        </Grid>
         </Grid>
       </form>
     </div>

@@ -130,9 +130,9 @@ const onDelete = (id) => {
             dayMaxEvents={true}
        //     weekends={weekendsVisible}
             events={eventos} // alternatively, use the `events` setting to fetch from a feed
-     //       select={handleDateSelect}
+            select={handleDateSelect}
             eventContent={renderEventContent} // custom render function
-     //       eventClick={handleEventClick}
+            eventClick={handleEventClick}
             
             //eventsSet={handleEvents} // called after events are initialized/added/changed/removed
             /* you can update a remote database when these fire:
@@ -148,39 +148,26 @@ const onDelete = (id) => {
       </div>
       </div>
     )
-  /*
-  function  handleDateSelect (selectInfo) {
-    let title = prompt('Por favor Ingrese Evento')
-    let calendarApi = selectInfo.view.calendar
+  
+  function  handleDateSelect () {
+    handleOpen();
+    <ModalDialog open={open} handleClose={handleClose}/>
+  }
+  
 
-    calendarApi.unselect() // clear date selection
-
-    if (title) {
-      calendarApi.addEvent({
-        id: createEventId(),
-        title,
-        start: selectInfo.startStr,
-        end: selectInfo.endStr,
-        allDay: selectInfo.allDay
-      })
-    }
-  }*/
-
- /* function  handleEventClick (clickInfo) {
-    
-    console.log(clickInfo.event.extendedProps.idEvento)
-      
-      onDelete(clickInfo.event.extendedProps.idEvento)
-    
-  }*/
-
+ function  handleEventClick (clickInfo) {
+  
+      if(clickInfo.event.url == "#"){
+        onDelete(clickInfo.event.extendedProps.idEvento)}
+         
+ }
 }
-
 function renderEventContent(eventInfo) {
   return (
     <>
       <b>{eventInfo.timeText}</b>{" hs - "}
       <i>{eventInfo.event.title}</i>
+      
     </>
   )
 }

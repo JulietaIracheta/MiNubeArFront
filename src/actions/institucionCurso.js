@@ -8,7 +8,7 @@ export const ACTION_TYPES = {
 }
 
 export const fetchAll = () => dispatch => {
-    api.cursos().fetchAll()
+    api.institucionCurso().fetchAll()
         .then(response => {
             dispatch({
                 type: ACTION_TYPES.FETCH_ALL,
@@ -19,7 +19,7 @@ export const fetchAll = () => dispatch => {
 }
 
 export const create = (data, onSuccess) => dispatch => {
-    api.cursos().create(data)
+    api.institucionCurso().create(data)
         .then(res => {
             dispatch({
                 type: ACTION_TYPES.CREATE,
@@ -32,7 +32,7 @@ export const create = (data, onSuccess) => dispatch => {
 
 
 export const update = (id, data, onSuccess) => dispatch => {
-       api.cursos().update(id, data )
+       api.institucionCurso().update(id, data )
         .then(res => {
             dispatch({
                 type: ACTION_TYPES.UPDATE,
@@ -44,7 +44,7 @@ export const update = (id, data, onSuccess) => dispatch => {
 }
 
 export const Delete = (id, onSuccess) => dispatch => {
-    api.cursos().delete(id)
+    api.institucionCurso().delete(id)
         .then(res => {
             dispatch({
                 type: ACTION_TYPES.DELETE,
