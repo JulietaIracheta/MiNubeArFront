@@ -104,7 +104,7 @@ const Instituciones = ({ classes, ...props }) => {
 
   const onChange = (institucion) => {
     setDatos(institucion)
-    modalFadeState()
+    modalFadeState();
   }
 
   return (

@@ -5,12 +5,15 @@ import GoogleLogin from "react-google-login";
 import "../assets/css/css-login.css";
 import { Redirect } from "react-router";
 import { Cookies, useCookies } from "react-cookie";
+import RecuperarPassword from './RecuperarPassword'
 
 const Login = () => {
   const [cookies, setCookie] = useCookies(["usuario"]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
+  const [open, setOpen] = useState(false);
+
   const cookie = new Cookies();
   const responseGoogle = async (res) => {
     let emailGoogle = res.profileObj.email;
@@ -33,6 +36,16 @@ const Login = () => {
     setRedirect(true);
   }
 
+
+  const onChange = () => {
+    setOpen(!open)
+    console.log(open)
+  }
+  const handleClose = () => {
+    setOpen(false)
+  }
+
+
   const submit = async (e, rol) => {
     e.preventDefault();
 
@@ -53,12 +66,17 @@ const Login = () => {
         const nombre = res.nombre.charAt(0) + res.apellido.charAt(0);
         setCookie('avatar', nombre, { path: '/' });
         setCookie('email', email, { path: '/' });
+        window.localStorage.setItem('logged', true)
+        window.location.reload();
       });
+    if(window.localStorage.getItem('logged'))  
+    
     setRedirect(true);
+
   };
 
   if (redirect) {
-
+    
     return <Redirect to="/rol" />;
   }
 
@@ -94,9 +112,17 @@ const Login = () => {
             className="w-100 mt-3" />
 
           <div className="text-center pt-2">
+            <Button color="secondary" className="mt-4" size="sm" onClick = { () => onChange()}>Recuperar Password</Button>
           </div>
         </div>
+        <RecuperarPassword
+          open = {open}
+          handleClose={handleClose}
+        >
+        </RecuperarPassword>
+
       </Form>
+      
     </div>
   );
 };

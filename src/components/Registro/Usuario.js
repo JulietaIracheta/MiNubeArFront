@@ -202,8 +202,8 @@ const Usuarios = ({ classes, ...props }) => {
                               <MoreVert />
                             </DropdownToggle>
                             <DropdownMenu>                              
-                              <DropdownItem
-                                onClick={() => onDelete(record.idUsuario)}>                               
+                              <DropdownItem>
+                                                       
                              Editar
                               </DropdownItem>
                               <DropdownItem

@@ -1,6 +1,7 @@
 import './App.css';
+import {useState} from 'react'
 import Login from './components/Login';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import PerfilEstudiante from './components/Estudiante/PerfilEstudiante';
 import CursosAsignadosDocente from './components/Docente/CursosAsignadosDocente';
 import Rol from './components/Rol';
@@ -20,20 +21,27 @@ import CursoInstitucion from './components/Registro/CursoInstitucion';
 import Actividades from './components/Actividades/Actividades'
 import Whiteboard from './components/Pizarra/index';
 import ChatMiNube from './components/Chat/ChatMiNube'
+import recPassword from './components/recPassword';
 
 
 function App() {
+
+    const user = window.localStorage.getItem('logged')
   return (
+
     <Provider store={store}>
     <Router>
       <Switch>
       <Route path='/' exact component={Login} />
-        <Route path='/login' exact component={Login} />
+      {user === 'true' ? <Redirect from='/login' to='/rol'></Redirect>:    
+        <Route path='/login' exact component={Login} />}
         <Route path='/usuarios' exact component={Usuario} />
         <Route path='/instituciones' exact component={Institucion} />     
         <Route path='/video' exact component={VideoConference} />   
-        <Route path='/rol' exact component={Rol} />  
-        <Route path='/chatHub' exact component={ChatMiNube} />     
+        {user === 'false' ? <Redirect from='/rol' to='/login'></Redirect>:    
+        <Route path='/rol' exact component={Rol} />  }
+        <Route path='/chatHub' exact component={ChatMiNube} />
+        <Route path='/recuperarPassword' exact component={recPassword} />     
         <Route path='/estudiante/:id' exact component={PerfilEstudiante}/>
         <Route path='/actividades' exact component={Actividades}/>
         <Route path='/pizarra' exact component={Whiteboard} />
@@ -49,6 +57,7 @@ function App() {
       </Switch>
     </Router>
     </Provider>
+
   );
 }
 
