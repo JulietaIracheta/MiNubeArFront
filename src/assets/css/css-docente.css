@@ -74,10 +74,7 @@
 .bordes {
   border-radius: 5px;
   border: 3px solid #545251 !important;
-  width: 40%;
-  display: flex;
-  float: left;
-  margin-right: 15px;
+  
 }
 
 .react-calendar{

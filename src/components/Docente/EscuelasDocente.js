@@ -24,7 +24,7 @@ const EscuelasDocente = () => {
       .then(response => {
         SetInstitucion(response);
       });
-  }, [])
+  }, [])  
   useEffect(async () => {
     const result = await fetch('http://localhost:60671/api/docente/getCursos/1', {
       method: 'GET',
@@ -63,9 +63,9 @@ const EscuelasDocente = () => {
           <hr className="hr-colorDoc" />
         </div>
         {institucion.map((inst) => (
-          <span>
+          <div className="row">
             {curso.map((c) =>
-              <div>
+              <div className="col-md-6">
                 <div className="bordes mb-3">
                   <div className="card-body colorDoc font-weight-bold">
                     <h5 className="card-title font-weight-bold colorDoc">
@@ -83,7 +83,7 @@ const EscuelasDocente = () => {
                 </div>
               </div>
             )}
-          </span>
+          </div>
         ))}
       </div>
     </div>
