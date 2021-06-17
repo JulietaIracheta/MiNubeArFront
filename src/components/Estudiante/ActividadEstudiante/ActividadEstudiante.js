@@ -49,6 +49,9 @@ export default function ApexChart() {
                     <button onClick={()=>{insertarArchivos()}}>Insertar Archivos</button> */
     urlVideo = urlVideo + video.video;
     console.log(urlVideo);
+
+
+    
     return (
         <div>
             <NavTutor></NavTutor>
