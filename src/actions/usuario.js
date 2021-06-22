@@ -39,7 +39,7 @@ export const create = (data, onSuccess) => dispatch => {
         .catch(err => console.log(err))
 }
 
-export const update = (id, data, onSuccess) => dispatch => {
+export const update = (id, data) => dispatch => {
     data = formateData(data)
     api.usuario().update(id, data )
         .then(res => {
@@ -47,7 +47,7 @@ export const update = (id, data, onSuccess) => dispatch => {
                 type: ACTION_TYPES.UPDATE,
                 payload: { id, ...data }
             })
-            onSuccess()
+            // onSuccess()
         })
         .catch(err => console.log(err))
 }

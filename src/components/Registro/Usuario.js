@@ -28,6 +28,7 @@ import ModalDialogEst from "./ModalDialogEst";
 import ModalDialogTut from "./ModalDialogTut";
 import { MoreVert } from "@material-ui/icons";
 import Swal from 'sweetalert2';
+import DocenteModalEditar from "../Modificacion/DocenteModalEditar";
 
 const drawerWidth = 200;
 
@@ -69,6 +70,19 @@ const Usuarios = ({ classes, ...props }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [nombre, setNombre] = useState("");
   const open = Boolean(anchorEl);
+
+  const [openModalUpdateDocente, setOpenModalUpdateDocente] = useState(false);
+  const [datos, setDatos] = useState({
+    idPersona: '',
+    idUsuario: '',
+    nombre: '',
+    apellido: '',
+    email: '',
+    password: '',
+    telefono: '',
+    institucion: [],
+    rol: ''
+  });
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -132,6 +146,23 @@ const Usuarios = ({ classes, ...props }) => {
     })
 
   };
+
+  const modalFadeState = (rol) =>{
+    switch(rol){
+      case 'Docente':
+          setOpenModalUpdateDocente(!openModalUpdateDocente)
+        break;
+      default:
+        break;
+    }   
+  }
+    
+  const onChange = (record) => {
+    
+    console.log('Record: ' , record)
+    setDatos(record)
+    modalFadeState(record.rol)
+  }
 
   return (
     <Provider store={store}>
@@ -203,7 +234,8 @@ const Usuarios = ({ classes, ...props }) => {
                             </DropdownToggle>
                             <DropdownMenu>                              
                               <DropdownItem
-                                onClick={() => onDelete(record.idUsuario)}>                               
+                                // onClick={() => onDelete(record.idUsuario)} 
+                                onClick={() => onChange(record)}>                              
                              Editar
                               </DropdownItem>
                               <DropdownItem
@@ -222,6 +254,14 @@ const Usuarios = ({ classes, ...props }) => {
             </TableContainer>
           </div>
         </main>
+        {openModalUpdateDocente && 
+          <DocenteModalEditar
+            open = {openModalUpdateDocente}
+            datos = {datos}
+            modalFadeState = {modalFadeState}
+          >
+          </DocenteModalEditar>
+       }
       </div>
     </Provider>
   );

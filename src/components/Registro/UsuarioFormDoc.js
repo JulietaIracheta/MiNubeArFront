@@ -41,7 +41,7 @@ const initialFieldValues = {
   password: "",
   rol: "Docente",
   usuarioNombre : "",
-  idInstitucion: "0"
+  idInstitucion: []
 
 };
 
@@ -85,7 +85,7 @@ const UsuarioFormDoc = ({ handleClose, classes, ...props }) => {
       const onSuccess = () => {
         resetForm();
       };
-    props.createUsuario(values, onSuccess);
+      props.createUsuario(values, onSuccess);
     }
     handleClose();
     swal("Usuario Registrado Correctamente!",'' , "success");
@@ -169,12 +169,14 @@ const UsuarioFormDoc = ({ handleClose, classes, ...props }) => {
             />
                 <FormControl variant="outlined" className={classes.formControl}>
             <InputLabel id="demo-simple-select-outlined-label">Institución</InputLabel>
+
             <Select
               name="idInstitucion"
               id="demo-simple-select-outlined"
               value={values.idInstitucion}
               onChange={handleInputChange}
               label="Institucion"
+              multiple
             >
               {instituciones.map((institucion) => (
                 <MenuItem value={institucion.idInstitucion}>
