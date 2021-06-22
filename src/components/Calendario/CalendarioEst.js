@@ -1,15 +1,15 @@
 import React, {useState, useEffect} from 'react'
 import { connect } from "react-redux";
-import * as actions from "../../../actions/evento";
+import * as actions from "../../actions/evento";
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
-import NavEstudiante from '../../Estudiante/NavEstudiante'
-import Sidebar from '../../Sidebar'
-import {SidebarDataEstudiante} from '../../sideBar/SidebarDataEstudiante'
+import NavEstudiante from '../Estudiante/NavEstudiante'
+import Sidebar from '../Sidebar'
+import {SidebarDataEstudiante} from '../sideBar/SidebarDataEstudiante'
 import esLocale from '@fullcalendar/core/locales/es';
-import getEventos from '../../../services/docente/getEventos'
+import getEventos from '../../services/docente/getEventos'
 import {
   withStyles
 } from "@material-ui/core";

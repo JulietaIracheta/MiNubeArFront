@@ -21,12 +21,17 @@ const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
+ 
   const logout = async () => {
     await fetch('http://localhost:60671/api/usuario/logout', {
       method: 'POST',
       headers: { "Content-type": "application/json" },
       credentials: "include",
     });
+    window.localStorage.setItem('logged', false);
+    window.location.reload();
+    window.location.assign("/login")
+
   }
 
   return (
@@ -51,7 +56,7 @@ const NavBar = (props) => {
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>
-                  <Link to='/login' onClick={logout}>Logout</Link>
+                <Link className="color-negro text-decoration-none" onClick={logout}>Logout</Link> 
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>

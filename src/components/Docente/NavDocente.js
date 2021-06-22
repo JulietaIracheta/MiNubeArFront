@@ -32,6 +32,7 @@ const NavBar = (props) => {
     cookieNombreEstudiante.remove("nombrePersona");
     window.localStorage.setItem('logged', false);
     window.location.reload();
+    window.location.assign("/login")
 
   }
 

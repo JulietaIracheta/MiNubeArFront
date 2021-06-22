@@ -5,7 +5,7 @@ export const SidebarDataTutor = [
     {
         title: 'Estudiantes ', 
         icon: <Business />,
-        link: "tutor/estudiantesAsignados"
+        link: "/rol"
     },
     {
         title: 'Calificaciones', 

@@ -12,7 +12,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
-import { ChatLeftTextFill, Bell, PersonCircle } from "react-bootstrap-icons";
+import { Calendar2Event, Bell, PersonCircle } from "react-bootstrap-icons";
 import logo from '../../assets/img/logoGris.png'
 
 const NavBar = (props) => {
@@ -25,6 +25,9 @@ const NavBar = (props) => {
       headers: { "Content-type": "application/json" },
       credentials: "include",
     });
+    window.localStorage.setItem('logged', false);
+    window.location.reload();
+    window.location.assign("/login")
   }
 
   return (
@@ -41,11 +44,10 @@ const NavBar = (props) => {
             </Nav>
             <Nav navbar>
             <NavItem className="marginMN">
-              <ChatLeftTextFill className="icon-menu"/>
+            <Link to="/calendariotutor"> <Calendar2Event className="icon-menu color-negro" /></Link>
             </NavItem>
             <NavItem className="marginMN notif"> 
              <a href="/notificaciones"> <Bell className="icon-menu" /></a>
-              <span id="notificacion-numero" className="badge rounded-circle">2</span>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav>
@@ -53,7 +55,7 @@ const NavBar = (props) => {
             </DropdownToggle>
             <DropdownMenu right>
                 <DropdownItem>
-                <Link to='/login' onClick={logout}>Logout</Link> 
+                <Link onClick={logout}>Logout</Link> 
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>

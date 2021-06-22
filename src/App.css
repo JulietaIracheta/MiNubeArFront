@@ -249,6 +249,13 @@ color: white;
   color: white;
 }
 
+.card-materia-tutor{
+  border-color: #67a147 !important;
+  border-width: 2px !important;
+  border-style: solid !important;
+  border-radius: 5px !important;
+}
+
 .espacio{
   padding-bottom: 30%;
 }

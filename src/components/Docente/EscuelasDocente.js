@@ -2,14 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Gear } from "react-bootstrap-icons";
 import "../../assets/css/css-docente.css";
-import getInstitucionDocente from "../../services/estudiantes/getInstitucionDocente";
-import getCursoDocente from "../../services/estudiantes/getCursoDocente";
 import Sidebar from "../Sidebar";
 import { SidebarDataDocente } from '../sideBar/SidebarDataDocente';
-import getId from '../../services/docente/getId'
 
 const EscuelasDocente = () => {
-  const [id, setId] = useState(0);
   const [institucion, SetInstitucion] = useState([]);
   const [curso, SetCurso] = useState([]);
 
