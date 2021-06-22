@@ -32,7 +32,7 @@ const DocenteModalEditar = ({...props}) => {
         if( datos.idUsuario !== null && isValid ){
             // esto es por que si abro el modal y automaticamente pongo guardar, el valor de IdInstitucion es null
             datos.idInstitucion = datos.idInstitucion === null ? idInstitucionesDelDocente : datos.idInstitucion
-            props.updateUsuario(datos.idPersona, datos);
+            props.updateUsuario(datos.idUsuario, datos);
             props.modalFadeState('Docente')
         }
     }

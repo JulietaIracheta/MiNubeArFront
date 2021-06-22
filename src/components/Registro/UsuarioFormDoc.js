@@ -82,13 +82,19 @@ const UsuarioFormDoc = ({ handleClose, classes, ...props }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
-      const onSuccess = () => {
+      const onSuccess = (usuario) => {
+        if(usuario.email === "error"){
+          swal("Hubo un problema al querer dar de alta al docente, intente más tarde",'' , "error");
+        }else if(usuario.email !== ""){
+          swal("Docente Registrado Correctamente!",'' , "success");
+        }else{
+          swal("El Email Ingresado Ya Existe!",'' , "error");
+        }
         resetForm();
+        handleClose();
       };
       props.createUsuario(values, onSuccess);
     }
-    handleClose();
-    swal("Usuario Registrado Correctamente!",'' , "success");
   };
 
   useEffect(() => {

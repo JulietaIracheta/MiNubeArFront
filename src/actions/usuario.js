@@ -30,13 +30,18 @@ export const create = (data, onSuccess) => dispatch => {
     data = formateData(data)
     api.usuario().create(data)
         .then(res => {
-            dispatch({
-                type: ACTION_TYPES.CREATE,
-                payload: res.data
-            })
-            onSuccess()
+            if(res.data.email !== ""){
+                dispatch({
+                    type: ACTION_TYPES.CREATE,
+                    payload: res.data
+                })
+            }
+            onSuccess(res.data)
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.error(err)
+            onSuccess({"email":"error"})
+        })
 }
 
 export const update = (id, data) => dispatch => {
