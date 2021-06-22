@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Modal, ModalBody, FormGroup, Label, Input } from 'reactstrap';
 import { connect } from "react-redux";
+import swal from 'sweetalert';
 import * as actions from "../../actions/usuario";
 import getInstituciones from "../../services/estudiantes/getInstituciones";
 import {getInstitucionesDeUnDocente} from "../../services/estudiantes/getInstitucionDocente";
@@ -32,7 +33,14 @@ const DocenteModalEditar = ({...props}) => {
         if( datos.idUsuario !== null && isValid ){
             // esto es por que si abro el modal y automaticamente pongo guardar, el valor de IdInstitucion es null
             datos.idInstitucion = datos.idInstitucion === null ? idInstitucionesDelDocente : datos.idInstitucion
-            props.updateUsuario(datos.idUsuario, datos);
+            const onSuccess = (respuesta) => {
+                if(respuesta === null){
+                  swal("Hubo un problema al querer modificar al docente, intente más tarde",'' , "error");
+                }else if(respuesta.status === 204){
+                  swal("Docente Actualizado Correctamente!",'' , "success");
+                }
+            };
+            props.updateUsuario(datos.idUsuario, datos, onSuccess);
             props.modalFadeState('Docente')
         }
     }

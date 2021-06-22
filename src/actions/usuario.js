@@ -29,7 +29,7 @@ export const create = (data, onSuccess) => dispatch => {
 
     data = formateData(data)
     api.usuario().create(data)
-        .then(res => {
+        .then(res => { 
             if(res.data.email !== ""){
                 dispatch({
                     type: ACTION_TYPES.CREATE,
@@ -44,7 +44,7 @@ export const create = (data, onSuccess) => dispatch => {
         })
 }
 
-export const update = (id, data) => dispatch => {
+export const update = (id, data, onSuccess) => dispatch => {
     data = formateData(data)
     api.usuario().update(id, data )
         .then(res => {
@@ -52,9 +52,12 @@ export const update = (id, data) => dispatch => {
                 type: ACTION_TYPES.UPDATE,
                 payload: { id, ...data }
             })
-            // onSuccess()
+            onSuccess(res)
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.error(err)
+            onSuccess(null)
+        })
 }
 
 export const Delete = (id, onSuccess) => dispatch => {
