@@ -16,6 +16,7 @@ import Calendario from './components/Calendario/Calendario'
 import CalendarioEst from './components/CalendarioEst/Calendario/CalendarioEst'
 import Curso from './components/Registro/Curso';
 import Materia from './components/Registro/Materia';
+import EstudianteCalificaciones from './components/Tutor/EstudianteCalificaciones';
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
         <Route path='/curso/:inst/:curso/:idCurso' exact component={CursosAsignadosDocente}/>
         <Route path='/tutor/ActividadEstudiante' exact component={ActividadEstudiante}/>
         <Route path='/tutor/EstudiantesAsignados' exact component={EstudiantesTutor}/>
+        <Route path='/tutor/calificaciones' exact component={EstudianteCalificaciones}/>
         <Route path='/docente/:cursoId/:materiaId/contenido' exact component={contenidoPorMateria} />        
       </Switch>
     </Router>
