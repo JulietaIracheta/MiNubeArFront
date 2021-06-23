@@ -1,7 +1,8 @@
 
 const urlBase='http://localhost:60671/api/docente/';
 
-const URL = 'http://localhost:60671/api/docente/getInstitucionesDeUnDocente/'
+const URL_DOCENTE = 'http://localhost:60671/api/docente/getInstitucionesDeUnDocente/'
+
 
 export default async function getInstitucionDocente(id) {
     const url=urlBase+`${id}`
@@ -21,7 +22,7 @@ export default async function getInstitucionDocente(id) {
 
 
 export async function getInstitucionesDeUnDocente(id) {
-    const url=`${URL}${id}`
+    const url=`${URL_DOCENTE}${id}`
     return fetch(url, {
         method: 'GET',
         headers: { "Content-type": "application/json" },
@@ -34,3 +35,5 @@ export async function getInstitucionesDeUnDocente(id) {
         return instDoc
     });
 }
+
+

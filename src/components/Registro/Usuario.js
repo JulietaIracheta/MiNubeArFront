@@ -29,6 +29,7 @@ import ModalDialogTut from "./ModalDialogTut";
 import { MoreVert } from "@material-ui/icons";
 import Swal from 'sweetalert2';
 import DocenteModalEditar from "../Modificacion/DocenteModalEditar";
+import EstudianteModalEditar from "../Modificacion/EstudianteModalEditar";
 
 const drawerWidth = 200;
 
@@ -72,6 +73,7 @@ const Usuarios = ({ classes, ...props }) => {
   const open = Boolean(anchorEl);
 
   const [openModalUpdateDocente, setOpenModalUpdateDocente] = useState(false);
+  const [openModalUpdateEstudiante, setOpenModalUpdateEstudiante] = useState(false);
   const [datos, setDatos] = useState({
     idPersona: '',
     idUsuario: '',
@@ -152,13 +154,16 @@ const Usuarios = ({ classes, ...props }) => {
       case 'Docente':
           setOpenModalUpdateDocente(!openModalUpdateDocente)
         break;
+      case 'Estudiante':
+          console.log('modal estudiante')
+          setOpenModalUpdateEstudiante(!openModalUpdateEstudiante)
+        break;
       default:
         break;
     }   
   }
     
   const onChange = (record) => {
-    
     console.log('Record: ' , record)
     setDatos(record)
     modalFadeState(record.rol)
@@ -262,6 +267,14 @@ const Usuarios = ({ classes, ...props }) => {
           >
           </DocenteModalEditar>
        }
+      {openModalUpdateEstudiante && 
+          <EstudianteModalEditar
+            open = {openModalUpdateEstudiante}
+            datos = {datos}
+            modalFadeState = {modalFadeState}
+          >
+          </EstudianteModalEditar>
+       } 
       </div>
     </Provider>
   );
