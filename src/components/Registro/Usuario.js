@@ -27,6 +27,7 @@ import ModalDialogDoc from "./ModalDialogDoc";
 import ModalDialogEst from "./ModalDialogEst";
 import ModalDialogTut from "./ModalDialogTut";
 import { MoreVert } from "@material-ui/icons";
+import swal from 'sweetalert';
 import Swal from 'sweetalert2';
 import DocenteModalEditar from "../Modificacion/DocenteModalEditar";
 import EstudianteModalEditar from "../Modificacion/EstudianteModalEditar";
@@ -117,10 +118,6 @@ const Usuarios = ({ classes, ...props }) => {
     setOpenTut(false);
   };
 
- const reload = () => {
-    window.location.reload(true);
-}
-
   useEffect(() => {
     props.fetchAllUsuarios();
   }, []);
@@ -134,17 +131,21 @@ const Usuarios = ({ classes, ...props }) => {
       cancelButtonColor: '#d33',
       confirmButtonText: `Sí`,
     }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
-      if (result.isConfirmed) {
-        Swal.fire('Eliminado!', '', 'success')
-        props.deleteUsuario(id);
+
+      const onSuccess = (usuario) => {
+        if(usuario === null){
+          swal("Hubo un problema al querer Eliminar el usuario, intente más tarde",'' , "error");
+        }else{
+          swal("Usuario Eliminado Correctamente!",'' , "success");
+        }
         handleMenuClose();
-        
+      };
+      if (result.isConfirmed) {
+        props.deleteUsuario(id, onSuccess); 
       }else{
         handleMenuClose();
         return;
       }
-      reload();
     })
 
   };
@@ -164,7 +165,6 @@ const Usuarios = ({ classes, ...props }) => {
   }
     
   const onChange = (record) => {
-    console.log('Record: ' , record)
     setDatos(record)
     modalFadeState(record.rol)
   }

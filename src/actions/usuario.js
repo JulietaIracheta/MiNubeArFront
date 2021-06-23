@@ -67,8 +67,11 @@ export const Delete = (id, onSuccess) => dispatch => {
                 type: ACTION_TYPES.DELETE,
                 payload: id
             })
-           onSuccess()
+           onSuccess(res.data)
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log(err)
+            onSuccess(null)
+        })
     }
 

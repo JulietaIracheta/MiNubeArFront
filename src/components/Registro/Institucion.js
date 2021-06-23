@@ -26,6 +26,7 @@ import ModalDialog from "./ModalDialog";
 import { MoreVert } from "@material-ui/icons";
 import {SidebarData}   from '../SidebarData';
 import InstitucionModalEditar from "./InstitucionModalEditar";
+import { institucion } from "../../reducers/institucion";
 
 const drawerWidth = 200;
 
@@ -90,7 +91,7 @@ const Instituciones = ({ classes, ...props }) => {
 
   useEffect(() => {
     props.fetchAllInstituciones();
-  },[]); 
+  },[institucion]); 
 
   const onDelete = (id) => {
     if (window.confirm("Estas seguro de eliminarlo"))
@@ -157,7 +158,7 @@ const Instituciones = ({ classes, ...props }) => {
                                   Editar
                               </DropdownItem>
                                 <DropdownItem
-                                  onClick={() => onDelete(record.id)}
+                                  onClick={() => onDelete(record.idInstitucion)}
                                 >
                                   Eliminar
                               </DropdownItem>
