@@ -6,11 +6,11 @@ export const SidebarData = [
         title: 'Materias', 
         icon: <Business />,
         link: "/rol"
-    }
-    /*{
-        title: 'Calificaciones', 
+    },
+    {
+        title: 'Comunicados', 
         icon: <Group />,
-        link: "/#"
-    }*/
+        link: "estudiante/comunicado"
+    }
 
 ] 

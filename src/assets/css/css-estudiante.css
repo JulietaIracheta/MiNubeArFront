@@ -21,6 +21,7 @@
   border-width: 2px !important;
   border-style: solid !important;
   border-radius: 5px !important;
+  background: white !important;
 }
 
 .marginMN {
@@ -219,4 +220,8 @@
 }
 .containerReg{
   text-align: center;
+}
+
+.text-estudiante{
+  color: #B0211D !important;
 }

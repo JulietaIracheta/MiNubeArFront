@@ -12,7 +12,7 @@ import {
 } from "reactstrap";
 import Login from "./Login";
 import { ChatSquareQuoteFill, Bell, PersonCircle } from "react-bootstrap-icons";
-
+import Notificacion from "./Notificaciones/notificacion";
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -41,7 +41,8 @@ const NavBar = (props) => {
             </NavItem>
           </Nav>
         </Collapse>
-      </Navbar>
+      </Navbar> adss
+      <Notificacion/>
     </div>
   );
 };

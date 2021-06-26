@@ -25,7 +25,6 @@ export default function EstudiantesTutor() {
 
   return (
     <div>
-      <NavTutor></NavTutor>
       <div className="d-flex mt-1 borde-tutor">
         <Sidebar data={SidebarDataTutor}/>
         <div className="container mt-2">

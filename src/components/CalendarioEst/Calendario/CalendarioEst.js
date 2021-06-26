@@ -56,7 +56,7 @@ const CalendarioEst = ({ classes, ...props }) => {
   return (
       <div>
       <NavEstudiante />
-    <div className="d-flex mt-1">
+    <div className="d-flex">
       <Sidebar data={SidebarDataEstudiante}/>
       <main className={classes.content}>
           <div className={classes.toolbar} id="coco" />

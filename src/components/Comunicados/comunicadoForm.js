@@ -31,10 +31,11 @@ const styles = (theme) => ({
 const initialFieldValues = {
   idComunicado: 0,
   descripcion: "",
-  idUsuario: 0
+  idUsuario: 0,
+  idDocente: 0
 };
 
-const ComunicadoForm = ({ handleClose, classes,idCurso, ...props}) => {
+const ComunicadoForm = ({ handleClose, classes, idCurso, ...props }) => {
   const { addToast } = useToasts();
   const validate = (fieldValues = values) => {
     let temp = { ...errors };
@@ -53,12 +54,26 @@ const ComunicadoForm = ({ handleClose, classes,idCurso, ...props}) => {
   const inputLabel = React.useRef(0);
   const [labelWidth, setLabelWidth] = React.useState(0);
   const [estudiantes, setEstudiantes] = useState([]);
+  const [idDocente, setIdDocente] = useState(0);
   const [idUsuarioSelect, setIdUsuarioSelect] = useState([]);
+
 
   useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
-
+  useEffect(() => {
+    fetch("http://localhost:60671/api/docente/getId", {
+      method: 'GET',
+      headers: { "Content-type": "application/json" },
+      credentials: "include",
+    }).then(function (response) {
+      return response.json();
+    })
+      .then(function (data) {
+        var userid = JSON.parse(data);
+        setIdDocente(userid);
+      })
+  })
   useEffect(function () {
     getEstudiantesPorCurso(1).then((estudiantes) => setEstudiantes(estudiantes));
   }, []);
@@ -70,22 +85,33 @@ const ComunicadoForm = ({ handleClose, classes,idCurso, ...props}) => {
       const onSuccess = () => {
         resetForm();
         addToast("Registrado correctamente", { appearance: "success" });
-        props.fetchAllComunicado()
       };
-      values.idUsuario=idUsuarioSelect;
-      values.idCurso=idCurso;
+      values.idDocente = idDocente;
+      values.idUsuario = idUsuarioSelect;
+      values.idCurso = idCurso;
       props.createComunicado(values, onSuccess)
     }
     handleClose();
   };
-  const cambiaSelect=(e)=>{
+  useEffect(() => {
+    if (props.currentId != 0) {
+      setValues({
+        ...props.comunicadoList.find((x) => x.id == props.currentId),
+      });
+      setErrors({});
+    }
+  }, [props.currentId]);
+
+  const cambiaSelect = (e) => {
     let ids = Array.from(e, option => option.value);
     setIdUsuarioSelect(ids);
   }
   const options = [];
+
   estudiantes.map(e => {
     options.push({ value: e.idUsuario, label: e.nombre })
   });
+  
   return (
     <div style={{ minHeight: "15rem" }} className="d-flex w-100 align-items-center">
       <form
@@ -98,13 +124,15 @@ const ComunicadoForm = ({ handleClose, classes,idCurso, ...props}) => {
           <Grid item xs={12}>
             <div class="form-group p-3">
               <h5 className="color-docente font-weight-bold">Nuevo Comunicado</h5>
-              <label for="idUsuario">Si desea envíar a todos los estudiantes deje este campo vacío.</label>
-              <Select options={options} isMulti placeholder="Estudiantes" onChange={cambiaSelect}/>
+              <label htmlFor="idUsuario">Si desea envíar a todos los estudiantes deje este campo vacío.</label>
+              <Select options={options} 
+              isMulti placeholder="Estudiantes"
+               onChange={cambiaSelect} />
             </div>
           </Grid>
           <Grid item xs={12}>
             <div class="form-group p-3">
-              <label for="descripcion">Redacte su comunicado</label>
+              <label htmlFor="descripcion">Redacte su comunicado</label>
               <textarea class="form-control" value={values.descripcion}
                 id="descripcion" name="descripcion" rows="6" onChange={handleInputChange}
                 {...(errors.descripcion && { error: true, helperText: errors.descripcion })}></textarea>
@@ -118,7 +146,7 @@ const ComunicadoForm = ({ handleClose, classes,idCurso, ...props}) => {
               onClick={handleClose}
             >
               Cancelar
-                </button>
+            </button>
             <button
               variant="contained"
               color="primary"
@@ -126,7 +154,7 @@ const ComunicadoForm = ({ handleClose, classes,idCurso, ...props}) => {
               className="btn p-3 font-size-24"
             >
               Enviar
-                </button>
+            </button>
 
           </div>
         </Grid>
@@ -136,13 +164,13 @@ const ComunicadoForm = ({ handleClose, classes,idCurso, ...props}) => {
 };
 
 const mapStateToProps = (state) => ({
-  //contenidoList: state.contenido.list,
+  comunicadoList: state.comunicados.list,
 });
 
 const mapActionToProps = {
   createComunicado: actions.create,
   updateComunicado: actions.update,
-  fetchAllComunicado:actions.fetchAll,
+  fetchAllComunicado: actions.fetchAll,
 };
 
 export default connect(

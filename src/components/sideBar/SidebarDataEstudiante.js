@@ -6,10 +6,10 @@ export const SidebarDataEstudiante = [
         title: 'Materias', 
         icon: <Business />,
         link: "/rol"
-    }
-   /* {
-        title: 'Calificaciones', 
+    },
+    {
+        title: 'Comunicados', 
         icon: <Group />,
-        link: "/calificaciones"
-    }*/
+        link: "/estudiante/comunicado"
+    }
 ] 

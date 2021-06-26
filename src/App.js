@@ -21,6 +21,7 @@ import Actividades from './components/Actividades/Actividades'
 import Whiteboard from './components/Pizarra/index';
 import ChatMiNube from './components/Chat/ChatMiNube'
 import recPassword from './components/recPassword';
+import ComunicadosEstudiante from './components/Estudiante/ComunicadosEstudiante';
 
 
 function App() {
@@ -40,12 +41,12 @@ function App() {
         {user === 'false' ? <Redirect from='/rol' to='/login'></Redirect>:    
         <Route path='/rol' exact component={Rol} />  }
         <Route path='/chatHub' exact component={ChatMiNube} />
-        <Route path='/recuperarPassword' exact component={recPassword} />     
-        <Route path='/estudiante/:id' exact component={PerfilEstudiante}/>
+         <Route path='/recuperarPassword' exact component={recPassword} />     
+        <Route path='/perfilEstudiante/:id' exact component={PerfilEstudiante}/>
         <Route path='/actividades' exact component={Actividades}/>
         <Route path='/pizarra' exact component={Whiteboard} />
         <Route path='/calendario' exact component={Calendario} />  
-        <Route path='/calendarioestudiante' exact component={CalendarioEst} />     
+        <Route path='/estudiante/calendario' exact component={CalendarioEst} />     
         <Route path='/cursos/' exact component={Curso}/>
         <Route path='/cursosInstitucion/' exact component={CursoInstitucion}/>
         <Route path='/materias/' exact component={Materia}/>
@@ -53,6 +54,7 @@ function App() {
         <Route path='/tutor/ActividadEstudiante' exact component={ActividadEstudiante}/>
         <Route path='/tutor/EstudiantesAsignados' exact component={EstudiantesTutor}/>
         <Route path='/docente/:cursoId/:materiaId/contenido' exact component={contenidoPorMateria} />        
+        <Route path='/estudiante/comunicado' exact component={ComunicadosEstudiante} />       
       </Switch>
     </Router>
     </Provider>

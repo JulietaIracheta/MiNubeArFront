@@ -1,7 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-import Sidebar from "../Sidebar";
+import Sidebar from "../../Sidebar";
+import {SidebarDataEstudiante} from "../../sideBar/SidebarDataEstudiante";
+
 import NavEstudiante from "../NavEstudiante";
 import EstudianteMaterias from "../EstudianteMaterias";
 import { Route } from "react-router-dom";
@@ -29,7 +31,7 @@ function Estudiante() {
     <div>
       <NavEstudiante />
       <div className="flex">
-        <Sidebar />
+        <Sidebar data={SidebarDataEstudiante}/>
         <div className="content">
           <Route path="/" component={EstudianteMaterias} />
         </div>

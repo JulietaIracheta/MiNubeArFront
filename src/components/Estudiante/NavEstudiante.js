@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import {Link} from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
@@ -12,18 +12,22 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
-import { Calendar2Event, Bell, PersonCircle } from "react-bootstrap-icons";
+import { Calendar2Event, Bell } from "react-bootstrap-icons";
 import { Cookies, useCookies } from 'react-cookie';
 import logo from '../../assets/img/logoGris.png'
 import "../../assets/css/css-estudiante.css";
 import { Avatar } from "@material-ui/core";
+import CheckIcon from '@material-ui/icons/Check';
+import eliminarNotificacion from "../../services/notificaciones/eliminarNotificacion";
+
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [cookies, setCookie] = useCookies(['usuario']);
   const toggle = () => setIsOpen(!isOpen);
   const cookieNombreEstudiante = new Cookies();
-  const nombre=cookieNombreEstudiante.get('avatar');
+  const nombre = cookieNombreEstudiante.get('avatar');
+  const [notificaciones, setNotificaciones] = useState([]);
 
   const logout = async () => {
     await fetch('http://localhost:60671/api/usuario/logout', {
@@ -34,29 +38,79 @@ const NavBar = (props) => {
     cookieNombreEstudiante.remove("nombrePersona");
   }
 
+  useEffect(async function () {
+    const url = 'http://localhost:60671/api/notificacion/getByUsuario'
+    return await fetch(url, {
+      method: 'GET',
+      headers: { "Content-type": "application/json" },
+      credentials: "include",
+    }).then(res => {
+      if (!res.ok) throw new Error('Response is NOT ok')
+      return res.json()
+    }).then(res => {
+      setNotificaciones(res);
+    });
+  }, [])
+
+  const marcarComoLeido = (i, notificacion) => {
+    var array = [...notificaciones];
+    const id = notificacion.idNotificacion;
+    eliminarNotificacion(id).then(res => {
+      var index = array.indexOf(notificacion)
+      if (index !== -1) {
+        array.splice(index, 1);
+        setNotificaciones(array);
+      }
+    })
+  }
+
   return (
     <div>
       <Navbar className="menuNavBarEstudiante" expand="md">
-      <img src={logo} />
+        <img src={logo} />
         <NavbarBrand className="colorBrand" href="/rol">Mi Nube AR</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-            <Nav className="mr-auto"></Nav>
-            <Nav navbar>
+          <Nav className="mr-auto"></Nav>
+          <Nav navbar>
             <NavItem className="marginMN">
-            <Link to="/calendarioestudiante"> <Calendar2Event className="icon-menu color-negro" /></Link>
+              <Link to="/estudiante/calendario"> <Calendar2Event className="icon-menu color-negro" /></Link>
             </NavItem>
-            <NavItem className="marginMN notif"> 
-             <a href="#"> <Bell className="icon-menu" /></a>
-              <span id="notificacion-numero" className="badge rounded-circle">2</span>
+            <NavItem className="marginMN notif">
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav>
+                  <Bell className="icon-menu" />
+                  <span id="notificacion-numero" className="badge rounded-circle">{notificaciones.length}</span>
+                </DropdownToggle>
+                <DropdownMenu right style={{ width: "470px", padding: "25px", maxHeight: "350px", overflowY: "overlay" }}>
+
+                  {notificaciones.length ?
+                    notificaciones.map((notificacion, index) => {
+                      return <div key={index}>
+                        <Link to={"/estudiante/"+notificacion.urlTipoNotificacion} className="d-block text-decoration-none">
+                          <p className="text-estudiante font-weight-bold">{notificacion.descripcion}</p>
+                          <span>{notificacion.mensaje}</span>
+                        </Link>
+                        <div className="w-100 mt-4 d-flex justify-content-end text-dark" onClick={() => marcarComoLeido(index, notificacion)}>
+                          <u style={{ cursor: "pointer" }}>
+                            <span>Marcar como leído</span>
+                            <CheckIcon />
+                          </u>
+                        </div>
+                        <hr />
+                      </div>
+                    }) : "No hay notificaciones nuevas"}
+
+                </DropdownMenu>
+              </UncontrolledDropdown>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav>
-              <Avatar className="icon-perfil text-white" style={{background:"#B0211D"}}>{nombre}</Avatar>
-            </DropdownToggle>
-            <DropdownMenu right>
+                <Avatar className="icon-perfil text-white" style={{ background: "#B0211D" }}>{nombre}</Avatar>
+              </DropdownToggle>
+              <DropdownMenu right>
                 <DropdownItem>
-                <Link to='/login' className="color-negro text-decoration-none" onClick={logout}>Logout</Link> 
+                  <Link to='/login' className="color-negro text-decoration-none" onClick={logout}>Logout</Link>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>

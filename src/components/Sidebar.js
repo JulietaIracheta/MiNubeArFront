@@ -1,5 +1,4 @@
 import React from 'react';
-import { SidebarData } from './SidebarData';
 import ResponsiveMenu from 'react-responsive-navbar';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { Link } from 'react-router-dom';

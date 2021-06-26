@@ -34,15 +34,20 @@ export default {
     contenido(url = baseUrl + 'contenido/') {
         return {
             fetchById: id => axios.get(url + id),
-            fetchByMateriaId: id => axios.get(url + "getContenidoByMateria/"+id),
-            create: newRecord => axios.post(url+"cargarVideo", newRecord),
+            fetchByMateriaId: id => axios.get(url + "getContenidoByMateria/" + id),
+            create: newRecord => axios.post(url + "cargarVideo", newRecord),
             update: (id, updateRecord) => axios.put(url + id, updateRecord),
             delete: id => axios.delete(url + id)
         }
     },
     comunicado(url = baseUrl + 'comunicado/') {
         return {
-            fetchAll: id => axios.get(url + id),
+            fetchAll: () => axios.get(url + "getComunicados", { withCredentials: true }, {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'x-www-form-urlencoded',
+                }
+            }),
             fetchById: id => axios.get(url + id),
             create: newRecord => axios.post(url, newRecord),
             update: (id, updateRecord) => axios.put(url + id, updateRecord),

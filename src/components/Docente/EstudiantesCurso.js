@@ -22,7 +22,7 @@ export default function EstudiantesCurso () {
                                 </div>
                                 <div className="col-md-6 d-flex flex-column justify-content-around">
                                     <p className="font-weight-bold">{est.idUsuarioNavigation.idPersonaNavigation.nombre}, <br/>{est.idUsuarioNavigation.idPersonaNavigation.apellido}</p>
-                                    <Link to={`/estudiante/${id}`} className="text-decoration-none btn btn-outline-dark btn-sm x">Ver Perfil</Link>
+                                    <Link to={`/perfilEstudiante/${id}`} className="text-decoration-none btn btn-outline-dark btn-sm x">Ver Perfil</Link>
                                 </div>
                             </div>
                         </div>
