@@ -6,14 +6,42 @@
 @media only screen and (max-width: 800px) {
   .marginMN {
     margin-left: 0px !important;
+   
+  }
+  ul.navbar-nav{
+    flex-direction: row !important;
+    justify-content: space-between;
   }
   }
 .marginMN {
   margin-left: 15px;
 }
-@media only screen and (max-width: 800px) {
+.notificaciones-modal{
+  width: 470px;
+  max-height: 350px;
+  overflow-y: overlay;
+}
+.notificaciones-modal div{
+  padding:20px;
+}
+.row.d-flex.flex-direction-column.w-100.pl-1.pr-1.justify-content-between.sidebar-responsive{
+  display: none !important;
+}
+@media only screen and (max-width: 480px) {
+  .row.d-flex.flex-direction-column.w-100.pl-1.pr-1.justify-content-between.sidebar-responsive{
+    display: flex !important;
+  } 
+  .notificaciones-modal{
+    width: 22rem;
+    max-height: 350px;
+    overflow-y: overlay;
+  }
+  .notificaciones-modal div{
+    padding:20px;
+  }
   .icon-menu {
-    width: 20px !important;
+    width: 3rem !important;
+    height: 3rem !important;
     margin-right: 5px !important;
 }
 }
@@ -31,9 +59,13 @@
 }
 @media only screen and (max-width: 800px) {
   .icon-perfil {
-    width: 20px !important;
+    width: 3rem !important;
+    height: 3rem !important;
     margin-right: 5px !important;
   }
+  .row.d-flex.flex-direction-column.w-100.pl-1.pr-1.justify-content-between.sidebar-responsive{
+    display: flex !important;
+  } 
 }
 .icon-perfil {
   width: 40px;

@@ -76,7 +76,10 @@ const EscuelasDocente = () => {
                     </h5>
                     <div className="text-left">
                       <div class="d-flex flex-row-reverse">
-                        <Link to={`/curso/${inst.nombre}/${c.nombre}/${c.idCurso}`}><Gear /></Link>
+                        <Link to={`/curso/${inst.nombre}/${c.nombre}/${c.idCurso}`} 
+                        className="link-escuela-docente-responsive">
+                          <Gear className="icono-escuela-docente-responsive"/>
+                        </Link>
                       </div>
                     </div>
                   </div>

@@ -19,7 +19,7 @@ import "../../assets/css/css-estudiante.css";
 import { Avatar } from "@material-ui/core";
 import CheckIcon from '@material-ui/icons/Check';
 import eliminarNotificacion from "../../services/notificaciones/eliminarNotificacion";
-
+import { Business, Group } from '@material-ui/icons'
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -66,7 +66,7 @@ const NavBar = (props) => {
 
   return (
     <div>
-      <Navbar className="menuNavBarEstudiante" expand="md">
+      <Navbar className="menuNavBarEstudiante" expand="md" light>
         <img src={logo} />
         <NavbarBrand className="colorBrand" href="/rol">Mi Nube AR</NavbarBrand>
         <NavbarToggler onClick={toggle} />
@@ -77,13 +77,12 @@ const NavBar = (props) => {
               <Link to="/estudiante/calendario"> <Calendar2Event className="icon-menu color-negro" /></Link>
             </NavItem>
             <NavItem className="marginMN notif">
-              <UncontrolledDropdown nav inNavbar>
+              <UncontrolledDropdown nav>
                 <DropdownToggle nav>
                   <Bell className="icon-menu" />
                   <span id="notificacion-numero" className="badge rounded-circle">{notificaciones.length}</span>
                 </DropdownToggle>
-                <DropdownMenu right style={{ width: "470px", padding: "25px", maxHeight: "350px", overflowY: "overlay" }}>
-
+                <DropdownMenu right className="notificaciones-modal">
                   {notificaciones.length ?
                     notificaciones.map((notificacion, index) => {
                       return <div key={index}>
@@ -100,11 +99,10 @@ const NavBar = (props) => {
                         <hr />
                       </div>
                     }) : "No hay notificaciones nuevas"}
-
                 </DropdownMenu>
               </UncontrolledDropdown>
             </NavItem>
-            <UncontrolledDropdown nav inNavbar>
+            <UncontrolledDropdown nav >
               <DropdownToggle nav>
                 <Avatar className="icon-perfil text-white" style={{ background: "#B0211D" }}>{nombre}</Avatar>
               </DropdownToggle>
@@ -115,6 +113,20 @@ const NavBar = (props) => {
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
+          <div className="row d-flex flex-direction-column w-100 pl-1 pr-1 justify-content-between sidebar-responsive">
+            <div className="marginMN text-decoration-none mt-2">
+              <Link to="/rol"> 
+                <Business className="color-negro" 
+                  style={{height:"3rem",width:"3rem"}}/>
+                </Link>
+            </div>
+            <div className="marginMN">
+              <Link to="/estudiante/comunicado"> 
+                <Group className="icon-menu color-negro" 
+                  style={{height:"3rem",width:"3rem"}}/>
+                </Link>
+            </div>
+            </div>
         </Collapse>
       </Navbar>
     </div>

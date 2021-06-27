@@ -1,0 +1,27 @@
+.contenido-acciones-responsive{
+    width: 60% !important;
+}
+@media only screen and (max-width: 800px) {
+    .contenido-container-accion-responsive{
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+    .contenido-acciones-responsive{
+        margin-top: 1.5rem!important;
+        width: 100%!important;
+        gap: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between !important;
+    }
+    .mt-4.col-md-4.card-contenido-responsive>.MuiPaper-root.MuiCard-root.makeStyles-root-1.MuiPaper-elevation1.MuiPaper-rounded{
+        max-width: 100% !important;
+    }
+    .btn-accion-crear-salir-responsive{
+        width: 100%;  
+        justify-content: center;
+    }
+    .btn-accion-crear-salir-responsive>button{
+        width: 50%;
+    }
+}

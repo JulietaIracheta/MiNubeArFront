@@ -67,7 +67,7 @@ const Comunicado = ({ idCurso, ...props }) => {
               return <div key={index}>
                 {Array.isArray(c) ?
                   c.map((com, index) => {
-                    return <div key={index}>
+                    return <div key={index} >
                       <div className="d-flex flex-column mt-3" style={{ borderBottom: "1px solid #707070" }}>
                         <span style={{ fontSize: "14px", color: "#2d2f85" }} className="font-weight-bold">Para:
                           {com.nombreApellidoEstudiante}

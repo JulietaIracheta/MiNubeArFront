@@ -46,17 +46,17 @@ const VideoConference = () => {
             </div>
           ): (
               <div className="container">
-                <div className="form-row mt-5">
-                  <div className="col-3">
+                <div className="form-row mt-5 formulario-clase-vivo-responsive">
+                  <div className="col">
                     <input id='room' className="form-control" type='text' placeholder='Room' value={room} onChange={(e) => setRoom(e.target.value)} />
                   </div>
-                  <div className="col-3">
+                  <div className="col">
                     <input id='name' className="form-control" type='text' placeholder='Nombre' value={name} onChange={(e) => setName(e.target.value)} />
                   </div>
-                  <div className="col-3">
+                  <div className="col">
                     <input id='password' className="form-control" type='text' placeholder='Password (opcional)' value={password} onChange={(e) => setPassword(e.target.value)} />
                   </div>
-                  <div className="col-3">
+                  <div className="col">
 
                     <button onClick={handleClick} type='submit' className="btn btn-primary">
                       Empezar / Unirte

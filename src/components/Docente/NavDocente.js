@@ -17,6 +17,7 @@ import '../../assets/nav.css';
 import logo from '../../assets/img/logoGris.png'
 import { Avatar } from "@material-ui/core";
 import { Cookies, useCookies } from 'react-cookie';
+import { Business } from "@material-ui/icons";
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
@@ -36,7 +37,7 @@ const NavBar = (props) => {
   }
 
   return (
-    <div >
+    <div>
       <Navbar className="menuNavBarDocente" expand="md" light>
         <img src={logo} />
         <NavbarBrand className="colorBrand navbar-brand" href="/rol">MI NUBE AR</NavbarBrand>
@@ -52,20 +53,29 @@ const NavBar = (props) => {
               <Link to="/calendario"> <Calendar2Event className="icon-menu color-negro" /></Link>
             </NavItem>
             <NavItem className="marginMN notif">
-              <Link to="#"> <Bell className="icon-menu color-negro" /></Link>
-
+              <Link to="#">
+                <Bell className="icon-menu color-negro" />
+              </Link>
             </NavItem>
-            <UncontrolledDropdown nav inNavbar>
+            <UncontrolledDropdown nav >
               <DropdownToggle nav>
                 <Avatar className="icon-perfil text-white" style={{background:"#212888"}}>{cookies.avatar}</Avatar>
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>
-                  <Link  className="color-negro text-decoration-none" onClick={logout}>Logout</Link>
+                  <Link className="color-negro text-decoration-none" onClick={logout}>Logout</Link>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
+          <div className="row d-flex flex-direction-column w-100 pl-1 pr-1 justify-content-between sidebar-responsive">
+            <div className="marginMN text-decoration-none mt-2">
+              <Link to="/rol"> 
+                <Business className="color-negro" 
+                  style={{height:"3rem",width:"3rem"}}/>
+                </Link>
+            </div>
+          </div>
         </Collapse>
       </Navbar>
     </div>

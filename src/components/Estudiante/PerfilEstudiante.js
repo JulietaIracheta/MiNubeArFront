@@ -28,8 +28,8 @@ export default function PerfilEstudiante({ match }) {
                     </h4>
                     <hr className="hr-docente" />
                     <div className="row mt-4">
-                        <div className="col-md-2 ">
-                            <PersonCircle className="w-100 icon-perfil" />
+                        <div className="col-md-2 container-icono-perfil-responsive">
+                            <PersonCircle className="w-100 icon-perfil icono-perfil-responsive" />
                         </div>
                         <div className="col-md-10">
                             <div className="card min-w card-docente">
@@ -55,7 +55,7 @@ export default function PerfilEstudiante({ match }) {
                             </div>
                         </div>
                     </div>
-                    <div className="mt-4 d-flex w-100 evenly">
+                    <div className="mt-4 mb-5 d-flex w-100 evenly">
                         <div className="col-md-12 card-docente">
                             <div className="d-flex mt-2 px-2 pt-2 w-100 justify-content-between align-items-center">
                                 <p className="titulo-docente m-0">Informes</p>

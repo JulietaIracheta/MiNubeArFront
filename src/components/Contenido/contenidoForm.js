@@ -147,7 +147,7 @@ const ContenidoForm = ({ handleClose, classes, ...props }) => {
                 />
             </div>
           </Grid>
-          <div className="w-100 d-flex justify-content-center p-3">
+          <div className="w-100 d-flex justify-content-center p-3 btn-accion-crear-salir-responsive">
             <button
               variant="contained"
               color="primary"

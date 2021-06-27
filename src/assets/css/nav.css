@@ -1,3 +1,27 @@
 .avatar-logo{
     height: 2.6rem;
 } 
+.navbar-nav{
+background: red  !important;
+}
+.txt{
+    display: block;
+    background: red !important;
+}
+@media only screen and (max-width: 800px){
+    .nav-responsive{
+      flex-direction: row !important;
+      width: 100%;
+      justify-content: space-between;
+      background: red !important;
+
+    }
+    .icono-menu-container{
+        width: 3rem !important;
+        height: 3rem!important;
+    }
+    svg.icono-menu-item {
+        width: 3rem !important;
+        height: 3rem !important;
+    }
+}

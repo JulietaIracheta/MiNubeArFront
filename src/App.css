@@ -29,6 +29,14 @@ body{
   float: right !important;
   flex-direction: row !important;
   }
+  .formulario-clase-vivo-responsive{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    gap: 2rem
+  }
 }
 .navBarBrand{
   color: white;
