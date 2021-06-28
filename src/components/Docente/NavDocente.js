@@ -18,6 +18,8 @@ import logo from '../../assets/img/logoGris.png'
 import { Avatar } from "@material-ui/core";
 import { Cookies, useCookies } from 'react-cookie';
 import { Business } from "@material-ui/icons";
+import ChatIcon from '@material-ui/icons/Chat';
+
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
@@ -69,6 +71,12 @@ const NavBar = (props) => {
             </UncontrolledDropdown>
           </Nav>
           <div className="row d-flex flex-direction-column w-100 pl-1 pr-1 justify-content-between sidebar-responsive">
+          <div className="marginMN text-decoration-none mt-2">
+              <Link to="/docente/chat"> 
+                <ChatIcon className="color-negro" 
+                  style={{height:"3rem",width:"3rem"}}/>
+                </Link>
+            </div>
             <div className="marginMN text-decoration-none mt-2">
               <Link to="/rol"> 
                 <Business className="color-negro" 

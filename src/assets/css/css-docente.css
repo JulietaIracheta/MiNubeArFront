@@ -80,11 +80,4 @@
 .react-calendar{
   width: 100% !important;
 }
-@media only screen and (max-width: 800px){
-  .ul.navbar-nav{
-    color: red !important;
-  }
-  body{
-    background: red;
-  }
-}
+ 

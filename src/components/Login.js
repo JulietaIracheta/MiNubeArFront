@@ -62,7 +62,8 @@ const Login = () => {
         if (!res.ok) throw new Error('Response is NOT ok')
         return res.json()
       }).then(res => {
-        cookie.set('nombrePersona', res.nombre)
+        cookie.set('nombrePersona', res.nombre);
+        cookie.set('apellidoPersona', res.apellido);
         const nombre = res.nombre.charAt(0) + res.apellido.charAt(0);
         setCookie('avatar', nombre, { path: '/' });
         setCookie('email', email, { path: '/' });

@@ -20,6 +20,7 @@ import { Avatar } from "@material-ui/core";
 import CheckIcon from '@material-ui/icons/Check';
 import eliminarNotificacion from "../../services/notificaciones/eliminarNotificacion";
 import { Business, Group } from '@material-ui/icons'
+import ChatIcon from '@material-ui/icons/Chat';
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -114,15 +115,21 @@ const NavBar = (props) => {
             </UncontrolledDropdown>
           </Nav>
           <div className="row d-flex flex-direction-column w-100 pl-1 pr-1 justify-content-between sidebar-responsive">
-            <div className="marginMN text-decoration-none mt-2">
-              <Link to="/rol"> 
-                <Business className="color-negro" 
+          <div className="marginMN">
+              <Link to="/estudiante/chat"> 
+                <ChatIcon className="icon-menu color-negro" 
                   style={{height:"3rem",width:"3rem"}}/>
                 </Link>
             </div>
             <div className="marginMN">
               <Link to="/estudiante/comunicado"> 
                 <Group className="icon-menu color-negro" 
+                  style={{height:"3rem",width:"3rem"}}/>
+                </Link>
+            </div>
+            <div className="marginMN text-decoration-none mt-2">
+              <Link to="/rol"> 
+                <Business className="color-negro" 
                   style={{height:"3rem",width:"3rem"}}/>
                 </Link>
             </div>

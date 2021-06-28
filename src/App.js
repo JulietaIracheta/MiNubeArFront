@@ -22,6 +22,8 @@ import Whiteboard from './components/Pizarra/index';
 import ChatMiNube from './components/Chat/ChatMiNube'
 import recPassword from './components/recPassword';
 import ComunicadosEstudiante from './components/Estudiante/ComunicadosEstudiante';
+import chatNotificacion from './components/Notificaciones/chatnotificacion';
+import chatnotificacionDocente from './components/Notificaciones/chatnotificacionDocente';
 
 
 function App() {
@@ -55,6 +57,9 @@ function App() {
         <Route path='/tutor/EstudiantesAsignados' exact component={EstudiantesTutor}/>
         <Route path='/docente/:cursoId/:materiaId/contenido' exact component={contenidoPorMateria} />        
         <Route path='/estudiante/comunicado' exact component={ComunicadosEstudiante} />       
+        <Route path='/estudiante/chat' exact component={chatNotificacion} />       
+        <Route path='/docente/chat' exact component={chatnotificacionDocente} />       
+      
       </Switch>
     </Router>
     </Provider>
