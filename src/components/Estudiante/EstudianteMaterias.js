@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Fragment } from "react";
 //import {store} from '../../actions/store'
-import { Cookies } from 'react-cookie';
-import axios from "axios";
 
 import MateriasMocks from "./MateriasMocks";
 import Encabezado from "./Encabezado.js";
@@ -14,36 +12,39 @@ import { Grid } from "@material-ui/core";
 const baseUrl = "http://localhost:60671/api/"
 
 const EstudianteMaterias = () => {
-
-  const cookie = new Cookies();
-  const cookiesEmail = cookie.get('email');
+  
   let listMaterias = [];
 
-  const url = baseUrl + 'usuario/materias?email=' + cookiesEmail;
+  const url = baseUrl + 'estudiante/materias';
 
   const [materias, setMaterias] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);        
 
-  useEffect( () => {
-     const result = axios.get(url)
-            .then(response => {
-                // handle success
-                console.log("getMaterias: ");
-                console.log(response);                                              
-                
-                setMaterias(response.data);
-                setLoading(true);
+useEffect(() => {
+  (async () => {
+    const response = await fetch(url, {
+      headers: { "Content-type": "application/json" },
+      credentials: "include",
+    });
 
-            }).catch(error => {
-                console.log("getMateriasError: ");
-                console.log(error);
-            });          
-  }, [])
+    const content = await response.json();  
+    
+    console.log( content );
+
+    setMaterias(content);
+    setLoading(true);
+})();
+},[]);
 
   if (loading) {
     try {
-      listMaterias = materias.map((materia, key) => (
-        <CardMateria nombre={materia.nombre} icon={materia.icon} key={key}/>
+      listMaterias = materias.map((materia) => (
+        <CardMateria 
+                nombre={materia.nombre} 
+                icon={materia.icon}
+                idMateria={materia.idMateria}      
+                key={materia.idMateria}
+        />
       ));
     } catch (error) {
       console.log(error)
@@ -53,7 +54,7 @@ const EstudianteMaterias = () => {
 
   return (
     <Fragment>
-      <Encabezado nombre="Maria" />      
+      <Encabezado texto="Bienvenido" />      
       <Grid container spacing={3}>
         { loading ? (listMaterias) : "LOADING ..."}
       </Grid>      

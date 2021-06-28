@@ -57,7 +57,6 @@ const Login = () => {
       return res.json()
   }).then(res => {
       console.log("login: "+ email);
-      setCookie('email', email, { path: '/' });
     });
     setRedirect(true);
   };

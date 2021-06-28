@@ -1,12 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { Route, Switch } from "react-router-dom";
 
 import Sidebar from "../Sidebar";
 import NavEstudiante from "../NavEstudiante";
 import EstudianteMaterias from "../EstudianteMaterias";
-import { Route } from "react-router-dom";
+import MateriasUnidades from "../MateriasUnidades";
 
-function Estudiante() {
+export default function Estudiante() {
   const [nombre, setNombre] = useState("");
   const [rol, setRol] = useState("");
   useEffect(() => {
@@ -24,7 +25,7 @@ function Estudiante() {
       //console.log(content);
       setNombre(content.nombre);
     })();
-  });
+  }, []);
 
   return (
     <div>
@@ -32,10 +33,9 @@ function Estudiante() {
       <div className="flex">
         <Sidebar />
         <div className="content">
-          <Route path="/" component={EstudianteMaterias} />
+          <EstudianteMaterias />
         </div>
       </div>
     </div>
   );
 }
-export default Estudiante;
