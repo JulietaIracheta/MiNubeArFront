@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import PerfilEstudiante from './components/Estudiante/PerfilEstudiante';
 import CursosAsignadosDocente from './components/Docente/CursosAsignadosDocente';
 import Rol from './components/Rol';
-import ActividadEstudiante from './components/Estudiante/ActividadEstudiante/ActividadEstudiante';
+import ActividadEstudiante from './components/Tutor/ActividadEstudiante/ActividadEstudiante';
 import Usuario from './components/Registro/Usuario';
 import Institucion from './components/Registro/Institucion';
 import { Provider } from 'react-redux'
@@ -27,29 +27,33 @@ import CalendarioTut from './components/Calendario/CalendarioTut';
 import Unidad1CienciasSociales from './components/Tutor/Contenido/unidad1-CienciasSociales';
 import CrearActividad from './components/Actividades/crearActividad';
 import Calificaciones from './components/Estudiante/Calificaciones';
-
+import UnidadPorMateria from './components/Docente/UnidadPorMateria';
+import Chat from './components/Chat2/Chat'
+import CargarCalificaciones from './components/Docente/CargarCalificaciones';
+import CalificacionesTutor from './components/Tutor/CalificacionesTutor';
+import AsignarMateriasACurso from './components/Registro/AsignarMateriasACurso';
+import AsignarCursosAInstituciones from './components/Registro/AsignarCursoAInstitucion';
 
 function App() {
 
-    const user = window.localStorage.getItem('logged')
   return (
 
     <Provider store={store}>
     <Router>
       <Switch>
-      <Route path='/' exact component={Login} />
-      {user === 'true' ? <Redirect from='/login' to='/rol'></Redirect>:    
-        <Route path='/login' exact component={Login} />}
+        <Route path='/' exact component={Login} />
+        <Route path='/login' exact component={Login} />
         <Route path='/usuarios' exact component={Usuario} />
         <Route path='/instituciones' exact component={Institucion} />     
         <Route path='/video' exact component={VideoConference} />   
-        {user === 'false' || user === null  ? <Redirect from='/rol' to='/login'></Redirect>:    
-        <Route path='/rol' exact component={Rol} />  }
+        <Route path='/rol' exact component={Rol} /> 
+        <Route path='/chat' exact component={Chat} />
         <Route path='/chatHub' exact component={ChatMiNube} />
         <Route path='/calificaciones' exact component={Calificaciones} />
+        <Route path='/calificacionesTutor' exact component={CalificacionesTutor} />
         <Route path='/recuperarPassword' exact component={recPassword} />     
         <Route path='/estudiante/:id' exact component={PerfilEstudiante}/>
-        <Route path='/actividades' exact component={Actividades}/>
+        <Route path='/actividades/:idActividad' exact component={Actividades}/>
         <Route path='/crearactividades' exact component={CrearActividad}/>
         <Route path='/pizarra' exact component={Whiteboard} />
         <Route path='/calendario' exact component={Calendario} />  
@@ -61,10 +65,14 @@ function App() {
         <Route path='/cursos/' exact component={Curso}/>
         <Route path='/cursosInstitucion/' exact component={CursoInstitucion}/>
         <Route path='/materias/' exact component={Materia}/>
+        <Route path='/asignarMaterias/' exact component={AsignarMateriasACurso}/>
+        <Route path='/asignarCursos/' exact component={AsignarCursosAInstituciones}/>
         <Route path='/curso/:inst/:curso/:idCurso' exact component={CursosAsignadosDocente}/>
-        <Route path='/tutor/ActividadEstudiante' exact component={ActividadEstudiante}/>
-        <Route path='/tutor/EstudiantesAsignados' exact component={EstudiantesTutor}/>
-        <Route path='/docente/:cursoId/:materiaId/contenido' exact component={contenidoPorMateria} />        
+        <Route path='/tutor/ActividadEstudiante/:nombre/:id' exact component={ActividadEstudiante}/>
+        <Route path='/tutor/estudiantesasignados' exact component={EstudiantesTutor}/>
+        <Route path='/docente/:cursoId/:materiaId/contenido' exact component={contenidoPorMateria} /> 
+        <Route path='/docente/cargarCalificaciones' exact component={CargarCalificaciones} />
+        <Route path="/unidad/:cursoId/:materiaId" exact component={UnidadPorMateria} />       
       </Switch>
     </Router>
     </Provider>

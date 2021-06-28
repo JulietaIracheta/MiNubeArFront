@@ -9,7 +9,9 @@ import axios from 'axios';
 import {SidebarDataTutor} from '../../sideBar/SidebarDataTutor';
 
 export default function ApexChart() {
-    const chart = Chart({ series: 56 });
+    const [serie, setSerie] = useState(0);
+    const chartAct = Chart({ series : parseInt(serie) });
+    const chartCont = Chart({ series : 68 });
     const [video, setVideo] = useState([]);
     const urlBase = 'http://localhost:60671/api/contenido/?id=3'
     const [videoFilePath, setVideoFilePath] = useState(null);
@@ -27,6 +29,20 @@ export default function ApexChart() {
             setVideo(res);
         });
     }, []);
+
+    useEffect(function () {
+        fetch('http://localhost:60671/api/actividades/calcularAvance', {
+            method: 'GET'
+        }).then(res => {
+            if (!res.ok) alert('error')
+            return res.json()
+        }).then(res => {
+            setSerie(res);
+            console.log(serie)
+        });
+    }, []);
+
+
     const subirArchivos = e => {
         console.log(e[0]);
         setFile(e);
@@ -73,8 +89,8 @@ export default function ApexChart() {
                             <p className="font-weight-bold">Clases vistas</p>
                             <div id="chart">
                                 <ReactApexChart
-                                    options={chart.options}
-                                    series={chart.series}
+                                    options={chartCont.options}
+                                    series={chartCont.series}
                                     type="radialBar" />
                             </div>
                             <div className="row">
@@ -94,8 +110,8 @@ export default function ApexChart() {
                                     <p><b>Unidad 6:</b> Satisfactorio</p>
                                     <div className="chart-container">
                                         <ReactApexChart
-                                            options={chart.options}
-                                            series={chart.series}
+                                            options={chartAct.options}
+                                            series={chartAct.series}
                                             type="radialBar" />
                                     </div>
                                 </div>
@@ -105,8 +121,8 @@ export default function ApexChart() {
                             <p className="text-center font-weight-bold">Actividades resueltas</p>
                             <div id="chart">
                                 <ReactApexChart
-                                    options={chart.options}
-                                    series={chart.series}
+                                    options={chartAct.options}
+                                    series={chartAct.series}
                                     type="radialBar" />
                             </div>
                             <div className="row">
@@ -114,8 +130,8 @@ export default function ApexChart() {
                                     <p><b>Unidad 6:</b> Satisfactorio</p>
                                     <div className="chart-container">
                                         <ReactApexChart
-                                            options={chart.options}
-                                            series={chart.series}
+                                            options={chartAct.options}
+                                            series={chartAct.series}
                                             type="radialBar" />
                                     </div>
                                 </div>
@@ -125,8 +141,8 @@ export default function ApexChart() {
                                     <p><b>Unidad 6:</b> Satisfactorio</p>
                                     <div className="chart-container">
                                         <ReactApexChart
-                                            options={chart.options}
-                                            series={chart.series}
+                                            options={chartAct.options}
+                                            series={chartAct.series}
                                             type="radialBar" />
                                     </div>
                                 </div>
@@ -136,8 +152,8 @@ export default function ApexChart() {
                                     <p><b>Unidad 6:</b> Satisfactorio</p>
                                     <div className="chart-container">
                                         <ReactApexChart
-                                            options={chart.options}
-                                            series={chart.series}
+                                            options={chartAct.options}
+                                            series={chartAct.series}
                                             type="radialBar" />
                                     </div>
                                 </div>

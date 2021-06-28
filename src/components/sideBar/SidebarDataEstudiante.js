@@ -9,7 +9,7 @@ export const SidebarDataEstudiante = [
     },
    {
         title: 'Calificaciones', 
-        icon: <Group />,
+        icon: <BorderColor />,
         link: "/calificaciones"
     }
 ] 

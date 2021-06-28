@@ -11,20 +11,41 @@ export default function Actividades() {
 	
 	const [questions, setQuestions] = useState([]);
 	const [showScore, setShowScore] = useState(false);
-	const [value, setValue] = useState(false);
 	const [score, setScore] = useState(0);
 
 	useEffect(function () {
-		getQuestions().then((q) => setQuestions(q));
-		console.log(questions)  
+		
+		getQuestions(1).then((q) => setQuestions(q));
+		console.log(questions)
 	}, []);
 
-	const onValueChange = (event) => {
-		if(event.target.value === 'true'){
-			setScore(score+1)
-		};
-	}
-	const submit = () => {
+	const submit = (e) => {
+		e.preventDefault();
+		var cont = 0
+		for(let i= 0; i<e.target.length -1; i++){
+		var resultado  = (e.target[i].checked && e.target[i].value) 
+			if(resultado === 'true'){cont++}
+			setScore(cont)
+		}
+
+		console.log(score)
+
+		fetch("http://localhost:60671/api/puntaje/", {
+		  method: "POST",
+		  headers: {
+			"Content-type": "application/json",
+		  },
+		  body: JSON.stringify({
+			puntaje : cont,
+			idActividad : 11,
+			IdCurso : 1,
+			IdMateria : 1,
+			IdEstudiante : 8
+
+		  }),
+		}).then((response) => response.json());
+		
+
 		setShowScore(true)
 	}
 
@@ -64,10 +85,11 @@ export default function Actividades() {
 							<li>{question.content}
 						<ol type="a">
 						{question.answers.map((answer) => (
-							<div  onChange={onValueChange}>
+							<div>
 							<li>
-								<input type="radio" name={"question_ " + question.id} 
+								<input type="radio" name={question.id} 
 								value={answer.correct}
+						
 								/>
 								{answer.content}</li></div>		
 						))}

@@ -1,4 +1,4 @@
-import { BorderColor, Business, Group } from '@material-ui/icons'
+import { Ballot, BorderColor, Business } from '@material-ui/icons'
 import React from 'react'
 
 export const SidebarDataDocente = [
@@ -7,9 +7,14 @@ export const SidebarDataDocente = [
         icon: <Business />,
         link: "/rol"
     },
-    /*{
+ /*   {
         title: 'Calificaciones', 
-        icon: <Group />,
+        icon: <BorderColor />,
         link: "/calificaciones"
+    },
+    {
+        title: 'Crear Actividades', 
+        icon: <Ballot />,
+        link: "/crearactividades"
     }*/
 ] 

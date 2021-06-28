@@ -1,6 +1,7 @@
-const url = 'http://localhost:60671/api/question'
+const urlBase = 'http://localhost:60671/api/question/'
 
-export default function getQuestions() {
+export default function getQuestions(id) {
+    const url=urlBase+`${id}`
     return fetch(url, {
         method: 'GET'
     }).then(res => {

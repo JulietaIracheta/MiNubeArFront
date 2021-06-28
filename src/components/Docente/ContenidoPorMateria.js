@@ -32,7 +32,7 @@ export default function ContenidoPorMateria({ ...props }) {
                 <div className="container-fluid mt-2 ">
                     <div className="d-flex align-items-center mt-1 w-100 justify-content-between">
                         <div className="w-100 d-flex justify-content-center">
-                            <h3 className="m-0 p-0 color-docente borde-docente">Matemáticas</h3>
+                            <h3 className="m-0 p-0 color-docente borde-docente">Matemáticas - {props.match.params.materiaId}</h3>
                         </div>
                         <div className="w-50 d-flex justify-content-around">
                             <Link to="/video" className="btn btn-outline-dark font-weight-bold">Clase en vivo</Link>

@@ -30,9 +30,7 @@ const NavBar = (props) => {
       credentials: "include",
     });
     cookieNombreEstudiante.remove("nombrePersona");
-    window.localStorage.setItem('logged', false);
-    window.location.reload();
-    window.location.assign("/login")
+
 
   }
 
@@ -62,7 +60,7 @@ const NavBar = (props) => {
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>
-                  <Link  className="color-negro text-decoration-none" onClick={logout}>Logout</Link>
+                  <Link to='/login' className="color-negro text-decoration-none" onClick={logout}>Logout</Link>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>

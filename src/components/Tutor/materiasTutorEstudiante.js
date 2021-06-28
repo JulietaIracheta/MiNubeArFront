@@ -41,7 +41,7 @@ const MateriasTutorEstudiante = (props) => {
   if (loading) {
     try {
       listMaterias = materias.map((materia, key) => (
-        <CardMateria nombre={materia.nombre} icon={materia.icon} key={key}/>
+        <CardMateria nombre={materia.nombre} icon={materia.icon} key={key} id={materia.idMateria}/>
       ));
     } catch (error) {
       console.log(error)

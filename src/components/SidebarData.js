@@ -17,15 +17,21 @@ export const SidebarData = [
         icon: <LocalLibrary />,
         link: "/cursos"
     },
-   /* {
-        title: 'Asignar Cursos a Institucion', 
-        icon: <MeetingRoom />,
-        link: "/cursosInstitucion"
-    },*/
+  
     {
         title: 'Materias', 
         icon: <BorderColor />,
         link: "/materias"
+    },
+    {
+        title: 'Asignar Materias a Cursos', 
+        icon: <MeetingRoom />,
+        link: "/asignarMaterias"
+    },
+    {
+        title: 'Asignar Cursos a Institución', 
+        icon: <MeetingRoom />,
+        link: "/asignarCursos"
     },
 
 ] 
