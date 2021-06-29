@@ -31,6 +31,8 @@ import swal from 'sweetalert';
 import Swal from 'sweetalert2';
 import DocenteModalEditar from "../Modificacion/DocenteModalEditar";
 import EstudianteModalEditar from "../Modificacion/EstudianteModalEditar";
+import TutorModalEditar from "../Modificacion/TutorModalEditar";
+
 
 const drawerWidth = 200;
 
@@ -75,6 +77,7 @@ const Usuarios = ({ classes, ...props }) => {
 
   const [openModalUpdateDocente, setOpenModalUpdateDocente] = useState(false);
   const [openModalUpdateEstudiante, setOpenModalUpdateEstudiante] = useState(false);
+  const [openModalUpdateTutor, setOpenModalUpdateTutor] = useState(false);
   const [datos, setDatos] = useState({
     idPersona: '',
     idUsuario: '',
@@ -156,8 +159,10 @@ const Usuarios = ({ classes, ...props }) => {
           setOpenModalUpdateDocente(!openModalUpdateDocente)
         break;
       case 'Estudiante':
-          console.log('modal estudiante')
           setOpenModalUpdateEstudiante(!openModalUpdateEstudiante)
+        break;
+      case 'Tutor':
+          setOpenModalUpdateTutor(!openModalUpdateTutor)
         break;
       default:
         break;
@@ -274,6 +279,14 @@ const Usuarios = ({ classes, ...props }) => {
             modalFadeState = {modalFadeState}
           >
           </EstudianteModalEditar>
+       } 
+      {openModalUpdateTutor && 
+          <TutorModalEditar
+            open = {openModalUpdateTutor}
+            datos = {datos}
+            modalFadeState = {modalFadeState}
+          >
+          </TutorModalEditar>
        } 
       </div>
     </Provider>
