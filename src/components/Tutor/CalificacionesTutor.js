@@ -6,6 +6,10 @@ import {
     TableContainer,
     Table,
     TableHead,
+    Select,
+    MenuItem,
+    FormControl,
+    InputLabel,
     TableRow,
     TableCell,
     TableBody,
@@ -48,9 +52,22 @@ const styles = (theme) => ({
 const CalificacionesTutor = ({ classes, ...props }) => {
   const [boletin, setBoletin] = useState([]);
   const [estudiantes, SetEstudiantes] = useState([]);
+  const [estudiante, SetEstudiante] = useState(8);
   
+  useEffect(
+    function () {
+      GetEstudiantesTutor().then((estudiante) => SetEstudiantes(estudiante));
+      
+    },[]);
+
+    const handleInputChange = (e) => {
+      SetEstudiante(e.target.value)
+      console.log(estudiante)
+    }
+  
+
   useEffect(async () => {
-    const result = await fetch('http://localhost:60671/api/boletin/tutor/1', {
+    const result = await fetch('http://localhost:60671/api/boletin/estudiante/' + estudiante, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -59,15 +76,11 @@ const CalificacionesTutor = ({ classes, ...props }) => {
     })
       .then(response => {
         setBoletin(response)
+        console.log(boletin)
        });
-  }, []);
+  }, [estudiante]);
 
-  useEffect(
-    function () {
-      GetEstudiantesTutor().then((estudiante) => SetEstudiantes(estudiante));
-      
-    },[]);
-  
+
   return (
       <div>
       <NavTutor />
@@ -82,13 +95,27 @@ const CalificacionesTutor = ({ classes, ...props }) => {
       </div>
       <div className='demo-app'>
         <div className='demo-app-main'>
-                    
-        <TableContainer>
+        <FormControl variant="outlined" className="mb-3 mt-3 ml-3">
+            <InputLabel id="demo-simple-select-outlined-label">Estudiante</InputLabel>
+            <Select
+              name="idEstudiante"
+              id="demo-simple-select-outlined"
+              value={estudiante}
+              onChange={handleInputChange}
+              label="Estudiante"
+            >
+              {estudiantes.map((est) => (
+                <MenuItem value={est.idUsuario}>
+                  {est.nombre}{" "}{est.apellido}
+                </MenuItem>
+              ))}
+            </Select>
+            </FormControl>
+           
+            <TableContainer>
               <Table>
                 
-            
                   <TableRow className="colorTab">
-                  <TableCell className="colorTab">Nombre</TableCell>
                     <TableCell className="colorTab">Materia</TableCell>
                     <TableCell className="colorTab">Nota T1</TableCell>
                     <TableCell className="colorTab">Nota T2</TableCell>
@@ -97,24 +124,22 @@ const CalificacionesTutor = ({ classes, ...props }) => {
                    </TableRow>
                 <TableBody>
         {boletin.map((notas, index) => {
-            
-                  return(     
-                    
-       <TableRow key={index} hover>
-                  <TableCell>{notas.nombre}{" "}{notas.apellido}</TableCell>
+        
+             return (
+                <TableRow key={index} hover>
                   <TableCell>{notas.materia}</TableCell>
                   <TableCell>{notas.t1}</TableCell>
                   <TableCell>{notas.t2}</TableCell>
                   <TableCell>{notas.t3}</TableCell>
                   <TableCell>{parseInt((parseInt(notas.t1) + parseInt(notas.t2) + parseInt(notas.t3)) /3)}</TableCell>
                 </TableRow>
-                  )
-              
+
+              );
             })}
           </TableBody>
         </Table>
       </TableContainer>
-        </div>
+               </div>
       </div>
       </div>
       </main>

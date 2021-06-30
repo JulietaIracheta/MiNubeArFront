@@ -33,11 +33,11 @@ import CargarCalificaciones from './components/Docente/CargarCalificaciones';
 import CalificacionesTutor from './components/Tutor/CalificacionesTutor';
 import AsignarMateriasACurso from './components/Registro/AsignarMateriasACurso';
 import AsignarCursosAInstituciones from './components/Registro/AsignarCursoAInstitucion';
+import NotFound from '../src/NotFound';
 
 function App() {
 
   return (
-
     <Provider store={store}>
     <Router>
       <Switch>
@@ -72,10 +72,12 @@ function App() {
         <Route path='/tutor/estudiantesasignados' exact component={EstudiantesTutor}/>
         <Route path='/docente/:cursoId/:materiaId/contenido' exact component={contenidoPorMateria} /> 
         <Route path='/docente/cargarCalificaciones' exact component={CargarCalificaciones} />
-        <Route path="/unidad/:cursoId/:materiaId" exact component={UnidadPorMateria} />       
+        <Route path="/unidad/:cursoId/:materiaId" exact component={UnidadPorMateria} /> 
+        <Route path="*" render={NotFound} />     
       </Switch>
     </Router>
     </Provider>
+
 
   );
 }
