@@ -54,7 +54,7 @@ const VideoConference = () => {
                   <div style={{ backgroundColor: "#fff", padding: "1em" }}>
                    
                         <WhiteBoard />
-                    <button onClick={onClick}>Click para cerrar pizarra</button>
+                    <button className="btn btn-danger" onClick={onClick}>Click para cerrar pizarra</button>
                   </div>
                 )}
               </ReactCircleModal>

@@ -41,7 +41,7 @@ const initialFieldValues = {
   password: "",
   rol: "Estudiante",
   usuarioNombre: "",
-  idInstitucion: "0"
+  idInstitucion: [] 
 };
 
 const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
@@ -82,11 +82,16 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
 
-  const handleSubmit = e => {
-    e.preventDefault()
+  const handleSubmit = (e) => {
+    e.preventDefault();
     if (validate()) {
-        const onSuccess = () => {
-            resetForm()
+      const onSuccess = (usuario) => {
+        if(usuario.email === "error"){
+          swal("Hubo un problema al querer dar de alta al Estudiante, intente más tarde",'' , "error");
+        }else if(usuario.email !== ""){
+          swal("Estudiante Registrado Correctamente!",'' , "success");
+        }else{
+          swal("El Email Ingresado Ya Existe!",'' , "error");
         }
         
         if (props.currentId === 0){
@@ -95,10 +100,14 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
 
             handleClose();
             swal("Usuario Registrado Correctamente!",'' , "success");
-            onSuccess();}
-            
+            onSuccess();
+        } 
+        resetForm();
+        handleClose();
+      };
+      props.createUsuario(values, onSuccess);
     }
-  }
+  };
 
 
   useEffect(() => {
@@ -186,6 +195,7 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
               value={values.idInstitucion}
               onChange={handleInputChange}
               label="Institucion"
+              multiple
             >
               {instituciones.map((institucion) => (
                 <MenuItem value={institucion.idInstitucion}>

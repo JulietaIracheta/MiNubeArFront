@@ -27,7 +27,7 @@ export const institucion = (state = initialState, action) => {
         case ACTION_TYPES.DELETE:
             return {
                 ...state,
-                list: state.list.filter(x => x.id != action.payload)
+                list: state.list.filter(institucion => institucion.idInstitucion != action.payload)
             }
             
         default:

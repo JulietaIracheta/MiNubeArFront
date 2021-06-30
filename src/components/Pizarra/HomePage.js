@@ -129,7 +129,7 @@ const reset = () => {
       `}</style>
     </div>
     
-    <button onClick={reset}>Reset</button>
+    <button className="btn btn-warning mb-2" onClick={reset}>Reset</button>
     </div>
 
   );

@@ -16,6 +16,7 @@ import Calendario from './components/Calendario/Calendario'
 import CalendarioEst from './components/Calendario/CalendarioEst'
 import Curso from './components/Registro/Curso';
 import Materia from './components/Registro/Materia';
+
 import CursoInstitucion from './components/Registro/CursoInstitucion';
 import Actividades from './components/Actividades/Actividades'
 import Whiteboard from './components/Pizarra/index';
@@ -35,6 +36,7 @@ import CalificacionesTutor from './components/Tutor/CalificacionesTutor';
 import AsignarMateriasACurso from './components/Registro/AsignarMateriasACurso';
 import AsignarCursosAInstituciones from './components/Registro/AsignarCursoAInstitucion';
 import ComunicadosTutor from './components/Tutor/Comunicados';
+import EstudianteCalificaciones from './components/Tutor/EstudianteCalificaciones';
 
 import { Cookies, useCookies } from "react-cookie";
 

@@ -29,14 +29,19 @@ export const create = (data, onSuccess) => dispatch => {
 
     data = formateData(data)
     api.usuario().create(data)
-        .then(res => {
-            dispatch({
-                type: ACTION_TYPES.CREATE,
-                payload: res.data
-            })
-            onSuccess()
+        .then(res => { 
+            if(res.data.email !== ""){
+                dispatch({
+                    type: ACTION_TYPES.CREATE,
+                    payload: res.data
+                })
+            }
+            onSuccess(res.data)
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.error(err)
+            onSuccess({"email":"error"})
+        })
 }
 
 export const update = (id, data, onSuccess) => dispatch => {
@@ -47,9 +52,12 @@ export const update = (id, data, onSuccess) => dispatch => {
                 type: ACTION_TYPES.UPDATE,
                 payload: { id, ...data }
             })
-            onSuccess()
+            onSuccess(res)
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.error(err)
+            onSuccess(null)
+        })
 }
 
 export const Delete = (id, onSuccess) => dispatch => {
@@ -59,8 +67,11 @@ export const Delete = (id, onSuccess) => dispatch => {
                 type: ACTION_TYPES.DELETE,
                 payload: id
             })
-           onSuccess()
+           onSuccess(res.data)
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log(err)
+            onSuccess(null)
+        })
     }
 
