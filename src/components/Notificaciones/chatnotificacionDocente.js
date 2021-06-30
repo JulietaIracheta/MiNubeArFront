@@ -95,11 +95,27 @@ export default () => {
                     <h2 className="mt-2">Salas de chat</h2>
                     {!connection
                         ?
-                        cursosDocente.map((u, idx) =>
-                            <button key={idx} class="btn btn-lg ml-2 text-white bg-primary"
+                        <div className="row">
+                        {cursosDocente.map((u, idx) =>
+                        <div className="col-md-6">
+                        <div className="bordes mb-3">
+                          <div className="card-body colorDoc font-weight-bold">
+                            <h5 className="card-title font-weight-bold colorDoc">
+                            Sala: {u}
+                            </h5>
+                            <div className="text-left">
+                              <div class="d-flex flex-row-reverse">
+                              <button key={idx} class="btn btn-lg ml-2 text-white" style={{background:"#2d2f85"}}
                                 onClick={() => joinRoom(u)}>
                                 <InsertCommentIcon />
-                                {u}</button>)
+                                Unirse</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                        )}
+                        </div>
                         :
                         <Chat messages={messages}
                             sendMessage={sendMessage}

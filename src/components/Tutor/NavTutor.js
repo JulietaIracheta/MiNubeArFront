@@ -16,11 +16,15 @@ import { Calendar2Event, Bell, PersonCircle } from "react-bootstrap-icons";
 import logo from '../../assets/img/logoGris.png'
 import CheckIcon from '@material-ui/icons/Check';
 import eliminarNotificacion from "../../services/notificaciones/eliminarNotificacion";
+import { Cookies } from 'react-cookie';
+import { Avatar } from "@material-ui/core";
 
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [notificaciones, setNotificaciones] = useState([]);
+  const cookie = new Cookies();
+  const nombre = cookie.get('avatar');
 
   const toggle = () => setIsOpen(!isOpen);
   const logout = async () => {
@@ -29,6 +33,7 @@ const NavBar = (props) => {
       headers: { "Content-type": "application/json" },
       credentials: "include",
     });
+    cookie.remove("nombrePersona");
   }
   
   useEffect(async function () {
@@ -101,9 +106,9 @@ const NavBar = (props) => {
             </NavItem>
 
             <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav>
-            <PersonCircle className="icon-perfil"/>
-            </DropdownToggle>
+            <DropdownToggle nav>
+                <Avatar className="icon-perfil text-white" style={{ background: "#67a147" }}>{nombre}</Avatar>
+              </DropdownToggle>
             <DropdownMenu right>
                 <DropdownItem>
                 <Link to='/login' className="color-negro text-decoration-none" onClick={logout}>Logout</Link> 

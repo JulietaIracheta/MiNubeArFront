@@ -104,11 +104,14 @@ const AsignarCursosAInstituciones = () => {
               <form autoComplete="off" noValidate onSubmit={handleSubmit}>
                 <div
                   style={{
-                    display: "inline-block",
+                    display: "flex",
+                    width:"100%",
                     justifyContent: "center",
                   }}
                 >
-            <FormControl variant="outlined" className={classes.formControl}>
+              <Grid container spacing={3}>
+                <Grid item md={6} xl={6} lg={6}> 
+            <FormControl fullWidth variant="outlined" className={classes.formControl}>
             <InputLabel id="demo-simple-select-outlined-label">Institucion</InputLabel>
 
             <Select
@@ -126,7 +129,10 @@ const AsignarCursosAInstituciones = () => {
               ))}
             </Select>
             </FormControl>
-<FormControl variant="outlined" className={classes.formControl}>
+            </Grid>    
+            <Grid item md={6} xl={6} lg={6}>
+
+<FormControl fullWidth variant="outlined" className={classes.formControl}>
             <InputLabel id="demo-simple-select-outlined-label">Curso</InputLabel>
 
             <Select
@@ -144,7 +150,8 @@ const AsignarCursosAInstituciones = () => {
               ))}
             </Select>
             </FormControl>
-
+            </Grid>    
+            </Grid>    
             <Button
                   type="submit"
                   variant="outlined"

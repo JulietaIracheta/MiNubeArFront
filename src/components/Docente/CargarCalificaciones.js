@@ -133,8 +133,8 @@ const CargarCalificaciones = () => {
                 justifyContent: "center",
               }}
             >
-              <Grid item xs={12} className="mb-4">
-              <FormControl variant="outlined" className={classes.formControl}>
+              <Grid item xs={12} className="mb-4 d-flex w-100 justify-content-between">
+              <FormControl fullWidth variant="outlined" className={classes.formControl}>
             <InputLabel id="demo-simple-select-outlined-label" >Estudiante</InputLabel>
             <Select
               name="idEstudiante"
@@ -150,7 +150,7 @@ const CargarCalificaciones = () => {
               ))}
             </Select>
             </FormControl>
-            <FormControl variant="outlined" className={classes.formControl}>
+            <FormControl fullWidth variant="outlined" className={classes.formControl}>
             <InputLabel id="demo-simple-select-outlined-label" >Materia</InputLabel>
             <Select
               name="Materia"

@@ -4,6 +4,7 @@ import {
   TextField,
   withStyles,
   Button,
+  FormControl,
 } from "@material-ui/core";
 import useForm from "./useForm";
 import { connect } from "react-redux";
@@ -88,8 +89,8 @@ const MateriaForm = ({ classes, ...props }) => {
         onSubmit={handleSubmit}
       >
         <Grid container>
-          <Grid item xs={12}>
-          <TextField
+          <Grid  xs={12} lg={12}>
+          <TextField 
               name="nombre"
               label="Nombre de la Materia"
               value={values.nombreMateria}

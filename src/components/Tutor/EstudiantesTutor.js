@@ -23,8 +23,7 @@ export default function EstudiantesTutor() {
         <div className="container mt-2">
           <h2 className="font-weight-bold colorTut">Mis Estudiantes</h2>
           <hr className="hr-colorTut" />
-          <div className="row">
-            
+          <div className="row w-100">
             {estudiantes.map((est) => (
               <div className="col-md-4 alumno mt-2">
                 <div className="row w-100">

@@ -86,6 +86,7 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
     e.preventDefault();
     if (validate()) {
       const onSuccess = (usuario) => {
+        console.log(usuario);
         if(usuario.email === "error"){
           swal("Hubo un problema al querer dar de alta al Estudiante, intente más tarde",'' , "error");
         }else if(usuario.email !== ""){
@@ -94,14 +95,13 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
           swal("El Email Ingresado Ya Existe!",'' , "error");
         }
         
-        if (props.currentId === 0){
+        /*if (props.currentId === 0){
           
             props.createUsuario(values, onSuccess)
-
             handleClose();
             swal("Usuario Registrado Correctamente!",'' , "success");
             onSuccess();
-        } 
+        } */
         resetForm();
         handleClose();
       };

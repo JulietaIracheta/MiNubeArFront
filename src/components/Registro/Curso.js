@@ -96,7 +96,7 @@ const Curso = ({ classes, ...props }) => {
               <div className="agregarcurso">
            <CursoForm />
               </div>
-            <TableContainer>
+              <TableContainer style={{overflow:"unset"}}>
               <Table>
                 <TableHead>
                   <TableRow className="colorTab">
@@ -109,7 +109,7 @@ const Curso = ({ classes, ...props }) => {
                     return (
                       <TableRow key={index} hover>
                         <TableCell>{record.nombre}</TableCell>
-                        <TableCell>
+                        <TableCell className="d-flex flex-row-reverse w-100">
                           <UncontrolledDropdown direction="left" nav inNavbar className="menu3dots">
                             <DropdownToggle nav>
                               <MoreVert />

@@ -211,7 +211,7 @@ const Usuarios = ({ classes, ...props }) => {
               <Search className="lupa" />
             </div>
 
-            <TableContainer>
+            <TableContainer style={{overflow:"unset"}}>
               <Table>
                 <TableHead>
                   <TableRow className="colorTab">

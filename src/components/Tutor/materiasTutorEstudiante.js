@@ -58,7 +58,7 @@ const MateriasTutorEstudiante = (props) => {
       <div className="container mt-2">
         <h2 className="font-weight-bold colorTut">Mis Estudiantes</h2>
         <hr className="hr-colorTut" />
-        <div className="row">
+        <div className="row w-100">
     <Fragment>      
       <Grid container spacing={3}>
         { loading ? (listMaterias) : "LOADING ..."}
