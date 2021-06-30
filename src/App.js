@@ -13,6 +13,7 @@ import {store} from './actions/store'
 import VideoConference from './components/Registro/VideoConference';
 import MateriaUnidades, { materiaUnidad } from './components/Estudiante/Page/materiaUnidad';
 import Estudiante from './components/Estudiante/Estudiante';
+import { materiaActividad } from './components/Estudiante/Page/materiaActividad';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path='/tutor/ActividadEstudiante' exact component={ActividadEstudiante}/>
         <Route path='/Estuduante' exact component={Estudiante}/>
         <Route path='/estudiante/materias/:id' exact component={materiaUnidad}/>
+        <Route path='/estudiante/materias/:id/:unidad' exact component={materiaActividad}/>
         <Route path='*'>
           <h1>404 Not found</h1>
         </Route>

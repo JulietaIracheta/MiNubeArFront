@@ -23,10 +23,10 @@ export default function MateriaUnidad({ id }) {
                 </div>
             </div>
             <div className="unidad-container">
-                <CardUnidad unidad={5} tema="Division Avanzada" />
-                <CardUnidad unidad={4} tema="Division Simple" />
-                <CardUnidad unidad={3} tema="Multiplicación Avanzada" />
-                <CardUnidad unidad={2} tema="Multiplicación Simple" />                
+                <CardUnidad materia={id} unidad={5} tema="Division Avanzada" />
+                <CardUnidad materia={id} unidad={4} tema="Division Simple" />
+                <CardUnidad materia={id} unidad={3} tema="Multiplicación Avanzada" />
+                <CardUnidad materia={id} unidad={2} tema="Multiplicación Simple" />                
             </div>
 
         </>
