@@ -124,14 +124,29 @@ const CalificacionesTutor = ({ classes, ...props }) => {
                    </TableRow>
                 <TableBody>
         {boletin.map((notas, index) => {
-        
+        var total=0;
+        if(notas.t1){
+          total=total+1;
+        }else{
+          notas.t1=0;
+        }
+        if(notas.t2){
+          total=total+1;
+        }else{
+          notas.t2=0;
+        }
+        if(notas.t3){
+          total=total+1;
+        }else{
+          notas.t3=0;
+        }
              return (
                 <TableRow key={index} hover>
                   <TableCell>{notas.materia}</TableCell>
                   <TableCell>{notas.t1}</TableCell>
                   <TableCell>{notas.t2}</TableCell>
                   <TableCell>{notas.t3}</TableCell>
-                  <TableCell>{parseInt((parseInt(notas.t1) + parseInt(notas.t2) + parseInt(notas.t3)) /3)}</TableCell>
+                  <TableCell>{parseInt((parseInt(notas.t1) + parseInt(notas.t2) + parseInt(notas.t3)) /total)}</TableCell>
                 </TableRow>
 
               );

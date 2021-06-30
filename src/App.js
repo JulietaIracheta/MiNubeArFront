@@ -99,5 +99,3 @@ export default ()=> (
     </Router>
   </Provider>
 );
-
-export default App;
