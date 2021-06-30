@@ -67,10 +67,8 @@ const Login = () => {
         const nombre = res.nombre.charAt(0) + res.apellido.charAt(0);
         setCookie('avatar', nombre, { path: '/' });
         setCookie('email', email, { path: '/' });
-        window.localStorage.setItem('logged', true)
-        window.location.reload();
       });
-    if(window.localStorage.getItem('logged'))  
+
     
     setRedirect(true);
 

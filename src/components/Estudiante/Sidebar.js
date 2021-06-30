@@ -20,7 +20,7 @@ function Sidebar() {
                                 <li
                                     key={key}
                                     className="row"
-                                    id={window.location.pathname == val.link ? "active" : ""}
+                                    id={window.location.pathname === val.link ? "active" : ""}
                                 >
                                     <Link to={val.link} className="text-dark w-100 d-flex justify-content-center text-decoration-none">
                                         <div id="icon">{val.icon}</div><div id="title">{val.title}</div>

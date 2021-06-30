@@ -68,7 +68,7 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
       ...temp,
     });
 
-    if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+    if (fieldValues === values) return Object.values(temp).every((x) => x === "");
   };
 
   const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
@@ -88,14 +88,14 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
         const onSuccess = () => {
             resetForm()
         }
-        if (props.currentId == 0){
-          console.log(e)
+        
+        if (props.currentId === 0){
+          
             props.createUsuario(values, onSuccess)
-         
+
             handleClose();
             swal("Usuario Registrado Correctamente!",'' , "success");
             onSuccess();}
-            
             
     }
   }

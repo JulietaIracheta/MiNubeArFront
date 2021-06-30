@@ -7,10 +7,7 @@ export default function EstudiantesAsignados({ institucion = 'unlam', idCurso })
    
     useEffect(function () {
         getEstudiantesCurso(idCurso).then(estudiantes => setEstudiantes(estudiantes))   
-    console.log(estudiantes);    
-        
     }, [])
-    console.log(estudiantes);    
 
     return (
         <div>

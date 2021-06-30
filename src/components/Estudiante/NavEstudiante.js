@@ -21,6 +21,7 @@ import CheckIcon from '@material-ui/icons/Check';
 import eliminarNotificacion from "../../services/notificaciones/eliminarNotificacion";
 import { Business, Group } from '@material-ui/icons'
 import ChatIcon from '@material-ui/icons/Chat';
+import '../../assets/css/notificaciones/css-notificacion.css';
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -83,7 +84,7 @@ const NavBar = (props) => {
                   <Bell className="icon-menu" />
                   <span id="notificacion-numero" className="badge rounded-circle">{notificaciones.length}</span>
                 </DropdownToggle>
-                <DropdownMenu right className="notificaciones-modal">
+                <DropdownMenu right className="notificaciones-modal notificaciones-overflow">
                   {notificaciones.length ?
                     notificaciones.map((notificacion, index) => {
                       return <div key={index}>

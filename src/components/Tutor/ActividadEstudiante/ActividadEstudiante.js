@@ -8,7 +8,7 @@ import Sidebar from "../../Sidebar";
 import axios from 'axios';
 import {SidebarDataTutor} from '../../sideBar/SidebarDataTutor';
 
-export default function ApexChart() {
+export default function ApexChart(props) {
     const [serie, setSerie] = useState(0);
     const chartAct = Chart({ series : parseInt(serie) });
     const chartCont = Chart({ series : 68 });
@@ -17,6 +17,8 @@ export default function ApexChart() {
     const [videoFilePath, setVideoFilePath] = useState(null);
     const [archivo, setFile] = useState();
     var urlVideo = 'http://localhost:60671/videos/';
+    const id = props.match.params.id
+    const [calificacion, setCalificacion] = useState('');
 
     useEffect(function () {
         fetch(urlBase, {
@@ -31,17 +33,15 @@ export default function ApexChart() {
     }, []);
 
     useEffect(function () {
-        fetch('http://localhost:60671/api/actividades/calcularAvance', {
+        fetch('http://localhost:60671/api/actividades/calcularAvance/' + id, {
             method: 'GET'
         }).then(res => {
             if (!res.ok) alert('error')
             return res.json()
         }).then(res => {
             setSerie(res);
-            console.log(serie)
         });
     }, []);
-
 
     const subirArchivos = e => {
         console.log(e[0]);
@@ -66,7 +66,6 @@ export default function ApexChart() {
     urlVideo = urlVideo + video.video;
     console.log(urlVideo);
 
-
     
     return (
         <div>
@@ -75,12 +74,12 @@ export default function ApexChart() {
                 <Sidebar data={SidebarDataTutor} />
                 <div className="container-fluid mt-2 ">
                     <div className="d-flex align-items-center mt-1">
-                        <BotonVolver ruta="/tutor/estudiantesAsignados"></BotonVolver>
+                        <BotonVolver ruta="/rol"></BotonVolver>
                         <h3 className="m-0 p-0"
                             style={{
                                 borderBottom: "2px solid #67A147", width: "100%", fontWeight: "bold", color: "#67A147"
                             }}
-                        >Matemáticas
+                        >{props.match.params.nombre}
                         </h3>
                     </div>
                     <div className="row mt-2">
@@ -95,9 +94,9 @@ export default function ApexChart() {
                             </div>
                             <div className="row">
                                 <div className="card-actividad-estudiante">
-                                    <p>Unidad 5</p>
+                                    <p>Unidad 2</p>
                                     <p className="font-weight-bold text-danger">En vivo</p>
-                                    <p className="m-0"><b>Clase 5: </b>Elementos quimicos</p>
+                                    <p className="m-0"><b>Clase 1: </b>Sumas y Restas</p>
                                 </div>
                             </div>
                             <div className="row">
@@ -105,17 +104,7 @@ export default function ApexChart() {
                                     <p><b>Unidad 2:</b> Sin realizar</p>
                                 </div>
                             </div>
-                            <div className="row">
-                                <div className="card-actividad-estudiante card-actividad-estudiante-chart">
-                                    <p><b>Unidad 6:</b> Satisfactorio</p>
-                                    <div className="chart-container">
-                                        <ReactApexChart
-                                            options={chartAct.options}
-                                            series={chartAct.series}
-                                            type="radialBar" />
-                                    </div>
-                                </div>
-                            </div>
+                           
                         </div>
                         <div className="col-md-6 d-flex align-items-center flex-column">
                             <p className="text-center font-weight-bold">Actividades resueltas</p>
@@ -127,7 +116,7 @@ export default function ApexChart() {
                             </div>
                             <div className="row">
                                 <div className="card-actividad-estudiante card-actividad-estudiante-chart">
-                                    <p><b>Unidad 6:</b> Satisfactorio</p>
+                                    <p><b>Unidad 1:</b>{serie ? 'Satisfactorio' : 'Insatisfactorio'} </p>
                                     <div className="chart-container">
                                         <ReactApexChart
                                             options={chartAct.options}
@@ -135,29 +124,7 @@ export default function ApexChart() {
                                             type="radialBar" />
                                     </div>
                                 </div>
-                            </div>
-                            <div className="row">
-                                <div className="card-actividad-estudiante card-actividad-estudiante-chart">
-                                    <p><b>Unidad 6:</b> Satisfactorio</p>
-                                    <div className="chart-container">
-                                        <ReactApexChart
-                                            options={chartAct.options}
-                                            series={chartAct.series}
-                                            type="radialBar" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="card-actividad-estudiante card-actividad-estudiante-chart">
-                                    <p><b>Unidad 6:</b> Satisfactorio</p>
-                                    <div className="chart-container">
-                                        <ReactApexChart
-                                            options={chartAct.options}
-                                            series={chartAct.series}
-                                            type="radialBar" />
-                                    </div>
-                                </div>
-                            </div>
+                             </div>
                         </div>
                     </div>
                 </div>

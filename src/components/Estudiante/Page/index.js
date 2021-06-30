@@ -1,12 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
-
 import Sidebar from "../../Sidebar";
-import {SidebarDataEstudiante} from "../../sideBar/SidebarDataEstudiante";
-
 import NavEstudiante from "../NavEstudiante";
 import EstudianteMaterias from "../EstudianteMaterias";
 import { Route } from "react-router-dom";
+import { SidebarDataEstudiante } from "../../sideBar/SidebarDataEstudiante";
 
 function Estudiante() {
   const [nombre, setNombre] = useState("");

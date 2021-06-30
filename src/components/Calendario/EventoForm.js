@@ -63,7 +63,7 @@ const EventoForm = ({ handleClose, classes, ...props }) => {
     window.location.reload(true);
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validate()) {
       const onSuccess = () => {
@@ -71,7 +71,7 @@ const EventoForm = ({ handleClose, classes, ...props }) => {
       };
     props.createEvento(values, onSuccess);
     handleClose();
-    swal("Evento Registrado Correctamente!",'' , "success");
+    await swal("Evento Registrado Correctamente!",'' , "success");
     reload();  
   }
 
