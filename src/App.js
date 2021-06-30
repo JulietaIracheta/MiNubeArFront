@@ -37,6 +37,7 @@ import AsignarMateriasACurso from './components/Registro/AsignarMateriasACurso';
 import AsignarCursosAInstituciones from './components/Registro/AsignarCursoAInstitucion';
 import ComunicadosTutor from './components/Tutor/Comunicados';
 import EstudianteCalificaciones from './components/Tutor/EstudianteCalificaciones';
+import NotFound from '../src/NotFound';
 
 import { Cookies, useCookies } from "react-cookie";
 
@@ -55,16 +56,16 @@ const isAuthenticated = ()=>{
     return false;
 };
 export default ()=> (
-    <Provider store={store}>
+  <Provider store={store}>
     <Router>
       <Switch>
         <MyRoute path='/usuarios' exact component={Usuario}></MyRoute>
         <Route path='/' exact component={Login} />
         <Route path='/login' exact component={Login} />
+        <Route path='/recuperarPassword' exact component={recPassword} />     
         <MyRoute path='/instituciones' exact component={Institucion} />     
         <MyRoute path='/video' exact component={VideoConference} />   
         <MyRoute path='/rol' exact component={Rol} /> 
-        <Route path='/recuperarPassword' exact component={recPassword} />     
         <MyRoute path='/perfilEstudiante/:id' exact component={PerfilEstudiante}/>
         <MyRoute path='/actividades' exact component={Actividades}/>
         <MyRoute path='/calificaciones' exact component={Calificaciones} />
@@ -93,8 +94,10 @@ export default ()=> (
         <MyRoute path='/estudiante/chat' exact component={chatNotificacion} />       
         <MyRoute path='/docente/chat' exact component={chatnotificacionDocente} />  
         <MyRoute path='/tutor/comunicados' exact component={ComunicadosTutor} />   
+        <Route path="*" render={NotFound} />     
       </Switch>
     </Router>
-    </Provider>
-)
+  </Provider>
+);
 
+export default App;
