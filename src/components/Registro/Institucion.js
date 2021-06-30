@@ -24,6 +24,8 @@ import { Search } from "react-bootstrap-icons";
 import Sidebar from "../Sidebar";
 import ModalDialog from "./ModalDialog";
 import { MoreVert } from "@material-ui/icons";
+import Swal from 'sweetalert2';
+import swal from 'sweetalert';
 import {SidebarData}   from '../SidebarData';
 import InstitucionModalEditar from "./InstitucionModalEditar";
 import { institucion } from "../../reducers/institucion";
@@ -93,10 +95,33 @@ const Instituciones = ({ classes, ...props }) => {
     props.fetchAllInstituciones();
   },[institucion]); 
 
+
   const onDelete = (id) => {
-    if (window.confirm("Estas seguro de eliminarlo"))
-      props.deleteInstitucion(id)
-      handleMenuClose();
+    Swal.fire({
+      title: 'Estas seguro de eliminarlo?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: `Sí`,
+    }).then((result) => {
+
+      const onSuccess = (dato) => {
+        if(dato === null){
+          swal("Hubo un problema al querer Eliminar la Institución, intente más tarde",'' , "error");
+        }else{
+          swal("Institución Eliminada Correctamente!",'' , "success");
+        }
+        handleMenuClose();
+      };
+      if (result.isConfirmed) {
+        props.deleteInstitucion(id, onSuccess)
+      }else{
+        handleMenuClose();
+        return;
+      }
+    })
+
   };
 
   const modalFadeState = () =>{

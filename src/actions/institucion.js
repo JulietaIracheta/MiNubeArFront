@@ -40,7 +40,7 @@ export const create = (data, onSuccess) => dispatch => {
         })
 }
 
-export const update = (id, data) => dispatch => {
+export const update = (id, data, onSuccess) => dispatch => {
     data = formateData(data)
     api.institucion().update(id, data)
         .then(res => {
@@ -48,20 +48,26 @@ export const update = (id, data) => dispatch => {
                 type: ACTION_TYPES.UPDATE,
                 payload: { id, ...data }
             })
-        //    onSuccess()
+            onSuccess(res)
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.error(err)
+            onSuccess(null)
+        })
 }
 
-export const Delete = (id) => dispatch => {
+export const Delete = (id, onSuccess) => dispatch => {
     api.institucion().delete(id)
         .then(res => {
             dispatch({
                 type: ACTION_TYPES.DELETE,
                 payload: id
             })
-     //       onSuccess()
+            onSuccess(res.data)
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log(err)
+            onSuccess(null)
+        })
     }
 

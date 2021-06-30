@@ -17,7 +17,6 @@ const EstudianteModalEditar = ({...props}) => {
     const emailRegex = /\S+@\S+\.\S+/;
 
     useEffect(() => {
-        console.log('props.datos ble: ' , props.datos)
         setDatos(props.datos)
         setIsValid(true)
         setMessage('')
