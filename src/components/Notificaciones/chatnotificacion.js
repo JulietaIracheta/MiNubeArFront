@@ -1,16 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Message from "./Message";
-import {
-    HubConnectionBuilder,
-    LogLevel,
-    HttpTransportType
-} from "@microsoft/signalr";
+import {   HubConnectionBuilder,LogLevel} from "@microsoft/signalr";
 import Chat from './chat';
 import NavEstudiante from '../Estudiante/NavEstudiante';
-import NavDocente from '../Docente/NavDocente';
 import Sidebar from '../Sidebar';
 import { SidebarDataEstudiante } from "../sideBar/SidebarDataEstudiante";
-import { SidebarDataDocente } from "../sideBar/SidebarDataDocente";
 import './chat.css';
 import { useCookies } from "react-cookie";
 import InsertCommentIcon from '@material-ui/icons/InsertComment';

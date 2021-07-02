@@ -110,8 +110,12 @@ const NavBar = (props) => {
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>
+                  <Link to='/estudiante/cuenta' className="color-negro text-decoration-none">Mi cuenta</Link>
+                </DropdownItem>
+                <DropdownItem>
                   <Link to='/login' className="color-negro text-decoration-none" onClick={logout}>Logout</Link>
                 </DropdownItem>
+               
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
