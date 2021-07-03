@@ -35,7 +35,7 @@ const initialFieldValues = {
   idDocente: 0
 };
 
-const ComunicadoForm = ({ handleClose, classes, idCurso, ...props }) => {
+const ComunicadoForm = ({ handleClose, classes, idCurso, idInstitucion, comunicados,setComunicados, ...props }) => {
   const { addToast } = useToasts();
   const validate = (fieldValues = values) => {
     let temp = { ...errors };
@@ -75,7 +75,7 @@ const ComunicadoForm = ({ handleClose, classes, idCurso, ...props }) => {
       })
   })
   useEffect(function () {
-    getEstudiantesPorCurso(1).then((estudiantes) => setEstudiantes(estudiantes));
+    getEstudiantesPorCurso(idInstitucion,idCurso).then((estudiantes) => setEstudiantes(estudiantes));
   }, []);
 
   const handleSubmit = async (e) => {
@@ -89,6 +89,7 @@ const ComunicadoForm = ({ handleClose, classes, idCurso, ...props }) => {
       values.idDocente = idDocente;
       values.idUsuario = idUsuarioSelect;
       values.idCurso = idCurso;
+      setComunicados(...[comunicados],values)
       props.createComunicado(values, onSuccess)
     }
     handleClose();

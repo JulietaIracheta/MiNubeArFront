@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import ListaDeEStudiantes from "../../helpers/listaDeEstudiantes"
 import getEstudiantesCurso from "../../services/estudiantes/getEstudiantesCurso";
 
-export default function EstudiantesAsignados({ institucion = 'unlam', idCurso }) {
+export default function EstudiantesAsignados({ institucion = 'unlam', idCurso, idInstitucion }) {
     const [estudiantes, setEstudiantes] = useState([])
    
     useEffect(function () {
-        getEstudiantesCurso(idCurso).then(estudiantes => setEstudiantes(estudiantes))   
+        getEstudiantesCurso(idInstitucion,idCurso).then(estudiantes => setEstudiantes(estudiantes))   
     }, [])
 
     return (

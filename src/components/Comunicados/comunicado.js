@@ -7,7 +7,6 @@ import { Provider } from "react-redux";
 import { connect } from "react-redux";
 import * as actions from "../../actions/comunicado";
 import { withStyles } from "@material-ui/core";
-import ChatRoom from '../Chat/ChatRoom';
 const drawerWidth = 200;
 
 const styles = (theme) => ({
@@ -37,12 +36,23 @@ const styles = (theme) => ({
     padding: theme.spacing(2),
   },
 });
-const Comunicado = ({ idCurso, ...props }) => {
+const Comunicado = ({ idCurso, idInstitucion, ...props }) => {
   const [dialogComunicado, setDialogComunicado] = useState(false);
   const [comunicados, setComunicados] = useState([]);
 
   useEffect(async function () {
-    props.fetchAllComunicado();
+    var url = "http://localhost:60671/api/comunicado/getComunicados/" + idInstitucion + "/" + idCurso;
+    console.log(url);
+    fetch(url, {
+      method: 'GET',
+      headers: { "Content-type": "application/json" },
+      credentials: "include",
+    }).then(function (response) {
+      console.log(response);
+      return response.json();
+    }).then(response => {
+        setComunicados(response);
+      });
   }, []);
 
   const clickNuevoComunicado = () => {
@@ -59,11 +69,11 @@ const Comunicado = ({ idCurso, ...props }) => {
             <div className="w-100 d-flex flex-column py-3">
               <button className="btn btn-outline-dark btn-lg" onClick={clickNuevoComunicado}>Nuevo +</button>
             </div>
-            <ModalDialogComunicado open={dialogComunicado} handleClose={cerrarModal} idCurso={idCurso} />
+            <ModalDialogComunicado open={dialogComunicado} comunicados={comunicados} setComunicados={setComunicados} handleClose={cerrarModal} idCurso={idCurso} idInstitucion={idInstitucion} />
           </div>
 
           <div className="col-md-9 py-3 h-100 comunicados-overflow" style={{ borderLeft: "1px solid #707070" }}>
-            {props.comunicadosList.map((c, index) => {
+            {comunicados.map((c, index) => {
               return <div key={index}>
                 {Array.isArray(c) ?
                   c.map((com, index) => {
@@ -110,3 +120,6 @@ export default connect(
   mapStateToProps,
   mapActionToProps
 )(withStyles(styles)(Comunicado));
+
+
+          {/*props.comunicadosList.map((c, index) => {*/}

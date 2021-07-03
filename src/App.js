@@ -55,7 +55,7 @@ const isAuthenticated = ()=>{
   else
     return false;
 };
-export default ()=> (
+const app = () => (
   <Provider store={store}>
     <Router>
       <Switch>
@@ -101,3 +101,5 @@ export default ()=> (
     </Router>
   </Provider>
 );
+
+export default app;

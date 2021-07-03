@@ -1,7 +1,7 @@
 const urlBase = 'http://localhost:60671/api/docente/getEstudiantesPorCurso/'
 
-export default function getEstudiantesCurso(id) {
-    const url=urlBase+`${id}`;
+export default function getEstudiantesCurso(idInstitucion, idCurso) {
+    const url=urlBase+`${idInstitucion}/${idCurso}`;
     return fetch(url, {
         method: 'GET'
     }).then(res => {

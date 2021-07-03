@@ -6,6 +6,7 @@ import "../assets/css/css-login.css";
 import { Redirect } from "react-router";
 import { Cookies, useCookies } from "react-cookie";
 import RecuperarPassword from './RecuperarPassword'
+import swal from "sweetalert";
 
 const Login = () => {
   const [cookies, setCookie] = useCookies(["usuario"]);
@@ -75,11 +76,12 @@ const Login = () => {
         cookie.set('apellidoPersona', res.apellido);
         
         setCookie('email', email, { path: '/' });
-      });
-
+        setRedirect(true);
+      }).catch(err=>{
+          swal("No se puede iniciar sesión con los campos ingresados", '', "warning");  
+          setRedirect(false);
+        });
     
-    setRedirect(true);
-
   };
 
   if (redirect) {

@@ -42,7 +42,7 @@ export default {
     },
     comunicado(url = baseUrl + 'comunicado/') {
         return {
-            fetchAll: () => axios.get(url + "getComunicados", { withCredentials: true }, {
+            fetchAll: () => axios.get(url + "getComunicados/", { withCredentials: true }, {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'x-www-form-urlencoded',
