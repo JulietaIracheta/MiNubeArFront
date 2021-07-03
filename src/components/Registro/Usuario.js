@@ -27,7 +27,12 @@ import ModalDialogDoc from "./ModalDialogDoc";
 import ModalDialogEst from "./ModalDialogEst";
 import ModalDialogTut from "./ModalDialogTut";
 import { MoreVert } from "@material-ui/icons";
+import swal from 'sweetalert';
 import Swal from 'sweetalert2';
+import DocenteModalEditar from "../Modificacion/DocenteModalEditar";
+import EstudianteModalEditar from "../Modificacion/EstudianteModalEditar";
+import TutorModalEditar from "../Modificacion/TutorModalEditar";
+
 
 const drawerWidth = 200;
 
@@ -70,6 +75,21 @@ const Usuarios = ({ classes, ...props }) => {
   const [nombre, setNombre] = useState("");
   const open = Boolean(anchorEl);
 
+  const [openModalUpdateDocente, setOpenModalUpdateDocente] = useState(false);
+  const [openModalUpdateEstudiante, setOpenModalUpdateEstudiante] = useState(false);
+  const [openModalUpdateTutor, setOpenModalUpdateTutor] = useState(false);
+  const [datos, setDatos] = useState({
+    idPersona: '',
+    idUsuario: '',
+    nombre: '',
+    apellido: '',
+    email: '',
+    password: '',
+    telefono: '',
+    institucion: [],
+    rol: ''
+  });
+
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -101,10 +121,6 @@ const Usuarios = ({ classes, ...props }) => {
     setOpenTut(false);
   };
 
- const reload = () => {
-    window.location.reload(true);
-}
-
   useEffect(() => {
     props.fetchAllUsuarios();
   }, []);
@@ -118,20 +134,45 @@ const Usuarios = ({ classes, ...props }) => {
       cancelButtonColor: '#d33',
       confirmButtonText: `Sí`,
     }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
-      if (result.isConfirmed) {
-        Swal.fire('Eliminado!', '', 'success')
-        props.deleteUsuario(id);
+
+      const onSuccess = (usuario) => {
+        if(usuario === null){
+          swal("Hubo un problema al querer Eliminar el usuario, intente más tarde",'' , "error");
+        }else{
+          swal("Usuario Eliminado Correctamente!",'' , "success");
+        }
         handleMenuClose();
-        
+      };
+      if (result.isConfirmed) {
+        props.deleteUsuario(id, onSuccess); 
       }else{
         handleMenuClose();
         return;
       }
-      reload();
     })
 
   };
+
+  const modalFadeState = (rol) =>{
+    switch(rol){
+      case 'Docente':
+          setOpenModalUpdateDocente(!openModalUpdateDocente)
+        break;
+      case 'Estudiante':
+          setOpenModalUpdateEstudiante(!openModalUpdateEstudiante)
+        break;
+      case 'Tutor':
+          setOpenModalUpdateTutor(!openModalUpdateTutor)
+        break;
+      default:
+        break;
+    }   
+  }
+    
+  const onChange = (record) => {
+    setDatos(record)
+    modalFadeState(record.rol)
+  }
 
   return (
     <Provider store={store}>
@@ -170,7 +211,7 @@ const Usuarios = ({ classes, ...props }) => {
               <Search className="lupa" />
             </div>
 
-            <TableContainer>
+            <TableContainer style={{overflow:"unset"}}>
               <Table>
                 <TableHead>
                   <TableRow className="colorTab">
@@ -202,8 +243,9 @@ const Usuarios = ({ classes, ...props }) => {
                               <MoreVert />
                             </DropdownToggle>
                             <DropdownMenu>                              
-                              <DropdownItem>
-                                                       
+                              <DropdownItem
+                                // onClick={() => onDelete(record.idUsuario)} 
+                                onClick={() => onChange(record)}>                              
                              Editar
                               </DropdownItem>
                               <DropdownItem
@@ -222,6 +264,30 @@ const Usuarios = ({ classes, ...props }) => {
             </TableContainer>
           </div>
         </main>
+        {openModalUpdateDocente && 
+          <DocenteModalEditar
+            open = {openModalUpdateDocente}
+            datos = {datos}
+            modalFadeState = {modalFadeState}
+          >
+          </DocenteModalEditar>
+       }
+      {openModalUpdateEstudiante && 
+          <EstudianteModalEditar
+            open = {openModalUpdateEstudiante}
+            datos = {datos}
+            modalFadeState = {modalFadeState}
+          >
+          </EstudianteModalEditar>
+       } 
+      {openModalUpdateTutor && 
+          <TutorModalEditar
+            open = {openModalUpdateTutor}
+            datos = {datos}
+            modalFadeState = {modalFadeState}
+          >
+          </TutorModalEditar>
+       } 
       </div>
     </Provider>
   );

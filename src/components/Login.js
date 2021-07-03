@@ -6,6 +6,7 @@ import "../assets/css/css-login.css";
 import { Redirect } from "react-router";
 import { Cookies, useCookies } from "react-cookie";
 import RecuperarPassword from './RecuperarPassword'
+import swal from "sweetalert";
 
 const Login = () => {
   const [cookies, setCookie] = useCookies(["usuario"]);
@@ -19,7 +20,7 @@ const Login = () => {
     let emailGoogle = res.profileObj.email;
     setEmail(res.profileObj.email);
     setCookie('Name', res.profileObj.name, { path: '/' });
-    setCookie('img', res.profileObj.imageUrl, { path: '/' });
+    const imageGoogle= res.profileObj.imageUrl;
 
     const response = await fetch("http://localhost:60671/api/usuario/loginGoogle?email=" + emailGoogle, {
       method: "POST",
@@ -29,7 +30,8 @@ const Login = () => {
       if (!res.ok) throw new Error('Response is NOT ok')
       return res.json()
     }).then(res => {
-      cookie.set('nombrePersona', res.nombre)
+      cookie.set('nombrePersona', res.nombre);
+      setCookie('avatarPathGoogle', imageGoogle, { path: '/' });
       const nombre = res.nombre.charAt(0) + res.apellido.charAt(0);
       setCookie('avatar', nombre, { path: '/' });
     });;
@@ -62,18 +64,24 @@ const Login = () => {
         if (!res.ok) throw new Error('Response is NOT ok')
         return res.json()
       }).then(res => {
+        if(!res.avatar){
+          cookie.remove("avatarPath");
+          const nombre = res.nombre.charAt(0) + res.apellido.charAt(0);
+          setCookie('avatarNombre', nombre, { path: '/' });
+        }else{
+          cookie.remove("avatarNombre");
+          setCookie('avatarPath', res.avatar, { path: '/' });
+        }
         cookie.set('nombrePersona', res.nombre);
         cookie.set('apellidoPersona', res.apellido);
-        const nombre = res.nombre.charAt(0) + res.apellido.charAt(0);
-        setCookie('avatar', nombre, { path: '/' });
+        
         setCookie('email', email, { path: '/' });
-        window.localStorage.setItem('logged', true)
-        window.location.reload();
-      });
-    if(window.localStorage.getItem('logged'))  
+        setRedirect(true);
+      }).catch(err=>{
+          swal("No se puede iniciar sesión con los campos ingresados", '', "warning");  
+          setRedirect(false);
+        });
     
-    setRedirect(true);
-
   };
 
   if (redirect) {

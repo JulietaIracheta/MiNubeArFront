@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Modal, ModalBody } from 'reactstrap';
 import { connect } from "react-redux";
+import swal from 'sweetalert';
 import * as actions from "../../actions/institucion";
 
 
@@ -19,7 +20,15 @@ const ModalUpdateInstitucion = ({...props}) => {
 
     const modificando = () => {
         if( datos.idInstitucion !== null && isValid ){
-            props.updateInstitucion(datos.idInstitucion, datos);
+            // datos.email = datos.email === null ? estudiantesActuales : datos.email
+            const onSuccess = (respuesta) => {
+                if(respuesta === null){
+                  swal("Hubo un problema al querer modificar la Institución, intente más tarde",'' , "error");
+                }else if(respuesta.status === 204){
+                  swal("Institución Actualizada Correctamente!",'' , "success");
+                }
+            };
+            props.updateInstitucion(datos.idInstitucion, datos, onSuccess);
             props.modalFadeState()
         }
     }

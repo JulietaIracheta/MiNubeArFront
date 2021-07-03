@@ -3,11 +3,10 @@ import { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 
 import Sidebar from "../../Sidebar";
-import {SidebarDataEstudiante} from "../../sideBar/SidebarDataEstudiante";
-
 import NavEstudiante from "../NavEstudiante";
 import EstudianteMaterias from "../EstudianteMaterias";
 import MateriasUnidades from "../MateriasUnidades";
+import { SidebarDataEstudiante } from "../../sideBar/SidebarDataEstudiante";
 
 export default function Estudiante() {
   const [nombre, setNombre] = useState("");

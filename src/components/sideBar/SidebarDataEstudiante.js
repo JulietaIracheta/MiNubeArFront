@@ -1,4 +1,4 @@
-import { Business, Group } from '@material-ui/icons'
+import { BorderColor,Business, Group } from '@material-ui/icons'
 import React from 'react'
 import ChatIcon from '@material-ui/icons/Chat';
 export const SidebarDataEstudiante = [
@@ -16,5 +16,10 @@ export const SidebarDataEstudiante = [
         title: 'Materias', 
         icon: <Business />,
         link: "/rol"
+    },
+   {
+        title: 'Calificaciones', 
+        icon: <BorderColor />,
+        link: "/calificaciones"
     }
 ] 

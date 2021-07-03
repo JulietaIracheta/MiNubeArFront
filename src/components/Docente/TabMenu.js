@@ -40,6 +40,8 @@ class ScrollableTabsButtonAuto extends React.Component {
     const { classes } = this.props;
     const { value } = this.state;
     const { curso } = this.props;
+    const { institucion } = this.props;
+
     return (
       <div className={classes.root}>
         <AppBar position="static" color="default">
@@ -56,9 +58,9 @@ class ScrollableTabsButtonAuto extends React.Component {
             <Tab label="Comunicados" />
           </Tabs>
         </AppBar>
-        {value === 0 && <TabContainer><EstudiantesAsignados idCurso={curso.idCurso} /></TabContainer>}
-        {value === 1 && <TabContainer><DocenteMateria idCurso={curso.idCurso}></DocenteMateria></TabContainer>}
-        {value === 2 && <TabContainer><Comunicado idCurso={curso.idCurso}></Comunicado></TabContainer>}
+        {value === 0 && <TabContainer><EstudiantesAsignados idCurso={curso} idInstitucion={institucion}/></TabContainer>}
+        {value === 1 && <TabContainer><DocenteMateria idCurso={curso}></DocenteMateria></TabContainer>}
+        {value === 2 && <TabContainer><Comunicado idCurso={curso}  idInstitucion={institucion}></Comunicado></TabContainer>}
       </div>
     );
   }

@@ -41,7 +41,7 @@ const initialFieldValues = {
   password: "",
   rol: "Docente",
   usuarioNombre : "",
-  idInstitucion: "0"
+  idInstitucion: []
 
 };
 
@@ -82,13 +82,19 @@ const UsuarioFormDoc = ({ handleClose, classes, ...props }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
-      const onSuccess = () => {
+      const onSuccess = (usuario) => {
+        if(usuario.email === "error"){
+          swal("Hubo un problema al querer dar de alta al docente, intente más tarde",'' , "error");
+        }else if(usuario.email !== ""){
+          swal("Docente Registrado Correctamente!",'' , "success");
+        }else{
+          swal("El Email Ingresado Ya Existe!",'' , "error");
+        }
         resetForm();
+        handleClose();
       };
-    props.createUsuario(values, onSuccess);
+      props.createUsuario(values, onSuccess);
     }
-    handleClose();
-    swal("Usuario Registrado Correctamente!",'' , "success");
   };
 
   useEffect(() => {
@@ -169,12 +175,14 @@ const UsuarioFormDoc = ({ handleClose, classes, ...props }) => {
             />
                 <FormControl variant="outlined" className={classes.formControl}>
             <InputLabel id="demo-simple-select-outlined-label">Institución</InputLabel>
+
             <Select
               name="idInstitucion"
               id="demo-simple-select-outlined"
               value={values.idInstitucion}
               onChange={handleInputChange}
               label="Institucion"
+              multiple
             >
               {instituciones.map((institucion) => (
                 <MenuItem value={institucion.idInstitucion}>

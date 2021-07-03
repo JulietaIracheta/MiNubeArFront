@@ -1,0 +1,15 @@
+  .notificaciones-overflow::-webkit-scrollbar {
+    -webkit-appearance: none;
+  }
+  .notificaciones-overflow::-webkit-scrollbar:vertical {
+    width:10px;
+    height: 10px;
+  }
+  .notificaciones-overflow::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+  }
+  .notificaciones-overflow::-webkit-scrollbar-track {
+    border-radius: 10px;  
+  }

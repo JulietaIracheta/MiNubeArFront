@@ -1,25 +1,25 @@
-import { BorderColor, Business, Group } from '@material-ui/icons'
+import { BorderColor, Business, Email, FolderShared, Group } from '@material-ui/icons'
 import React from 'react'
 
 export const SidebarDataTutor = [
     {
         title: 'Estudiantes ', 
         icon: <Business />,
-        link: "tutor/estudiantesAsignados"
+        link: "/rol"
     },
     {
         title: 'Calificaciones', 
-        icon: <Group />,
-        link: "/calificaciones"
+        icon: <BorderColor />,
+        link: "/calificacionesTutor"
     },
-    {
+   /* {
         title: 'Informes', 
-        icon: <Group />,
+        icon: <FolderShared />,
         link: "/informes"
-    },
+    },*/
     {
         title: 'Comunicados', 
-        icon: <Group />,
-        link: "/comunicados"
+        icon: <Email />,
+        link: "/tutor/comunicados"
     }
 ] 

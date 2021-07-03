@@ -8,6 +8,7 @@ import {
 import useForm from "./useForm";
 import { connect } from "react-redux";
 import * as actions from "../../actions/institucion";
+import swal from 'sweetalert';
 import "../../assets/css/css.css";
 
 const styles = (theme) => ({
@@ -65,9 +66,19 @@ const InstitucionForm = ({ handleClose, classes, ...props }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
-      const onSuccess = () => {
+
+      const onSuccess = (usuario) => {
+        if(usuario.email === "error"){
+          swal("Hubo un problema al querer dar de alta a la Institución, intente más tarde",'' , "error");
+        }else if(usuario.email !== ""){
+          swal("Institución Registrada Correctamente!",'' , "success");
+        }else{
+          swal("El Email Ingresado Ya Existe!",'' , "error");
+        }
         resetForm();
+        handleClose();
       };
+      
     props.createInstitucion(values, onSuccess);
     }
     handleClose();

@@ -77,15 +77,12 @@ const ContenidoForm = ({ handleClose, classes, ...props }) => {
       const onSuccess = () => {
         resetForm();
       };
-      const f = new FormData();
       const form = new FormData();
 
-      f.append("File", archivo[0]);
       form.append("titulo", values.titulo);
       form.append("descripcion", values.descripcion);
       form.append("unidad", 1);
       form.append("file", archivo[0]);
-      console.log("boke:",form);
       await axios.post("http://localhost:60671/api/contenido/crearContenido",
         form)
         .then(response => {

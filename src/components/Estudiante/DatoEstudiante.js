@@ -2,14 +2,22 @@ import { Link } from 'react-router-dom';
 import React from 'react'
 import { PersonCircle } from 'react-bootstrap-icons';
 import '../../assets/css/css-estudiante.css';
+import { Avatar } from "@material-ui/core";
 
-export default function DatoEstudiante({ avatar, nombre, apellido, id}) {
+
+export default function DatoEstudiante({ avatar, nombre, apellido,id}) {
     return (
         <div className="col-md-4 p-3">
             <div className="card min-w card-docente">
-                <div className="card-body row">
+                <div className="card-body row" style={{minHeight:"10rem"}}>
                     <div className="col-md-6 col-sm-12 estudiante-asignado-icono">
-                        <PersonCircle className="rounded-circle h-100 icono-estudiante"/>
+                        {avatar ? 
+                              <Avatar className="icon-perfil text-white w-100 h-100" style={{ background: "#B0211D" }}>
+                              <img className="w-100 h-100"
+                                src={"http://localhost:60671/Avatares/" + avatar}
+                                style={{ objectFit: "cover" }} />
+                            </Avatar>
+                        : <PersonCircle className="rounded-circle h-100 icono-estudiante"/>}
                     </div>
                     <div className="col-md-6 col-sm-12 d-flex flex-column justify-content-around estudiante-asignado-detalle">
                         <p className="font-weight-bold">{nombre}, <br/>{apellido}</p>

@@ -41,7 +41,7 @@ const initialFieldValues = {
   password: "",
   rol: "Estudiante",
   usuarioNombre: "",
-  idInstitucion: "0"
+  idInstitucion: [] 
 };
 
 const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
@@ -68,7 +68,7 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
       ...temp,
     });
 
-    if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+    if (fieldValues === values) return Object.values(temp).every((x) => x === "");
   };
 
   const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
@@ -82,23 +82,32 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
 
-  const handleSubmit = e => {
-    e.preventDefault()
+  const handleSubmit = (e) => {
+    e.preventDefault();
     if (validate()) {
-        const onSuccess = () => {
-            resetForm()
+      const onSuccess = (usuario) => {
+        console.log(usuario);
+        if(usuario.email === "error"){
+          swal("Hubo un problema al querer dar de alta al Estudiante, intente más tarde",'' , "error");
+        }else if(usuario.email !== ""){
+          swal("Estudiante Registrado Correctamente!",'' , "success");
+        }else{
+          swal("El Email Ingresado Ya Existe!",'' , "error");
         }
-        if (props.currentId == 0){
-          console.log(e)
+        
+        /*if (props.currentId === 0){
+          
             props.createUsuario(values, onSuccess)
-         
             handleClose();
             swal("Usuario Registrado Correctamente!",'' , "success");
-            onSuccess();}
-            
-            
+            onSuccess();
+        } */
+        resetForm();
+        handleClose();
+      };
+      props.createUsuario(values, onSuccess);
     }
-  }
+  };
 
 
   useEffect(() => {
@@ -186,6 +195,7 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
               value={values.idInstitucion}
               onChange={handleInputChange}
               label="Institucion"
+              multiple
             >
               {instituciones.map((institucion) => (
                 <MenuItem value={institucion.idInstitucion}>

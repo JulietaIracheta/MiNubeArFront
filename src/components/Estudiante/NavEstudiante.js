@@ -21,13 +21,16 @@ import CheckIcon from '@material-ui/icons/Check';
 import eliminarNotificacion from "../../services/notificaciones/eliminarNotificacion";
 import { Business, Group } from '@material-ui/icons'
 import ChatIcon from '@material-ui/icons/Chat';
+import '../../assets/css/notificaciones/css-notificacion.css';
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [cookies, setCookie] = useCookies(['usuario']);
   const toggle = () => setIsOpen(!isOpen);
   const cookieNombreEstudiante = new Cookies();
-  const nombre = cookieNombreEstudiante.get('avatar');
+  const nombreAvatar = cookieNombreEstudiante.get('avatarNombre');
+  const nombrePath = cookieNombreEstudiante.get('avatarPath');
+  const nombrePathGoogle = cookieNombreEstudiante.get('avatarPathGoogle');
   const [notificaciones, setNotificaciones] = useState([]);
 
   const logout = async () => {
@@ -37,6 +40,11 @@ const NavBar = (props) => {
       credentials: "include",
     });
     cookieNombreEstudiante.remove("nombrePersona");
+
+    setCookie('nombreAvatar', '', { path: '/' });
+    setCookie('avatarPath', '', { path: '/' });
+    setCookie('avatarPathGoogle', '', { path: '/' });
+
   }
 
   useEffect(async function () {
@@ -83,11 +91,11 @@ const NavBar = (props) => {
                   <Bell className="icon-menu" />
                   <span id="notificacion-numero" className="badge rounded-circle">{notificaciones.length}</span>
                 </DropdownToggle>
-                <DropdownMenu right className="notificaciones-modal">
+                <DropdownMenu right className="notificaciones-modal notificaciones-overflow">
                   {notificaciones.length ?
                     notificaciones.map((notificacion, index) => {
                       return <div key={index}>
-                        <Link to={"/estudiante/"+notificacion.urlTipoNotificacion} className="d-block text-decoration-none">
+                        <Link to={"/estudiante/" + notificacion.urlTipoNotificacion} className="d-block text-decoration-none">
                           <p className="text-estudiante font-weight-bold">{notificacion.descripcion}</p>
                           <span>{notificacion.mensaje}</span>
                         </Link>
@@ -105,35 +113,52 @@ const NavBar = (props) => {
             </NavItem>
             <UncontrolledDropdown nav >
               <DropdownToggle nav>
-                <Avatar className="icon-perfil text-white" style={{ background: "#B0211D" }}>{nombre}</Avatar>
+                {nombrePathGoogle ?
+                  <Avatar className="icon-perfil text-white" style={{ background: "#B0211D" }}>
+                    <img className="w-100 h-100"
+                      src={nombrePathGoogle}
+                      style={{ objectFit: "cover" }} />
+                  </Avatar>
+                  :
+                  <Avatar className="icon-perfil text-white" style={{ background: "#B0211D" }}>
+                    {nombreAvatar ? nombreAvatar :
+                      <img className="w-100 h-100"
+                        src={"http://localhost:60671/Avatares/" + nombrePath}
+                        style={{ objectFit: "cover" }} />
+                    }</Avatar>
+                }
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>
+                  <Link to='/estudiante/cuenta' className="color-negro text-decoration-none">Mi cuenta</Link>
+                </DropdownItem>
+                <DropdownItem>
                   <Link to='/login' className="color-negro text-decoration-none" onClick={logout}>Logout</Link>
                 </DropdownItem>
+
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
           <div className="row d-flex flex-direction-column w-100 pl-1 pr-1 justify-content-between sidebar-responsive">
-          <div className="marginMN">
-              <Link to="/estudiante/chat"> 
-                <ChatIcon className="icon-menu color-negro" 
-                  style={{height:"3rem",width:"3rem"}}/>
-                </Link>
+            <div className="marginMN">
+              <Link to="/estudiante/chat">
+                <ChatIcon className="icon-menu color-negro"
+                  style={{ height: "3rem", width: "3rem" }} />
+              </Link>
             </div>
             <div className="marginMN">
-              <Link to="/estudiante/comunicado"> 
-                <Group className="icon-menu color-negro" 
-                  style={{height:"3rem",width:"3rem"}}/>
-                </Link>
+              <Link to="/estudiante/comunicado">
+                <Group className="icon-menu color-negro"
+                  style={{ height: "3rem", width: "3rem" }} />
+              </Link>
             </div>
             <div className="marginMN text-decoration-none mt-2">
-              <Link to="/rol"> 
-                <Business className="color-negro" 
-                  style={{height:"3rem",width:"3rem"}}/>
-                </Link>
+              <Link to="/rol">
+                <Business className="color-negro"
+                  style={{ height: "3rem", width: "3rem" }} />
+              </Link>
             </div>
-            </div>
+          </div>
         </Collapse>
       </Navbar>
     </div>

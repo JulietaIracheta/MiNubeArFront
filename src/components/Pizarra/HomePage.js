@@ -14,6 +14,10 @@ function Example({ data = [], width, height }) {
     },
     [setLines]
   );
+const reset = () => {
+  setLines(data)
+}
+
   const onDragMove = useCallback(
     (currDrag) => {
       setLines((currLines) => {
@@ -44,6 +48,7 @@ function Example({ data = [], width, height }) {
     resetOnStart: true
   });
   return width < 10 ? null : (
+    <div>
     <div className="DragII" style={{ touchAction: "none" }}>
       <svg width={width} height={height}>
         <LinearGradient id="stroke" from="#ff614e" to="#ffdc64" />
@@ -123,12 +128,16 @@ function Example({ data = [], width, height }) {
         }
       `}</style>
     </div>
+    
+    <button className="btn btn-warning mb-2" onClick={reset}>Reset</button>
+    </div>
+
   );
 }
 export default function App() {
   return (
     <div className="App">
-      <Example width={500} height={300} />
+      <Example width={800} height={500} />
     </div>
   );
 }

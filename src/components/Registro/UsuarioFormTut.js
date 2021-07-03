@@ -4,11 +4,14 @@ import {
   TextField,
   withStyles,
   Button,
+  FormControl,
 } from "@material-ui/core";
 import useForm from "./useForm";
 import { connect } from "react-redux";
+import Select from 'react-select';
 import * as actions from "../../actions/usuario";
 import "../../assets/css/css.css";
+import {getEstudiantes} from "../../services/estudiantes/getEstudiante";
 import swal from 'sweetalert';
 
 const styles = (theme) => ({
@@ -35,9 +38,10 @@ const initialFieldValues = {
   telefono: "",
   password: "",
   rol: "Tutor",
-  usuarioNombre : ""
-
+  usuarioNombre : "",
+  emailsEstudiantes: [] 
 };
+
 
 const UsuarioFormTut = ({ handleClose, classes, ...props }) => {
   const validate = (fieldValues = values) => {
@@ -62,8 +66,9 @@ const UsuarioFormTut = ({ handleClose, classes, ...props }) => {
     if (fieldValues == values) return Object.values(temp).every((x) => x == "");
   };
 
-  const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
-    useForm(initialFieldValues, validate, props.setCurrentId);
+  const { values, setValues, errors, setErrors, handleInputChange, resetForm } = useForm(initialFieldValues, validate, props.setCurrentId);
+  const [estudiantes, setEstudiantes] = useState([]);
+  const [estudiantesSelect, setEstudiantesSelect] = useState([]);
 
   //material-ui select
   const inputLabel = React.useRef(0);
@@ -71,18 +76,33 @@ const UsuarioFormTut = ({ handleClose, classes, ...props }) => {
 
   useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth);
+    getEstudiantes().then((estudiante) => {
+      let emailsEstudiantes = [];
+      estudiante.map( item => {
+         emailsEstudiantes.push({value: item.idUsuario, label:  item.usuarioNombre })
+      })
+      setEstudiantes(emailsEstudiantes);
+    });
   }, []);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
-      const onSuccess = () => {
+      const onSuccess = (usuario) => {
+        if(usuario.email === "error"){
+          swal("Hubo un problema al querer dar de alta al Tutor, intente más tarde",'' , "error");
+        }else if(usuario.email !== ""){
+          swal("Tutor Registrado Correctamente!",'' , "success");
+        }else{
+          swal("El Email Ingresado Ya Existe!",'' , "error");
+        }
         resetForm();
+        handleClose();
       };
-    props.createUsuario(values, onSuccess);
+      values.idEstudiantes = estudiantesSelect;
+      props.createUsuario(values, onSuccess);
     }
-    handleClose();
-    swal("Usuario Registrado Correctamente!",'' , "success");
   };
 
   useEffect(() => {
@@ -93,6 +113,11 @@ const UsuarioFormTut = ({ handleClose, classes, ...props }) => {
       setErrors({});
     }
   }, [props.currentId]);
+
+  const cambiaSelect=(e)=>{
+    let emails = Array.from(e, option => option.value);
+    setEstudiantesSelect(emails)
+  }
 
   return (
     <div>
@@ -147,7 +172,6 @@ const UsuarioFormTut = ({ handleClose, classes, ...props }) => {
                 helperText: errors.password,
               })}
             />
-
             <TextField
               name="telefono"
               variant="outlined"
@@ -155,6 +179,13 @@ const UsuarioFormTut = ({ handleClose, classes, ...props }) => {
               value={values.telefono}
               onChange={handleInputChange}
             />
+            <FormControl variant="outline" className={classes.formControl}>
+              <Select options= {estudiantes}
+                      isMulti 
+                      placeholder="Email del Estudiante" 
+                      onChange={cambiaSelect}
+              />
+            </FormControl>
             <div className="w-100 d-flex justify-content-center">
               <Button
                 variant="contained"

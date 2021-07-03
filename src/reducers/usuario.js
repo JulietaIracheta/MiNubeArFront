@@ -5,7 +5,7 @@ const initialState = {
 
 
 export const usuario = (state = initialState, action) => {
-
+    
     switch (action.type) {
         case ACTION_TYPES.FETCH_ALL:
             return {
@@ -22,13 +22,13 @@ export const usuario = (state = initialState, action) => {
         case ACTION_TYPES.UPDATE:
             return {
                 ...state,
-                list: state.list.map(x => x.id === action.payload.id ? action.payload : x)
+                list: state.list.map(usuario => usuario.idUsuario === action.payload.id ? action.payload : usuario)
             }
 
         case ACTION_TYPES.DELETE:
             return {
                 ...state,
-                list: state.list.filter(x => x.id !== action.payload)
+                list: state.list.filter(usuario => usuario.idUsuario !== action.payload)
             }
             
         default:

@@ -14,6 +14,11 @@ body{
   margin: auto;
   height: 100%;
 }
+.hr-color-tutor{
+  color: #67a147;
+  background-color: #67a147;
+  height: 5px; 
+}
 
 .logo{
   height: 200px;
@@ -255,6 +260,13 @@ color: white;
   min-width: 0;
   background-color: rgb(53, 81, 82);
   color: white;
+}
+
+.card-materia-tutor{
+  border-color: #67a147 !important;
+  border-width: 2px !important;
+  border-style: solid !important;
+  border-radius: 5px !important;
 }
 
 .espacio{

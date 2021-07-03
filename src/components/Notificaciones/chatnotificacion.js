@@ -1,16 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Message from "./Message";
-import {
-    HubConnectionBuilder,
-    LogLevel,
-    HttpTransportType
-} from "@microsoft/signalr";
+import {   HubConnectionBuilder,LogLevel} from "@microsoft/signalr";
 import Chat from './chat';
 import NavEstudiante from '../Estudiante/NavEstudiante';
-import NavDocente from '../Docente/NavDocente';
 import Sidebar from '../Sidebar';
 import { SidebarDataEstudiante } from "../sideBar/SidebarDataEstudiante";
-import { SidebarDataDocente } from "../sideBar/SidebarDataDocente";
 import './chat.css';
 import { useCookies } from "react-cookie";
 import InsertCommentIcon from '@material-ui/icons/InsertComment';
@@ -97,7 +90,26 @@ export default () => {
                 <div className="container">
                     <h2 className="mt-2">Salas de chat</h2>
                     {!connection
-                        ? <button class="btn btn-lg bg-primary text-white" onClick={joinRoom}><InsertCommentIcon />Entrar a la sala</button>
+                        ?
+                        <div className="row">
+                            <div className="col-md-6">
+                                <div className="mb-3">
+                                    <div className="card-body card-materia-estudiante font-weight-bold">
+                                        <h5 className="card-title font-weight-bold" style={{color:"#B61915"}}>
+                                            Sala de mi curso
+                                        </h5>
+                                        <div className="text-left">
+                                            <div class="d-flex flex-row-reverse">
+                                                <button class="btn btn-lg ml-2 text-white" style={{ background: "#B61915" }}
+                                                    onClick={joinRoom}>
+                                                    <InsertCommentIcon />
+                                                    Unirse</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         :
                         <Chat messages={messages}
                             sendMessage={sendMessage}

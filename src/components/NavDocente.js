@@ -12,6 +12,7 @@ import { ChatSquareQuoteFill, Bell, PersonCircle } from "react-bootstrap-icons";
 import { Link } from 'react-router-dom'
 import '../assets/nav.css';
 import { useCookies } from 'react-cookie';
+import '../../assets/css/notificaciones/css-notificacion.css';
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);

@@ -8,6 +8,7 @@ import { red } from '@material-ui/core/colors';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import ReactPlayer from 'react-player';
+import { Link } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -36,7 +37,7 @@ export default function RecipeReviewCard({ descripcion, titulo, video }) {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
     const url="http://localhost:60671/videos/"+video;
-    console.log(url);
+    
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
@@ -54,7 +55,7 @@ export default function RecipeReviewCard({ descripcion, titulo, video }) {
                     <DeleteIcon />
                 </IconButton>
                 <IconButton aria-label="share">
-                    <EditIcon />
+                  <Link href="/crearactividades">  <EditIcon /></Link>
                 </IconButton>
             </CardActions>
         </Card>
