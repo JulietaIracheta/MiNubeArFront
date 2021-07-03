@@ -4,7 +4,7 @@ const Encabezado = (props) => {
    
     return (          
         <div>
-            <h2>Bienvenido {props.nombre}</h2>
+            <h2>{props.texto}</h2>
             <hr className="hr-color"/>
         </div>
     )

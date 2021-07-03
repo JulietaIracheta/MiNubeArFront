@@ -24,7 +24,9 @@ import recPassword from './components/recPassword';
 import ComunicadosEstudiante from './components/Estudiante/ComunicadosEstudiante';
 import chatNotificacion from './components/Notificaciones/chatnotificacion';
 import chatnotificacionDocente from './components/Notificaciones/chatnotificacionDocente';
-
+import MateriaUnidades, { materiaUnidad } from './components/Estudiante/Page/materiaUnidad';
+import Estudiante from './components/Estudiante/Page';
+import { materiaActividad } from './components/Estudiante/Page/materiaActividad';
 
 function App() {
 
@@ -58,8 +60,16 @@ function App() {
         <Route path='/docente/:cursoId/:materiaId/contenido' exact component={contenidoPorMateria} />        
         <Route path='/estudiante/comunicado' exact component={ComunicadosEstudiante} />       
         <Route path='/estudiante/chat' exact component={chatNotificacion} />       
-        <Route path='/docente/chat' exact component={chatnotificacionDocente} />       
-      
+        <Route path='/docente/chat' exact component={chatnotificacionDocente} />                           
+        <Route path='/docente/estudiante/:id' exact component={PerfilEstudiante}/>
+        <Route path='/curso/:id' exact component={CursosAsignadosDocente}/>
+        <Route path='/docente/ActividadEstudiante' exact component={ActividadEstudiante}/>
+        <Route path='/Estuduante' exact component={Estudiante}/>
+        <Route path='/estudiante/materias/:id' exact component={materiaUnidad}/>
+        <Route path='/estudiante/materias/:id/:unidad' exact component={materiaActividad}/>
+        <Route path='*'>
+          <h1>404 Not found</h1>
+        </Route>
       </Switch>
     </Router>
     </Provider>

@@ -2,11 +2,14 @@ import axios from "axios";
 
 const baseUrl = "http://localhost:60671/api/"
 
-export default async function getMaterias(email) {
-    const url = baseUrl + 'usuario/materias?email=' + email;
+export default async function getMaterias() {
+    const url = baseUrl + 'estiduante/materias';
     
     return (
-        axios.get(url)
+        await axios.get(url, {                      
+                headers: { "Content-type": "application/json" },
+                credentials: "include",        
+            })
             .then(function (response) {
                 // handle success
                 console.log("getMaterias: ");
