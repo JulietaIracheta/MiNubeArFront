@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
@@ -12,19 +12,23 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
-import {  Bell, Calendar2Event} from "react-bootstrap-icons";
+import { Bell, Calendar2Event } from "react-bootstrap-icons";
 import '../../assets/nav.css';
 import logo from '../../assets/img/logoGris.png'
 import { Avatar } from "@material-ui/core";
 import { Cookies, useCookies } from 'react-cookie';
 import { Business } from "@material-ui/icons";
 import ChatIcon from '@material-ui/icons/Chat';
+import '../../assets/css/css-docente.css'
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   const [cookies, setCookie] = useCookies(['usuario']);
   const cookieNombreEstudiante = new Cookies();
+  const nombreAvatar = cookieNombreEstudiante.get('avatarNombre');
+  const nombrePath = cookieNombreEstudiante.get('avatarPath');
+  const nombrePathGoogle = cookieNombreEstudiante.get('avatarPathGoogle');
 
   const logout = async () => {
     await fetch('http://localhost:60671/api/usuario/logout', {
@@ -34,8 +38,9 @@ const NavBar = (props) => {
     });
     cookieNombreEstudiante.remove("nombrePersona");
     cookieNombreEstudiante.remove("apellidoPersona");
-
-
+    setCookie('nombreAvatar', '', { path: '/' });
+    setCookie('avatarPath', '', { path: '/' });
+    setCookie('avatarPathGoogle', '', { path: '/' });
   }
 
   return (
@@ -61,9 +66,25 @@ const NavBar = (props) => {
             </NavItem>
             <UncontrolledDropdown nav >
               <DropdownToggle nav>
-                <Avatar className="icon-perfil text-white" style={{background:"#212888"}}>{cookies.avatar}</Avatar>
+                {nombrePathGoogle ?
+                  <Avatar className="icon-perfil text-white" style={{ background: "#B0211D" }}>
+                    <img className="w-100 h-100"
+                      src={nombrePathGoogle}
+                      style={{ objectFit: "cover" }} />
+                  </Avatar>
+                  :
+                  <Avatar className="icon-perfil text-white" style={{ background: "#212888" }}>
+                    {nombreAvatar ? nombreAvatar :
+                      <img className="w-100 h-100"
+                        src={"http://localhost:60671/Avatares/" + nombrePath}
+                        style={{ objectFit: "cover" }} />
+                    }</Avatar>
+                }
               </DropdownToggle>
               <DropdownMenu right>
+                <DropdownItem>
+                  <Link to='/docente/cuenta' className="color-negro text-decoration-none">Mi cuenta</Link>
+                </DropdownItem>
                 <DropdownItem>
                   {/*<Link className="color-negro text-decoration-none" onClick={logout}>Logout</Link>*/}
                   <Link to='/login' className="color-negro text-decoration-none" onClick={logout}>Logout</Link>
@@ -72,17 +93,17 @@ const NavBar = (props) => {
             </UncontrolledDropdown>
           </Nav>
           <div className="row d-flex flex-direction-column w-100 pl-1 pr-1 justify-content-between sidebar-responsive">
-          <div className="marginMN text-decoration-none mt-2">
-              <Link to="/docente/chat"> 
-                <ChatIcon className="color-negro" 
-                  style={{height:"3rem",width:"3rem"}}/>
-                </Link>
+            <div className="marginMN text-decoration-none mt-2">
+              <Link to="/docente/chat">
+                <ChatIcon className="color-negro"
+                  style={{ height: "3rem", width: "3rem" }} />
+              </Link>
             </div>
             <div className="marginMN text-decoration-none mt-2">
-              <Link to="/rol"> 
-                <Business className="color-negro" 
-                  style={{height:"3rem",width:"3rem"}}/>
-                </Link>
+              <Link to="/rol">
+                <Business className="color-negro"
+                  style={{ height: "3rem", width: "3rem" }} />
+              </Link>
             </div>
           </div>
         </Collapse>

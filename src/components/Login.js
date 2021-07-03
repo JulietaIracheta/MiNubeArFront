@@ -19,7 +19,7 @@ const Login = () => {
     let emailGoogle = res.profileObj.email;
     setEmail(res.profileObj.email);
     setCookie('Name', res.profileObj.name, { path: '/' });
-    setCookie('img', res.profileObj.imageUrl, { path: '/' });
+    const imageGoogle= res.profileObj.imageUrl;
 
     const response = await fetch("http://localhost:60671/api/usuario/loginGoogle?email=" + emailGoogle, {
       method: "POST",
@@ -29,7 +29,8 @@ const Login = () => {
       if (!res.ok) throw new Error('Response is NOT ok')
       return res.json()
     }).then(res => {
-      cookie.set('nombrePersona', res.nombre)
+      cookie.set('nombrePersona', res.nombre);
+      setCookie('avatarPathGoogle', imageGoogle, { path: '/' });
       const nombre = res.nombre.charAt(0) + res.apellido.charAt(0);
       setCookie('avatar', nombre, { path: '/' });
     });;
@@ -62,10 +63,17 @@ const Login = () => {
         if (!res.ok) throw new Error('Response is NOT ok')
         return res.json()
       }).then(res => {
+        if(!res.avatar){
+          cookie.remove("avatarPath");
+          const nombre = res.nombre.charAt(0) + res.apellido.charAt(0);
+          setCookie('avatarNombre', nombre, { path: '/' });
+        }else{
+          cookie.remove("avatarNombre");
+          setCookie('avatarPath', res.avatar, { path: '/' });
+        }
         cookie.set('nombrePersona', res.nombre);
         cookie.set('apellidoPersona', res.apellido);
-        const nombre = res.nombre.charAt(0) + res.apellido.charAt(0);
-        setCookie('avatar', nombre, { path: '/' });
+        
         setCookie('email', email, { path: '/' });
       });
 

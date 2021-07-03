@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { SidebarDataEstudiante } from "../sideBar/SidebarDataEstudiante";
-import NavEstudiante from './NavEstudiante';
+import { SidebarDataDocente } from "../sideBar/SidebarDataDocente";
+import NavDocente from './NavDocente';
 import Sidebar from '../Sidebar';
 import { Avatar } from '@material-ui/core';
 import Axios from 'axios';
@@ -67,31 +67,32 @@ export default function Cuenta() {
         await Axios.post("http://localhost:60671/api/usuario/actualizarCuentaUsuario", x).then(response => {
             setCookie('avatarNombre', '', { path: '/' });
             setCookie('avatarPath', '', { path: '/' });
-            if (response.status === 204 || response.status === 200) {
-                if (seleccionoAvatar) {
+        if(response.status===204 || response.status===200){
+
+            if (seleccionoAvatar) {
+                setCookie('avatarNombre', '', { path: '/' });
+                setCookie('avatarPath', response.data, { path: '/' });
+            } else {
+                if(response.data){
                     setCookie('avatarNombre', '', { path: '/' });
                     setCookie('avatarPath', response.data, { path: '/' });
-                } else {
-                    if (response.data) {
-                        setCookie('avatarNombre', '', { path: '/' });
-                        setCookie('avatarPath', response.data, { path: '/' });
-                    } else {
-                        setCookie('avatarPath', '', { path: '/' });
-                        setCookie('avatarNombre', nombre.charAt(0) + apellido.charAt(0), { path: '/' });
-                    }
+                }else{
+                    setCookie('avatarPath', '', { path: '/' });
+                    setCookie('avatarNombre', nombre.charAt(0) + apellido.charAt(0), { path: '/' });
                 }
-
             }
+            
+        }
         });
-        await swal("Perfil modificado", '', "success");
+        await swal("Perfil modificado",'' , "success");
         window.location.reload();
     }
 
     return (
         <div>
-            <NavEstudiante />
+            <NavDocente />
             <div className="d-flex mt-1">
-                <Sidebar data={SidebarDataEstudiante} />
+                <Sidebar data={SidebarDataDocente} />
                 <div className="container">
                     {!usuario ? "Cargando.." :
                         <div className="container">
@@ -103,11 +104,11 @@ export default function Cuenta() {
                                         <div className="d-flex flex-column align-items-center">
 
                                             {seleccionoAvatar ?
-                                                <Avatar className="bg-estudiante"
+                                                <Avatar className="bg-docente"
                                                     style={{ height: "100px", width: "100px" }}>
                                                     <img src={URL.createObjectURL(avatar)} />
                                                 </Avatar>
-                                                : <Avatar className="bg-estudiante"
+                                                : <Avatar className="bg-docente"
                                                     style={{ height: "100px", width: "100px" }}>
                                                     {nombreAvatar ?
                                                         <img className="w-100 h-100"

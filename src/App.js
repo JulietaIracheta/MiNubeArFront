@@ -36,10 +36,10 @@ import CalificacionesTutor from './components/Tutor/CalificacionesTutor';
 import AsignarMateriasACurso from './components/Registro/AsignarMateriasACurso';
 import AsignarCursosAInstituciones from './components/Registro/AsignarCursoAInstitucion';
 import ComunicadosTutor from './components/Tutor/Comunicados';
-import EstudianteCalificaciones from './components/Tutor/EstudianteCalificaciones';
 import NotFound from '../src/NotFound';
-import { Cookies, useCookies } from "react-cookie";
+import { Cookies } from "react-cookie";
 import CuentaEstudiante from './components/Estudiante/Cuenta';
+import CuentaDocente from './components/Docente/Cuenta';
 
 const MyRoute = (props)=>(
   isAuthenticated()
@@ -95,6 +95,7 @@ export default ()=> (
         <MyRoute path='/docente/chat' exact component={chatnotificacionDocente} />  
         <MyRoute path='/tutor/comunicados' exact component={ComunicadosTutor} />
         <MyRoute path='/estudiante/cuenta' exact component={CuentaEstudiante} />   
+        <MyRoute path='/docente/cuenta' exact component={CuentaDocente} />   
         <Route path="*" render={NotFound} />     
       </Switch>
     </Router>
