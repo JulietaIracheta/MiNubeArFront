@@ -41,14 +41,11 @@ const initialFieldValues = {
   password: "",
   rol: "Estudiante",
   usuarioNombre: "",
-  idInstitucion: [] 
+  idInstitucionEstudiante: "",
 };
 
 const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
 
-  const [usuarioNombre, setUsuarioNombre] = useState("");
-  //validate()
-  //validate({fullName:'jenny'})
   const validate = (fieldValues = values) => {
     let temp = { ...errors };
     if ("rol" in fieldValues)
@@ -86,7 +83,6 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
     e.preventDefault();
     if (validate()) {
       const onSuccess = (usuario) => {
-        console.log(usuario);
         if(usuario.email === "error"){
           swal("Hubo un problema al querer dar de alta al Estudiante, intente más tarde",'' , "error");
         }else if(usuario.email !== ""){
@@ -94,14 +90,6 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
         }else{
           swal("El Email Ingresado Ya Existe!",'' , "error");
         }
-        
-        /*if (props.currentId === 0){
-          
-            props.createUsuario(values, onSuccess)
-            handleClose();
-            swal("Usuario Registrado Correctamente!",'' , "success");
-            onSuccess();
-        } */
         resetForm();
         handleClose();
       };
@@ -190,12 +178,11 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
             <FormControl variant="outlined" className={classes.formControl}>
             <InputLabel id="demo-simple-select-outlined-label">Institución</InputLabel>
             <Select
-              name="idInstitucion"
+              name="idInstitucionEstudiante"
               id="demo-simple-select-outlined"
               value={values.idInstitucion}
               onChange={handleInputChange}
               label="Institucion"
-              multiple
             >
               {instituciones.map((institucion) => (
                 <MenuItem value={institucion.idInstitucion}>
