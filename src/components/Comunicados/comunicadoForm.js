@@ -9,7 +9,6 @@ import { useToasts } from "react-toast-notifications";
 import "../../assets/css/css.css";
 import * as actions from "../../actions/comunicado";
 import getEstudiantesPorCurso from '../../services/docente/getEstudiantesPorCurso';
-import { Textarea } from "react-bootstrap-icons";
 import Select from 'react-select'
 
 const styles = (theme) => ({
@@ -44,7 +43,7 @@ const ComunicadoForm = ({ handleClose, classes, idCurso, idInstitucion, comunica
         ...temp,
       });
 
-    if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+    if (fieldValues === values) return Object.values(temp).every((x) => x === "");
   };
 
   const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
@@ -95,9 +94,9 @@ const ComunicadoForm = ({ handleClose, classes, idCurso, idInstitucion, comunica
     handleClose();
   };
   useEffect(() => {
-    if (props.currentId != 0) {
+    if (props.currentId !== 0) {
       setValues({
-        ...props.comunicadoList.find((x) => x.id == props.currentId),
+        ...props.comunicadoList.find((x) => x.id === props.currentId),
       });
       setErrors({});
     }

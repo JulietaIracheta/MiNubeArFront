@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import ModalDialogComunicado from './ModalDialogComunicado';
-import getComunicados from '../../services/comunicados/getComunicados';
 import '../../assets/css/comunicados/comunicados.css';
 import { store } from "../../actions/store";
 import { Provider } from "react-redux";
@@ -40,7 +39,7 @@ const Comunicado = ({ idCurso, idInstitucion, ...props }) => {
   const [dialogComunicado, setDialogComunicado] = useState(false);
   const [comunicados, setComunicados] = useState([]);
 
-  useEffect(async function () {
+  useEffect(() => {
     var url = "http://localhost:60671/api/comunicado/getComunicados/" + idInstitucion + "/" + idCurso;
     console.log(url);
     fetch(url, {
@@ -51,8 +50,8 @@ const Comunicado = ({ idCurso, idInstitucion, ...props }) => {
       console.log(response);
       return response.json();
     }).then(response => {
-        setComunicados(response);
-      });
+      setComunicados(response);
+    });
   }, []);
 
   const clickNuevoComunicado = () => {
@@ -120,6 +119,3 @@ export default connect(
   mapStateToProps,
   mapActionToProps
 )(withStyles(styles)(Comunicado));
-
-
-          {/*props.comunicadosList.map((c, index) => {*/}

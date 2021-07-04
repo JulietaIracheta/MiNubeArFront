@@ -143,8 +143,8 @@ const CargarCalificaciones = () => {
               onChange={onValueChangeEstudiante}
               label="Estudiante"
             >
-              {estudiantes.map((record) => (
-                <MenuItem value={record.idUsuario}>
+              {estudiantes.map((record, index) => (
+                <MenuItem key={index} value={record.idUsuario}>
                   {record.apellido}, {record.nombre}
                 </MenuItem>
               ))}

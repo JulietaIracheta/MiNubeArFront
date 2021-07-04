@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   Grid,
   TextField,
@@ -45,7 +45,7 @@ const EventoForm = ({ handleClose, classes, ...props }) => {
       ...temp,
     });
 
-    if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+    if (fieldValues === values) return Object.values(temp).every((x) => x === "");
   };
 
   const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
@@ -80,9 +80,9 @@ const EventoForm = ({ handleClose, classes, ...props }) => {
   };
 
   useEffect(() => {
-    if (props.currentId != 0) {
+    if (props.currentId !== 0) {
       setValues({
-        ...props.eventoList.find((x) => x.id == props.currentId),
+        ...props.eventoList.find((x) => x.id === props.currentId),
       });
       setErrors({});
     }

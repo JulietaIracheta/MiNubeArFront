@@ -129,19 +129,19 @@ export default function Cuenta() {
                                                 <p className="font-weight-bold">Datos personales</p>
                                             </div>
                                             <div className="col-md-6">
-                                                <label for="nombre" className="labelModificarUsuario">Nombre</label>
+                                                <label htmlFor="nombre" className="labelModificarUsuario">Nombre</label>
                                                 <input id="nombre" required className="form-control" type="text" value={nombre} onChange={(e) => { setNombre(e.target.value) }} />
                                             </div>
                                             <div className="col-md-6">
-                                                <label for="apellido" className="labelModificarUsuario">Apellido</label>
+                                                <label htmlFor="apellido" className="labelModificarUsuario">Apellido</label>
                                                 <input id="apellido" required className="form-control" type="text" value={apellido} onChange={(e) => { setApellido(e.target.value) }} />
                                             </div>
                                             <div className="col-md-6 mt-4">
-                                                <label for="email" className="labelModificarUsuario">Email</label>
+                                                <label htmlFor="email" className="labelModificarUsuario">Email</label>
                                                 <input id="email" required className="form-control" type="email" value={email} onChange={(e) => { setEmail(e.target.value) }} />
                                             </div>
                                             <div className="col-md-6 mt-4">
-                                                <label for="telefono" className="labelModificarUsuario">Teléfono</label>
+                                                <label htmlFor="telefono" className="labelModificarUsuario">Teléfono</label>
                                                 <input id="telefono" required className="form-control" type="text" value={telefono} onChange={(e) => { setTelefono(e.target.value) }} />
                                             </div>
                                             <div className="col-md-12 mt-4">
@@ -149,11 +149,11 @@ export default function Cuenta() {
                                             </div>
 
                                             <div className="col-md-6">
-                                                <label for="usuarioNombre" className="labelModificarUsuario">Nombre de Usuario</label>
+                                                <label htmlFor="usuarioNombre" className="labelModificarUsuario">Nombre de Usuario</label>
                                                 <input type="text" required id="usuarioNombre" className="form-control" value={nombreUsuario} onChange={(e) => { setNombreUsuario(e.target.value) }} />
                                             </div>
                                             <div className="col-md-6">
-                                                <label for="contrasenia" className="labelModificarUsuario">Contraseña</label>
+                                                <label htmlFor="contrasenia" className="labelModificarUsuario">Contraseña</label>
                                                 <input type="password" id="contrasenia" className="form-control" value={password} onChange={(e) => { setPassword(e.target.value) }} />
                                             </div>
                                             <div className="col-md-12 d-flex flex-row-reverse mt-4">
