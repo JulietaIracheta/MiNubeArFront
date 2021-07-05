@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import swal from 'sweetalert';
 import * as actions from "../../actions/usuario";
 import getInstituciones from "../../services/estudiantes/getInstituciones";
-import {getInstitucionesDeUnEstudiante} from "../../services/estudiantes/getInstituciones";
+import {getInstitucionDeUnEstudiante} from "../../services/estudiantes/getInstituciones";
 
 
 const EstudianteModalEditar = ({...props}) => {
@@ -12,8 +12,7 @@ const EstudianteModalEditar = ({...props}) => {
     const [isValid, setIsValid] = useState(true);
     const [message, setMessage] = useState('');
     const [instituciones, setInstituciones] = useState([]);
-    const [idInstitucionesDelEstudiante, setIdInstitucionesDelEstudiante] = useState([]);
-    const [estudiante, setEstudiante] = useState([]);
+    const [idInstitucionDelEstudiante, setIdInstitucionDelEstudiante] = useState(null);
     const emailRegex = /\S+@\S+\.\S+/;
 
     useEffect(() => {
@@ -21,17 +20,18 @@ const EstudianteModalEditar = ({...props}) => {
         setIsValid(true)
         setMessage('')
         getInstituciones().then((instituciones) => setInstituciones(instituciones));
-        getInstitucionesDeUnEstudiante(props.datos.idPersona).then((estudiante) => {
-            setEstudiante(estudiante)
-            let inst = estudiante.map(item => item.idInstitucion)
-            setIdInstitucionesDelEstudiante(inst)
+        getInstitucionDeUnEstudiante(props.datos.idUsuario).then((estudiante) => {
+            setIdInstitucionDelEstudiante(estudiante.idInstitucion)
         });
     },[props.datos]); 
 
     const modificando = () => {
         if( datos.idUsuario !== null && isValid ){
             // esto es por que si abro el modal y automaticamente pongo guardar, el valor de IdInstitucion es null
-            datos.idInstitucion = datos.idInstitucion === null ? idInstitucionesDelEstudiante : datos.idInstitucion
+            console.log('datos.idInstitucionEstudiante')
+            console.log(datos.idInstitucionEstudiante)
+            datos.idInstitucionEstudiante = !datos.idInstitucionEstudiante ? idInstitucionDelEstudiante : datos.idInstitucionEstudiante
+            
             const onSuccess = (respuesta) => {
                 if(respuesta === null){
                   swal("Hubo un problema al querer modificar al Estudiante, intente más tarde",'' , "error");
@@ -39,6 +39,8 @@ const EstudianteModalEditar = ({...props}) => {
                   swal("Estudiante Actualizado Correctamente!",'' , "success");
                 }
             };
+            console.log('datos: ')
+            console.log(datos)
             props.updateUsuario(datos.idUsuario, datos, onSuccess);
             props.modalFadeState('Estudiante')
         }
@@ -46,18 +48,9 @@ const EstudianteModalEditar = ({...props}) => {
 
     const handleInputChange = (event) => {
 
-        let idSeleccionados = []
-        if(event.nativeEvent.target.id === 'idInstitucion'){
-            for(let indice = 0 ; indice < event.target.length ; indice++){
-                if(event.target[indice].selected == true){
-                    idSeleccionados.push(parseInt(event.target[indice].value))
-                }
-            }
-        }
-
         setDatos({
             ...datos,
-            [event.target.name] :  event.nativeEvent.target.id === 'idInstitucion' ?  idSeleccionados : event.target.value 
+            [event.target.name] :  event.target.value  //event.nativeEvent.target.id === 'idInstitucion' ?  idSeleccionados : event.target.value 
         });
 
         if (emailRegex.test(datos.email)) {
@@ -113,20 +106,18 @@ const EstudianteModalEditar = ({...props}) => {
                                 />
                     </FormGroup>
                     <FormGroup>
-                        <Label for="idInstitucion">Instituciones</Label>
+                        <Label for="idInstitucionEstudiante">Instituciones</Label>
                         <Input type="select" 
-                               name="idInstitucion"
+                               name="idInstitucionEstudiante"
                                onChange = { handleInputChange } 
-                               id="idInstitucion" 
+                               id="idInstitucionEstudiante" 
                                value = {datos.idInstitucion}  
-                               multiple     
                         >
                         {
                             instituciones.map((institucion) => {
                                 let option
 
-                                if(idInstitucionesDelEstudiante.indexOf(institucion.idInstitucion) != -1){
-                              
+                                if(idInstitucionDelEstudiante == institucion.idInstitucion){   
                                     option = <option value={institucion.idInstitucion}  selected>
                                                 {institucion.nombre}
                                             </option>

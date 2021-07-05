@@ -1,5 +1,6 @@
 const url='http://localhost:60671/api/institucion/';
 const URL_ESTUDIANTE = 'http://localhost:60671/api/institucion/getInstitucionesDeUnEstudiante/'
+const URL_INSTITUCION_DE_ESTUDIANTE = 'http://localhost:60671/api/institucion/getInstitucionDeUnEstudiante/'
 
 export default function getInstituciones() {
     return fetch(url, {
@@ -16,6 +17,24 @@ export default function getInstituciones() {
 
 export async function getInstitucionesDeUnEstudiante(id) {
     const url=`${URL_ESTUDIANTE}${id}`
+    return fetch(url, {
+        method: 'GET',
+        headers: { "Content-type": "application/json" },
+        credentials: "include",
+    }).then(res => {
+        if (!res.ok) throw new Error('Response is NOT ok')
+        return res.json()
+    }).then(res => {
+        const instEst = res
+        return instEst
+    });
+}
+
+
+export async function getInstitucionDeUnEstudiante(id) {
+    console.info('entro a la peticion')
+    const url=`${URL_INSTITUCION_DE_ESTUDIANTE}${id}`
+    console.log('url: ' + url)
     return fetch(url, {
         method: 'GET',
         headers: { "Content-type": "application/json" },
