@@ -7,6 +7,7 @@ import { SidebarDataEstudiante } from "../sideBar/SidebarDataEstudiante";
 import './chat.css';
 import { useCookies } from "react-cookie";
 import InsertCommentIcon from '@material-ui/icons/InsertComment';
+import { Cookies } from 'react-cookie';
 
 export default () => {
     const [messages, setMessages] = useState([]);
@@ -14,11 +15,13 @@ export default () => {
     const [users, setUsers] = useState([]);
     const [cookie, setCookie] = useCookies();
     const [nombreSala, setNombreSala] = useState('');
+    const getCookie = new Cookies();
+    const jwt = getCookie.get('jwt');
 
     useEffect(() => {
 
         (async () => {
-            fetch("http://localhost:60671/api/usuario/getUsuarioChatEstudiante", {
+            fetch("http://localhost:60671/api/usuario/getUsuarioChatEstudiante?jwt="+jwt, {
                 method: 'GET',
                 headers: { "Content-type": "application/json" },
                 credentials: "include",

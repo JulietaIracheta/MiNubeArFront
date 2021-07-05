@@ -5,15 +5,18 @@ import "../../assets/css/css-docente.css";
 import Sidebar from "../Sidebar";
 import { SidebarDataDocente } from '../sideBar/SidebarDataDocente';
 import CursosAsignadosDocente from "./CursosAsignadosDocente";
+import { Cookies } from 'react-cookie';
 
 const EscuelasDocente = () => {
   const [institucion, SetInstitucion] = useState([]);
   const [curso, SetCurso] = useState([]);
   const [click, setearClick] = useState(false);
+  const cookie = new Cookies();
   const [seleccion, setearSeleccion] = useState({cursoId:'', cursoNombre:'',institucionID:'', institucionNombre:''});
+  const jwt = cookie.get('jwt');
 
   useEffect(async () => {
-    const result = await fetch('http://localhost:60671/api/docente/getInstitucion', {
+    const result = await fetch('http://localhost:60671/api/docente/getInstitucion?jwt='+jwt, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -26,7 +29,7 @@ const EscuelasDocente = () => {
   }, [])
 
   useEffect(async () => {
-    const result = await fetch('http://localhost:60671/api/docente/getCursos', {
+    const result = await fetch('http://localhost:60671/api/docente/getCursos?jwt='+jwt, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",

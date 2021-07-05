@@ -38,6 +38,8 @@ const NavBar = (props) => {
     });
     cookieNombreEstudiante.remove("nombrePersona");
     cookieNombreEstudiante.remove("apellidoPersona");
+    cookieNombreEstudiante.remove("jwt");
+    cookieNombreEstudiante.remove("email");
     setCookie('nombreAvatar', '', { path: '/' });
     setCookie('avatarPath', '', { path: '/' });
     setCookie('avatarPathGoogle', '', { path: '/' });

@@ -12,6 +12,7 @@ import { SidebarDataDocente } from "../sideBar/SidebarDataDocente";
 import './chat.css';
 import { useCookies } from "react-cookie";
 import InsertCommentIcon from '@material-ui/icons/InsertComment';
+import { Cookies } from 'react-cookie';
 
 export default () => {
     const [messages, setMessages] = useState([]);
@@ -20,10 +21,12 @@ export default () => {
     const [users, setUsers] = useState([]);
     const [cookie, setCookie] = useCookies();
     const [cursosDocente, setCursosDocente] = useState([]);
+    const getCookie = new Cookies();
+    const jwt = getCookie.get('jwt');
 
     useEffect(() => {
         (async () => {
-            await fetch("http://localhost:60671/api/usuario/getChatsDocente", {
+            await fetch("http://localhost:60671/api/usuario/getChatsDocente?jwt="+jwt, {
                 method: 'GET',
                 headers: { "Content-type": "application/json" },
                 credentials: "include",

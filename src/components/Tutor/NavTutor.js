@@ -25,6 +25,7 @@ const NavBar = (props) => {
   const [notificaciones, setNotificaciones] = useState([]);
   const cookie = new Cookies();
   const nombre = cookie.get('avatar');
+  const jwt = cookie.get('jwt');
 
   const toggle = () => setIsOpen(!isOpen);
   const logout = async () => {
@@ -34,10 +35,13 @@ const NavBar = (props) => {
       credentials: "include",
     });
     cookie.remove("nombrePersona");
+    cookie.remove("apellidoPersona");
+    cookie.remove("email");
+    cookie.remove("avatarNombre");
   }
   
   useEffect(async function () {
-    const url = 'http://localhost:60671/api/notificacion/getByUsuario'
+    const url = 'http://localhost:60671/api/notificacion/getByUsuario?jwt='+jwt
     return await fetch(url, {
       method: 'GET',
       headers: { "Content-type": "application/json" },

@@ -32,6 +32,7 @@ const NavBar = (props) => {
   const nombrePath = cookieNombreEstudiante.get('avatarPath');
   const nombrePathGoogle = cookieNombreEstudiante.get('avatarPathGoogle');
   const [notificaciones, setNotificaciones] = useState([]);
+  const jwt = cookieNombreEstudiante.get('jwt');
 
   const logout = async () => {
     await fetch('http://localhost:60671/api/usuario/logout', {
@@ -40,6 +41,9 @@ const NavBar = (props) => {
       credentials: "include",
     });
     cookieNombreEstudiante.remove("nombrePersona");
+    cookieNombreEstudiante.remove("apellidoPersona");
+    cookieNombreEstudiante.remove("email");
+    cookieNombreEstudiante.remove("jwt");
 
     setCookie('nombreAvatar', '', { path: '/' });
     setCookie('avatarPath', '', { path: '/' });
@@ -48,7 +52,7 @@ const NavBar = (props) => {
   }
 
   useEffect(async function () {
-    const url = 'http://localhost:60671/api/notificacion/getByUsuario'
+    const url = 'http://localhost:60671/api/notificacion/getByUsuario?jwt='+jwt
     return await fetch(url, {
       method: 'GET',
       headers: { "Content-type": "application/json" },

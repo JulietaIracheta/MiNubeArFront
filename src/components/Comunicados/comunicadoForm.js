@@ -10,6 +10,8 @@ import "../../assets/css/css.css";
 import * as actions from "../../actions/comunicado";
 import getEstudiantesPorCurso from '../../services/docente/getEstudiantesPorCurso';
 import Select from 'react-select'
+import { Cookies } from 'react-cookie';
+
 
 const styles = (theme) => ({
   root: {
@@ -55,13 +57,14 @@ const ComunicadoForm = ({ handleClose, classes, idCurso, idInstitucion, comunica
   const [estudiantes, setEstudiantes] = useState([]);
   const [idDocente, setIdDocente] = useState(0);
   const [idUsuarioSelect, setIdUsuarioSelect] = useState([]);
-
+  const cookie = new Cookies();
+  const jwt = cookie.get('jwt');
 
   useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
   useEffect(() => {
-    fetch("http://localhost:60671/api/docente/getId", {
+    fetch("http://localhost:60671/api/docente/getId?jwt="+jwt, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",

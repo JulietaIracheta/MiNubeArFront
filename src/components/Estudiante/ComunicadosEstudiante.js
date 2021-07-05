@@ -3,12 +3,15 @@ import NavEstudiante from "./NavEstudiante";
 import Sidebar from "../Sidebar";
 import { SidebarDataEstudiante } from "../sideBar/SidebarDataEstudiante";
 import '../../assets/css/comunicados/comunicados.css';
+import { Cookies } from 'react-cookie';
 
 export default function ComunicadosEstudiante() {
     const [comunicados, setComunicados] = useState([]);
+    const cookie = new Cookies();
+    const jwt = cookie.get('jwt');
 
     useEffect(async function () {
-        const url = 'http://localhost:60671/api/comunicado/getComunicadosByEstudiante'
+        const url = 'http://localhost:60671/api/comunicado/getComunicadosByEstudiante?jwt='+jwt
         return await fetch(url, {
             method: 'GET',
             headers: { "Content-type": "application/json" },

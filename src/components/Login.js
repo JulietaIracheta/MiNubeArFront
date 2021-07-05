@@ -73,6 +73,7 @@ const Login = () => {
           setCookie('avatarPath', res.avatar, { path: '/' });
         }
         cookie.set('nombrePersona', res.nombre);
+        cookie.set('jwt', res.jwt);
         cookie.set('apellidoPersona', res.apellido);
         
         setCookie('email', email, { path: '/' });
@@ -113,12 +114,12 @@ const Login = () => {
           <Button className="btn btn-lg boton-login btn-block">Ingresar</Button>
           <div className="text-center pt-3">Ingresá con: </div>
 
-          <GoogleLogin clientId="1008891152271-jvlq4r789kf6mlihar2uekqthgn30dob.apps.googleusercontent.com"
+          {/*<GoogleLogin clientId="1008891152271-jvlq4r789kf6mlihar2uekqthgn30dob.apps.googleusercontent.com"
             buttonText="Ingresar con Google"
             onSuccess={responseGoogle}
-            onFailure={responseGoogle}
+            onFailure={()=>{console.log("error login google")}}
             cookiePolicy={'single_host_origin'}
-            className="w-100 mt-3" />
+            className="w-100 mt-3" />*/}
 
           <div className="text-center pt-2">
             <Button color="secondary" className="mt-4" size="sm" onClick = { () => onChange()}>Recuperar Password</Button>

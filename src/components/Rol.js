@@ -8,12 +8,13 @@ import Cookies from 'universal-cookie';
 export default function Rol(){
   const [rol, setRol] = useState("");
   const cookie = new Cookies();
+  const jwt = cookie.get('jwt');
   
   useEffect(() => {
     (async () => {
-      const response = await fetch("http://localhost:60671/api/rol/getRolByUsuario", {
+      const response = await fetch("http://localhost:60671/api/rol/getRolByUsuario?jwt="+jwt, {
         headers: { "Content-type": "application/json" },
-        credentials: "include",
+        credentials: "include"
       });
 
       const content = await response.json();

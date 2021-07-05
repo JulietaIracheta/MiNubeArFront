@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react'
 import NavEstudiante from '../Estudiante/NavEstudiante'
 import Sidebar from '../Sidebar'
 import {SidebarDataEstudiante} from '../sideBar/SidebarDataEstudiante'
+import { Cookies } from 'react-cookie';
+
 import {
     TableContainer,
     Table,
@@ -46,9 +48,11 @@ const styles = (theme) => ({
 
 const Calificaciones = ({ classes, ...props }) => {
   const [boletin, setBoletin] = useState([]);
+  const cookie = new Cookies();
+  const jwt = cookie.get('jwt');
   
   useEffect(async () => {
-    const result = await fetch('http://localhost:60671/api/boletin/1', {
+    const result = await fetch('http://localhost:60671/api/boletin?jwt='+jwt, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",

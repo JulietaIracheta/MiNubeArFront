@@ -6,6 +6,8 @@ import { Provider } from "react-redux";
 import { connect } from "react-redux";
 import * as actions from "../../actions/comunicado";
 import { withStyles } from "@material-ui/core";
+import { Cookies } from 'react-cookie';
+
 const drawerWidth = 200;
 
 const styles = (theme) => ({
@@ -38,9 +40,11 @@ const styles = (theme) => ({
 const Comunicado = ({ idCurso, idInstitucion, ...props }) => {
   const [dialogComunicado, setDialogComunicado] = useState(false);
   const [comunicados, setComunicados] = useState([]);
+  const cookie = new Cookies();
+  const jwt = cookie.get('jwt');
 
   useEffect(() => {
-    var url = "http://localhost:60671/api/comunicado/getComunicados/" + idInstitucion + "/" + idCurso;
+    var url = "http://localhost:60671/api/comunicado/getComunicados/" + idInstitucion + "/" + idCurso + "?jwt="+jwt;
     console.log(url);
     fetch(url, {
       method: 'GET',

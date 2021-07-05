@@ -4,7 +4,7 @@ import NavEstudiante from './NavEstudiante';
 import Sidebar from '../Sidebar';
 import { Avatar } from '@material-ui/core';
 import Axios from 'axios';
-import { useCookies } from 'react-cookie';
+import { Cookies, useCookies } from 'react-cookie';
 import swal from 'sweetalert';
 
 export default function Cuenta() {
@@ -20,9 +20,11 @@ export default function Cuenta() {
     const [avatar, setAvatar] = useState();
     const [nombreAvatar, setNombreAvatar] = useState('');
     const [cookies, setCookie] = useCookies(["usuario"]);
+    const cookie = new Cookies();
+    const jwt = cookie.get('jwt');
 
     useEffect(() => {
-        fetch("http://localhost:60671/api/usuario/getCuentaUsuario", {
+        fetch("http://localhost:60671/api/usuario/getCuentaUsuario?jwt="+jwt, {
             method: 'GET',
             headers: { "Content-type": "application/json" },
             credentials: "include",
