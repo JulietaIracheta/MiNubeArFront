@@ -9,6 +9,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import ReactPlayer from 'react-player';
 import { Link } from '@material-ui/core';
+import AddIcon from '@material-ui/icons/Add';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -33,30 +34,34 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function RecipeReviewCard({ descripcion, titulo, video }) {
+export default function RecipeReviewCard({ unidad,descripcion, titulo, video }) {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
-    const url="http://localhost:60671/videos/"+video;
-    
+    const url = "http://localhost:60671/videos/" + video;
+
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
 
     return (
         <Card className={classes.root}>
-            <ReactPlayer url={url} controls width="100%" height="100%" />
+            <ReactPlayer url={url} controls width="100%" height="12rem" style={{minHeight:"12rem"}} />
             <CardContent>
+                <span>Unidad - {unidad}</span>
                 <p className="font-weight-bold">{titulo}</p>
                 <p>{descripcion}</p>
             </CardContent>
             <CardActions disableSpacing>
-                <p className="color-docente font-weight-bold">ACTIVIDAD</p>
-                <IconButton aria-label="add to favorites" className="ml-auto">
-                    <DeleteIcon />
-                </IconButton>
-                <IconButton aria-label="share">
-                  <Link href="/crearactividades">  <EditIcon /></Link>
-                </IconButton>
+                <p className="color-docente font-weight-bold m-0">ACTIVIDAD</p>
+                <div className="w-100 d-flex justify-content-end">
+                    <IconButton>
+                        <DeleteIcon />
+                    </IconButton>
+                    <IconButton>
+                        <Link href="/crearactividades">  <AddIcon /></Link>
+
+                    </IconButton>
+                </div>
             </CardActions>
         </Card>
     );

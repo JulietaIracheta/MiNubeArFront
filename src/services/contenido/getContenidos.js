@@ -1,6 +1,6 @@
-const url = 'http://localhost:60671/api/contenido/getContenidoByMateria/1'
-
-export default function getContenidos() {
+export default function getContenidos(idMateria) {
+const url = 'http://localhost:60671/api/contenido/getContenidoByMateria/'+idMateria;
+console.log(url);
     return fetch(url, {
         method: 'GET'
     }).then(res => {

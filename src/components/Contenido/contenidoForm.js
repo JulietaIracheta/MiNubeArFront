@@ -30,7 +30,7 @@ const styles = (theme) => ({
 const initialFieldValues = {
   file: undefined,
   titulo: "",
-  unidad: 0,
+  unidad: 1,
   descripcion: ""
 };
 
@@ -101,7 +101,7 @@ const ContenidoForm = ({ handleClose, classes, ...props }) => {
       <form
         autoComplete="off"
         noValidate
-        className={classes.root}
+        className="w-100"
         onSubmit={handleSubmit}
       >
         <Grid container>
@@ -133,11 +133,25 @@ const ContenidoForm = ({ handleClose, classes, ...props }) => {
           </Grid>
           <Grid item xs={12}>
             <div class="form-group p-3">
-            <label for="file">Elija el video...</label>
+              <label for="unidad">Unidad</label>
+              <input
+                name="unidad"
+                type="number"
+                class="form-control"
+                min="1"
+                value={values.unidad}
+                onChange={handleInputChange}
+                {...(errors.unidad && { error: true, helperText: errors.unidad })}
+              />
+            </div>
+          </Grid>
+          <Grid item xs={12}>
+            <div class="form-group p-3 file-select my-2 d-flex justify-content-center m-auto m-0" style={{width:"30rem"}} id="src-video" >
                 <input
-                  name="file"
+                  name="src-video"
+                  aria-label="Video"
                   type="file"
-                  class="fomr-control-input"
+                  className="fomr-control-input h-100"
                   value={values.file}
                   onChange={(e) => subirArchivos(e.target.files)}
                   {...(errors.file && { error: true, helperText: errors.file })}

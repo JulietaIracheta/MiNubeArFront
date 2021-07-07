@@ -19,7 +19,7 @@ const DocenteMaterias = ({ idCurso }) => {
     const url = baseUrl + 'materias/getMateriasDocente/' + idCurso + "?jwt="+ jwt;
     const [materias, setMaterias] = useState([]);
     const [loading, setLoading] = useState(false);
-
+    const [x,setX] = useState(false);
     useEffect(async () => {
         const result = await fetch(url, {
             method: 'GET',
@@ -40,7 +40,7 @@ const DocenteMaterias = ({ idCurso }) => {
     if (loading) {
         try {
             listMaterias = materias.map((materia, key) => (
-                <CardMateria nombre={materia.nombre} icon={materia.icon} url="/video"class="docente" key={key} />
+                <CardMateria idMateria={materia.idMateria} nombre={materia.nombre} idCurso={idCurso} icon={materia.icon} url="/video"class="docente" key={key} />
             ));
         } catch (error) {
             console.log(error)

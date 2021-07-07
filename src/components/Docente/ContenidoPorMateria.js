@@ -5,20 +5,19 @@ import NavDocente from './NavDocente';
 import Contenido from '../Contenido/contenido';
 import '../../assets/css/docente/docente.css'
 import getContenidos from '../../services/contenido/getContenidos';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import ModalDialogContenido from '../Contenido/ModalDialogContenido';
 import { SidebarDataDocente } from '../sideBar/SidebarDataDocente';
 import '../../assets/css/contenido/css-contenido.css';
 
-export default function ContenidoPorMateria({ ...props }) {
-
+export default function ContenidoPorMateria({ id,set,...props }) {
+    console.log('pr',props);
     const [contenidos, setContenidos] = useState([]);
     const [dialogContenido, setDialogContenido] = useState(false);
-
+    
     useEffect(function () {
-        getContenidos().then(contenidos => setContenidos(contenidos));
+        getContenidos(props.match.params.materiaId).then(contenidos => setContenidos(contenidos));
     }, []);
-
     const clickNuevaActividad = () => {
         setDialogContenido(true);
     };
@@ -33,7 +32,7 @@ export default function ContenidoPorMateria({ ...props }) {
                 <div className="container-fluid mt-2 ">
                     <div className="d-flex align-items-center mt-1 w-100 justify-content-between contenido-container-accion-responsive">
                         <div className="w-100 d-flex justify-content-center">
-                            <h3 className="m-0 p-0 color-docente borde-docente">Matemáticas - {props.match.params.materiaId}</h3>
+                            <h3 className="m-0 p-0 color-docente borde-docente">Matemáticas - {id}</h3>
                         </div>
                         <div className="d-flex justify-content-around contenido-acciones-responsive">
                             <Link to="/video" className="btn btn-outline-dark font-weight-bold">Clase en vivo</Link>
@@ -45,16 +44,16 @@ export default function ContenidoPorMateria({ ...props }) {
                         {contenidos?.map(contenido => {
                             return <div className="mt-4 col-md-4 card-contenido-responsive" style={{ minHeight: "10rem" }}>
                                 <Contenido
+                                    unidad={contenido.unidad}
                                     titulo={contenido.titulo}
                                     descripcion={contenido.descripcion}
                                     video={contenido.video}
                                 />
                             </div>
                         })}
-
+                    </div>
                     </div>
                 </div>
             </div>
-        </div>
     )
 }
