@@ -12,6 +12,7 @@ export const SidebarData = [
         icon: <Group />,
         link: "/usuarios"
     },
+   
     {
         title: 'Cursos', 
         icon: <LocalLibrary />,
@@ -33,5 +34,12 @@ export const SidebarData = [
         icon: <MeetingRoom />,
         link: "/asignarCursos"
     },
+
+    {
+        title: 'Asignar Estudiantes a Cursos', 
+        icon: <MeetingRoom />,
+        link: "/asignarEstudiantes"
+    },
+    
 
 ] 

@@ -40,6 +40,15 @@ export default {
             delete: id => axios.delete(url + id)
         }
     },
+    informe(url = baseUrl + 'informe/') {
+        return {
+            fetchById: id => axios.get(url + id),
+            fetchByEstudianteId: id => axios.get(url + "getInformeByEstudiante/" + id),
+            create: newRecord => axios.post(url + "cargarInforme", newRecord),
+            update: (id, updateRecord) => axios.put(url + id, updateRecord),
+            delete: id => axios.delete(url + id)
+        }
+    },
     comunicado(url = baseUrl + 'comunicado/') {
         return {
             fetchAll: () => axios.get(url + "getComunicados", { withCredentials: true }, {

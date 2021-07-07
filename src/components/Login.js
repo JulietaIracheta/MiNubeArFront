@@ -2,17 +2,37 @@ import React, { useState } from "react";
 import { Button, Form, FormGroup, Input } from "reactstrap";
 import logo from "../assets/img/logo.png";
 import GoogleLogin from "react-google-login";
+import MicrosoftLogin from 'react-microsoft-login'
 import "../assets/css/css-login.css";
 import { Redirect } from "react-router";
 import { Cookies, useCookies } from "react-cookie";
-import RecuperarPassword from './RecuperarPassword'
+import RecuperarPassword from './RecuperarPassword';
+import config from "../config";
 
 const Login = () => {
   const [cookies, setCookie] = useCookies(["usuario"]);
   const [email, setEmail] = useState("");
+  const [emailM, setEmailM] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
   const [open, setOpen] = useState(false);
+  const [clientId, onClientIdChange] = useState(config.client_id);
+  const [callbackUrl, onCallbackUrlChange] = useState(
+    'http://localhost:3000' || window.location.href
+  );
+  const [buttonTheme, onButtonThemeChange] = useState(
+    config.themeOptions[1].value
+  );
+  const [graphScopes, onGraphScopesChange] = useState([
+    config.graphScopesOptions[0].value,
+  ]);
+  const [withUserData, onWithUserDataChange] = useState(true);
+  const [customClassName, onCustomClassNameChange] = useState("w-100 mt-3");
+  const [customButton, onCustomButtonChange] = useState(false);
+  const [forceRedirectStrategy, onForceRedirectStrategyChange] = useState(
+    false
+  );
+  const [debug, onDebugChange] = useState(true);
 
   const cookie = new Cookies();
   const responseGoogle = async (res) => {
@@ -35,6 +55,23 @@ const Login = () => {
     });;
     setRedirect(true);
   }
+
+  const responseMicrosoft = async (err, data) => {
+    console.log(data)
+    setEmailM(data.mail);
+    cookie.set('nombrePersona', data.givenName);
+    cookie.set('email', data.mail );
+    const nombre = data.givenName.charAt(0) + data.surname.charAt(0);
+    setCookie('avatar', nombre, { path: '/' });
+
+    const response = await fetch("http://localhost:60671/api/usuario/loginMicrosoft?email=" + data.mail, {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      credentials: "include",
+    });
+    setRedirect(true);
+  }
+
 
 
   const onChange = () => {
@@ -110,8 +147,20 @@ const Login = () => {
             cookiePolicy={'single_host_origin'}
             className="w-100 mt-3" />
 
+            <MicrosoftLogin
+                withUserData={withUserData}
+                debug={debug}
+                clientId={clientId}
+                forceRedirectStrategy={forceRedirectStrategy}
+                authCallback={responseMicrosoft}
+                buttonTheme={buttonTheme}
+                className={customClassName}
+                graphScopes={graphScopes}
+                useLocalStorageCache={true}
+              />
+
           <div className="text-center pt-2">
-            <Button color="secondary" className="mt-4" size="sm" onClick = { () => onChange()}>Recuperar Password</Button>
+            <Button color="danger" className="w-100 mt-4" size="sm" onClick = { () => onChange()}>Recuperar Password</Button>
           </div>
         </div>
         <RecuperarPassword

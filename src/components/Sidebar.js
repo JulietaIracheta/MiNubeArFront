@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function Sidebar({ data }) {
     return (
-        <div className="Sidebar pt-2">
+        <div className="Sidebar pt-3">
             <ResponsiveMenu
                 menuOpenButton={<FaBars />}
                 menuCloseButton={<FaTimes />}

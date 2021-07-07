@@ -30,6 +30,7 @@ const NavBar = (props) => {
   const cookieNombreEstudiante = new Cookies();
   const nombre = cookieNombreEstudiante.get('avatar');
   const [notificaciones, setNotificaciones] = useState([]);
+  
 
   const logout = async () => {
     await fetch('http://localhost:60671/api/usuario/logout', {
@@ -37,7 +38,8 @@ const NavBar = (props) => {
       headers: { "Content-type": "application/json" },
       credentials: "include",
     });
-    cookieNombreEstudiante.remove("nombrePersona");
+    window.localStorage.clear();
+   
   }
 
   useEffect(async function () {
@@ -110,7 +112,7 @@ const NavBar = (props) => {
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>
-                  <Link to='/login' className="color-negro text-decoration-none" onClick={logout}>Logout</Link>
+                  <Link to='/' className="color-negro text-decoration-none" onClick={logout}>Logout</Link>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
