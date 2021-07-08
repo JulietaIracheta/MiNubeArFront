@@ -175,12 +175,13 @@ const Login = () => {
                 buttonTheme="light"
                 onclick={()=>console.log("click")}
                 graphScopes={graphScopes}
+                className="w-100"
                 useLocalStorageCache={true}
             >
-             
               <MicrosoftLoginButton 
                 text="Ingresar con Microsoft" 
-                style={{fontSize:"14px"}} type="button"/>
+                style={{fontSize:"14px", margin:"0px", width:"100%"}} type="button"
+                className="mt-3"/>
               
           </MicrosoftLogin>
 
