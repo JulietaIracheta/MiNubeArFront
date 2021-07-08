@@ -37,9 +37,15 @@ import AsignarMateriasACurso from './components/Registro/AsignarMateriasACurso';
 import AsignarCursosAInstituciones from './components/Registro/AsignarCursoAInstitucion';
 import ComunicadosTutor from './components/Tutor/Comunicados';
 import NotFound from '../src/NotFound';
-import { Cookies } from "react-cookie";
 import CuentaEstudiante from './components/Estudiante/Cuenta';
 import CuentaDocente from './components/Docente/Cuenta';
+import InformeEstudiante from './components/Estudiante/Informe';
+import { Cookies, useCookies } from "react-cookie";
+import TrayectoriaEscolar from './components/Estudiante/TrayectoriaEscolar';
+import CargarInforme2  from './components/Docente/Informe/cargarInforme';
+import AsignarEstudiantesACursos from './components/Registro/AsignarEstudiantesACurso';
+import CrearInforme from './components/Docente/Informe/CargarInforme2';
+
 
 const MyRoute = (props)=>(
   isAuthenticated()
@@ -67,7 +73,7 @@ const app = () => (
         <MyRoute path='/video' exact component={VideoConference} />   
         <MyRoute path='/rol' exact component={Rol} /> 
         <MyRoute path='/perfilEstudiante/:id' exact component={PerfilEstudiante}/>
-        <MyRoute path='/actividades' exact component={Actividades}/>
+        <MyRoute path='/actividades/:Unidad' exact component={Actividades}/>
         <MyRoute path='/calificaciones' exact component={Calificaciones} />
         <MyRoute path='/calificacionesTutor' exact component={CalificacionesTutor} />
         <MyRoute path='/actividades/:idActividad' exact component={Actividades}/>
@@ -84,6 +90,7 @@ const app = () => (
         <MyRoute path='/materias/' exact component={Materia}/>
         <MyRoute path='/asignarMaterias/' exact component={AsignarMateriasACurso}/>
         <MyRoute path='/asignarCursos/' exact component={AsignarCursosAInstituciones}/>
+        <MyRoute path='/asignarEstudiantes/' exact component={AsignarEstudiantesACursos}/>
         <MyRoute path='/curso/:inst/:curso/:idCurso' exact component={CursosAsignadosDocente}/>
         <MyRoute path='/tutor/ActividadEstudiante/:nombre/:id' exact component={ActividadEstudiante}/>
         <MyRoute path='/tutor/estudiantesasignados' exact component={EstudiantesTutor}/>
@@ -96,6 +103,11 @@ const app = () => (
         <MyRoute path='/tutor/comunicados' exact component={ComunicadosTutor} />
         <MyRoute path='/estudiante/cuenta' exact component={CuentaEstudiante} />   
         <MyRoute path='/docente/cuenta' exact component={CuentaDocente} />   
+        <MyRoute path='/tutor/comunicados' exact component={ComunicadosTutor} />   
+        <MyRoute path='/estudiante/trayectoria' exact component={TrayectoriaEscolar} />
+        <MyRoute path='/estudiante/informe' exact component={InformeEstudiante} />
+        <MyRoute path='/docente/cargarInforme' exact component={CargarInforme2} />
+        <MyRoute path='/docente/crearInforme' exact component={CrearInforme} />
         <Route path="*" render={NotFound} />     
       </Switch>
     </Router>

@@ -17,10 +17,16 @@ export const SidebarDataDocente = [
         title: 'Calificaciones', 
         icon: <BorderColor />,
         link: "/docente/cargarCalificaciones"
-    }
-    /*{
-        title: 'Crear Actividades', 
+    },
+    {
+        title: 'Crear Informe', 
         icon: <Ballot />,
-        link: "/crearactividades"
-    }*/
+        link: "/docente/crearInforme"
+    },
+    {
+        title: 'Cargar Informe', 
+        icon: <Ballot />,
+        link: "/docente/cargarInforme"
+    }
+
 ] 

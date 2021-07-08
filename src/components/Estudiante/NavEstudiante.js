@@ -49,6 +49,8 @@ const NavBar = (props) => {
     setCookie('avatarPath', '', { path: '/' });
     setCookie('avatarPathGoogle', '', { path: '/' });
 
+    window.localStorage.clear();
+   
   }
 
   useEffect(async function () {

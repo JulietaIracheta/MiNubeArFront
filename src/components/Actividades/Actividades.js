@@ -7,16 +7,16 @@ import BotonVolver from '../BotonVolver/botonVolver'
 import getQuestions from '../../services/getQuestions';
 
 
-export default function Actividades() {
+export default function Actividades(props) {
 	
 	const [questions, setQuestions] = useState([]);
 	const [showScore, setShowScore] = useState(false);
 	const [score, setScore] = useState(0);
-
+	const id = props.match.params.Unidad
 	useEffect(function () {
 		
-		getQuestions(1).then((q) => setQuestions(q));
-		console.log(questions)
+		getQuestions(id).then((q) => setQuestions(q));
+		console.log(props.match.params.Unidad)
 	}, []);
 
 	const submit = (e) => {

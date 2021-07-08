@@ -35,7 +35,7 @@ const NavBar = (props) => {
     <div >
       <Navbar className="menuNavBarReg" expand="md" light>
         <img src={logo} />
-        <NavbarBrand className="colorBrand" href="/registro">MI NUBE AR</NavbarBrand>
+        <NavbarBrand className="colorBrand" href="/rol">MI NUBE AR</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto"></Nav>

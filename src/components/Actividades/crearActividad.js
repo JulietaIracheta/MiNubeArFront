@@ -40,6 +40,8 @@ const CrearActividad = () => {
   const [descripcion, setDescripcion] = useState("");
   const [idMateria, setMateria] = useState(0);
   const [materias, setMaterias] = useState([]);
+  const [cursos, setCursos] = useState([]);
+  const [idCurso, setCurso] = useState();
 
   const onValueChangePregunta = (event) => {
     const value = event.target.value;
@@ -92,6 +94,24 @@ const CrearActividad = () => {
     console.log(idMateria)
   };
 
+  const onValueChangeCurso = (event) => {
+    const value = event.target.value;
+    setCurso(value);
+    console.log(idMateria)
+  };
+  useEffect(async () => {
+    const result = await fetch('http://localhost:60671/api/cursos', {
+      method: 'GET',
+      headers: { "Content-type": "application/json" },
+      credentials: "include",
+    }).then(function (response) {
+      return response.json();
+    })
+      .then(response => {
+        setCursos(response);
+        
+      });
+  }, [])
   
   useEffect(async () => {
     const result = await fetch('http://localhost:60671/api/materias', {
@@ -126,6 +146,7 @@ const CrearActividad = () => {
           titulo: titulo,
           descripcion: descripcion,
           idMateria: idMateria,
+          idCurso: idCurso
         },
         
       }),
@@ -157,6 +178,24 @@ const CrearActividad = () => {
             >
               <Grid item xs={12} className="mb-4">
               <FormControl variant="outlined" className={classes.formControl}>
+            <InputLabel id="demo-simple-select-outlined-label" >Curso</InputLabel>
+            <Select
+              name="idCurso"
+              id="demo-simple-select-outlined"
+              
+              value={idCurso}
+              onChange={onValueChangeCurso}
+              label="Curso"
+            >
+              {cursos.map((record) => (
+                <MenuItem value={record.idCurso}>
+                  {record.nombre}
+                </MenuItem>
+              ))}
+            </Select>
+            </FormControl>
+
+              <FormControl variant="outlined" className={classes.formControl}>
             <InputLabel id="demo-simple-select-outlined-label" >Materia</InputLabel>
             <Select
               name="idMateria"
@@ -173,7 +212,7 @@ const CrearActividad = () => {
               ))}
             </Select>
             </FormControl>
-               
+             
                 <TextField
                   name="unidad"
                   variant="outlined"
@@ -182,7 +221,7 @@ const CrearActividad = () => {
                   onChange={onValueChangeUnidad}
                   className="ml-4"
                 />
-                <Grid item xs={12} className="mb-4"></Grid>
+            <Grid item xs={12} className="mb-4 mt-4"> 
                 <TextField
                   name="titulo"
                   variant="outlined"
@@ -191,6 +230,8 @@ const CrearActividad = () => {
                   onChange={onValueChangeTitulo}
                   className="ml-4"
                 />
+                
+                
                 <TextField
                   name="descripcion"
                   variant="outlined"
@@ -199,6 +240,7 @@ const CrearActividad = () => {
                   onChange={onValueChangeDescripcion}
                   className="ml-4"
                 />
+                </Grid> 
                 <Grid item xs={12} className="mb-4"></Grid>
                 <TextField
                   name="question"

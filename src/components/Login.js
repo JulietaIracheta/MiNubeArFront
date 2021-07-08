@@ -2,18 +2,40 @@ import React, { useState } from "react";
 import { Button, Form, FormGroup, Input } from "reactstrap";
 import logo from "../assets/img/logo.png";
 import GoogleLogin from "react-google-login";
+import MicrosoftLogin from 'react-microsoft-login'
+import { GoogleLoginButton, MicrosoftLoginButton } from "react-social-login-buttons";
+
 import "../assets/css/css-login.css";
 import { Redirect } from "react-router";
 import { Cookies, useCookies } from "react-cookie";
-import RecuperarPassword from './RecuperarPassword'
 import swal from "sweetalert";
+import RecuperarPassword from './RecuperarPassword';
+import config from "../config";
 
 const Login = () => {
   const [cookies, setCookie] = useCookies(["usuario"]);
   const [email, setEmail] = useState("");
+  const [emailM, setEmailM] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
   const [open, setOpen] = useState(false);
+  const [clientId, onClientIdChange] = useState(config.client_id);
+  const [callbackUrl, onCallbackUrlChange] = useState(
+    'http://localhost:3000' || window.location.href
+  );
+  const [buttonTheme, onButtonThemeChange] = useState(
+    config.themeOptions[1].value
+  );
+  const [graphScopes, onGraphScopesChange] = useState([
+    config.graphScopesOptions[0].value,
+  ]);
+  const [withUserData, onWithUserDataChange] = useState(true);
+  const [customClassName, onCustomClassNameChange] = useState("w-100 mt-3");
+  const [customButton, onCustomButtonChange] = useState(false);
+  const [forceRedirectStrategy, onForceRedirectStrategyChange] = useState(
+    false
+  );
+  const [debug, onDebugChange] = useState(true);
 
   const cookie = new Cookies();
   const responseGoogle = async (res) => {
@@ -37,6 +59,23 @@ const Login = () => {
     });;
     setRedirect(true);
   }
+
+  const responseMicrosoft = async (err, data, msal) => {
+    setEmailM(data.mail);
+    cookie.set('nombrePersona', data.givenName);
+    cookie.set('email', data.mail );
+    const nombre = data.givenName.charAt(0) + data.surname.charAt(0);
+    setCookie('avatar', nombre, { path: '/' });
+
+    const response = await fetch("http://localhost:60671/api/usuario/loginMicrosoft?email=" + data.mail, {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      credentials: "include",
+    });
+    console.log(msal);
+    setRedirect(true);
+  }
+
 
 
   const onChange = () => {
@@ -91,11 +130,13 @@ const Login = () => {
   }
 
   return (
-    <div className="back">
-      <Form className="login-form" onSubmit={submit}>
-        <div className="logo-container">
+    <div className="back d-flex justify-content-center align-items-center w-100" style={{height:"100vh",}}>
+       <div className="logo-container">
           <img src={logo} className="logo"></img>
         </div>
+      <div className="container-col-derecha" style={{width:"30%"}}>
+
+      <Form className="w-100" onSubmit={submit}>
         <div className="w-100">
           <FormGroup>
             <Input
@@ -112,28 +153,48 @@ const Login = () => {
             ></Input>
           </FormGroup>
           <Button className="btn btn-lg boton-login btn-block">Ingresar</Button>
-          <div className="text-center pt-3">Ingresá con: </div>
+          </div>
+          </Form>
 
-          {/*<GoogleLogin clientId="1008891152271-jvlq4r789kf6mlihar2uekqthgn30dob.apps.googleusercontent.com"
+          <div className="text-center pt-3">Ingresá con: </div>
+          <div className="redes-sociales">
+
+          <GoogleLogin clientId="1008891152271-jvlq4r789kf6mlihar2uekqthgn30dob.apps.googleusercontent.com"
             buttonText="Ingresar con Google"
             onSuccess={responseGoogle}
             onFailure={()=>{console.log("error login google")}}
             cookiePolicy={'single_host_origin'}
-            className="w-100 mt-3" />*/}
+            className="w-100 mt-3">
+            </GoogleLogin>
+         <MicrosoftLogin
+                withUserData={withUserData}
+                debug={debug}
+                clientId={clientId}
+                forceRedirectStrategy={forceRedirectStrategy}
+                authCallback={responseMicrosoft}
+                buttonTheme="light"
+                onclick={()=>console.log("click")}
+                graphScopes={graphScopes}
+                useLocalStorageCache={true}
+            >
+             
+              <MicrosoftLoginButton 
+                text="Ingresar con Microsoft" 
+                style={{fontSize:"14px"}} type="button"/>
+              
+          </MicrosoftLogin>
 
           <div className="text-center pt-2">
-            <Button color="secondary" className="mt-4" size="sm" onClick = { () => onChange()}>Recuperar Password</Button>
+            <a href="#"  className="text-decoration-none text-danger w-100 mt-4" size="sm" onClick = { () => onChange()}>Recuperar Password</a>
           </div>
-        </div>
         <RecuperarPassword
           open = {open}
           handleClose={handleClose}
         >
         </RecuperarPassword>
-
-      </Form>
-      
-    </div>
+      </div>
+      </div>
+      </div>
   );
 };
 //<a href="/recuperar_password" className="text-decoration-none">¿Olvidó su contraseña?</a>
