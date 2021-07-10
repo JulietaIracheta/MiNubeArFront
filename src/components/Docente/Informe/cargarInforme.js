@@ -120,7 +120,6 @@ const CargarInforme = ({ handleClose, classes, ...props }) => {
       form.append("año", año);
       form.append("formFile", archivo);
       form.append("Informe", fileName)
-      console.log("boke:",form);
       try{
       const response = await axios.post("http://localhost:60671/api/informe/cargarInforme",
         form);

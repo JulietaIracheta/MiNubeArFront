@@ -3,6 +3,10 @@ import {
   Grid,
   TextField,
   Button,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  Select,
 } from "@material-ui/core";
 import Sidebar from "../../Sidebar";
 import { SidebarDataDocente } from "../../sideBar/SidebarDataDocente";
@@ -23,54 +27,73 @@ const useStyles = makeStyles((theme) => ({
 const CargarInforme2 = () => {
   const classes = useStyles();
   const [año, setAño] = useState();
-  const [apellido, setApellido] = useState('')
-  const [nombre, setNombre] = useState('')
-  const [curso, setCurso] = useState('')
-  const [institucion, setInstitucion] = useState('')
-  const [matematica, setMatematica] = useState('')
-  const [lengua, setLengua] = useState('')
-  const [sociales, setSociales] = useState('')
-  const [naturales, setNaturales] = useState('')
+  const [cursos, setCursos] = useState([]);
+  const [curso, setCurso] = useState(0);
+  const [cursoNombre, setCursoNombre] = useState("");
+  const [nombre, setNombre] = useState("");
+  const [apellido, setApellido] = useState("");
+  const [institucion, setInstitucion] = useState("");
+  const [instituciones, setInstituciones] = useState([]);
+  const [matematica, setMatematica] = useState("");
+  const [lengua, setLengua] = useState("");
+  const [sociales, setSociales] = useState("");
+  const [naturales, setNaturales] = useState("");
   const [estudiante, setEstudiante] = useState();
   const [estudiantes, setEstudiantes] = useState([]);
   const [observaciones, setObservaciones] = useState("");
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const resetForm = () => {
     window.location.reload();
   };
 
   const printDocument = () => {
-      const pdf = new jsPDF();
-      pdf.setFont("times", "bolditalic");
-      pdf.text("Informe", 105, 20, null, null, "center");
-      pdf.text("", 20, 30)
-      pdf.setFont("times", "normal");
-      pdf.text(`Período: ${año}`, 20, 40 )
-      pdf.text(`Institucion: ${institucion}`, 20, 50 )
-      pdf.text(`Curso: ${curso}`, 20, 60 )
-      pdf.text(`Apellido y Nombre: ${apellido}, ${nombre}`, 20, 70 )
-      pdf.text('', 20, 80 )
-      pdf.setFont("times", "bolditalic");
-      pdf.text("Materias", 105, 90, null, null, "center");
-      pdf.setFont("times", "normal");
-      pdf.text(`Matemática: ${matematica}`, 20, 100 )
-      pdf.text(`Literatura: ${lengua}`, 20, 110 )
-      pdf.text(`Ciencias Sociales: ${sociales}`, 20, 120 )
-      pdf.text(`Ciencias Naturales: ${naturales}`, 20, 130 )
-      pdf.text('', 20, 140 )
-      pdf.setFont("times", "bolditalic");
-      pdf.text("Observaciones", 105, 150, null, null, "center");
-      pdf.setFont("times", "normal");
-      pdf.text('', 20, 140 )
-      pdf.text(`${observaciones}`, 20, 160 )
-      pdf.save(`${apellido}_${nombre}.pdf`);
-    
-  };
+    const pdf = new jsPDF();
+    pdf.setFont("times", "bolditalic");
+    pdf.text("Informe", 105, 20, null, null, "center");
+    pdf.text("", 20, 30);
+    pdf.setFont("times", "normal");
+    pdf.text(`Período: ${año}`, 20, 40);
+    pdf.text(`Institucion: ${institucion}`, 20, 50);
+    pdf.text(`Curso: ${cursoNombre}`, 20, 60);
+    pdf.text(`Estudiante: ${nombre} ${apellido}`, 20, 70);
+    pdf.text("", 20, 80);
+    pdf.setFont("times", "bolditalic");
+    pdf.text("Materias", 105, 90, null, null, "center");
+    pdf.setFont("times", "normal");
+    pdf.text(`Matemática: ${matematica}`, 20, 100);
+    pdf.text(`Literatura: ${lengua}`, 20, 110);
+    pdf.text(`Ciencias Sociales: ${sociales}`, 20, 120);
+    pdf.text(`Ciencias Naturales: ${naturales}`, 20, 130);
+    pdf.text("", 20, 140);
+    pdf.setFont("times", "bolditalic");
+    pdf.text("Observaciones", 105, 150, null, null, "center");
+    pdf.setFont("times", "normal");
+    pdf.text("", 20, 140);
+    pdf.text(`${observaciones}`, 20, 160);
+    pdf.save(`${nombre}_${apellido}.pdf`);
 
-  const submitForm = () => {
-    setIsSubmitted(!isSubmitted)
-  }
+    const response = fetch(
+      "http://localhost:60671/api/informe/crearInformeTrayectoria",
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          año: año,
+          institucion: institucion,
+          idEstudiante : estudiante,
+          curso : cursoNombre,
+          matematica : matematica,
+          lengua : lengua,
+          sociales : sociales,
+          naturales : naturales
+        }),
+      }
+    ).then((response) => response.json());
+    resetForm();
+
+  };
 
   const onValueChangeAño = (event) => {
     const value = event.target.value;
@@ -79,20 +102,20 @@ const CargarInforme2 = () => {
 
   const onValueChangeCurso = (event) => {
     const value = event.target.value;
-    setCurso(value);
+    setCurso(value.idCurso);
+    setCursoNombre(value.nombre);
   };
   const onValueChangeInstitucion = (event) => {
     const value = event.target.value;
     setInstitucion(value);
   };
-  const onValueChangeApellido = (event) => {
+  const onValueChangeEstudiante = (event) => {
     const value = event.target.value;
-    setApellido(value);
+    setEstudiante(value.idUsuario);
+    setApellido(value.apellido);
+    setNombre(value.nombre);
   };
-  const onValueChangeNombre = (event) => {
-    const value = event.target.value;
-    setNombre(value);
-  };
+
   const onValueChangeMatematica = (event) => {
     const value = event.target.value;
     setMatematica(value);
@@ -116,7 +139,43 @@ const CargarInforme2 = () => {
 
   useEffect(async () => {
     const result = await fetch(
-      "http://localhost:60671/api/usuario/estudiantes",
+      "http://localhost:60671/api/docente/1",
+      {
+        method: "GET",
+        headers: { "Content-type": "application/json" },
+        credentials: "include",
+      }
+    )
+      .then(function (response) {
+        return response.json();
+      })
+      .then((response) => {
+        setInstituciones(response);
+      });
+  }, []);
+
+
+
+  useEffect(async () => {
+    const result = await fetch(
+      "http://localhost:60671/api/docente/getCursos/1",
+      {
+        method: "GET",
+        headers: { "Content-type": "application/json" },
+        credentials: "include",
+      }
+    )
+      .then(function (response) {
+        return response.json();
+      })
+      .then((response) => {
+        setCursos(response);
+      });
+  }, []);
+
+  useEffect(async () => {
+    const result = await fetch(
+      "http://localhost:60671/api/docente/getEstudiantesPorCurso/" +curso ,
       {
         method: "GET",
         headers: { "Content-type": "application/json" },
@@ -129,21 +188,7 @@ const CargarInforme2 = () => {
       .then((response) => {
         setEstudiantes(response);
       });
-  }, []);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const response = await fetch("http://localhost:60671/api/informe/", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        
-      }),
-    }).then((response) => response.json());
-    resetForm();
-  };
+  }, [curso]);
 
   return (
     <div>
@@ -156,57 +201,149 @@ const CargarInforme2 = () => {
             <h4>Crear Informe</h4>
             <hr className="hr-colorDoc mb-5" />
           </div>
-            <form autoComplete="off" noValidate onSubmit={handleSubmit}>
-              <div>
-                <div className="mt-4 ">
-                  <Grid item xs={12} className="mb-4 ml-5  w-100 ">
-                    Año :
-                    <TextField name="Año" className="ml-4" value={año} onChange={onValueChangeAño} /> 
-                    Institución :
-                    <TextField name="curso" className="ml-4" value={institucion} onChange={onValueChangeInstitucion}/>
-                    Curso :
-                    <TextField name="curso" className="ml-4" value={curso} onChange={onValueChangeCurso}/>
-                  </Grid>
-                  <Grid item xs={12} className="mb-4 ml-5  w-100 ">
-                    Apellido :
-                    <TextField name="Estudiante" className="ml-4" value={apellido} onChange={onValueChangeApellido}/> 
-                    Nombre :
-                    <TextField name="curso" className="ml-4" value={nombre} onChange={onValueChangeNombre}/>
-                  </Grid>
+          <form autoComplete="off" noValidate>
+            <div>
+              <div className="mt-4 ">
+                <Grid item xs={12} className="mb-4 ml-5  w-100 ">
+                  Año :
+                  <TextField
+                    name="Año"
+                    className="ml-4"
+                    value={año}
+                    onChange={onValueChangeAño}
+                  />
+                  <FormControl className={classes.formControl}>
+                    <InputLabel id="demo-simple-select-label">
+                      Institucion :{" "}
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={institucion}
+                      onChange={onValueChangeInstitucion}
+                    >  {instituciones.map((record) => (
+                      <MenuItem value={record.nombre}>
+                       {record.nombre}
+                      </MenuItem>
+                    ))}</Select>
+                  </FormControl>
+                  <FormControl className={classes.formControl}>
+                    <InputLabel id="demo-simple-select-label">
+                      Curso :{" "}
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={curso}
+                      onChange={onValueChangeCurso}  
+                    >
+                      {console.log(curso)}
+                      {console.log(cursoNombre)}
+                     {cursos.map((record) => (
+                      
+                      <MenuItem value={record}>
+                       {record.nombre}
+                      </MenuItem>
+                    ))}</Select>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12} className="mb-4 ml-5  w-100 ">
+                <FormControl className={classes.formControl}>
+                    <InputLabel id="demo-simple-select-label">Estudiante : </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={estudiante}
+                      onChange={onValueChangeEstudiante}
+                    >
+                      {estudiantes.map((record) => (
+                <MenuItem value={record}>
+                  {record.apellido}, {record.nombre}
+                </MenuItem>
+              ))}
+                    </Select>
+                  </FormControl>
+                </Grid>
 
-                  <Grid item xs={12} className=" mt-5 mb-4 ml-5">
-                    {" "}
-                    Matemática :
-                    <TextField
-                      style={{ width: 600 }}
-                      className="mr-5 mb-2"
-                      value={matematica} onChange={onValueChangeMatematica}
-                    />{" "}
-                  </Grid>
-                  <Grid item xs={12} className="mb-4 ml-5  w-100 ">
-                    {" "}
-                    Prácticas del Lenguaje :
-                    <TextField style={{ width: 600 }} className="mr-5 mb-2" value={lengua} onChange={onValueChangeLengua}/>
-                  </Grid>
-                  <Grid item xs={12} className="mb-4 ml-5  w-100">
-                    {" "}
-                    Ciencias Sociales :
-                    <TextField style={{ width: 600 }} className="mr-5 mb-2" value={sociales} onChange={onValueChangeSociales}/>
-                  </Grid>
-                  <Grid item xs={12} className="mb-4 ml-5  w-100">
-                    {" "}
-                    Ciencias Naturales :
-                    <TextField style={{ width: 600 }} className="mr-5 mb-2" value={naturales} onChange={onValueChangeNaturales}/>
-                  </Grid>
-                  <Grid item xs={12} className="mb-4 ml-5  w-100">
-                    {" "}
-                    Observaciones :
-                    <TextField style={{ width: 600 }} className="mr-5 mb-2" value={observaciones} onChange={onValueChangeObservaciones}/>
-                  </Grid>
-
-                </div>
+                <Grid item xs={12} className=" mt-5 mb-4 ml-5">
+                  <FormControl className={classes.formControl}>
+                    <InputLabel id="demo-simple-select-label">
+                      Matemática :{" "}
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={matematica}
+                      onChange={onValueChangeMatematica}
+                    >
+                      <MenuItem value={"Sobresaliente"}>Sobresaliente</MenuItem>
+                      <MenuItem value={"Bueno"}>Bueno</MenuItem>
+                      <MenuItem value={"Regular"}>Regular</MenuItem>
+                      <MenuItem value={"Insuficiente"}>Insuficiente</MenuItem>
+                    </Select>
+                  </FormControl>
+                  <FormControl className={classes.formControl}>
+                    <InputLabel id="demo-simple-select-label">
+                      Literatura :{" "}
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={lengua}
+                      onChange={onValueChangeLengua}
+                    >
+                      <MenuItem value={"Sobresaliente"}>Sobresaliente</MenuItem>
+                      <MenuItem value={"Bueno"}>Bueno</MenuItem>
+                      <MenuItem value={"Regular"}>Regular</MenuItem>
+                      <MenuItem value={"Insuficiente"}>Insuficiente</MenuItem>
+                    </Select>
+                  </FormControl>
+                  <FormControl className={classes.formControl}>
+                    <InputLabel id="demo-simple-select-label">
+                      Ciencias Sociales :{" "}
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={sociales}
+                      onChange={onValueChangeSociales}
+                    >
+                      <MenuItem value={"Sobresaliente"}>Sobresaliente</MenuItem>
+                      <MenuItem value={"Bueno"}>Bueno</MenuItem>
+                      <MenuItem value={"Regular"}>Regular</MenuItem>
+                      <MenuItem value={"Insuficiente"}>Insuficiente</MenuItem>
+                    </Select>
+                  </FormControl>
+                  <FormControl className={classes.formControl}>
+                    <InputLabel id="demo-simple-select-label">
+                      Ciencias Naturales :{" "}
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={naturales}
+                      onChange={onValueChangeNaturales}
+                    >
+                      <MenuItem value={"Sobresaliente"}>Sobresaliente</MenuItem>
+                      <MenuItem value={"Bueno"}>Bueno</MenuItem>
+                      <MenuItem value={"Regular"}>Regular</MenuItem>
+                      <MenuItem value={"Insuficiente"}>Insuficiente</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12} className="mb-4 ml-5  w-100">
+                  {" "}
+                  Observaciones :
+                  <TextField
+                    style={{ width: 600 }}
+                    className="mr-5 mb-2"
+                    value={observaciones}
+                    onChange={onValueChangeObservaciones}
+                  />
+                </Grid>
               </div>
-              <Button
+            </div>
+            <Button
               size="small"
               type="submit"
               variant="outlined"
@@ -215,10 +352,7 @@ const CargarInforme2 = () => {
             >
               Grabar
             </Button>
-             
-            </form>
-            
-        
+          </form>
         </div>
       </div>
     </div>

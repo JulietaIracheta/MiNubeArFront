@@ -43,7 +43,9 @@ import TrayectoriaEscolar from './components/Estudiante/TrayectoriaEscolar';
 import CargarInforme2  from './components/Docente/Informe/cargarInforme';
 import AsignarEstudiantesACursos from './components/Registro/AsignarEstudiantesACurso';
 import CrearInforme from './components/Docente/Informe/CargarInforme2';
-
+import TimeLine from './components/Estudiante/TimeLine';
+import TimeLine2 from './components/Estudiante/TimeLine2';
+import TimeLine3 from './components/Estudiante/Timeline3';
 
 const MyRoute = (props)=>(
   isAuthenticated()
@@ -101,6 +103,9 @@ export default ()=> (
         <MyRoute path='/tutor/comunicados' exact component={ComunicadosTutor} />   
         <MyRoute path='/estudiante/trayectoria' exact component={TrayectoriaEscolar} />
         <MyRoute path='/estudiante/informe' exact component={InformeEstudiante} />
+        <MyRoute path='/estudiante/timeline' exact component={TimeLine} />
+        <MyRoute path='/estudiante/timeline2' exact component={TimeLine2} />
+        <MyRoute path='/estudiante/timeline3' exact component={TimeLine3} />
         <MyRoute path='/docente/cargarInforme' exact component={CargarInforme2} />
         <MyRoute path='/docente/crearInforme' exact component={CrearInforme} />
 

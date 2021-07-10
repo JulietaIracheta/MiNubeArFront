@@ -432,3 +432,6 @@ background-color: #797979;
 button.bg-docente.border.btn.btn-secondary.menuadmin{
   background:#212888 !important;
 }
+.demo-app-main{
+  background: lightgray;
+}
