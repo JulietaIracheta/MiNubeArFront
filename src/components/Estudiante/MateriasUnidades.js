@@ -38,7 +38,7 @@ export default function MateriaUnidad({ id }) {
             <Encabezado texto={id} />
             <div className="chart-est-container">
                 <div className="chart-item">
-                    <h5>Clases vistas</h5>
+                    <h5>Actividades vistas</h5>
                     <ChartEstudainte porcentaje={100} />
                     <div>Al día</div>
                 </div>
