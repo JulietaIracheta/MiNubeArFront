@@ -40,6 +40,7 @@ import NotFound from '../src/NotFound';
 import { Cookies } from "react-cookie";
 import CuentaEstudiante from './components/Estudiante/Cuenta';
 import CuentaDocente from './components/Docente/Cuenta';
+import AsignarEstudiantes from './components/Curso/AsignarEstudiantes'
 
 const MyRoute = (props)=>(
   isAuthenticated()
@@ -96,6 +97,7 @@ const app = () => (
         <MyRoute path='/tutor/comunicados' exact component={ComunicadosTutor} />
         <MyRoute path='/estudiante/cuenta' exact component={CuentaEstudiante} />   
         <MyRoute path='/docente/cuenta' exact component={CuentaDocente} />   
+        <MyRoute path='/cursos/asignar_estudiante' exact component={AsignarEstudiantes} />   
         <Route path="*" render={NotFound} />     
       </Switch>
     </Router>
