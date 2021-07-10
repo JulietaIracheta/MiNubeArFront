@@ -195,6 +195,7 @@ const Login = () => {
         </RecuperarPassword>
       </div>
       </div>
+    
       </div>
   );
 };

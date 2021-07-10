@@ -45,6 +45,7 @@ import TrayectoriaEscolar from './components/Estudiante/TrayectoriaEscolar';
 import CargarInforme2  from './components/Docente/Informe/cargarInforme';
 import AsignarEstudiantesACursos from './components/Registro/AsignarEstudiantesACurso';
 import CrearInforme from './components/Docente/Informe/CargarInforme2';
+import TrayectoriaAcademica from './components/Estudiante/trayectoriaAcademica';
 
 
 const MyRoute = (props)=>(
@@ -77,7 +78,7 @@ const app = () => (
         <MyRoute path='/calificaciones' exact component={Calificaciones} />
         <MyRoute path='/calificacionesTutor' exact component={CalificacionesTutor} />
         <MyRoute path='/actividades/:idActividad' exact component={Actividades}/>
-        <MyRoute path='/crearactividades' exact component={CrearActividad}/>
+        <MyRoute path='/crearactividades/:idContenido' exact component={CrearActividad}/>
         <MyRoute path='/pizarra' exact component={Whiteboard} />
         <MyRoute path='/calendario' exact component={Calendario} />  
         <MyRoute path='/materiasTutorEstudiante/:idUsuario' exact component={MateriasTutorEstudiante} />
@@ -108,6 +109,7 @@ const app = () => (
         <MyRoute path='/estudiante/informe' exact component={InformeEstudiante} />
         <MyRoute path='/docente/cargarInforme' exact component={CargarInforme2} />
         <MyRoute path='/docente/crearInforme' exact component={CrearInforme} />
+        <MyRoute path='/trayectoriaAcademica' exact component={TrayectoriaAcademica} />
         <Route path="*" render={NotFound} />     
       </Switch>
     </Router>
