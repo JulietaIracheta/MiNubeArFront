@@ -1,7 +1,7 @@
 
 const urlBaseAsignaEstudiantesAcurso = 'http://localhost:60671/api/cursos/AsignaEstudiandesAcurso/';
 
-export function AsignaEstudiandesAcurso(data) {
+export function AsignaEstudiandesAcurso(data, onSuccess) {
     const url= `${urlBaseAsignaEstudiantesAcurso}`
     return fetch(url, {
         method: 'POST',
@@ -10,8 +10,10 @@ export function AsignaEstudiandesAcurso(data) {
         },
         body: JSON.stringify(data),
     }).then(res => {
-         console.log('res:') 
-         console.log(res) 
+         onSuccess(res) 
     })
-    .catch(function(res){ console.log(res) })
+    .catch(err => { 
+        console.log(err) 
+        onSuccess(null)
+    })
 }

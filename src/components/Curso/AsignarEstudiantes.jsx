@@ -9,6 +9,7 @@ import {getEstudiantesDeUnaInstitucion} from './../../services/estudiantes/getEs
 import {getCursosDeUnaInstitucion} from './../../services/estudiantes/getCursos'
 import {AsignaEstudiandesAcurso} from './../../services/estudiantes/PostCursoEstudiante'
 import React from 'react';
+import swal from 'sweetalert';
 
 
 export default function AsignarEstudiantes() {
@@ -85,16 +86,17 @@ export default function AsignarEstudiantes() {
       })
   };
 
-  
-  const resetForm = () => {
-    window.location.reload();
-  };
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    AsignaEstudiandesAcurso(datos)
-    // resetForm();
+    const onSuccess = (respuesta) => {
+      if(respuesta.status !== 200){
+        swal("Hubo un problema al querer asignar los estudiantes al curso",'' , "error");
+      }else{
+        swal("Estudiantes agregados correctamente!",'' , "success");
+      }
+    };
+    AsignaEstudiandesAcurso(datos, onSuccess)
+    // reseteo la información del formulario
     setDatos({
       IdInstitucion: '',
       IdCurso: '',
@@ -105,7 +107,6 @@ export default function AsignarEstudiantes() {
       cursoActivate: 0,
       estudiantesActivate: 0
     })
-    console.log('enviando')
   };
 
   return (
@@ -113,49 +114,58 @@ export default function AsignarEstudiantes() {
           <NavAdmin />
             <div className="d-flex mt-1">
                <Sidebar data={SidebarData} />
-                  <div className="container cardContainer ">
+                  <div className="container-fluid cardContainer">
                       <div>
                         <h4>Asignar Estudiantes a un Curso</h4>
                         <hr className="hr-colorAdm" />
-                        <h6 className="mt-5 mb-5">
+                        {/* <h6 className="mt-5 mb-5 text-center">
                           Complete el formulario para asignar los estudiantes al curso
-                        </h6>
+                        </h6> */}
                       </div>
-                      <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-                        <div>
-                          <FormGroup>
-                                <label>Institución:</label>
-                                <Select
-                                    value = {datos.InstitucionElegida} 
-                                    options= {instituciones}
-                                    placeholder="Elija la Institución" 
-                                    onChange={handleChangeSelectInstitucion}
-                                />
-                            </FormGroup>
-                            <FormGroup>
-                                <label>Curso</label>
-                                <Select
-                                    value = {datos.CursoElegido} 
-                                    options= {cursos}
-                                    isDisabled = {datos.cursoActivate? false : true }
-                                    placeholder="Elija el Curso" 
-                                    onChange={handleChangeSelectCurso}
-                                />
-                            </FormGroup>
-                            <FormGroup>
-                                <label>Estudiantes</label>
-                                <Select
-                                    value = {datos.EstudiantesElegidos} 
-                                    options= {estudiantes}
-                                    isMulti 
-                                    isDisabled = {datos.estudiantesActivate? false : true }
-                                    placeholder="Elija los Estudiantes" 
-                                    onChange={handleChangeSelectEstudiantes}
-                                />
-                            </FormGroup>
+                      <div className="row d-flex flex-row justify-content-center mt-5">
+                        <div className="col-12 col-md-8 col-lg-6">
+                          <div className="card ">
+                            <div class="card-header">
+                              Complete el siguiente formulario para asignar los estudiantes al curso
+                            </div>
+                          <div class="card-body">
+                             <form noValidate autoComplete="off" onSubmit={handleSubmit}>
+                                <FormGroup>
+                                    <label>Institución</label>
+                                    <Select
+                                        value = {datos.InstitucionElegida} 
+                                        options= {instituciones}
+                                        placeholder="Elija la Institución" 
+                                        onChange={handleChangeSelectInstitucion}
+                                        />
+                                </FormGroup>
+                                <FormGroup>
+                                    <label>Curso</label>
+                                    <Select
+                                        value = {datos.CursoElegido} 
+                                        options= {cursos}
+                                        isDisabled = {datos.cursoActivate? false : true }
+                                        placeholder="Elija el Curso" 
+                                        onChange={handleChangeSelectCurso}
+                                        />
+                                </FormGroup>
+                                <FormGroup>
+                                    <label>Estudiantes</label>
+                                    <Select
+                                        value = {datos.EstudiantesElegidos} 
+                                        options= {estudiantes}
+                                        isMulti 
+                                        isDisabled = {datos.estudiantesActivate? false : true }
+                                        placeholder="Elija los Estudiantes" 
+                                        onChange={handleChangeSelectEstudiantes}
+                                        />
+                                </FormGroup>
+                                <button type="submit" className="btn btn-secondary float-right ml-1 mt-4">Guardar</button>
+                             </form>
+                            </div>
+                          </div>
                         </div>
-                        <button type="submit" className="btn btn-outline-primary float-right ml-1 mt-2">Guardar</button>
-                      </form>
+                      </div>
                 </div>
            </div>
         </div>
