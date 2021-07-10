@@ -39,7 +39,8 @@ useEffect(() => {
   if (loading) {
     try {
       listMaterias = materias.map((materia) => (
-        <CardMateria 
+        <CardMateria  
+                class="card-materia-estudiante"
                 nombre={materia.nombre} 
                 icon={materia.icon}
                 idMateria={materia.idMateria}      

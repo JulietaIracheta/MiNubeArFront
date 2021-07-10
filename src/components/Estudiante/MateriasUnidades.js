@@ -7,6 +7,32 @@ import { CardUnidad } from "./CardUnidad";
 
 export default function MateriaUnidad({ id }) {
 
+    const baseUrl = 'http://localhost:60671/api/';
+    const url = baseUrl + `Actividades/getActidades/${id}`;
+
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        (async () => {
+          const response = await fetch(url, {
+            headers: { "Content-type": "application/json" },
+            credentials: "include",
+          });
+      
+          const content = await response.json();  
+          
+          console.log( content );
+      
+          setData(content);
+          setLoading(true);
+      })();
+      },[]);
+
+    const listaUnidades = data.map((data) => (
+        <CardUnidad materia={id} unidad={data.unidad} tema={data.titulo} />
+    ));
+
     return (
         <>
             <Encabezado texto={id} />
@@ -23,10 +49,9 @@ export default function MateriaUnidad({ id }) {
                 </div>
             </div>
             <div className="unidad-container">
-                <CardUnidad materia={id} unidad={5} tema="Division Avanzada" />
-                <CardUnidad materia={id} unidad={4} tema="Division Simple" />
-                <CardUnidad materia={id} unidad={3} tema="Multiplicación Avanzada" />
-                <CardUnidad materia={id} unidad={2} tema="Multiplicación Simple" />                
+               
+                { loading ? (listaUnidades) : "LOADING ..."}
+                                            
             </div>
 
         </>

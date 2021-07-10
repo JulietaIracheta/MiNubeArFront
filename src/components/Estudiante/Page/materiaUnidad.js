@@ -8,7 +8,7 @@ import EstudianteMaterias from "../EstudianteMaterias";
 import MateriasUnidades from "../MateriasUnidades";
 import "../../../assets/css/css-estudiante.css"
 
-export const materiaUnidad = ({ match }) => {
+const MateriaUnidad = ({ match }) => {
     const id = match.params.id;
 
   return (
@@ -23,3 +23,5 @@ export const materiaUnidad = ({ match }) => {
     </div>
   );
 }
+
+export default MateriaUnidad;
