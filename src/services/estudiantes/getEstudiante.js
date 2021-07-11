@@ -41,3 +41,18 @@ export function getEstudiantesDeUnTutor(id) {
     });
 }
 
+
+const URL_BASE_ESTUDIANTES_DE_INSTITUCION = 'http://localhost:60671/api/institucion/getEstudiantesDeUnaInstitucion/'
+
+export function getEstudiantesDeUnaInstitucion(id) {
+    const url=URL_BASE_ESTUDIANTES_DE_INSTITUCION+`${id}`;
+    return fetch(url, {
+        method: 'GET'
+    }).then(res => {
+        if (!res.ok) alert('Estudiantes la institución no encontrado')
+        return res.json()
+    }).then(res => {
+        return res;
+    });
+}
+

@@ -46,7 +46,7 @@ import CargarInforme2  from './components/Docente/Informe/cargarInforme';
 import AsignarEstudiantesACursos from './components/Registro/AsignarEstudiantesACurso';
 import CrearInforme from './components/Docente/Informe/CargarInforme2';
 import TrayectoriaAcademica from './components/Estudiante/trayectoriaAcademica';
-
+import AsignarEstudiantes from './components/Curso/AsignarEstudiantes'
 
 const MyRoute = (props)=>(
   isAuthenticated()
@@ -104,12 +104,13 @@ const app = () => (
         <MyRoute path='/tutor/comunicados' exact component={ComunicadosTutor} />
         <MyRoute path='/estudiante/cuenta' exact component={CuentaEstudiante} />   
         <MyRoute path='/docente/cuenta' exact component={CuentaDocente} />   
-        <MyRoute path='/tutor/comunicados' exact component={ComunicadosTutor} />   
         <MyRoute path='/estudiante/trayectoria' exact component={TrayectoriaEscolar} />
         <MyRoute path='/estudiante/informe' exact component={InformeEstudiante} />
         <MyRoute path='/docente/cargarInforme' exact component={CargarInforme2} />
         <MyRoute path='/docente/crearInforme' exact component={CrearInforme} />
         <MyRoute path='/trayectoriaAcademica' exact component={TrayectoriaAcademica} />
+        <MyRoute path='/cursos/asignar_estudiante' exact component={AsignarEstudiantes} />   
+
         <Route path="*" render={NotFound} />     
       </Switch>
     </Router>
