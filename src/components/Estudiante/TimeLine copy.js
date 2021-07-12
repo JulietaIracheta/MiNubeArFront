@@ -44,10 +44,11 @@ const styles = (theme) => ({
 
 const TimeLine = ({ classes, ...props }) => {
   const [informes, setInformes] = useState([])
-
+  const [materias, setMaterias] = useState([])
+  
   useEffect(async () => {
     const result = await fetch(
-      "http://localhost:60671/api/informe/getInformeTrayectoria/" ,
+      "http://localhost:60671/api/informe/getTrayectoria/" ,
       {
         method: "GET",
         headers: { "Content-type": "application/json" },
@@ -61,7 +62,6 @@ const TimeLine = ({ classes, ...props }) => {
         setInformes(response);
       });
   }, []);
-
   function dosDecimales(n) {
     let t=n.toString();
     let regex=/(\d*.\d{0,2})/;
@@ -92,13 +92,14 @@ const TimeLine = ({ classes, ...props }) => {
     iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
     icon={<School />}
   >
-    <span><b><i>{record.institucion} - {record.curso}</i></b></span><br />
-    <span><b>Promedio</b>: {dosDecimales(record.promedio)}</span><br />
-    <span><small><b>Matemática</b> : {record.matematica}</small></span><br />
-    <span><small><b>Prácticas del Leguaje</b> : {record.lengua}</small></span><br />
-    <span><small><b>Ciencias Sociales</b> : {record.sociales}</small></span><br />
-    <span><small><b>Ciencias Naturales</b> : {record.naturales}</small></span><br />
-   { record.informe ? <a href={`http://localhost:60671/informes/${record.informe}`} target='_blank' rel='noopener noreferrer'>Ver Informe</a>
+    <span><b><i>{record.curso}</i></b></span><br />
+    {record.materiaCalificacion.map((mat) =>(
+      <div>
+    <span><small><b>{mat.materia} :{mat.calificacion} </b></small></span><br />
+    </div>
+    )
+    )}
+    { record.informe ? <a href={`http://localhost:60671/informes/${record.informe}`} target='_blank' rel='noopener noreferrer'>Ver Informe</a>
     : ""}     
   </VerticalTimelineElement>
   ))}

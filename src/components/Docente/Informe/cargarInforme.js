@@ -37,7 +37,7 @@ const styles = (theme) => ({
 
 const initialFieldValues = {
   file: undefined,
-  idUsuario: 0 
+  idUsuario: 0, 
 };
 
 const CargarInforme = ({ handleClose, classes, ...props }) => {
@@ -45,11 +45,13 @@ const CargarInforme = ({ handleClose, classes, ...props }) => {
  
     const [estudiantes, setEstudiantes] = useState([])
     const [idUsuario, setIdUsuario] = useState(0)
+    const [archivo, setFile] = useState();
+    const [fileName, setFileName] = useState();
+    const [año, setAño] = useState();
+    const [idCurso, setCurso] = useState();
+    const [cursos, setCursos] = useState([]);
 
-    const handleInputChangeEstudiante = (event) => {
-        const value = event.target.value;
-        setIdUsuario(value);
-      };
+
   //validate()
   //validate({fullName:'jenny'})
   const validate = (fieldValues = values) => {
@@ -68,9 +70,14 @@ const CargarInforme = ({ handleClose, classes, ...props }) => {
   //material-ui select
   const inputLabel = React.useRef(0);
   const [labelWidth, setLabelWidth] = React.useState(0);
-  const [archivo, setFile] = useState();
-  const [fileName, setFileName] = useState();
-  const [año, setAño] = useState();
+  const handleInputChangeEstudiante = (event) => {
+    const value = event.target.value;
+    setIdUsuario(value);
+  };
+  const handleInputChangeCurso = (event) => {
+    const value = event.target.value;
+    setCurso(value);
+  };  
 
   const onValueChangeAño = (event) => {
     const value = event.target.value;
@@ -99,8 +106,23 @@ const CargarInforme = ({ handleClose, classes, ...props }) => {
       })
       .then((response) => {
         setEstudiantes(response);
+        console.log(estudiantes)
       });
   }, []);
+
+  useEffect(async () => {
+    const result = await fetch('http://localhost:60671/api/docente/getCursos/2', {
+      method: 'GET',
+      headers: { "Content-type": "application/json" },
+      credentials: "include",
+    }).then(function (response) {
+      return response.json();
+    })
+      .then(response => {
+        setCursos(response);
+        console.log(cursos)
+      });
+  }, [])
   
   const resetForm = () => {
     window.location.reload();
@@ -117,6 +139,7 @@ const CargarInforme = ({ handleClose, classes, ...props }) => {
     
       const form = new FormData();
       form.append("idUsuario", idUsuario);
+      form.append("idCurso", idCurso);
       form.append("año", año);
       form.append("formFile", archivo);
       form.append("Informe", fileName)
@@ -174,6 +197,28 @@ const CargarInforme = ({ handleClose, classes, ...props }) => {
                     >
                       {estudiantes.map((c) => (
                         <MenuItem value={c.idPersona}>{c.apellido}{" "}{c.nombre}</MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                  <FormControl
+                    fullWidth
+                    variant="outlined"
+                    className={classes.formControl}
+                  >
+                    <InputLabel id="demo-simple-select-outlined-label">
+                      Curso
+                    </InputLabel>
+
+                    <Select
+                      name="idCurso"
+                      id="demo-simple-select-outlined"
+                      value={idCurso}
+                      onChange={handleInputChangeCurso}
+                      label="Curso"
+                      
+                    >
+                      {cursos.map((c) => (
+                        <MenuItem value={c.idCurso}>{c.nombre}</MenuItem>
                       ))}
                     </Select>
                   </FormControl>

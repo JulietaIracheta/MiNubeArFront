@@ -97,7 +97,7 @@ const CrearActividad = () => {
   const onValueChangeCurso = (event) => {
     const value = event.target.value;
     setCurso(value);
-    console.log(idMateria)
+    console.log(idCurso)
   };
   useEffect(async () => {
     const result = await fetch('http://localhost:60671/api/cursos', {

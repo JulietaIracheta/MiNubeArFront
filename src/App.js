@@ -44,7 +44,7 @@ import CargarInforme2  from './components/Docente/Informe/cargarInforme';
 import AsignarEstudiantesACursos from './components/Registro/AsignarEstudiantesACurso';
 import CrearInforme from './components/Docente/Informe/CargarInforme2';
 import TimeLine from './components/Estudiante/TimeLine';
-import TimeLine2 from './components/Estudiante/TimeLine2';
+import TimeLine2 from './components/Estudiante/TimeLine copy';
 import TimeLine3 from './components/Estudiante/Timeline3';
 
 const MyRoute = (props)=>(

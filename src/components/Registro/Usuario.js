@@ -208,10 +208,10 @@ const Usuarios = ({ classes, ...props }) => {
               </Button>
               <ModalDialogTut open={openTut} handleClose={handleClose} />
 
-              <Search className="lupa" />
+            
             </div>
 
-            <TableContainer style={{overflow:"unset"}}>
+            <TableContainer className="mt-4" style={{overflow:"unset"}}>
               <Table>
                 <TableHead>
                   <TableRow className="colorTab">
