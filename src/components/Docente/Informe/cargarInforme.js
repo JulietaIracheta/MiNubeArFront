@@ -17,6 +17,7 @@ import axios from 'axios';
 import Sidebar from "../../Sidebar";
 import { SidebarDataDocente } from "../../sideBar/SidebarDataDocente";
 import NavDocente from "../NavDocente";
+import { Cookies } from 'react-cookie';
 
 
 const styles = (theme) => ({
@@ -37,7 +38,7 @@ const styles = (theme) => ({
 
 const initialFieldValues = {
   file: undefined,
-  idUsuario: 0 
+  idUsuario: 0, 
 };
 
 const CargarInforme = ({ handleClose, classes, ...props }) => {
@@ -45,11 +46,14 @@ const CargarInforme = ({ handleClose, classes, ...props }) => {
  
     const [estudiantes, setEstudiantes] = useState([])
     const [idUsuario, setIdUsuario] = useState(0)
+    const [archivo, setFile] = useState();
+    const [fileName, setFileName] = useState();
+    const [año, setAño] = useState();
+    const [idCurso, setCurso] = useState(0);
+    const [idInstitucion, setInstitucion] = useState(0);
+    const [cursos, setCursos] = useState([]);
+    const [instituciones, setInstituciones] = useState([])
 
-    const handleInputChangeEstudiante = (event) => {
-        const value = event.target.value;
-        setIdUsuario(value);
-      };
   //validate()
   //validate({fullName:'jenny'})
   const validate = (fieldValues = values) => {
@@ -68,9 +72,18 @@ const CargarInforme = ({ handleClose, classes, ...props }) => {
   //material-ui select
   const inputLabel = React.useRef(0);
   const [labelWidth, setLabelWidth] = React.useState(0);
-  const [archivo, setFile] = useState();
-  const [fileName, setFileName] = useState();
-  const [año, setAño] = useState();
+  const handleInputChangeEstudiante = (event) => {
+    const value = event.target.value;
+    setIdUsuario(value);
+  };
+  const handleInputChangeCurso = (event) => {
+    const value = event.target.value;
+    setCurso(value);
+  }; 
+  const handleInputChangeInstitucion = (event) => {
+    const value = event.target.value;
+    setInstitucion(value);
+  };  
 
   const onValueChangeAño = (event) => {
     const value = event.target.value;
@@ -85,9 +98,43 @@ const CargarInforme = ({ handleClose, classes, ...props }) => {
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
 
+
+  const cookie = new Cookies();
+  const jwt = cookie.get('jwt');
   useEffect(async () => {
     const result = await fetch(
-      "http://localhost:60671/api/persona/getEstudiantesAsignados/1",
+      "http://localhost:60671/api/docente/getInstitucion/?jwt="+jwt,
+      {
+        method: "GET",
+        headers: { "Content-type": "application/json" },
+        credentials: "include",
+      }
+    )
+      .then(function (response) {
+        return response.json();
+      })
+      .then((response) => {
+        setInstituciones(response);
+      });
+  }, []);
+
+  useEffect(async () => {
+    const result = await fetch('http://localhost:60671/api/docente/getCursos/?jwt='+jwt, {
+      method: 'GET',
+      headers: { "Content-type": "application/json" },
+      credentials: "include",
+    }).then(function (response) {
+      return response.json();
+    })
+      .then(response => {
+        setCursos(response);
+        console.log(cursos)
+      });
+  }, [])
+
+  useEffect(async () => {
+    const result = await fetch(
+      "http://localhost:60671/api/docente/getEstudiantesPorCurso/" + idInstitucion +"/" + idCurso,
       {
         method: "GET",
         headers: { "Content-type": "application/json" },
@@ -99,8 +146,10 @@ const CargarInforme = ({ handleClose, classes, ...props }) => {
       })
       .then((response) => {
         setEstudiantes(response);
+        console.log(estudiantes)
       });
-  }, []);
+  }, [idInstitucion, idCurso]);
+ 
   
   const resetForm = () => {
     window.location.reload();
@@ -117,10 +166,10 @@ const CargarInforme = ({ handleClose, classes, ...props }) => {
     
       const form = new FormData();
       form.append("idUsuario", idUsuario);
+      form.append("idCurso", idCurso);
       form.append("año", año);
       form.append("formFile", archivo);
       form.append("Informe", fileName)
-      console.log("boke:",form);
       try{
       const response = await axios.post("http://localhost:60671/api/informe/cargarInforme",
         form);
@@ -162,6 +211,50 @@ const CargarInforme = ({ handleClose, classes, ...props }) => {
                     className={classes.formControl}
                   >
                     <InputLabel id="demo-simple-select-outlined-label">
+                      Institución
+                    </InputLabel>
+
+                    <Select
+                      name="idInstitucion"
+                      id="demo-simple-select-outlined"
+                      value={idInstitucion}
+                      onChange={handleInputChangeInstitucion}
+                      label="Institución"
+                      
+                    >
+                      {instituciones.map((c) => (
+                        <MenuItem value={c.idInstitucion}>{c.nombre}</MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+          <FormControl
+                    fullWidth
+                    variant="outlined"
+                    className={classes.formControl}
+                  >
+                    <InputLabel id="demo-simple-select-outlined-label">
+                      Curso
+                    </InputLabel>
+
+                    <Select
+                      name="idCurso"
+                      id="demo-simple-select-outlined"
+                      value={idCurso}
+                      onChange={handleInputChangeCurso}
+                      label="Curso"
+                      
+                    >
+                      {cursos.map((c) => (
+                        <MenuItem value={c.idCurso}>{c.nombre}</MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+          <FormControl
+                    fullWidth
+                    variant="outlined"
+                    className={classes.formControl}
+                  >
+                    <InputLabel id="demo-simple-select-outlined-label">
                       Estudiante
                     </InputLabel>
 
@@ -174,10 +267,11 @@ const CargarInforme = ({ handleClose, classes, ...props }) => {
                       
                     >
                       {estudiantes.map((c) => (
-                        <MenuItem value={c.idPersona}>{c.apellido}{" "}{c.nombre}</MenuItem>
+                        <MenuItem value={c.idUsuario}>{c.apellido}{" "}{c.nombre}</MenuItem>
                       ))}
                     </Select>
                   </FormControl>
+                
                   <div className="mt-4 mb-4">   
                   Año :
                     <TextField name="año" className="ml-2" value={año} onChange={onValueChangeAño} /> 

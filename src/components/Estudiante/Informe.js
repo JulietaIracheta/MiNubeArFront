@@ -24,7 +24,7 @@ export default function InformeEstudiante(props) {
         })
           .then(response => {
             setPdf(response)
-            console.log(pdf)
+            console.log(response)
           });
       }, [])
 
@@ -54,7 +54,7 @@ export default function InformeEstudiante(props) {
           <h2>Informe Alumno</h2>
           <hr class="hr-color w-100" />
           <div className="container-flex">
-          <div>
+          {pdf === null ? <div><p>No tiene informe cargado</p></div> :    <div>
         <Document
           file={url}
             options={{ workerSrc: "/pdf.worker.js" }}
@@ -78,8 +78,8 @@ export default function InformeEstudiante(props) {
         >
           Próxima
         </Button>
-        </ButtonGroup>
-      </div>
+        </ButtonGroup> 
+      </div>}
  </div>
           </div>
 

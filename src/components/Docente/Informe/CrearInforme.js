@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CargarInforme2 = () => {
+const CrearInforme = () => {
   const classes = useStyles();
   const [año, setAño] = useState();
   const [cursos, setCursos] = useState([]);
@@ -77,12 +77,11 @@ const CargarInforme2 = () => {
           "Content-type": "application/json",
         },
         body: JSON.stringify({
-          Año: año,
-          Calificaciones: [
-            { materia: 'dfgdfg', calificacion: 'calificacion1' },
-            { materia: 'ateria2', calificacion: 'calificacion2' },
-            { materia: 'materia3', calificacion: 'calificacion3' },
-          ],
+          año: año,
+          institucion: institucion,
+          idEstudiante : estudiante,
+          curso : cursoNombre,
+          materiaCurso : [materia, calificacion]
             
         }),
       }
@@ -133,7 +132,7 @@ const CargarInforme2 = () => {
       .then((response) => {
         setInstituciones(response);
       });
-  }, [institucion]);
+  }, []);
 
 
 
@@ -152,7 +151,7 @@ const CargarInforme2 = () => {
       .then((response) => {
         setCursos(response);
       });
-  }, [curso]);
+  }, []);
   
   useEffect(async () => {
     const result = await fetch(
@@ -170,7 +169,7 @@ const CargarInforme2 = () => {
         setMaterias(response);
         console.log(materias)
       });
-  }, []);
+  }, [curso]);
 
   useEffect(async () => {
     const result = await fetch(
@@ -187,7 +186,7 @@ const CargarInforme2 = () => {
       .then((response) => {
         setEstudiantes(response);
       });
-  }, [curso]);
+  }, []);
 
   return (
     <div>
@@ -291,10 +290,10 @@ const CargarInforme2 = () => {
                       fullWidth 
                       variant="outlined"
                     >
-                      <MenuItem value="Sobresaliente">Sobresaliente</MenuItem>
-                      <MenuItem value="Bueno">Bueno</MenuItem>
-                      <MenuItem value="Regular">Regular</MenuItem>
-                      <MenuItem value="Insuficiente">Insuficiente</MenuItem>
+                      <MenuItem value={"Sobresaliente"}>Sobresaliente</MenuItem>
+                      <MenuItem value={"Bueno"}>Bueno</MenuItem>
+                      <MenuItem value={"Regular"}>Regular</MenuItem>
+                      <MenuItem value={"Insuficiente"}>Insuficiente</MenuItem>
                     </Select>
                   </FormControl>))}
                    </div> 
@@ -330,4 +329,4 @@ const CargarInforme2 = () => {
   );
 };
 
-export default CargarInforme2;
+export default CrearInforme;
