@@ -55,6 +55,7 @@ const Login = () => {
       cookie.set('nombrePersona', res.nombre);
       setCookie('avatarPathGoogle', imageGoogle, { path: '/' });
       const nombre = res.nombre.charAt(0) + res.apellido.charAt(0);
+      setCookie('jwt', res.jwt, { path: '/' });
       setCookie('avatar', nombre, { path: '/' });
     }).catch(err=>{
       swal("No se puede iniciar sesión con los campos ingresados", '', "warning");  
@@ -68,7 +69,8 @@ const Login = () => {
   const responseMicrosoft = async (err, data, msal) => {
 
     if(!data) return;
-    const response = await fetch("http://localhost:60671/api/usuario/loginMicrosoft?email=" + data.mail, {
+    console.log(data);
+    const response = await fetch("http://localhost:60671/api/usuario/loginMicrosoft?email=" + data.userPrincipalName, {
       method: "POST",
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -81,12 +83,14 @@ const Login = () => {
       cookie.set('email', data.mail );
       const nombre = data.givenName.charAt(0) + data.surname.charAt(0);
       setCookie('avatar', nombre, { path: '/' });
+      setCookie('jwt', res.jwt, { path: '/' });
       setRedirect(true);
     }).catch(err=>{
       swal("No se puede iniciar sesión con los campos ingresados", '', "warning");  
       setRedirect(false);
       return;
     });
+    setRedirect(true);
   }
 
 

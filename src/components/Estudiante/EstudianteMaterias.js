@@ -11,7 +11,7 @@ import { Grid } from "@material-ui/core";
 
 const baseUrl = "http://localhost:60671/api/"
 
-const EstudianteMaterias = () => {
+const EstudianteMaterias = (props) => {
   
   let listMaterias = [];
 
@@ -55,7 +55,7 @@ useEffect(() => {
 
   return (
     <Fragment>
-      <Encabezado texto="Bienvenido" />      
+      <Encabezado texto={"Bienvenido "+props.nombre} />      
       <Grid container spacing={3}>
         { loading ? (listMaterias) : "LOADING ..."}
       </Grid>      

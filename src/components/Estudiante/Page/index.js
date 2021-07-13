@@ -36,7 +36,7 @@ export default function Estudiante() {
       <div className="flex">
         <Sidebar data={SidebarDataEstudiante}/>
         <div className="content">
-          <EstudianteMaterias />
+          <EstudianteMaterias nombre={nombre}/>
         </div>
       </div>
     </div>
