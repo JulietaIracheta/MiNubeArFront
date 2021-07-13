@@ -1,3 +1,7 @@
+.nav_logo{
+
+}
+
 .sidebarResponsive{
     display: none;
   }
@@ -7,9 +11,9 @@
     align-items: center;
   }
   @media only screen and (max-width: 800px) {
-    .Sidebar{
+    /* .Sidebar{
       display: none;
-    }
+    } */
     .menuadmin{
       margin-right: 0px !important;   
     }

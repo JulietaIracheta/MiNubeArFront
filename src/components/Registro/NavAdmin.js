@@ -12,10 +12,13 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
-import { ChatLeftTextFill, Bell, PersonCircle } from "react-bootstrap-icons";
-import logo from '../../assets/img/logoGris.png'
+import { IconContext } from "react-icons";
+import { ChatLeftTextFill, Bell, BellFill, PersonCircle, PersonCheckFill } from "react-bootstrap-icons";
+// import logo from '../../assets/img/logoGris.png'
+import logo from '../../assets/img/logoColor.jpeg'
 import { BorderColor, Business, Group } from "@material-ui/icons";
 
+let size_icon = 25
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,23 +36,26 @@ const NavBar = (props) => {
 
   return (
     <div >
-      <Navbar className="menuNavBarReg" expand="md" light>
-        <img src={logo} />
-        <NavbarBrand className="colorBrand" href="/rol">MI NUBE AR</NavbarBrand>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto"></Nav>
-          <Nav navbar className="iconos-nav nav-responsive-sidebar">
-            <NavItem className="marginMN">
-              <ChatLeftTextFill className="icon-menu" />
+      <Navbar className="menuNavBarReg d-flex justify-content-between p-0" expand="md" light>
+        
+        <NavbarBrand className="colorBrand d-flex align-items-center" href="/rol">
+          <img className="nav_logo" src={logo} width="100px" /> 
+          <span className="d-none d-sm-block">MI NUBE AR</span>
+        </NavbarBrand>
+        {/* <NavbarToggler className="" onClick={toggle} /> */}
+        {/* <Collapse isOpen={isOpen} navbar> */}
+          {/* <Nav className="mr-auto"></Nav> */}
+          <Nav className="iconos-navTODO d-flex justify-content-center align-items-center pr-2">
+            <NavItem className="pt-1 pr-2 pl-2">
+              <ChatLeftTextFill size={size_icon}  />
             </NavItem>
-            <NavItem className="marginMN notif">
-              <a href="/notificaciones"> <Bell className="icon-menu" /></a>
+            <NavItem className="notif pr-2 pl-2">
+              <a href="/notificaciones"> <BellFill size={size_icon} color="black" /></a>
+              {/* <a href="/notificaciones"> <Bell className="icon-menu" /></a> */}
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav>
-                <PersonCircle className="icon-perfil" />
-
+              <DropdownToggle nav className="p-0 pr-2 pl-2">
+                  <PersonCircle  size={size_icon} color="black"/>
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>
@@ -57,7 +63,7 @@ const NavBar = (props) => {
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
-          <NavItem className="marginMN sidebarResponsive">
+          {/* <NavItem className="marginMN sidebarResponsive">
             <a href="/Instituciones"> <Business className="icon-menu" /></a>
           </NavItem>
           <NavItem className="marginMN sidebarResponsive">
@@ -65,9 +71,9 @@ const NavBar = (props) => {
           </NavItem>
           <NavItem className="marginMN sidebarResponsive">
             <a href="/video"> <BorderColor className="icon-menu" /></a>
-          </NavItem>
+          </NavItem> */}
           </Nav>
-        </Collapse>
+        {/* </Collapse> */}
       </Navbar>
     </div>
   );
