@@ -129,12 +129,15 @@ const CrearActividad = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    alert("XD");
     const response = await fetch("http://localhost:60671/api/question/", {
       method: "POST",
       headers: {
+        'Accept':'application/json',
         "Content-type": "application/json",
       },
       body: JSON.stringify({
+        pregunta:{
         content: question,
         answers: [
           { content: answers1, correct: correct1 },
@@ -146,9 +149,9 @@ const CrearActividad = () => {
           titulo: titulo,
           descripcion: descripcion,
           idMateria: idMateria,
-          idCurso: idCurso
         },
-        
+        Id:1111  
+      }
       }),
     }).then((response) => response.json());
     resetForm();

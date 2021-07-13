@@ -65,6 +65,11 @@ const EventoForm = ({ handleClose, classes, ...props }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if(values.title==="" || values.start==="")
+    {
+      await swal("Asegurese de completar los campos",'' , "warning");
+      return;
+    }
     if (validate()) {
       const onSuccess = () => {
         resetForm();
@@ -89,8 +94,8 @@ const EventoForm = ({ handleClose, classes, ...props }) => {
   }, [props.currentId]);
 
   return (
-    <div>
-      <h6 className="mt-5 ml-5">Crear un evento </h6>
+    <div style={{width:"540px"}} className="d-flex flex-column align-items-center py-5">
+      <h6>Crear un evento </h6>
       <form
         autoComplete="off"
         noValidate
@@ -124,7 +129,7 @@ const EventoForm = ({ handleClose, classes, ...props }) => {
               value={values.url}
               onChange={handleInputChange}
             />
-            <div>
+            <div className="w-100 d-flex justify-content-around">
               <Button
                 variant="contained"
                 color="primary"
@@ -133,14 +138,9 @@ const EventoForm = ({ handleClose, classes, ...props }) => {
               >
                 Enviar
               </Button>
+              
               <Button
-                variant="contained"
-                className={classes.smMargin}
-                onClick={resetForm}
-              >
-                Reset
-              </Button>
-              <Button
+                color="secondary"
                 variant="contained"
                 className={classes.smMargin}
                 onClick={handleClose}

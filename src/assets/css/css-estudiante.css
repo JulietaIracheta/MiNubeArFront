@@ -7,6 +7,17 @@
   display: flex;
 }
 
+.chart-est-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.chart-item{
+  text-align: center;
+}
+
 .content{    
   width: 100%;
   margin:0 2%;
@@ -22,6 +33,22 @@
   border-style: solid !important;
   border-radius: 5px !important;
   background: white !important;
+}
+
+.unidad-item{
+  border-color: #B61915;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 10px;
+  width: 30em;
+  margin-top: 30px;
+}
+
+.unidad-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .marginMN {

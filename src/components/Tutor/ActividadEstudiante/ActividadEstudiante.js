@@ -21,18 +21,6 @@ export default function ApexChart(props) {
     const [calificacion, setCalificacion] = useState('');
 
     useEffect(function () {
-        fetch(urlBase, {
-            method: 'GET'
-        }).then(res => {
-            if (!res.ok) alert('video no encontrado')
-            return res.json()
-        }).then(res => {
-            setVideoFilePath(urlVideo + video.video);
-            setVideo(res);
-        });
-    }, []);
-
-    useEffect(function () {
         fetch('http://localhost:60671/api/actividades/calcularAvance/' + id, {
             method: 'GET'
         }).then(res => {
@@ -42,29 +30,6 @@ export default function ApexChart(props) {
             setSerie(res);
         });
     }, []);
-
-    const subirArchivos = e => {
-        console.log(e[0]);
-        setFile(e);
-    }
-    const insertarArchivos = async () => {
-        const f = new FormData();
-        f.append("file", archivo[0]);
-        console.log(archivo[0]);
-        console.log(f);
-
-        await axios.post("http://localhost:60671/api/contenido/cargarVideo", f)
-            .then(response => {
-                console.log(response);
-            }).catch(err => {
-                console.log(err);
-            })
-    }
-    //<ReactPlayer url={urlVideo} controls width="500px" height="300px" />
-    /* <input type="file" name="file"  onChange={(e)=>subirArchivos(e.target.files)} />
-                    <button onClick={()=>{insertarArchivos()}}>Insertar Archivos</button> */
-    urlVideo = urlVideo + video.video;
-    console.log(urlVideo);
 
     
     return (

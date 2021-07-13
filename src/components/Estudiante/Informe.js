@@ -12,7 +12,7 @@ export default function InformeEstudiante(props) {
     const [numPages, setNumPages] = useState(null);
     const [pageNumber, setPageNumber] = useState(1);
     const [pdf, setPdf] = useState('');
-    const url="http://localhost:60671/informes/"+pdf;
+    const url="";
 
     useEffect(async () => {
         const result = await fetch('http://localhost:60671/api/informe/getInformeByEstudiante/1', {
@@ -24,7 +24,7 @@ export default function InformeEstudiante(props) {
         })
           .then(response => {
             setPdf(response)
-            console.log(pdf)
+            console.log("XD",pdf)
           });
       }, [])
 
@@ -56,7 +56,7 @@ export default function InformeEstudiante(props) {
           <div className="container-flex">
           <div>
         <Document
-          file={url}
+          file={"http://localhost:60671/informes/"+pdf}
             options={{ workerSrc: "/pdf.worker.js" }}
             onLoadSuccess={onDocumentLoadSuccess}
             

@@ -24,6 +24,9 @@ import recPassword from './components/recPassword';
 import ComunicadosEstudiante from './components/Estudiante/ComunicadosEstudiante';
 import chatNotificacion from './components/Notificaciones/chatnotificacion';
 import chatnotificacionDocente from './components/Notificaciones/chatnotificacionDocente';
+import MateriaUnidad from './components/Estudiante/Page/materiaUnidad';
+import Estudiante from './components/Estudiante/Page';
+import MateriaActividad from './components/Estudiante/Page/materiaActividad';
 import MateriasTutorEstudiante from './components/Tutor/materiasTutorEstudiante';
 import ContenidoMateria from './components/Tutor/contenidoMateria';
 import CalendarioTut from './components/Calendario/CalendarioTut';
@@ -66,6 +69,7 @@ const app = () => (
   <Provider store={store}>
     <Router>
       <Switch>
+                                              
         <MyRoute path='/usuarios' exact component={Usuario}></MyRoute>
         <Route path='/' exact component={Login} />
         <Route path='/login' exact component={Login} />
@@ -110,6 +114,9 @@ const app = () => (
         <MyRoute path='/docente/crearInforme' exact component={CrearInforme} />
         <MyRoute path='/trayectoriaAcademica' exact component={TrayectoriaAcademica} />
         <MyRoute path='/cursos/asignar_estudiante' exact component={AsignarEstudiantes} />   
+        <Route path='/Estuduante' exact component={Estudiante}/>
+        <Route path='/estudiante/materias/:id' exact component={MateriaUnidad}/>
+        <Route path='/estudiante/materias/:id/:unidad/video' exact component={MateriaActividad}/>
 
         <Route path="*" render={NotFound} />     
       </Switch>

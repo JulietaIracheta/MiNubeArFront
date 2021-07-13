@@ -43,7 +43,6 @@ export default function ContenidoPorMateria({ id,set,...props }) {
                     <div className="row">
                         {contenidos?.map((contenido,index) => {
                             return <div key={index} className="mt-4 col-md-4 card-contenido-responsive" style={{ minHeight: "10rem" }}>
-                               {console.log(contenido)}
                                 <Contenido
                                     idCurso={props.match.params.cursoId}
                                     idMateria={props.match.params.materiaId}

@@ -81,13 +81,13 @@ export default function RecipeReviewCard({ id, idCurso, idMateria, unidad, descr
         window.location.reload();
     };
     const checked1 = () => {
-        setCorrect1(true);
+        setCorrect1(!correct1);
     };
     const checked2 = () => {
-        setCorrect2(true);
+        setCorrect2(!correct2);
     };
     const checked3 = () => {
-        setCorrect3(true);
+        setCorrect3(!correct3);
     };
     const onValueChangeRespuesta = (event) => {
         const value = event.target.value;
@@ -137,6 +137,7 @@ export default function RecipeReviewCard({ id, idCurso, idMateria, unidad, descr
                 "Content-type": "application/json",
             }
         }).then((response) => {
+            console.log(response);
             return response;
         });
         if (response.ok) {
@@ -166,7 +167,7 @@ export default function RecipeReviewCard({ id, idCurso, idMateria, unidad, descr
                     idCurso: idCurso,
                     idContenido: id
                 },
-
+                cursoId: idCurso,
             }),
         }).then((response) => response.json());
         resetForm();
@@ -298,7 +299,7 @@ export default function RecipeReviewCard({ id, idCurso, idMateria, unidad, descr
                                 <Grid item md={6} xl={6} lg={6} xs={6} className="mt-4">
                                     <FormControlLabel
                                         fullWidth
-                                        control={<Checkbox name="checked1" onChange={checked1} />}
+                                        control={<Checkbox name="checked1" defaultChecked={correct1} onChange={()=>{setCorrect1(!correct1)}} />}
                                         label="Correcto"
                                     />
                                 </Grid>
@@ -317,7 +318,7 @@ export default function RecipeReviewCard({ id, idCurso, idMateria, unidad, descr
                                 </Grid>
                                 <Grid item md={6} xl={6} lg={6} xs={6} className="mt-4">
                                     <FormControlLabel
-                                        control={<Checkbox name="checked2" onChange={checked2} />}
+                                        control={<Checkbox name="checked2" defaultChecked={correct2} onChange={()=>{setCorrect2(!correct2)}} />}
                                         label="Correcto"
                                     />
                                 </Grid>
@@ -334,7 +335,7 @@ export default function RecipeReviewCard({ id, idCurso, idMateria, unidad, descr
                                 </Grid>
                                 <Grid item md={6} xl={6} lg={6} xs={6} className="mt-4">
                                     <FormControlLabel
-                                        control={<Checkbox name="checked3" onChange={checked3} />}
+                                        control={<Checkbox name="checked3" defaultChecked={correct3} onChange={()=>{setCorrect3(!correct3)}} />}
                                         label="Correcto"
                                     />
                                 </Grid>
@@ -366,6 +367,7 @@ export default function RecipeReviewCard({ id, idCurso, idMateria, unidad, descr
 
             <Dialog open={abrirDetalleActividad} maxWidth="800">
             {detalleActividad? 
+            
                 <ToastProvider >
                     <div className="d-flex w-100 p-5">
                         <form
