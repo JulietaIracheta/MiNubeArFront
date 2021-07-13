@@ -53,6 +53,7 @@ const ContenidoForm = ({ handleClose, classes, ...props }) => {
 
     if (fieldValues == values) return Object.values(temp).every((x) => x == "");
   };
+  console.log(props);
 
   const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
     useForm(initialFieldValues, validate, props.setCurrentId);
@@ -81,7 +82,9 @@ const ContenidoForm = ({ handleClose, classes, ...props }) => {
 
       form.append("titulo", values.titulo);
       form.append("descripcion", values.descripcion);
-      form.append("unidad", 1);
+      form.append("unidad", values.unidad);
+      form.append("curso", props.idCurso);
+      form.append("materia", props.idMateria);
       if(archivo)
         form.append("file", archivo[0]);
       await axios.post("http://localhost:60671/api/contenido/crearContenido",

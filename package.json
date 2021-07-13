@@ -45,6 +45,7 @@
     "konva": "^8.0.4",
     "mdbreact": "^5.0.2",
     "microsoft-login-button-react": "^1.0.1",
+    "moment": "^2.29.1",
     "pizzip": "^3.0.6",
     "pubnub": "^4.32.1",
     "qs": "^6.10.1",

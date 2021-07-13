@@ -50,6 +50,7 @@ import AsignarEstudiantesACursos from './components/Registro/AsignarEstudiantesA
 import CrearInforme from './components/Docente/Informe/CargarInforme2';
 import TrayectoriaAcademica from './components/Estudiante/trayectoriaAcademica';
 import AsignarEstudiantes from './components/Curso/AsignarEstudiantes'
+import ContenidosHistoricos from './components/Estudiante/ContenidosHistoricos';
 
 const MyRoute = (props)=>(
   isAuthenticated()
@@ -117,6 +118,7 @@ const app = () => (
         <Route path='/Estuduante' exact component={Estudiante}/>
         <Route path='/estudiante/materias/:id' exact component={MateriaUnidad}/>
         <Route path='/estudiante/materias/:id/:unidad/video' exact component={MateriaActividad}/>
+        <Route path='/estudiante/contenidosHistoricos' exact component={ContenidosHistoricos}/>
 
         <Route path="*" render={NotFound} />     
       </Switch>

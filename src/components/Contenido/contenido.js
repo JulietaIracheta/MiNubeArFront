@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function RecipeReviewCard({ id, idCurso, idMateria, unidad, descripcion, titulo, video, actividad }) {
+export default function RecipeReviewCard({ id, idCurso,control, idMateria, unidad, descripcion, titulo, video, actividad }) {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
     const url = "http://localhost:60671/videos/" + video;
@@ -174,7 +174,7 @@ export default function RecipeReviewCard({ id, idCurso, idMateria, unidad, descr
     };
     return (
         <Card className={classes.root}>
-            <ReactPlayer url={url} controls width="100%" height="12rem" style={{ minHeight: "12rem" }} />
+            <ReactPlayer url={url} controls={control} width="100%" height="12rem" style={{ minHeight: "12rem" }} />
             <CardContent>
                 <span>Unidad - {unidad}</span>
                 <p className="font-weight-bold">{titulo}</p>

@@ -10,13 +10,12 @@ import ModalDialogContenido from '../Contenido/ModalDialogContenido';
 import { SidebarDataDocente } from '../sideBar/SidebarDataDocente';
 import '../../assets/css/contenido/css-contenido.css';
 
-export default function ContenidoPorMateria({ id,set,...props }) {
-    console.log('pr',props);
+export default function ContenidoPorMateria({ id, set, ...props }) {
     const [contenidos, setContenidos] = useState([]);
     const [dialogContenido, setDialogContenido] = useState(false);
-    
+
     useEffect(function () {
-        getContenidos(props.match.params.materiaId).then(contenidos => setContenidos(contenidos));
+        getContenidos(props.match.params.materiaId, props.match.params.cursoId).then(contenidos => setContenidos(contenidos));
     }, []);
     const clickNuevaActividad = () => {
         setDialogContenido(true);
@@ -37,13 +36,19 @@ export default function ContenidoPorMateria({ id,set,...props }) {
                         <div className="d-flex justify-content-around contenido-acciones-responsive">
                             <Link to="/video" className="btn btn-outline-dark font-weight-bold">Clase en vivo</Link>
                             <button className="btn btn-outline-dark font-weight-bold" onClick={clickNuevaActividad}>Nueva clase grabada</button>
-                            <ModalDialogContenido open={dialogContenido} handleClose={clickCerrarModalActividad} />
+                            <ModalDialogContenido 
+                                idCurso={props.match.params.cursoId}
+                                idMateria={props.match.params.materiaId}
+                                open={dialogContenido}
+                                handleClose={clickCerrarModalActividad} />
                         </div>
                     </div>
                     <div className="row">
-                        {contenidos?.map((contenido,index) => {
+                        {contenidos?.map((contenido, index) => {
                             return <div key={index} className="mt-4 col-md-4 card-contenido-responsive" style={{ minHeight: "10rem" }}>
+
                                 <Contenido
+                                    control={true}
                                     idCurso={props.match.params.cursoId}
                                     idMateria={props.match.params.materiaId}
                                     id={contenido.idContenido}
@@ -56,8 +61,8 @@ export default function ContenidoPorMateria({ id,set,...props }) {
                             </div>
                         })}
                     </div>
-                    </div>
                 </div>
             </div>
+        </div>
     )
 }

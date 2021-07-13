@@ -24,7 +24,6 @@ export default function InformeEstudiante(props) {
         })
           .then(response => {
             setPdf(response)
-            console.log("XD",pdf)
           });
       }, [])
 
