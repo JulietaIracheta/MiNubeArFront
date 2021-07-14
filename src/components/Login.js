@@ -124,9 +124,11 @@ const Login = () => {
           cookie.remove("avatarPath");
           const nombre = res.nombre.charAt(0) + res.apellido.charAt(0);
           setCookie('avatarNombre', nombre, { path: '/' });
+          cookie.set('jwt', res.jwt);
         }else{
           cookie.remove("avatarNombre");
           setCookie('avatarPath', res.avatar, { path: '/' });
+          cookie.set('jwt', res.jwt);
         }
         cookie.set('nombrePersona', res.nombre);
         cookie.set('jwt', res.jwt);

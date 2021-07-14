@@ -56,7 +56,7 @@ export default function RecipeReviewCard({ id, idCurso,control, idMateria, unida
     const [abrirModalCrearActividad, setAbrirModalCrearActividad] = React.useState(false);
     const [abrirDetalleActividad, setAbrirDetalleActividad] = React.useState(false);
     const [detalleActividad, setDetalleActividad] = React.useState();
-
+    
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
