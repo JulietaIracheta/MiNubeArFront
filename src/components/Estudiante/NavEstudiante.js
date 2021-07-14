@@ -52,6 +52,7 @@ const NavBar = (props) => {
     setCookie('nombreAvatar', '', { path: '/' });
     setCookie('avatarPath', '', { path: '/' });
     setCookie('avatarPathGoogle', '', { path: '/' });
+    setCookie('jwt', '', { path: '/' });
 
     window.localStorage.clear();
    

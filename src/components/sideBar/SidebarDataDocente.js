@@ -18,11 +18,11 @@ export const SidebarDataDocente = [
         icon: <BorderColor />,
         link: "/docente/cargarCalificaciones"
     },
-    {
+    /*{
         title: 'Crear Informe', 
         icon: <Ballot />,
         link: "/docente/crearInforme"
-    },
+    },*/
     {
         title: 'Cargar Informe', 
         icon: <Ballot />,

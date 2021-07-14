@@ -8,6 +8,7 @@ import EstudianteMaterias from "../EstudianteMaterias";
 import MateriasUnidades from "../MateriasUnidades";
 import "../../../assets/css/css-estudiante.css"
 
+
 const MateriaUnidad = ({ match }) => {
     const id = match.params.id;
 
@@ -15,7 +16,7 @@ const MateriaUnidad = ({ match }) => {
     <div>
       <NavEstudiante />
       <div className="flex">
-      <Sidebar data={SidebarDataEstudiante} />
+      <Sidebar data={SidebarDataEstudiante}/>
         <div className="content">
            <MateriasUnidades id={id} />
         </div>

@@ -6,6 +6,7 @@ import MateriasMocks from "./MateriasMocks";
 import Encabezado from "./Encabezado.js";
 import CardMateria from "./CardMateria";
 import { Grid } from "@material-ui/core";
+import { Cookies, useCookies } from 'react-cookie';
 
 //import getMaterias from "../../services/estudiantes/getMaterias"
 
@@ -14,8 +15,9 @@ const baseUrl = "http://localhost:60671/api/"
 const EstudianteMaterias = (props) => {
   
   let listMaterias = [];
-
-  const url = baseUrl + 'estudiante/materias';
+  const cookie = new Cookies();
+  const jwt = cookie.get('jwt');
+  const url = baseUrl + 'estudiante/materias?jwt='+jwt;
 
   const [materias, setMaterias] = useState([]);
   const [loading, setLoading] = useState(false);        

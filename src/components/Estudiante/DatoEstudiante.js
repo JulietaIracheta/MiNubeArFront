@@ -21,7 +21,7 @@ export default function DatoEstudiante({ avatar, nombre, apellido,id}) {
                     </div>
                     <div className="col-md-6 col-sm-12 d-flex flex-column justify-content-around estudiante-asignado-detalle">
                         <p className="font-weight-bold">{nombre}, <br/>{apellido}</p>
-                        <Link to={`/perfilEstudiante/${id}`} className="text-decoration-none btn btn-outline-dark btn-sm x btn-perfil-estudiante">Ver Perfil</Link>
+                        {/*<Link to={`/perfilEstudiante/${id}`} className="text-decoration-none btn btn-outline-dark btn-sm x btn-perfil-estudiante">Ver Perfil</Link>*/}
                     </div>
                 </div>
             </div>

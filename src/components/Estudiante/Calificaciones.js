@@ -113,7 +113,6 @@ const Calificaciones = ({ classes, ...props }) => {
                   <TableCell>{notas.t3}</TableCell>
                   <TableCell>{Math.round((notas.t1 + notas.t2 + notas.t3) /total)}</TableCell>
                 </TableRow>
-
               );
             })}
           </TableBody>
