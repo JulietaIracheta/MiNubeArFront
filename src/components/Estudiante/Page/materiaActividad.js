@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Encabezado from "../Encabezado";
-import Sidebar from '../Sidebar';
+//import Sidebar from '../Sidebar';
 import NavEstudiante from "../NavEstudiante";
 import {Link, Switch, Route, BrowserRouter as Router} from 'react-router-dom';
 import ActividadContenido from "../ActividadContenido";
 import VideoContenido from "../VideoContenido";
 import '../../Actividades/actividades.css';
+import Sidebar from "../../Sidebar";
+import { SidebarDataEstudiante } from "../../sideBar/SidebarDataEstudiante";
 
 const baseUrl = "http://localhost:60671/api/"
 
@@ -52,9 +54,10 @@ const MateriaActividad = ({ match }) => {
 
     return (
         <div>
+          
             <NavEstudiante />
             <div className="flex">
-                <Sidebar />               
+            <Sidebar data={SidebarDataEstudiante}/>
                 <Router>
                     <div className="content">                      
                         <Encabezado texto={ materia + " - Contenido de la unidad " + unidad }/>

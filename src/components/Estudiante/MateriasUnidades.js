@@ -35,7 +35,7 @@ export default function MateriaUnidad({ id }) {
 
     return (
         <>
-            <Encabezado texto={id} />
+            <Encabezado texto={"Contenidos y actividades"} />
             <div className="chart-est-container">
                 <div className="chart-item">
                     <h5>Actividades vistas</h5>
