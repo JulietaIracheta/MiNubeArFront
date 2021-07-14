@@ -40,12 +40,6 @@ const NavBar = (props) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto"></Nav>
           <Nav navbar className="iconos-nav nav-responsive-sidebar">
-            <NavItem className="marginMN">
-              <ChatLeftTextFill className="icon-menu" />
-            </NavItem>
-            <NavItem className="marginMN notif">
-              <a href="/notificaciones"> <Bell className="icon-menu" /></a>
-            </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav>
                 <PersonCircle className="icon-perfil" />
@@ -64,7 +58,7 @@ const NavBar = (props) => {
             <a href="/usuarios"> <Group className="icon-menu" /></a>
           </NavItem>
           <NavItem className="marginMN sidebarResponsive">
-            <a href="/video"> <BorderColor className="icon-menu" /></a>
+            <a href="#"> <BorderColor className="icon-menu" /></a>
           </NavItem>
           </Nav>
         </Collapse>

@@ -3,12 +3,13 @@ import Docente from './Docente/Page';
 import Estudiante from './Estudiante/Page/index';
 import Tutor from './Tutor/Page';
 import Registro from './Registro/Registro'; 
-import Cookies from 'universal-cookie';
+import { Cookies, useCookies } from "react-cookie";
 
 export default function Rol(){
   const [rol, setRol] = useState("");
   const cookie = new Cookies();
   const jwt = cookie.get('jwt');
+  const [cookies, setCookie] = useCookies(["usuario"]);
   
   useEffect(() => {
     (async () => {
@@ -19,9 +20,8 @@ export default function Rol(){
 
       const content = await response.json();  
       
-      console.log( content );
-
       setRol(content);
+     
 })();
   },[]);
 return (

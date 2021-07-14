@@ -12,7 +12,7 @@ const VideoContenido = ({idMateria}) => {
     }, []);
 
     console.log(contenidos);
-    const url="http://localhost:60671/videos/"+contenidos.video;
+    const url="http://localhost:60671/videos/"+contenidos[0].video;
 
     return (
         <div className="p-2"> 

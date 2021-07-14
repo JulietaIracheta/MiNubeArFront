@@ -33,6 +33,8 @@ const NavBar = (props) => {
   const nombrePathGoogle = cookieNombreEstudiante.get('avatarPathGoogle');
   const [notificaciones, setNotificaciones] = useState([]);
   const jwt = cookieNombreEstudiante.get('jwt');
+  const rol = cookieNombreEstudiante.get('rol');
+  const rolId = cookieNombreEstudiante.get('rolId');
 
   const logout = async () => {
     await fetch('http://localhost:60671/api/usuario/logout', {
@@ -44,6 +46,8 @@ const NavBar = (props) => {
     cookieNombreEstudiante.remove("apellidoPersona");
     cookieNombreEstudiante.remove("email");
     cookieNombreEstudiante.remove("jwt");
+    cookieNombreEstudiante.remove("rol");
+    cookieNombreEstudiante.remove("rolId");
 
     setCookie('nombreAvatar', '', { path: '/' });
     setCookie('avatarPath', '', { path: '/' });

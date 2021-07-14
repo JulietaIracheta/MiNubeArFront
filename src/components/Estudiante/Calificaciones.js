@@ -52,7 +52,7 @@ const Calificaciones = ({ classes, ...props }) => {
   const jwt = cookie.get('jwt');
   
   useEffect(async () => {
-    const result = await fetch('http://localhost:60671/api/boletin?jwt='+jwt, {
+    const result = await fetch('http://localhost:60671/api/boletin/estudiante/?jwt='+jwt, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -111,7 +111,7 @@ const Calificaciones = ({ classes, ...props }) => {
                   <TableCell>{notas.t1}</TableCell>
                   <TableCell>{notas.t2}</TableCell>
                   <TableCell>{notas.t3}</TableCell>
-                  <TableCell>{parseInt((parseInt(notas.t1) + parseInt(notas.t2) + parseInt(notas.t3)) /total)}</TableCell>
+                  <TableCell>{Math.round((notas.t1 + notas.t2 + notas.t3) /total)}</TableCell>
                 </TableRow>
 
               );

@@ -7,7 +7,7 @@ const NotFound = () => {
             <div>
                 <div className="container justify-content-center">
                  <img src={img} alt="not found" height="400px"/>   
-                <a href="/login" className="justify-content-center">Volver</a>
+                <a href="/rol" className="justify-content-center">Volver</a>
                 </div>
             </div>
         )

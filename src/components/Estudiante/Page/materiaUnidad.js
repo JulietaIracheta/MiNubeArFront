@@ -1,8 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
-
-import Sidebar from "../Sidebar";
+import { SidebarDataEstudiante } from "../../sideBar/SidebarDataEstudiante";
+import Sidebar from '../../Sidebar';
 import NavEstudiante from "../NavEstudiante";
 import EstudianteMaterias from "../EstudianteMaterias";
 import MateriasUnidades from "../MateriasUnidades";
@@ -15,7 +15,7 @@ const MateriaUnidad = ({ match }) => {
     <div>
       <NavEstudiante />
       <div className="flex">
-        <Sidebar />
+      <Sidebar data={SidebarDataEstudiante} />
         <div className="content">
            <MateriasUnidades id={id} />
         </div>

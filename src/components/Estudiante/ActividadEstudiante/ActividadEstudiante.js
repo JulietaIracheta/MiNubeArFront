@@ -5,31 +5,13 @@ import NavTutor from '../../Tutor/NavTutor';
 import '../../../assets/css/css-actividad-estudiante.css'
 import BotonVolver from "../../BotonVolver/botonVolver";
 import Sidebar from "../../Sidebar";
-import axios from 'axios';
 import {SidebarDataTutor} from '../../sideBar/SidebarDataTutor';
 
 export default function ApexChart() {
     const [serie, setSerie] = useState(0);
     const chartAct = Chart({ series : parseInt(serie) });
     const chartCont = Chart({ series : 68 });
-    const [video, setVideo] = useState([]);
-    const urlBase = 'http://localhost:60671/api/contenido/?id=3'
-    const [videoFilePath, setVideoFilePath] = useState(null);
-    const [archivo, setFile] = useState();
-    var urlVideo = 'http://localhost:60671/videos/';
-
-    useEffect(function () {
-        fetch(urlBase, {
-            method: 'GET'
-        }).then(res => {
-            if (!res.ok) alert('video no encontrado')
-            return res.json()
-        }).then(res => {
-            setVideoFilePath(urlVideo + video.video);
-            setVideo(res);
-        });
-    }, []);
-
+    
     useEffect(function () {
         fetch('http://localhost:60671/api/actividades/calcularAvance', {
             method: 'GET'
@@ -43,31 +25,6 @@ export default function ApexChart() {
     }, []);
 
 
-    const subirArchivos = e => {
-        console.log(e[0]);
-        setFile(e);
-    }
-    const insertarArchivos = async () => {
-        const f = new FormData();
-        f.append("file", archivo[0]);
-        console.log(archivo[0]);
-        console.log(f);
-
-        await axios.post("http://localhost:60671/api/contenido/cargarVideo", f)
-            .then(response => {
-                console.log(response);
-            }).catch(err => {
-                console.log(err);
-            })
-    }
-    //<ReactPlayer url={urlVideo} controls width="500px" height="300px" />
-    /* <input type="file" name="file"  onChange={(e)=>subirArchivos(e.target.files)} />
-                    <button onClick={()=>{insertarArchivos()}}>Insertar Archivos</button> */
-    urlVideo = urlVideo + video.video;
-    console.log(urlVideo);
-
-
-    
     return (
         <div>
             <NavTutor></NavTutor>
@@ -96,7 +53,6 @@ export default function ApexChart() {
                             <div className="row">
                                 <div className="card-actividad-estudiante">
                                     <p>Unidad 5</p>
-                                    <p className="font-weight-bold text-danger">En vivo</p>
                                     <p className="m-0"><b>Clase 5: </b>Elementos quimicos</p>
                                 </div>
                             </div>

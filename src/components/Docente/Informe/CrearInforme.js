@@ -14,7 +14,6 @@ import NavDocente from "../NavDocente";
 import { makeStyles } from "@material-ui/core/styles";
 import jsPDF from "jspdf";
 import { Cookies } from 'react-cookie';
-import logo from '../../../assets/img/logoGris.png'
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -26,18 +25,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CargarInforme2 = () => {
+const CrearInforme = () => {
   const classes = useStyles();
   const [año, setAño] = useState();
   const [cursos, setCursos] = useState([]);
-  const [curso, setCurso] = useState(1);
+  const [curso, setCurso] = useState(0);
   const [cursoNombre, setCursoNombre] = useState("");
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
   const [institucion, setInstitucion] = useState('');
   const [instituciones, setInstituciones] = useState([]);
-  const [materia, setMateria] = useState([]);
-  const [calificacion, setCalificacion] = useState([]);
+  const [materia, setMateria] = useState("");
+  const [calificacion, setCalificacion] = useState("");
   const [materias, setMaterias] = useState([]);
   const [estudiante, setEstudiante] = useState();
   const [estudiantes, setEstudiantes] = useState([]);
@@ -49,31 +48,26 @@ const CargarInforme2 = () => {
 
   const printDocument = () => {
     const pdf = new jsPDF();
-    pdf.addImage(`${logo}`, 10, 10);
-    pdf.text("MI NUBE", 30, 17)
     pdf.setFont("times", "bolditalic");
-    pdf.text("Informe", 105, 30, null, null, "center");
-    pdf.text("", 20, 40);
+    pdf.text("Informe", 105, 20, null, null, "center");
+    pdf.text("", 20, 30);
     pdf.setFont("times", "normal");
-    pdf.text(`Período: ${año}`, 20, 50);
-    pdf.text(`Institucion: ${institucion}`, 20, 60);
-    pdf.text('Curso: Sexto A', 20, 70);
-    pdf.text(`Estudiante: ${nombre} ${apellido}`, 20, 80);
-    pdf.text("", 20, 90);
+    pdf.text(`Período: ${año}`, 20, 40);
+    pdf.text(`Institucion: ${institucion}`, 20, 50);
+    pdf.text(`Curso: ${cursoNombre}`, 20, 60);
+    pdf.text(`Estudiante: ${nombre} ${apellido}`, 20, 70);
+    pdf.text("", 20, 80);
     pdf.setFont("times", "bolditalic");
-    pdf.text("Materias", 105, 100, null, null, "center");
+    pdf.text("Materias", 105, 90, null, null, "center");
     pdf.setFont("times", "normal");
-    pdf.text("Matemática : Sobresaliente", 20, 110);
-    pdf.text("Literatura : Sobresaliente", 20, 120);
-    pdf.text("Ciencias Sociales : Sobresaliente", 20, 130);
-    pdf.text("Ciencias Naturales : Sobresaliente", 20, 140);
-    pdf.text("", 20, 150);
+    
+    pdf.text("", 20, 140);
     pdf.setFont("times", "bolditalic");
-    pdf.text("Observaciones", 105, 160, null, null, "center");
+    pdf.text("Observaciones", 105, 150, null, null, "center");
     pdf.setFont("times", "normal");
-    pdf.text("", 20, 170);
-    pdf.text(`${observaciones}`, 20, 180);
-    pdf.save(`${nombre}_${apellido}_${año}.pdf`);
+    pdf.text("", 20, 160);
+    pdf.text(`${observaciones}`, 20, 170);
+    pdf.save(`${nombre}_${apellido}.pdf`);
 
     const response = fetch(
       "http://localhost:60671/api/informe/crearInformeTrayectoria",
@@ -83,12 +77,11 @@ const CargarInforme2 = () => {
           "Content-type": "application/json",
         },
         body: JSON.stringify({
-          Año: año,
-          Calificaciones: [
-            { materia: 'dfgdfg', calificacion: 'calificacion1' },
-            { materia: 'ateria2', calificacion: 'calificacion2' },
-            { materia: 'materia3', calificacion: 'calificacion3' },
-          ],
+          año: año,
+          institucion: institucion,
+          idEstudiante : estudiante,
+          curso : cursoNombre,
+          materiaCurso : [materia, calificacion]
             
         }),
       }
@@ -100,17 +93,6 @@ const CargarInforme2 = () => {
   const onValueChangeAño = (event) => {
     const value = event.target.value;
     setAño(value);
-  };
-
-  const onValueChangeMateria = (event) => {
-    const value = event.target.value;
-    setMateria(value);
-  };
-
-  const onValueChangeCalificacion = (event) => {
-    const value = event.target.value;
-    setCalificacion(value);
-    console.log(calificacion)
   };
 
   const onValueChangeCurso = (event) => {
@@ -187,7 +169,7 @@ const CargarInforme2 = () => {
         setMaterias(response);
         console.log(materias)
       });
-  }, []);
+  }, [curso]);
 
   useEffect(async () => {
     const result = await fetch(
@@ -204,7 +186,7 @@ const CargarInforme2 = () => {
       .then((response) => {
         setEstudiantes(response);
       });
-  }, [curso]);
+  }, []);
 
   return (
     <div>
@@ -253,7 +235,7 @@ const CargarInforme2 = () => {
                     <Select
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
-                      value={curso}
+                      value={cursoNombre}
                       onChange={onValueChangeCurso}
                       variant="outlined"  
                     >
@@ -298,20 +280,20 @@ const CargarInforme2 = () => {
                   
                   <FormControl className={classes.formControl}>
                  
-                 {mat.nombre} : 
+                    <InputLabel id="demo-simple-select-label">
+                      {mat.nombre} 
+                    </InputLabel>
                     <Select
-                      label="Calificación"
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
-                      
+                      value={mat.nombre}
                       fullWidth 
                       variant="outlined"
-                      onChange={onValueChangeCalificacion}
                     >
-                      <MenuItem value="Sobresaliente">Sobresaliente</MenuItem>
-                      <MenuItem value="Bueno">Bueno</MenuItem>
-                      <MenuItem value="Regular">Regular</MenuItem>
-                      <MenuItem value="Insuficiente">Insuficiente</MenuItem>
+                      <MenuItem value={"Sobresaliente"}>Sobresaliente</MenuItem>
+                      <MenuItem value={"Bueno"}>Bueno</MenuItem>
+                      <MenuItem value={"Regular"}>Regular</MenuItem>
+                      <MenuItem value={"Insuficiente"}>Insuficiente</MenuItem>
                     </Select>
                   </FormControl>))}
                    </div> 
@@ -347,4 +329,4 @@ const CargarInforme2 = () => {
   );
 };
 
-export default CargarInforme2;
+export default CrearInforme;
