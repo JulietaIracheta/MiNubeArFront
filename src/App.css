@@ -275,7 +275,7 @@ margin-right : 'auto';
   margin-top: 5px !important;
   color: white !important;
 }*/
-.agregarcurso{
+/* .agregarcurso{
   float: right;
   margin-right: 20px !important;
   margin-top: 5px !important;
@@ -286,7 +286,7 @@ margin-right : 'auto';
   margin-right: 10px !important;
   margin-top: 25px !important;
   color: black !important 
-}
+} */
 
 .menu3dots{
   list-style: none;
@@ -556,10 +556,10 @@ color: white;
   width: 12rem;
 }
 
-.colorTab{
+/* .colorTab{
   background-color: #545251;
   color: white !important;
-}
+} */
 .Sidebar{
   /* height: 720px; */
   height: calc(100vh - 65px) ;

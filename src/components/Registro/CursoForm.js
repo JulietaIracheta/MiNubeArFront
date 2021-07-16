@@ -67,7 +67,7 @@ const CursoForm = ({ classes, ...props }) => {
       >
           <TextField
               name="nombre"
-              label="Ingrese el Curso"
+              label="Curso nuevo"
               className="pr-2"
               value={values.nombreCurso}
               onChange={handleInputChange}
@@ -78,7 +78,7 @@ const CursoForm = ({ classes, ...props }) => {
                 type="submit"
                 className="mt-2 bg-primary text-white mr-auto ml-auto"
               >
-                Add
+                Registrar
               </Button>
       </form>
     </div>
