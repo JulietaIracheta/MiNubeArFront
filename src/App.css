@@ -181,8 +181,8 @@
   display: block;
 }
 
-body{
-  background-color: white ;
+html body{
+  background-color: #f9fbfd;
 }
 
 .back{
@@ -316,6 +316,7 @@ margin-right : 'auto';
 }
 .menuNavBarReg{
   border-bottom: #e3ebf6 solid 1px;
+  background-color: #fff;
 }
 
 .colorBrand{
@@ -565,8 +566,15 @@ color: white;
   /* border-right: 2px solid #dfe6e9; */
   border-right: 1px solid #e3ebf6;
   display: initial;
+  position: absolute;
+  background-color: #fff;
 }
 
+
+
+.main{
+  padding-left: 67px;
+}
 
 .SidebarList{
   height: 100%;
@@ -616,9 +624,7 @@ cursor: pointer;
     }
 }
 
-.hola{
-  background-color: red !important;
-}
+
 /*responsive para el pop up del alta en admin*/
 @media only screen and (max-width: 800px) {
   .MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-12{
@@ -636,4 +642,21 @@ cursor: pointer;
 }
 button.bg-docente.border.btn.btn-secondary.menuadmin{
   background:#212888 !important;
+}
+
+
+@media only screen and (min-width: 992px) {
+  .Sidebar{
+    position: relative;
+  }
+
+  .ancho1{
+    min-width: 260px;
+    width: auto;
+  }
+
+
+  .main{
+    padding-left: 30px;
+  }
 }

@@ -41,12 +41,12 @@ const NavBar = (props) => {
           <span className="d-none d-sm-block pt-2 logo__titulo">MI NUBE AR</span>
         </NavbarBrand>
           <Nav className="iconos-navTODO d-flex justify-content-center align-items-center pr-2">
-            <NavItem className="pt-1 pr-2 pl-2">
+            {/* <NavItem className="pt-1 pr-2 pl-2">
               <ChatLeftTextFill size={size_icon} color="#5D7392" />
             </NavItem>
             <NavItem className="notif pr-2 pl-2">
               <a href="/notificaciones"> <BellFill size={size_icon} color="#5D7392" /></a>
-            </NavItem>
+            </NavItem> */}
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav className="p-0 pr-2 pl-2">
                   <PersonCircle  size={size_icon} color="#5D7392"/>

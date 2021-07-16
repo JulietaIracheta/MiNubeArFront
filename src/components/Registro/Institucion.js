@@ -140,7 +140,7 @@ const Instituciones = ({ classes, ...props }) => {
       <NavAdmin />
       <div className={classes.root}>
         <Sidebar data={SidebarData} />
-        <main className={classes.content}>
+        <main className="main w-100 pr-2 pt-4">
             <div>
               <span className="tituloadmin">Instituciones</span>
               <Button
@@ -155,7 +155,7 @@ const Instituciones = ({ classes, ...props }) => {
             </div>
 
             {/* <TableContainer className="table-responsive">  */}
-              <Table  className="mt-3 bg-white table" style={{border:"1px solid #edf2f9"}}>
+              <Table responsive className="mt-3 d-block d-sm-table bg-white table-responsive" style={{border:"1px solid #edf2f9"}}>
                 <TableHead style={{backgroundColor:"#12263f"}}>
                   <TableRow>
                     <TableCell className="font-weight-bold text-white">NOMBRE</TableCell>
