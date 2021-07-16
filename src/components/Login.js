@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form, FormGroup, Input } from "reactstrap";
+import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 import logo from "../assets/img/logo.png";
 import GoogleLogin from "react-google-login";
 import MicrosoftLogin from 'react-microsoft-login'
@@ -149,73 +149,80 @@ const Login = () => {
   }
 
   return (
-    <div className="back d-flex justify-content-center align-items-center w-100" style={{height:"100vh",}}>
-       <div className="logo-container">
+    <div className="bg-light d-flex justify-content-center align-items-center w-100 pl-3 pr-4 pt-5" style={{height:"100vh",}}>
+      <div className="login-container d-flex flex-column flex-md-row justify-content-between w-100 w-lg-75">
+        <div className="logo-container d-md-block d-md-flex align-self-center m-auto p-5">
           <img src={logo} className="logo"></img>
         </div>
-      <div className="container-col-derecha" style={{width:"30%"}}>
 
-      <Form className="w-100" onSubmit={submit}>
-        <div className="w-100">
-          <FormGroup>
-            <Input
-              type="email"
-              placeholder="Email"
-              onChange={(e) => setEmail(e.target.value)}
-            ></Input>
-          </FormGroup>
-          <FormGroup>
-            <Input
-              type="password"
-              placeholder="Password"
-              onChange={(e) => setPassword(e.target.value)}
-            ></Input>
-          </FormGroup>
-          <Button className="btn btn-lg boton-login btn-block">Ingresar</Button>
-          </div>
-          </Form>
-
-          <div className="text-center pt-3">Ingresá con: </div>
-          <div className="redes-sociales">
-
-          <GoogleLogin clientId="1008891152271-jvlq4r789kf6mlihar2uekqthgn30dob.apps.googleusercontent.com"
-            buttonText="Ingresar con Google"
-            onSuccess={responseGoogle}
-            onFailure={()=>{console.log("error login google")}}
-            cookiePolicy={'single_host_origin'}
-            className="w-100 mt-3">
-            </GoogleLogin>
-         <MicrosoftLogin
-                withUserData={withUserData}
-                debug={debug}
-                clientId={clientId}
-                forceRedirectStrategy={forceRedirectStrategy}
-                authCallback={responseMicrosoft}
-                buttonTheme="light"
-                graphScopes={graphScopes}
-                className="w-100"
-                useLocalStorageCache={true}
-            >
-              <MicrosoftLoginButton 
-                text="Ingresar con Microsoft" 
-                style={{fontSize:"14px", margin:"0px", width:"100%"}} type="button"
-                className="mt-3"/>
-              
-          </MicrosoftLogin>
-
-          <div className="text-center pt-2">
-            <a href="#"  className="text-decoration-none text-danger w-100 mt-4" size="sm" onClick = { () => onChange()}>Recuperar Password</a>
-          </div>
-        <RecuperarPassword
-          open = {open}
-          handleClose={handleClose}
-        >
-        </RecuperarPassword>
+        <div class="card p-3 p-sm-5 w-100 m-auto m-md-0 border-0">
+          <form onSubmit={submit}>
+              <h2 class="text-center m-0 text-secondary">Iniciar Sesión</h2>
+              <div class="social-login d-flex flex-column justify-content-center">
+                <button class="border-0 bg-white w-100">
+                    <GoogleLogin clientId="1008891152271-jvlq4r789kf6mlihar2uekqthgn30dob.apps.googleusercontent.com"
+                        buttonText="Ingresar con Google"
+                        onSuccess={responseGoogle}
+                        onFailure={()=>{console.log("error login google")}}
+                        cookiePolicy={'single_host_origin'}
+                        className="w-100 mt-3">
+                    </GoogleLogin>
+                </button>
+                <button class="p-0 w-100 bg-white border-0">
+                    <MicrosoftLogin
+                      withUserData={withUserData}
+                      debug={debug}
+                      clientId={clientId}
+                      forceRedirectStrategy={forceRedirectStrategy}
+                      authCallback={responseMicrosoft}
+                      buttonTheme="light"
+                      onclick={()=>console.log("click")}
+                      graphScopes={graphScopes}
+                      className="w-100"
+                      useLocalStorageCache={true}
+                    >
+                    <MicrosoftLoginButton 
+                      text="Ingresar con Microsoft" 
+                      style={{fontSize:"14px"}} type="button"
+                      className="mt-3"/>
+                    </MicrosoftLogin>
+                </button>        
+              </div>
+              <p class="or text-secondary"><span>o también</span></p>
+              <div class="email-login d-flex flex-column">
+                <label for="email" className="text-secondary mb-0"><b>Email</b></label>
+                <input 
+                  class="form-control pt-4 pb-4 mb-3" 
+                  placeholder="Ingrese su Email" 
+                  name="uname"   
+                  type="email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  required 
+                />
+                <label for="psw" className="text-secondary mb-0"><b>Contraseña</b></label>
+                <input 
+                  class="form-control pt-4 pb-4 mb-4" 
+                  type="password" 
+                  placeholder="Ingrese su Contraseña" 
+                  name="psw"
+                  type="password"
+                  onChange={(e) => setPassword(e.target.value)} 
+                  required 
+                />
+              </div>
+              <button class="btn-lg w-100 mb-3 cta-btn text-white" style={{border:"none"}}>Ingresar</button>
+              <a class="text-center d-block" href="#" onClick = { () => onChange()}>¿Perdió su Contraseña?</a>
+          </form>
+          <RecuperarPassword
+            open = {open}
+            handleClose={handleClose}
+          >
+          </RecuperarPassword>
+        </div>
       </div>
-      </div>
-    
-      </div>
+    </div>
   );
 };
-//<a href="/recuperar_password" className="text-decoration-none">¿Olvidó su contraseña?</a>
+
+
 export default Login;
