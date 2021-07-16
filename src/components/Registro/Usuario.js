@@ -167,36 +167,36 @@ const Usuarios = ({...props }) => {
               </Button>
               <ModalDialogTut open={openTut} handleClose={handleClose} />
               <UncontrolledDropdown
-                            direction="left"
-                            nav
-                            inNavbar
-                            className="menu3dots d-block d-sm-none pt-2"
-                          >
-                            <DropdownToggle nav className="p-0 text-secondary">
-                              <MoreVert />
-                            </DropdownToggle>
-                            <DropdownMenu>                              
-                              <DropdownItem
-                                onClick={handleOpenEst} 
-                                className="text-danger"
-                              >                              
-                                Add Estudiante
-                              </DropdownItem>
+                  direction="left"
+                  nav
+                  inNavbar
+                  className="menu3dots d-block d-sm-none pt-2"
+                >
+                  <DropdownToggle nav className="p-0 text-secondary">
+                    <MoreVert />
+                  </DropdownToggle>
+                  <DropdownMenu>                              
+                    <DropdownItem
+                      onClick={handleOpenEst} 
+                      className="text-danger"
+                    >                              
+                      Add Estudiante
+                    </DropdownItem>
 
-                              <DropdownItem
-                                onClick={handleOpenDoc}
-                                className="text-primary"
-                              >
-                                Add Docente
-                              </DropdownItem>
+                    <DropdownItem
+                      onClick={handleOpenDoc}
+                      className="text-primary"
+                    >
+                      Add Docente
+                    </DropdownItem>
 
-                              <DropdownItem
-                                onClick={handleOpenTut}
-                                className="text-success"
-                              >
-                                Add Tutor
-                              </DropdownItem>
-                            </DropdownMenu>
+                    <DropdownItem
+                      onClick={handleOpenTut}
+                      className="text-success"
+                    >
+                      Add Tutor
+                    </DropdownItem>
+                  </DropdownMenu>
               </UncontrolledDropdown>
             </div>
               <Table responsive className="mt-3 d-block d-sm-table bg-white table-responsive" style={{border:"1px solid #edf2f9"}}> 
