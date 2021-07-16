@@ -267,12 +267,14 @@ margin-right : 'auto';
   font-size: 35px;
   color: #12263f;
 }
+
+/*
 .menuadmin{
   float: right;
   margin-right: 20px !important;
   margin-top: 5px !important;
   color: white !important;
-}
+}*/
 .agregarcurso{
   float: right;
   margin-right: 20px !important;
@@ -640,10 +642,23 @@ cursor: pointer;
   background: #EFEFEF;
   color: #212888;
 }
+
+/*
 button.bg-docente.border.btn.btn-secondary.menuadmin{
   background:#212888 !important;
+}*/
+
+.paleta_bgrojo{
+  background-color: #b41715 !important;
 }
 
+.paleta_bgazul{
+  background-color: #222685 !important;
+}
+
+.paleta_bgverde{
+  background-color: #36a03c !important;
+}
 
 @media only screen and (min-width: 992px) {
   .Sidebar{

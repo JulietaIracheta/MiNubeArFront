@@ -2,13 +2,11 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../actions/usuario";
 import {
-  TableContainer,
   Table,
   TableHead,
   TableRow,
   TableCell,
   TableBody,
-  withStyles,
 } from "@material-ui/core";
 import {SidebarData}   from '../SidebarData';
 import {
@@ -34,45 +32,12 @@ import EstudianteModalEditar from "../Modificacion/EstudianteModalEditar";
 import TutorModalEditar from "../Modificacion/TutorModalEditar";
 
 
-const drawerWidth = 200;
-
-const styles = (theme) => ({
-  root: {
-    display: "flex",
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-    [theme.breakpoints.up("sm")]: {
-      display: "none",
-    },
-  },
-  // necessary for content to be below app bar
-  toolbar: theme.mixins.toolbar,
-  drawerPaper: {
-    width: drawerWidth,
-    top: "unset !important",
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(1),
-    margin: 0,
-    width: "100%",
-    paddingTop: 0,
-  },
-  paper: {
-    margin: theme.spacing(2),
-    padding: theme.spacing(2),
-  },
-});
-
-const Usuarios = ({ classes, ...props }) => {
-  const [currentId, setCurrentId] = useState(0);
+const Usuarios = ({...props }) => {
   // declare a new state variable for modal open
   const [openDoc, setOpenDoc] = useState(false);
   const [openEst, setOpenEst] = useState(false);
   const [openTut, setOpenTut] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [nombre, setNombre] = useState("");
   const open = Boolean(anchorEl);
 
   const [openModalUpdateDocente, setOpenModalUpdateDocente] = useState(false);
@@ -90,9 +55,6 @@ const Usuarios = ({ classes, ...props }) => {
     rol: ''
   });
 
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
@@ -177,50 +139,75 @@ const Usuarios = ({ classes, ...props }) => {
   return (
     <Provider store={store}>
       <NavAdmin />
-      <div className={classes.root}>
+      <div className="d-flex">
         <Sidebar data={SidebarData} />
-
-        <main className={classes.content}>
-          <div className={classes.toolbar} id="coco" />
-          <div id="coco">
-            <div className="adminContent">
+        <main className="main w-100 pr-2 pt-4">
+            <div className="d-flex d-sm-block justify-content-between">
               <span className="tituloadmin">Usuarios</span>
               <Button
-                className="btn btn-danger menuadmin"
+                className="btn btn-sm paleta_bgrojo float-right m-0 mt-2 mt-md-3 d-none d-sm-block"
                 onClick={handleOpenEst}
               >
-                Nuevo Estudiante
+                <span className="d-md-block">Add Estudiante</span>
               </Button>
               <ModalDialogEst open={openEst} handleClose={handleClose} />
               <Button
-                className="btn bg-docente border menuadmin"
+                className="btn btn-sm paleta_bgazul border float-right m-0 mt-2 mt-md-3 d-none d-sm-block"
                 onClick={handleOpenDoc}
               >
-                Nuevo Docente
+                <span className="d-md-block">Add Docente</span>
               </Button>
               <ModalDialogDoc open={openDoc} handleClose={handleClose} />
 
               <Button
-                className="btn btn-success menuadmin"
+                className="btn btn-sm paleta_bgverde float-right m-0 mt-2 mt-md-3 d-none d-sm-block"
                 onClick={handleOpenTut}
               >
-                Nuevo Tutor
+                <span className="d-md-block">Add Tutor</span>
               </Button>
               <ModalDialogTut open={openTut} handleClose={handleClose} />
+              <UncontrolledDropdown
+                            direction="left"
+                            nav
+                            inNavbar
+                            className="menu3dots d-block d-sm-none pt-2"
+                          >
+                            <DropdownToggle nav className="p-0 text-secondary">
+                              <MoreVert />
+                            </DropdownToggle>
+                            <DropdownMenu>                              
+                              <DropdownItem
+                                onClick={handleOpenEst} 
+                                className="text-danger"
+                              >                              
+                                Add Estudiante
+                              </DropdownItem>
 
-              <Search className="lupa" />
+                              <DropdownItem
+                                onClick={handleOpenDoc}
+                                className="text-primary"
+                              >
+                                Add Docente
+                              </DropdownItem>
+
+                              <DropdownItem
+                                onClick={handleOpenTut}
+                                className="text-success"
+                              >
+                                Add Tutor
+                              </DropdownItem>
+                            </DropdownMenu>
+              </UncontrolledDropdown>
             </div>
-
-            <TableContainer style={{overflow:"unset"}}>
-              <Table>
-                <TableHead>
-                  <TableRow className="colorTab">
-                    <TableCell className="colorTab">Nombre</TableCell>
-                    <TableCell className="colorTab">Apellido</TableCell>
-                    <TableCell className="colorTab">Email</TableCell>
-                    <TableCell className="colorTab">Teléfono</TableCell>
-                    <TableCell className="colorTab">Rol</TableCell>
-                    <TableCell className="colorTab"></TableCell>
+              <Table responsive className="mt-3 d-block d-sm-table bg-white table-responsive" style={{border:"1px solid #edf2f9"}}> 
+                <TableHead style={{backgroundColor:"#12263f"}}>
+                  <TableRow>
+                    <TableCell className="font-weight-bold text-white text-uppercase">Nombre</TableCell>
+                    <TableCell className="font-weight-bold text-white text-uppercase">Apellido</TableCell>
+                    <TableCell className="font-weight-bold text-white text-uppercase">Email</TableCell>
+                    <TableCell className="font-weight-bold text-white text-uppercase">Teléfono</TableCell>
+                    <TableCell className="font-weight-bold text-white text-uppercase">Rol</TableCell>
+                    <TableCell className="font-weight-bold text-white text-uppercase"></TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -239,12 +226,11 @@ const Usuarios = ({ classes, ...props }) => {
                             inNavbar
                             className="menu3dots"
                           >
-                            <DropdownToggle nav>
+                            <DropdownToggle nav className="p-0 text-secondary">
                               <MoreVert />
                             </DropdownToggle>
                             <DropdownMenu>                              
                               <DropdownItem
-                                // onClick={() => onDelete(record.idUsuario)} 
                                 onClick={() => onChange(record)}>                              
                              Editar
                               </DropdownItem>
@@ -261,8 +247,6 @@ const Usuarios = ({ classes, ...props }) => {
                   })}
                 </TableBody>
               </Table>
-            </TableContainer>
-          </div>
         </main>
         {openModalUpdateDocente && 
           <DocenteModalEditar
@@ -306,4 +290,4 @@ const mapActionToProps = {
 export default connect(
   mapStateToProps,
   mapActionToProps
-)(withStyles(styles)(Usuarios));
+)(Usuarios);

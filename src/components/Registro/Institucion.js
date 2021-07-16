@@ -2,13 +2,11 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../actions/institucion";
 import {
-  TableContainer,
   Table,
   TableHead,
   TableRow,
   TableCell,
   TableBody,
-  withStyles,
 } from "@material-ui/core";
 import {
   UncontrolledDropdown,
@@ -16,11 +14,10 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
-import { Button, Modal, ModalBody } from "reactstrap";
+import { Button} from "reactstrap";
 import { store } from "../../actions/store";
 import { Provider } from "react-redux";
 import NavAdmin from "./NavAdmin";
-import { Search } from "react-bootstrap-icons";
 import Sidebar from "../Sidebar";
 import ModalDialog from "./ModalDialog";
 import { MoreVert } from "@material-ui/icons";
@@ -32,38 +29,7 @@ import { institucion } from "../../reducers/institucion";
 
 const drawerWidth = 200;
 
-const styles = (theme) => ({
-  root: {
-    display: "flex",
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-    [theme.breakpoints.up("sm")]: {
-      display: "none",
-    },
-  },
-  // necessary for content to be below app bar
-  // toolbar: theme.mixins.toolbar,
-  drawerPaper: {
-    width: drawerWidth,
-    top: "unset !important",
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(1),
-    margin: 0,
-    marginTop: 0,
-    paddingTop: 25,
-    backgroundColor: "#f9fbfd"
-  },
-  paper: {
-    margin: theme.spacing(2),
-    padding: theme.spacing(2),
-  },
-});
-
 const Instituciones = ({ classes, ...props }) => {
-  // const [currentId, setCurrentId] = useState(0);
   // declare a new state variable for modal open
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -74,11 +40,7 @@ const Instituciones = ({ classes, ...props }) => {
     direccion: '',
     email: ''
   });
-  // const opens = Boolean(anchorEl);
 
-  // const handleMenu = (event) => {
-  //   setAnchorEl(event.currentTarget);
-  // };
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
@@ -138,23 +100,20 @@ const Instituciones = ({ classes, ...props }) => {
   return (
     <Provider store={store}>
       <NavAdmin />
-      <div className={classes.root}>
+      <div className="d-flex">
         <Sidebar data={SidebarData} />
         <main className="main w-100 pr-2 pt-4">
             <div>
               <span className="tituloadmin">Instituciones</span>
               <Button
-                className="menuadmin"
+                className="btn-sm float-right mt-1 mt-md-3"
                 color="primary"
                 onClick={handleOpen}
               >
                 Nueva Institución
               </Button>
               <ModalDialog open={open} handleClose={handleClose} />
-              {/* <Search className="lupa" /> */}
             </div>
-
-            {/* <TableContainer className="table-responsive">  */}
               <Table responsive className="mt-3 d-block d-sm-table bg-white table-responsive" style={{border:"1px solid #edf2f9"}}>
                 <TableHead style={{backgroundColor:"#12263f"}}>
                   <TableRow>
@@ -195,8 +154,6 @@ const Instituciones = ({ classes, ...props }) => {
                   })}
                 </TableBody>
               </Table>
-            {/* </TableContainer> */}
-          {/* </div> */}
         </main>
         <InstitucionModalEditar
           open = {openChangeModalUpdate}
@@ -225,4 +182,4 @@ const mapActionToProps = {
 export default connect(
   mapStateToProps,
   mapActionToProps
-)(withStyles(styles)(Instituciones));
+)(Instituciones);
