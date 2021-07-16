@@ -114,7 +114,7 @@ const app = () => (
         <MyRoute path='/estudiante/informe' exact component={InformeEstudiante} />
         <MyRoute path='/docente/cargarInforme' exact component={CargarInforme2} />
         <MyRoute path='/docente/crearInforme' exact component={CrearInforme} />
-        <MyRoute path='/trayectoriaAcademica' exact component={TrayectoriaAcademica} />
+        <MyRoute path='/estadisticas' exact component={TrayectoriaAcademica} />
         <MyRoute path='/cursos/asignar_estudiante' exact component={AsignarEstudiantes} />   
         <Route path='/Estuduante' exact component={Estudiante}/>
         <Route path='/estudiante/materias/:id' exact component={MateriaUnidad}/>

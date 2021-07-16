@@ -17,6 +17,8 @@ export default function ContenidoPorMateria({ id, set, ...props }) {
     useEffect(function () {
         getContenidos(props.match.params.materiaId, props.match.params.cursoId).then(contenidos => setContenidos(contenidos));
     }, []);
+
+
     const clickNuevaActividad = () => {
         setDialogContenido(true);
     };

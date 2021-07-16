@@ -21,7 +21,6 @@ import {
 } from "@material-ui/core";
 import Dialog from '@material-ui/core/Dialog';
 import { ToastProvider } from 'react-toast-notifications';
-import { format } from 'date-fns';
 
 export default function () {
     const cookie = new Cookies();

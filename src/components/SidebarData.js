@@ -1,6 +1,6 @@
 import { BorderColor, Business, Group, LocalLibrary, MeetingRoom } from '@material-ui/icons'
 import React from 'react'
-
+import CategoryIcon from '@material-ui/icons/Category';
 export const SidebarData = [
     {
         title: 'Instituciones', 
@@ -40,6 +40,10 @@ export const SidebarData = [
         icon: <MeetingRoom />,
         link: "/asignarEstudiantes"
     },
-    
+    {
+        title: 'Estadisticas', 
+        icon: <CategoryIcon />,
+        link: "/estadisticas"
+    },
 
 ] 
