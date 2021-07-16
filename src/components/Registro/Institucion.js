@@ -43,7 +43,7 @@ const styles = (theme) => ({
     },
   },
   // necessary for content to be below app bar
-  toolbar: theme.mixins.toolbar,
+  // toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
     top: "unset !important",
@@ -52,7 +52,9 @@ const styles = (theme) => ({
     flexGrow: 1,
     padding: theme.spacing(1),
     margin: 0,
-    paddingTop: 0,
+    marginTop: 0,
+    paddingTop: 25,
+    backgroundColor: "#f9fbfd"
   },
   paper: {
     margin: theme.spacing(2),
@@ -139,41 +141,39 @@ const Instituciones = ({ classes, ...props }) => {
       <div className={classes.root}>
         <Sidebar data={SidebarData} />
         <main className={classes.content}>
-          <div className={classes.toolbar} id="coco" />
-          <div id="coco">
-            <div className="adminContent">
+            <div>
               <span className="tituloadmin">Instituciones</span>
               <Button
-                className="btn btn-danger menuadmin"
+                className="menuadmin"
+                color="primary"
                 onClick={handleOpen}
               >
                 Nueva Institución
               </Button>
               <ModalDialog open={open} handleClose={handleClose} />
-              
-              <Search className="lupa" />
+              {/* <Search className="lupa" /> */}
             </div>
 
-            <TableContainer style={{overflow:"unset"}}>
-              <Table>
-                <TableHead>
-                  <TableRow className="colorTab">
-                    <TableCell className="colorTab">Nombre</TableCell>
-                    <TableCell className="colorTab">Dirección</TableCell>
-                    <TableCell className="colorTab">Email</TableCell>
-                    <TableCell className="colorTab"></TableCell>
+            {/* <TableContainer className="table-responsive">  */}
+              <Table  className="mt-3 bg-white table" style={{border:"1px solid #edf2f9"}}>
+                <TableHead style={{backgroundColor:"#12263f"}}>
+                  <TableRow>
+                    <TableCell className="font-weight-bold text-white">NOMBRE</TableCell>
+                    <TableCell className="font-weight-bold text-white">DIRECCIÓN</TableCell>
+                    <TableCell className="font-weight-bold text-white">EMAIL</TableCell>
+                    <TableCell></TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {props.institucionList.map((record, index) => {
                     return (
                       <TableRow key={index} hover>
-                        <TableCell>{record.nombre}</TableCell>
-                        <TableCell>{record.direccion}</TableCell>
-                        <TableCell>{record.email}</TableCell>
-                        <TableCell>
-                          <UncontrolledDropdown direction="left" nav inNavbar className="menu3dots">
-                            <DropdownToggle nav>
+                        <TableCell className="text-dark">{record.nombre}</TableCell>
+                        <TableCell className="text-dark">{record.direccion}</TableCell>
+                        <TableCell className="text-dark">{record.email}</TableCell>
+                        <TableCell> 
+                          <UncontrolledDropdown direction="left" className="menu3dots">
+                            <DropdownToggle nav className="p-0 text-secondary">
                               <MoreVert />
                             </DropdownToggle>
                             <DropdownMenu >
@@ -195,8 +195,8 @@ const Instituciones = ({ classes, ...props }) => {
                   })}
                 </TableBody>
               </Table>
-            </TableContainer>
-          </div>
+            {/* </TableContainer> */}
+          {/* </div> */}
         </main>
         <InstitucionModalEditar
           open = {openChangeModalUpdate}

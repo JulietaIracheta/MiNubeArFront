@@ -14,24 +14,24 @@ function Sidebar({ data }) {
 
     const toggle = () => {
         setIsOpen(!isOpen);
-        console.log(isOpen)
     }
 
+    let btn_class = isOpen ? "Sidebar ancho1" : "Sidebar ancho2"
     return (
-        <div className="Sidebar">
+        
+        <div className={btn_class}>
             <ul className="SidebarList">
-                {/* <NavbarToggler className="bg-secondary text-black" onClick={toggle} /></li> */}
-                <span className="m-0 p-0 btn pb-3 float-right pr-0" onClick={toggle}><List className="text-center" size={32} color="black" /></span>
+                <span className="m-0 p-0 d-flex flex-row-reverse pr-2 btn pl-3 pr-2" onClick={toggle}><List className="text-center" size={32} color="#5D7392" /></span>
                 {data.map((val, key) => {
                     return (
                         <li
                             key={key}
-                            className="row p-2"
+                            className="row pt-2 pb-2"
                             id={window.location.pathname == val.link ? "active" : ""}
                         >
-                            <Link to={val.link} className="text-dark w-100 d-flex justify-content-center align-items-center text-decoration-none text-left">
+                            <Link to={val.link} className="pl-2 pr-2 w-100 d-flex justify-content-center align-items-center text-decoration-none text-left">
                                 <div id="icon">{val.icon}</div>
-                                    {isOpen === true && <div id="title">{val.title}</div>}
+                                {isOpen === true && <div id="title" className="pl-2">{val.title}</div>}
                             </Link>
                         </li>
                     );
