@@ -1,13 +1,16 @@
 import React from 'react'
-import img from '../src/assets/img/pne.jpg'
+import logo from './assets/img/logoColor.jpeg'
+
 
 const NotFound = () => {
-
         return (
-            <div>
-                <div className="container justify-content-center">
-                 <img src={img} alt="not found" height="400px"/>   
-                <a href="/login" className="justify-content-center">Volver</a>
+            <div className="d-flex justify-content-center align-items-center w-100" style={{height:"100vh" ,backgroundColor:"#f7f7f7"}}>
+                <div className="container d-flex flex-column justify-content-center">
+                   <img src={logo} className="ml-auto mr-auto" alt="not found" width="300px"/> 
+                   <h1 className="text-center display-3">404</h1>  
+                   <h3 className="text-center text-secondary">Página no encontrada</h3>
+                   <p className="text-center text-secondary">La página que estas buscando no esta disponible.</p>
+                   <a href="/login" className="mt-3 btn w-auto btn-sm btn-primary m-auto rounded rounded-sm-pill">Volver al Inicio</a>
                 </div>
             </div>
         )

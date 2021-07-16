@@ -181,8 +181,8 @@
   display: block;
 }
 
-body{
-  background-color: white ;
+html body{
+  background-color: #f9fbfd;
 }
 
 .back{
@@ -263,16 +263,19 @@ margin-right : 'auto';
   }
 }  
 .tituloadmin{
-  margin-left: 20px;
+  /* margin-left: 20px; */
   font-size: 35px;
+  color: #12263f;
 }
+
+/*
 .menuadmin{
   float: right;
   margin-right: 20px !important;
   margin-top: 5px !important;
   color: white !important;
-}
-.agregarcurso{
+}*/
+/* .agregarcurso{
   float: right;
   margin-right: 20px !important;
   margin-top: 5px !important;
@@ -283,10 +286,14 @@ margin-right : 'auto';
   margin-right: 10px !important;
   margin-top: 25px !important;
   color: black !important 
-}
+} */
 
 .menu3dots{
   list-style: none;
+}
+
+.menu3dots > a :hover{
+  color:#0062cc;
 }
 
 #coco{
@@ -310,7 +317,8 @@ margin-right : 'auto';
   right: 100px; 
 }
 .menuNavBarReg{
-  border-bottom: #545251 solid 8px;
+  border-bottom: #e3ebf6 solid 1px;
+  background-color: #fff;
 }
 
 .colorBrand{
@@ -548,17 +556,28 @@ color: white;
   width: 12rem;
 }
 
-.colorTab{
+/* .colorTab{
   background-color: #545251;
   color: white !important;
-}
+} */
 .Sidebar{
-  height: 720px;
-  width: 250px;
-  border-right: 2px solid lightgray;
+  /* height: 720px; */
+  height: calc(100vh - 65px) ;
+  width: auto;/*250px;*/
+  /* min-width: 250px; */
+  /* border-right: 2px solid #dfe6e9; */
+  border-right: 1px solid #e3ebf6;
   display: initial;
+  position: absolute;
+  background-color: #fff;
+  z-index: 1;
 }
 
+
+
+.main{
+  padding-left: 67px;
+}
 
 .SidebarList{
   height: 100%;
@@ -569,7 +588,8 @@ color: white;
 
 .SidebarList .row{
   width: 100%;
-  height: 50px;
+  /* height: 50px; */
+  height: auto;
   list-style-type: none;
   margin: 0;
   display: flex;
@@ -578,19 +598,21 @@ color: white;
   align-items: center;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-.SidebarList .row:hover{
-cursor: pointer;
-background-color: #797979;
+  
+
+.SidebarList .row>a{
+  /* color: #444; */
+  /* color: #6e84a3; */
+  color: #5D7392;
+  font-size: .9em;
 }
 
-.SidebarList #active{
-  background-color: #949492;
-  }
+.SidebarList .row>a:hover{
+  color:#000;
+}
 
-.row #icon{
-  flex: 30%;
-  display: grid;
-  place-items: center;
+.SidebarList .row:hover{
+cursor: pointer;
 }
 
 .row #title{
@@ -605,9 +627,7 @@ background-color: #797979;
     }
 }
 
-.hola{
-  background-color: red !important;
-}
+
 /*responsive para el pop up del alta en admin*/
 @media only screen and (max-width: 800px) {
   .MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-12{
@@ -623,10 +643,40 @@ background-color: #797979;
   background: #EFEFEF;
   color: #212888;
 }
+
+/*
 button.bg-docente.border.btn.btn-secondary.menuadmin{
   background:#212888 !important;
 }
 
 .demo-app-main{
   background-color: #dbdbdb;
+}*/
+
+.paleta_bgrojo{
+  background-color: #b41715 !important;
+}
+
+.paleta_bgazul{
+  background-color: #222685 !important;
+}
+
+.paleta_bgverde{
+  background-color: #36a03c !important;
+}
+
+@media only screen and (min-width: 992px) {
+  .Sidebar{
+    position: relative;
+  }
+
+  .ancho1{
+    min-width: 260px;
+    width: auto;
+  }
+
+
+  .main{
+    padding-left: 30px;
+  }
 }

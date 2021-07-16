@@ -1,15 +1,30 @@
+
 .sidebarResponsive{
     display: none;
-  }
+}
+
+
   .nav-responsive-sidebar{
     display: flex;
     flex-direction: row;
     align-items: center;
-  }
-  @media only screen and (max-width: 800px) {
-    .Sidebar{
-      display: none;
+}
+
+.logo_titulo{
+  color: "#12263f";
+}
+
+.formulario-asignacion{
+  max-width: 500px;
+
+}
+
+@media only screen and (max-width: 800px) {
+
+    .ancho1{
+      min-width: 260px;
     }
+
     .menuadmin{
       margin-right: 0px !important;   
     }

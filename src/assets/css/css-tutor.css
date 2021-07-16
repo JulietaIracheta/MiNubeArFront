@@ -4,18 +4,18 @@
 }
 
 @media only screen and (max-width: 800px) {
-  .marginMN {
+  /* .marginMN {
     margin-left: 0px !important;
    
-  }
+  } */
   ul.navbar-nav{
     flex-direction: row !important;
     justify-content: space-between;
   }
   }
-.marginMN {
+/* .marginMN {
   margin-left: 15px;
-}
+} */
 .notificaciones-modal{
   width: 470px;
   max-height: 350px;
@@ -103,7 +103,8 @@
   right: 100px;
 }
 .colorBrand {
-  margin-left: 20px;
+  /* margin-left: 20px; */
+  margin-left: 0px;
 }
 .misCursos {
   margin-right: 15px;

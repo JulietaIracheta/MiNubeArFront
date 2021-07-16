@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { makeStyles } from '@material-ui/core/styles';
 import {
-  Grid,
-  TextField,
   Button,
   Select,
   MenuItem,
@@ -13,18 +10,8 @@ import NavAdmin from './NavAdmin';
 import Sidebar from "../Sidebar";
 import { SidebarData } from "../SidebarData";
 
-const useStyles = makeStyles((theme) => ({
-  formControl: {
-    minWidth: 120,
-    marginLeft: 25
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
-}));
-
 const AsignarMateriasACurso = () => {
-  const classes = useStyles();
+  // const classes = useStyles();
   const [materias, setMaterias] = useState([]);
   const [cursos, setCursos] = useState([]);
   const [materiasCurso, setMateriasCurso] = useState([]);
@@ -90,47 +77,34 @@ const AsignarMateriasACurso = () => {
   return (
     <div>
       <NavAdmin />
-
-      <div className="d-flex mt-1">
+      <div className="d-flex">
         <Sidebar data={SidebarData} />
-        <div className="container cardContainer ">
-          <div>
-            <h4>Asignar Materias a Curso</h4>
-            <hr className="hr-colorAdm" />
-            <h6 className="mt-5 mb-5">
-              Complete el formulario para asignar las materias al curso
+        <div className="main w-100 pr-2 pt-4">
+          <div className="d-flex d-sm-block flex-column  flex-sm-row justify-content-between">
+            <h4 className="tituloadmin text-center text-sm-left">Asignar Materias a Curso</h4>
+            <h6 className="mt-4 mb-4 text-secondary">
+              Esta sección sirve para que agregue las materias que le corresponden a un curso.
             </h6>
           </div>
-          <form autoComplete="off" noValidate onSubmit={handleSubmit}>
-            <div
-              style={{
-                display: "flex",
-                width:"100%",
-                justifyContent: "center",
-              }}
-            >
-              <Grid container spacing={3}>
-                <Grid item md={6} xl={6} lg={6}>
-                <FormControl fullWidth variant="outlined" className={classes.formControl}>
-                <InputLabel id="demo-simple-select-outlined-label">Curso</InputLabel>
+          <form autoComplete="off" noValidate onSubmit={handleSubmit} className="d-flex mt-4 formulario-asignacion flex-column p-2 p-md-5 bg-white" style={{border:"1px solid #edf2f9"}}>
+                <FormControl fullWidth variant="outlined" className="mb-3">
+                  <InputLabel id="demo-simple-select-outlined-label">Curso</InputLabel>
 
-                <Select
-                  name="idCurso"
-                  id="demo-simple-select-outlined"
-                  value={curso}
-                  onChange={handleInputChangeCurso}
-                  label="Curso"
-                >
-                  {cursos.map((c) => (
-                    <MenuItem value={c.idCurso}>
-                      {c.nombre}
-                    </MenuItem>
-                  ))}
-                </Select>
+                  <Select
+                    name="idCurso"
+                    id="demo-simple-select-outlined"
+                    value={curso}
+                    onChange={handleInputChangeCurso}
+                    label="Curso"
+                  >
+                    {cursos.map((c) => (
+                      <MenuItem value={c.idCurso}>
+                        {c.nombre}
+                      </MenuItem>
+                    ))}
+                  </Select>
               </FormControl>
-              </Grid>                
-                <Grid item lg={6} md={6}>
-                <FormControl fullWidth variant="outlined" className={classes.formControl}>
+                <FormControl fullWidth variant="outlined" className="mb-3">
                 <InputLabel id="demo-simple-select-outlined-label">Materia</InputLabel>
 
                 <Select
@@ -148,19 +122,13 @@ const AsignarMateriasACurso = () => {
                   ))}
                 </Select>
               </FormControl>
-              
-                </Grid>
-              </Grid>
-            
               <Button
                 type="submit"
-                variant="outlined"
-                className="ml-5"
+                className="btn bg-primary text-white w-50 ml-auto"
+                color="primary"
               >
-                Enviar
+                Agregar
               </Button>
-
-            </div>
           </form>
         </div>
       </div>

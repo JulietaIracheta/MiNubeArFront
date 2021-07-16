@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
-  Grid,
   TextField,
-  withStyles,
   Button,
 } from "@material-ui/core";
 import useForm from "./useForm";
@@ -10,23 +8,6 @@ import { connect } from "react-redux";
 import * as actions from "../../actions/curso";
 import "../../assets/css/css.css";
 import swal from 'sweetalert';
-import { Add} from "@material-ui/icons";
-
-const styles = (theme) => ({
-  root: {
-    "& .MuiTextField-root": {
-      margin: theme.spacing(1),
-      minWidth: 230,
-    },
-  },
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 230,
-  },
-  smMargin: {
-    margin: theme.spacing(1),
-  },
-});
 
 const initialFieldValues = {
   nombreCurso: "",
@@ -82,28 +63,23 @@ const CursoForm = ({ classes, ...props }) => {
       <form
         autoComplete="off"
         noValidate
-        className={classes.root}
         onSubmit={handleSubmit}
       >
-        <Grid container>
-          <Grid item xs={12}>
           <TextField
               name="nombre"
-              label="Nombre del Curso"
+              label="Curso nuevo"
+              className="pr-2"
               value={values.nombreCurso}
               onChange={handleInputChange}
               {...(errors.nombre && { error: true, helperText: errors.nombre })}
             />
-            <div className="agregarCurso">
-            <Add />
+        
             <Button
                 type="submit"
+                className="mt-2 bg-primary text-white mr-auto ml-auto"
               >
-                Agregar Curso
+                Registrar
               </Button>
-              </div>
-           </Grid>
-        </Grid>
       </form>
     </div>
   );
@@ -121,4 +97,4 @@ const mapActionToProps = {
 export default connect(
     mapStateToProps,
     mapActionToProps
-)(withStyles(styles)(CursoForm));
+)(CursoForm);

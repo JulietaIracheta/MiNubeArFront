@@ -2,13 +2,11 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../actions/materia";
 import {
-  TableContainer,
   Table,
   TableHead,
   TableRow,
   TableCell,
   TableBody,
-  withStyles,
 } from "@material-ui/core";
 import {
   UncontrolledDropdown,
@@ -26,34 +24,6 @@ import MateriaForm from "./MateriaForm";
 import Swal from 'sweetalert2';
 
 const drawerWidth = 200;
-
-const styles = (theme) => ({
-  root: {
-    display: "flex",
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-    [theme.breakpoints.up("sm")]: {
-      display: "none",
-    },
-  },
-  // necessary for content to be below app bar
-  toolbar: theme.mixins.toolbar,
-  drawerPaper: {
-    width: drawerWidth,
-    top: "unset !important",
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(1),
-    margin: 0,
-    paddingTop: 0,
-  },
-  paper: {
-    margin: theme.spacing(2),
-    padding: theme.spacing(2),
-  },
-});
 
 const reload = () => {
     window.location.reload(true);
@@ -85,32 +55,30 @@ const Materia = ({ classes, ...props }) => {
   return (
     <Provider store={store}>
       <NavAdmin />
-      <div className={classes.root}>
+      <div className="d-flex">
         <Sidebar data={SidebarData} />
-        <main className={classes.content}>
-          <div className={classes.toolbar} id="coco" />
-          <div id="coco">
-            <div className="adminContent">
-              <span className="tituloadmin">Materias</span>
-              <div className="agregarcurso">
-           <MateriaForm />
+        <main className="main w-100 pr-2 pt-4">
+          <div className="d-flex d-sm-block flex-column flex-sm-row justify-content-between" >
+              <span className="tituloadmin text-center">Materias</span>
+              <div className="float-right pt-0 mr-auto ml-auto">
+                  <MateriaForm />
               </div>
-            <TableContainer style={{overflow:"unset"}}>
-              <Table>
-                <TableHead>
-                  <TableRow className="colorTab">
-                    <TableCell className="colorTab">Nombre</TableCell>
-                    <TableCell className="colorTab"></TableCell>
+          </div>
+              <Table className="mt-3 d-table bg-white ml-auto mr-auto" style={{border:"1px solid #edf2f9"}}>
+                <TableHead style={{backgroundColor:"#12263f"}}>
+                  <TableRow>
+                    <TableCell className="font-weight-bold text-white text-uppercase text-center">Nombre</TableCell>
+                    <TableCell className="font-weight-bold text-white text-uppercase text-center">Acción</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {props.materiasList.map((record, index) => {
                     return (
                       <TableRow key={index} hover>
-                        <TableCell>{record.nombre}</TableCell>
-                        <TableCell className="d-flex flex-row-reverse w-100">
-                          <UncontrolledDropdown direction="left" nav inNavbar className="menu3dots">
-                            <DropdownToggle nav >
+                        <TableCell className="text-center">{record.nombre}</TableCell>
+                        <TableCell className="text-center">
+                          <UncontrolledDropdown direction="center" nav inNavbar className="menu3dots">
+                            <DropdownToggle nav className="p-0 text-secondary">
                               <MoreVert  />
                             </DropdownToggle>
                             <DropdownMenu >
@@ -120,8 +88,7 @@ const Materia = ({ classes, ...props }) => {
                                 </DropdownItem>
                                 <DropdownItem
                                 onClick={() => onDelete(record.idMateria)}>
-                                  Eliminar
-                                
+                                  Eliminar        
                               </DropdownItem>
                             </DropdownMenu>
                           </UncontrolledDropdown>
@@ -131,9 +98,6 @@ const Materia = ({ classes, ...props }) => {
                   })}
                 </TableBody>
               </Table>
-            </TableContainer>
-          </div>
-          </div>
         </main>
       </div>
     </Provider>
@@ -153,4 +117,4 @@ const mapActionToProps = {
 export default connect(
   mapStateToProps,
   mapActionToProps
-)(withStyles(styles)(Materia));
+)(Materia);
