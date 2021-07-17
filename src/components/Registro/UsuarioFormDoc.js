@@ -114,16 +114,21 @@ const UsuarioFormDoc = ({ handleClose, classes, ...props }) => {
 
   return (
     <div>
-      <h6 className="mt-5 ml-5">Complete el formulario para registrar un docente </h6>
+      <h6 className="pt-4 text-center">Complete el formulario para registrar un docente </h6>
+      <div className="container pb-3">
       <form
         autoComplete="off"
         noValidate
         className={classes.root}
         onSubmit={handleSubmit}
       >
-        <Grid container>
+        <Grid container
+         spacing={0}
+         direction="column"
+         alignItems="center"
+         justify="center"
+        >
           <Grid item xs={12}>
-         
             <TextField
               name="nombre"
               variant="outlined"
@@ -165,31 +170,32 @@ const UsuarioFormDoc = ({ handleClose, classes, ...props }) => {
                 helperText: errors.password,
               })}
             />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                name="telefono"
+                variant="outlined"
+                label="Telefono"
+                value={values.telefono}
+                onChange={handleInputChange}
+              />
+                  <FormControl variant="outlined" className={classes.formControl}>
+              <InputLabel id="demo-simple-select-outlined-label">Institución</InputLabel>
 
-            <TextField
-              name="telefono"
-              variant="outlined"
-              label="Telefono"
-              value={values.telefono}
-              onChange={handleInputChange}
-            />
-                <FormControl variant="outlined" className={classes.formControl}>
-            <InputLabel id="demo-simple-select-outlined-label">Institución</InputLabel>
-
-            <Select
-              name="idInstitucion"
-              id="demo-simple-select-outlined"
-              value={values.idInstitucion}
-              onChange={handleInputChange}
-              label="Institucion"
-              multiple
-            >
-              {instituciones.map((institucion) => (
-                <MenuItem value={institucion.idInstitucion}>
-                  {institucion.nombre}
-                </MenuItem>
-              ))}
-            </Select>
+              <Select
+                name="idInstitucion"
+                id="demo-simple-select-outlined"
+                value={values.idInstitucion}
+                onChange={handleInputChange}
+                label="Institucion"
+                multiple
+              >
+                {instituciones.map((institucion) => (
+                  <MenuItem value={institucion.idInstitucion}>
+                    {institucion.nombre}
+                  </MenuItem>
+                ))}
+              </Select>
             </FormControl>
             <div className="w-100 d-flex justify-content-center">
               <Button
@@ -218,6 +224,7 @@ const UsuarioFormDoc = ({ handleClose, classes, ...props }) => {
           </Grid>
         </Grid>
       </form>
+      </div>
     </div>
   );
 };

@@ -44,9 +44,10 @@ export default function TrayectoriaAcademica() {
             <Sidebar data={SidebarData} />
             <div className="main w-100 pr-2 pt-4">
                 <div className="d-flex d-sm-block flex-column flex-sm-row justify-content-between">
-                    <h4 className="tituloadmin text-left">Estadísticas de los usuarios de MiNube</h4>
+                    <h4 className="tituloadmin text-left">Estadísticas de MiNube</h4>
                     <h6 className="mt-4 mb-4 text-secondary w-75">
-                        En esta sección podemos ver las estadisticas de los usuarios de MiNube, como por ejemplo cuantos estudiantes utilizan la plataforma como
+                        En esta sección podemos ver las estadisticas de los usuarios de MiNube,<br/> 
+                        como por ejemplo cuantos estudiantes utilizan la plataforma como<br/> 
                         complemento para estudiar.
                     </h6>
                 </div>
