@@ -1,5 +1,5 @@
 import React from 'react'
-const urlBase='http://localhost:60671/api/institucion/';
+const urlBase='http://134.209.120.136:4000/api/institucion/';
 
 export default function getInstitucion(id) {
     const url=urlBase+`${id}`

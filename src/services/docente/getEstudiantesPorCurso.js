@@ -1,4 +1,4 @@
-const urlBase = 'http://localhost:60671/api/docente/getEstudiantesPorCurso/'
+const urlBase = 'http://134.209.120.136:4000/api/docente/getEstudiantesPorCurso/'
 
 export default function getEstudiantes(idInstitucion,idCurso) {
     const url=urlBase+`${idInstitucion}/${idCurso}`;

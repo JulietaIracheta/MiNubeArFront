@@ -72,7 +72,7 @@ const ContenidoForm = ({ handleClose, classes, ...props }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const urlCargaVideo = "http://localhost:60671/api/contenido/crearContenido";
+    const urlCargaVideo = "http://134.209.120.136:4000/api/contenido/crearContenido";
     
     if (validate()) {
       const onSuccess = () => {
@@ -87,7 +87,7 @@ const ContenidoForm = ({ handleClose, classes, ...props }) => {
       form.append("materia", props.idMateria);
       if(archivo)
         form.append("file", archivo[0]);
-      await axios.post("http://localhost:60671/api/contenido/crearContenido",
+      await axios.post("http://134.209.120.136:4000/api/contenido/crearContenido",
         form)
         .then(response => {
           window.location.reload();

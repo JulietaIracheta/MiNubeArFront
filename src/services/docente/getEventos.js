@@ -1,4 +1,4 @@
-const url = 'http://localhost:60671/api/evento/'
+const url = 'http://134.209.120.136:4000/api/evento/'
 
 export default function getEventos() {
     

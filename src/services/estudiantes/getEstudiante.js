@@ -1,7 +1,7 @@
 
-const urlBase = 'http://localhost:60671/api/persona/getPerfil/'
-const URL_BASE_ESTUDIANTES_DE_TUTOR = 'http://localhost:60671/api/usuario/getEstudiantesDeUnTutor/'
-const URL_BASE_ESTUDIANTES = 'http://localhost:60671/api/usuario/getEstudiantes/'
+const urlBase = 'http://134.209.120.136:4000/api/persona/getPerfil/'
+const URL_BASE_ESTUDIANTES_DE_TUTOR = 'http://134.209.120.136:4000/api/usuario/getEstudiantesDeUnTutor/'
+const URL_BASE_ESTUDIANTES = 'http://134.209.120.136:4000/api/usuario/getEstudiantes/'
 
 export default function getEstudiante(id) {
     const url=urlBase+`${id}`;
@@ -42,7 +42,7 @@ export function getEstudiantesDeUnTutor(id) {
 }
 
 
-const URL_BASE_ESTUDIANTES_DE_INSTITUCION = 'http://localhost:60671/api/institucion/getEstudiantesDeUnaInstitucion/'
+const URL_BASE_ESTUDIANTES_DE_INSTITUCION = 'http://134.209.120.136:4000/api/institucion/getEstudiantesDeUnaInstitucion/'
 
 export function getEstudiantesDeUnaInstitucion(id) {
     const url=URL_BASE_ESTUDIANTES_DE_INSTITUCION+`${id}`;

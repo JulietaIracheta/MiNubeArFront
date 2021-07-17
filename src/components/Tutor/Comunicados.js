@@ -11,7 +11,7 @@ export default function ComunicadosEstudiante() {
     const jwt = cookie.get('jwt');
 
     useEffect(async function () {
-        const url = 'http://localhost:60671/api/comunicado/getComunicadosByTutor?jwt='+jwt
+        const url = 'http://134.209.120.136:4000/api/comunicado/getComunicadosByTutor?jwt='+jwt
         return await fetch(url, {
             method: 'GET',
             headers: { "Content-type": "application/json" },

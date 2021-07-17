@@ -15,7 +15,7 @@ export default function InformeEstudiante(props) {
     const url="";
 
     useEffect(async () => {
-        const result = await fetch('http://localhost:60671/api/informe/getInformeByEstudiante/1', {
+        const result = await fetch('http://134.209.120.136:4000/api/informe/getInformeByEstudiante/1', {
           method: 'GET',
           headers: { "Content-type": "application/json" },
           credentials: "include",
@@ -56,7 +56,7 @@ export default function InformeEstudiante(props) {
           <div className="container-flex">
           {pdf === null ? <div><p>No tiene informe cargado</p></div> :    <div>
         <Document
-          file={"http://localhost:60671/informes/"+pdf}
+          file={"http://134.209.120.136:4000/informes/"+pdf}
             options={{ workerSrc: "/pdf.worker.js" }}
             onLoadSuccess={onDocumentLoadSuccess}
             

@@ -63,7 +63,7 @@ const CargarInforme = () => {
 
   useEffect(async () => {
     const result = await fetch(
-      "http://localhost:60671/api/usuario/estudiantes",
+      "http://134.209.120.136:4000/api/usuario/estudiantes",
       {
         method: "GET",
         headers: { "Content-type": "application/json" },
@@ -80,7 +80,7 @@ const CargarInforme = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:60671/api/informe/", {
+    const response = await fetch("http://134.209.120.136:4000/api/informe/", {
       method: "POST",
       headers: {
         "Content-type": "application/json",

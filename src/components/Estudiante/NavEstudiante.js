@@ -35,7 +35,7 @@ const NavBar = (props) => {
   const jwt = cookieNombreEstudiante.get('jwt');
 
   const logout = async () => {
-    await fetch('http://localhost:60671/api/usuario/logout', {
+    await fetch('http://134.209.120.136:4000/api/usuario/logout', {
       method: 'POST',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -54,7 +54,7 @@ const NavBar = (props) => {
   }
 
   useEffect(async function () {
-    const url = 'http://localhost:60671/api/notificacion/getByUsuario?jwt='+jwt
+    const url = 'http://134.209.120.136:4000/api/notificacion/getByUsuario?jwt='+jwt
     return await fetch(url, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
@@ -129,7 +129,7 @@ const NavBar = (props) => {
                   <Avatar className="icon-perfil text-white" style={{ background: "#B0211D" }}>
                     {nombreAvatar ? nombreAvatar :
                       <img className="w-100 h-100"
-                        src={"http://localhost:60671/Avatares/" + nombrePath}
+                        src={"http://134.209.120.136:4000/Avatares/" + nombrePath}
                         style={{ objectFit: "cover" }} />
                     }</Avatar>
                 }

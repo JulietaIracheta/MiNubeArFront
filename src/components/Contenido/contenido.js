@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
 export default function RecipeReviewCard({ id, idCurso,control, idMateria, unidad, descripcion, titulo, video, actividad }) {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
-    const url = "http://localhost:60671/videos/" + video;
+    const url = "http://134.209.120.136:4000/videos/" + video;
     const [abrirModalCrearActividad, setAbrirModalCrearActividad] = React.useState(false);
     const [abrirDetalleActividad, setAbrirDetalleActividad] = React.useState(false);
     const [detalleActividad, setDetalleActividad] = React.useState();
@@ -104,7 +104,7 @@ export default function RecipeReviewCard({ id, idCurso,control, idMateria, unida
     };
 
     useEffect(async () => {
-        const result = await fetch('http://localhost:60671/api/cursos', {
+        const result = await fetch('http://134.209.120.136:4000/api/cursos', {
             method: 'GET',
             headers: { "Content-type": "application/json" },
             credentials: "include",
@@ -118,7 +118,7 @@ export default function RecipeReviewCard({ id, idCurso,control, idMateria, unida
     }, [])
 
     useEffect(async () => {
-        const result = await fetch('http://localhost:60671/api/materias', {
+        const result = await fetch('http://134.209.120.136:4000/api/materias', {
             method: 'GET',
             headers: { "Content-type": "application/json" },
             credentials: "include",
@@ -131,7 +131,7 @@ export default function RecipeReviewCard({ id, idCurso,control, idMateria, unida
             });
     }, [])
     const eliminarActividad = async () => {
-        const response = await fetch("http://localhost:60671/api/contenido?id=" + id, {
+        const response = await fetch("http://134.209.120.136:4000/api/contenido?id=" + id, {
             method: "DELETE",
             headers: {
                 "Content-type": "application/json",
@@ -147,7 +147,7 @@ export default function RecipeReviewCard({ id, idCurso,control, idMateria, unida
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch("http://localhost:60671/api/question/", {
+        const response = await fetch("http://134.209.120.136:4000/api/question/", {
             method: "POST",
             headers: {
                 "Content-type": "application/json",

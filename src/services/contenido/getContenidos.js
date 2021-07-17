@@ -1,5 +1,5 @@
 export default function getContenidos(idMateria, idCurso) {
-    const url = 'http://localhost:60671/api/contenido/getContenidoByMateria/'+idMateria+"/"+idCurso;
+    const url = 'http://134.209.120.136:4000/api/contenido/getContenidoByMateria/'+idMateria+"/"+idCurso;
     return fetch(url, {
         method: 'GET'
     }).then(res => {

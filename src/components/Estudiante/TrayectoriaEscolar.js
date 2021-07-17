@@ -57,7 +57,7 @@ const TrayectoriaEscolar = ({ classes, ...props }) => {
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
   const [pdf, setPdf] = useState('');
-  const url="http://localhost:60671/informes/"+pdf;
+  const url="http://134.209.120.136:4000/informes/"+pdf;
   
 
     const handleInputChange = (e) => {
@@ -65,7 +65,7 @@ const TrayectoriaEscolar = ({ classes, ...props }) => {
       }
   
       useEffect(async () => {
-        const result = await fetch('http://localhost:60671/api/boletin/año/', {
+        const result = await fetch('http://134.209.120.136:4000/api/boletin/año/', {
           method: 'GET',
           headers: { "Content-type": "application/json" },
           credentials: "include",
@@ -81,7 +81,7 @@ const TrayectoriaEscolar = ({ classes, ...props }) => {
       }, []);
 
   useEffect(async () => {
-    const result = await fetch('http://localhost:60671/api/boletin/trayectoria/' + año, {
+    const result = await fetch('http://134.209.120.136:4000/api/boletin/trayectoria/' + año, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -94,7 +94,7 @@ const TrayectoriaEscolar = ({ classes, ...props }) => {
   }, [año]);
 
   useEffect(async () => {
-    const result = await fetch('http://localhost:60671/api/informe/getInformeTrayectoria/' + año, {
+    const result = await fetch('http://134.209.120.136:4000/api/informe/getInformeTrayectoria/' + año, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",

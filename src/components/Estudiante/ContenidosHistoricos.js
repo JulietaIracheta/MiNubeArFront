@@ -31,7 +31,7 @@ export default function () {
     const [detalleActividad, setDetalleActividad] = useState();
 
     useEffect(() => {
-        var url = "http://localhost:60671/api/contenido/getContenidosHistoricos?jwt=" + jwt;
+        var url = "http://134.209.120.136:4000/api/contenido/getContenidosHistoricos?jwt=" + jwt;
         fetch(url, {
             method: 'GET',
             headers: { "Content-type": "application/json" },
@@ -59,7 +59,7 @@ export default function () {
                             <div className="col-md-4">
                                 <Card>
                                     {contenido.video != "" ? 
-                                    <ReactPlayer url={"http://localhost:60671/videos/"+contenido.video} 
+                                    <ReactPlayer url={"http://134.209.120.136:4000/videos/"+contenido.video} 
                                     controls width="100%" height="12rem" style={{ minHeight: "12rem" }} 
                                                                        />
                                     :<div className="w-100" style={{height:"12rem",minHeight: "12rem"}}>

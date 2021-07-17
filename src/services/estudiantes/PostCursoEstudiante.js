@@ -1,5 +1,5 @@
 
-const urlBaseAsignaEstudiantesAcurso = 'http://localhost:60671/api/cursos/AsignaEstudiandesAcurso/';
+const urlBaseAsignaEstudiantesAcurso = 'http://134.209.120.136:4000/api/cursos/AsignaEstudiandesAcurso/';
 
 export function AsignaEstudiandesAcurso(data, onSuccess) {
     const url= `${urlBaseAsignaEstudiantesAcurso}`

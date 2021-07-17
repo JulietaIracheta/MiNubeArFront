@@ -23,7 +23,7 @@ export default function TrayectoriaAcademica() {
 
     const [x, setX] = useState();
     useEffect(() => {
-        fetch("http://localhost:60671/api/boletin/getBoletinesEstudiante/" + 1, {
+        fetch("http://134.209.120.136:4000/api/boletin/getBoletinesEstudiante/" + 1, {
             method: "GET",
             headers: { "Content-type": "application/json" },
             credentials: "include",

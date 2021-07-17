@@ -9,7 +9,7 @@ import Sidebar from "../Sidebar";
 import {SidebarDataTutor} from '../sideBar/SidebarDataTutor';
 
 
-const baseUrl = "http://localhost:60671/api/"
+const baseUrl = "http://134.209.120.136:4000/api/"
 
 const MateriasTutorEstudiante = (props) => {
   let listMaterias = [];

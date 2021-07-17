@@ -1,6 +1,6 @@
-const url='http://localhost:60671/api/institucion/';
-const URL_ESTUDIANTE = 'http://localhost:60671/api/institucion/getInstitucionesDeUnEstudiante/'
-const URL_INSTITUCION_DE_ESTUDIANTE = 'http://localhost:60671/api/institucion/getInstitucionDeUnEstudiante/'
+const url='http://134.209.120.136:4000/api/institucion/';
+const URL_ESTUDIANTE = 'http://134.209.120.136:4000/api/institucion/getInstitucionesDeUnEstudiante/'
+const URL_INSTITUCION_DE_ESTUDIANTE = 'http://134.209.120.136:4000/api/institucion/getInstitucionDeUnEstudiante/'
 
 export default function getInstituciones() {
     return fetch(url, {

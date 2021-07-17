@@ -67,7 +67,7 @@ const CalificacionesTutor = ({ classes, ...props }) => {
   
 
   useEffect(async () => {
-    const result = await fetch('http://localhost:60671/api/boletin/estudiante/' + estudiante, {
+    const result = await fetch('http://134.209.120.136:4000/api/boletin/estudiante/' + estudiante, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",

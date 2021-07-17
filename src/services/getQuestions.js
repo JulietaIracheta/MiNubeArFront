@@ -1,4 +1,4 @@
-const urlBase = 'http://localhost:60671/api/question/'
+const urlBase = 'http://134.209.120.136:4000/api/question/'
 
 export default function getQuestions(id) {
     const url=urlBase+`${id}`

@@ -30,7 +30,7 @@ export default function Actividades(props) {
 
 		console.log(score)
 
-		fetch("http://localhost:60671/api/puntaje/", {
+		fetch("http://134.209.120.136:4000/api/puntaje/", {
 		  method: "POST",
 		  headers: {
 			"Content-type": "application/json",

@@ -14,7 +14,7 @@ export default function DatoEstudiante({ avatar, nombre, apellido,id}) {
                         {avatar ? 
                               <Avatar className="icon-perfil text-white w-100 h-100" style={{ background: "#B0211D" }}>
                               <img className="w-100 h-100"
-                                src={"http://localhost:60671/Avatares/" + avatar}
+                                src={"http://134.209.120.136:4000/Avatares/" + avatar}
                                 style={{ objectFit: "cover" }} />
                             </Avatar>
                         : <PersonCircle className="rounded-circle h-100 icono-estudiante"/>}

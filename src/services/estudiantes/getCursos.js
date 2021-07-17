@@ -1,6 +1,6 @@
 
 
-const urlBase='http://localhost:60671/api/cursos/';
+const urlBase='http://134.209.120.136:4000/api/cursos/';
 
 export default function getCursos() {
     const url=urlBase
@@ -17,7 +17,7 @@ export default function getCursos() {
 }
 
 
-const urlBaseCursosDeInstitucion='http://localhost:60671/api/cursos/getCursosDeUnaInstitucion/';
+const urlBaseCursosDeInstitucion='http://134.209.120.136:4000/api/cursos/getCursosDeUnaInstitucion/';
 
 export function getCursosDeUnaInstitucion(id) {
     const url= `${urlBaseCursosDeInstitucion}${id}`

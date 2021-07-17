@@ -70,7 +70,7 @@ const CrearInforme = () => {
     pdf.save(`${nombre}_${apellido}.pdf`);
 
     const response = fetch(
-      "http://localhost:60671/api/informe/crearInformeTrayectoria",
+      "http://134.209.120.136:4000/api/informe/crearInformeTrayectoria",
       {
         method: "POST",
         headers: {
@@ -119,7 +119,7 @@ const CrearInforme = () => {
   const jwt = cookie.get('jwt');
   useEffect(async () => {
     const result = await fetch(
-      "http://localhost:60671/api/docente/getInstitucion/?jwt="+jwt,
+      "http://134.209.120.136:4000/api/docente/getInstitucion/?jwt="+jwt,
       {
         method: "GET",
         headers: { "Content-type": "application/json" },
@@ -138,7 +138,7 @@ const CrearInforme = () => {
 
   useEffect(async () => {
     const result = await fetch(
-      "http://localhost:60671/api/docente/getCursos/?jwt="+jwt,
+      "http://134.209.120.136:4000/api/docente/getCursos/?jwt="+jwt,
       {
         method: "GET",
         headers: { "Content-type": "application/json" },
@@ -155,7 +155,7 @@ const CrearInforme = () => {
   
   useEffect(async () => {
     const result = await fetch(
-      "http://localhost:60671/api/materias/getMateriasDocente/"+curso + "?jwt="+ jwt,
+      "http://134.209.120.136:4000/api/materias/getMateriasDocente/"+curso + "?jwt="+ jwt,
       {
         method: "GET",
         headers: { "Content-type": "application/json" },
@@ -173,7 +173,7 @@ const CrearInforme = () => {
 
   useEffect(async () => {
     const result = await fetch(
-      "http://localhost:60671/api/docente/getEstudiantesPorCurso/"+ curso, 
+      "http://134.209.120.136:4000/api/docente/getEstudiantesPorCurso/"+ curso, 
       {
         method: "GET",
         headers: { "Content-type": "application/json" },

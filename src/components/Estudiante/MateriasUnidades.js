@@ -7,7 +7,7 @@ import { CardUnidad } from "./CardUnidad";
 
 export default function MateriaUnidad({ id }) {
 
-    const baseUrl = 'http://localhost:60671/api/';
+    const baseUrl = 'http://134.209.120.136:4000/api/';
     const url = baseUrl + `Actividades/getActidades/${id}`;
 
     const [data, setData] = useState([]);

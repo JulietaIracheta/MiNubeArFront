@@ -7,7 +7,7 @@ import ActividadContenido from "../ActividadContenido";
 import VideoContenido from "../VideoContenido";
 import '../../Actividades/actividades.css';
 
-const baseUrl = "http://localhost:60671/api/"
+const baseUrl = "http://134.209.120.136:4000/api/"
 
 const MateriaActividad = ({ match }) => {  
 

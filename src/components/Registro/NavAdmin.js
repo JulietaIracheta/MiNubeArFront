@@ -23,7 +23,7 @@ const NavBar = (props) => {
   const toggle = () => setIsOpen(!isOpen);
  
   const logout = async () => {
-    await fetch('http://localhost:60671/api/usuario/logout', {
+    await fetch('http://134.209.120.136:4000/api/usuario/logout', {
       method: 'POST',
       headers: { "Content-type": "application/json" },
       credentials: "include",

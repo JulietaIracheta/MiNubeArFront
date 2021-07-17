@@ -13,15 +13,15 @@ export default function ApexChart(props) {
     const chartAct = Chart({ series : parseInt(serie) });
     const chartCont = Chart({ series : 68 });
     const [video, setVideo] = useState([]);
-    const urlBase = 'http://localhost:60671/api/contenido/?id=3'
+    const urlBase = 'http://134.209.120.136:4000/api/contenido/?id=3'
     const [videoFilePath, setVideoFilePath] = useState(null);
     const [archivo, setFile] = useState();
-    var urlVideo = 'http://localhost:60671/videos/';
+    var urlVideo = 'http://134.209.120.136:4000/videos/';
     const id = props.match.params.id
     const [calificacion, setCalificacion] = useState('');
 
     useEffect(function () {
-        fetch('http://localhost:60671/api/actividades/calcularAvance/' + id, {
+        fetch('http://134.209.120.136:4000/api/actividades/calcularAvance/' + id, {
             method: 'GET'
         }).then(res => {
             if (!res.ok) alert('error')

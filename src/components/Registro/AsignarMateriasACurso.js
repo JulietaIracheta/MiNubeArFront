@@ -45,7 +45,7 @@ const AsignarMateriasACurso = () => {
   };
 
   useEffect(async () => {
-    const result = await fetch('http://localhost:60671/api/materias', {
+    const result = await fetch('http://134.209.120.136:4000/api/materias', {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -59,7 +59,7 @@ const AsignarMateriasACurso = () => {
   }, []);
 
   useEffect(async () => {
-    const result = await fetch('http://localhost:60671/api/cursos', {
+    const result = await fetch('http://134.209.120.136:4000/api/cursos', {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -74,7 +74,7 @@ const AsignarMateriasACurso = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:60671/api/materiacurso/", {
+    const response = await fetch("http://134.209.120.136:4000/api/materiacurso/", {
       method: "POST",
       headers: {
         "Content-type": "application/json",

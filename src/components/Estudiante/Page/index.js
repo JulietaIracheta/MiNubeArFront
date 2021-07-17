@@ -17,7 +17,7 @@ export default function Estudiante() {
   useEffect(() => {
     (async () => {
       const response = await fetch(
-        "http://localhost:60671/api/persona/getPersonaByUsuario?jwt="+jwt,
+        "http://134.209.120.136:4000/api/persona/getPersonaByUsuario?jwt="+jwt,
         {
           method: "GET",
           headers: { "Content-type": "application/json" },

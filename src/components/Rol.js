@@ -12,7 +12,7 @@ export default function Rol(){
   
   useEffect(() => {
     (async () => {
-      const response = await fetch("http://localhost:60671/api/rol/getRolByUsuario?jwt="+jwt, {
+      const response = await fetch("http://134.209.120.136:4000/api/rol/getRolByUsuario?jwt="+jwt, {
         headers: { "Content-type": "application/json" },
         credentials: "include"
       });

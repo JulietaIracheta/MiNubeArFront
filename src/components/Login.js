@@ -44,7 +44,7 @@ const Login = () => {
     setCookie('Name', res.profileObj.name, { path: '/' });
     const imageGoogle= res.profileObj.imageUrl;
 
-    const response = await fetch("http://localhost:60671/api/usuario/loginGoogle?email=" + emailGoogle, {
+    const response = await fetch("http://134.209.120.136:4000/api/usuario/loginGoogle?email=" + emailGoogle, {
       method: "POST",
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -70,7 +70,7 @@ const Login = () => {
 
     if(!data) return;
     console.log(data);
-    const response = await fetch("http://localhost:60671/api/usuario/loginMicrosoft?email=" + data.userPrincipalName, {
+    const response = await fetch("http://134.209.120.136:4000/api/usuario/loginMicrosoft?email=" + data.userPrincipalName, {
       method: "POST",
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -107,7 +107,7 @@ const Login = () => {
   const submit = async (e, rol) => {
     e.preventDefault();
 
-    const response = await fetch("http://localhost:60671/api/usuario/login", {
+    const response = await fetch("http://http://134.209.120.136:4000/api/usuario/login", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       credentials: "include",

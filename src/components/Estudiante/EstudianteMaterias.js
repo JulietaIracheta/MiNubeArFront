@@ -10,7 +10,7 @@ import { Cookies, useCookies } from 'react-cookie';
 
 //import getMaterias from "../../services/estudiantes/getMaterias"
 
-const baseUrl = "http://localhost:60671/api/"
+const baseUrl = "http://134.209.120.136:4000/api/"
 
 const EstudianteMaterias = (props) => {
   

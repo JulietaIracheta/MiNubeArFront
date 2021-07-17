@@ -13,10 +13,10 @@ export default function ApexChart() {
     const chartAct = Chart({ series : parseInt(serie) });
     const chartCont = Chart({ series : 68 });
     const [video, setVideo] = useState([]);
-    const urlBase = 'http://localhost:60671/api/contenido/?id=3'
+    const urlBase = 'http://134.209.120.136:4000/api/contenido/?id=3'
     const [videoFilePath, setVideoFilePath] = useState(null);
     const [archivo, setFile] = useState();
-    var urlVideo = 'http://localhost:60671/videos/';
+    var urlVideo = 'http://134.209.120.136:4000/videos/';
 
     useEffect(function () {
         fetch(urlBase, {
@@ -31,7 +31,7 @@ export default function ApexChart() {
     }, []);
 
     useEffect(function () {
-        fetch('http://localhost:60671/api/actividades/calcularAvance', {
+        fetch('http://134.209.120.136:4000/api/actividades/calcularAvance', {
             method: 'GET'
         }).then(res => {
             if (!res.ok) alert('error')
@@ -53,7 +53,7 @@ export default function ApexChart() {
         console.log(archivo[0]);
         console.log(f);
 
-        await axios.post("http://localhost:60671/api/contenido/cargarVideo", f)
+        await axios.post("http://134.209.120.136:4000/api/contenido/cargarVideo", f)
             .then(response => {
                 console.log(response);
             }).catch(err => {

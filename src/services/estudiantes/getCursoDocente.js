@@ -1,5 +1,5 @@
 import React from 'react'
-const urlBase='http://localhost:60671/api/docente/getCursos/';
+const urlBase='http://134.209.120.136:4000/api/docente/getCursos/';
 
 export default async function getCursoDocente(id) {
     const url=urlBase+`${id}`

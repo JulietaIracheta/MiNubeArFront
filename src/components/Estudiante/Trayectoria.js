@@ -49,7 +49,7 @@ const Trayectoria = ({ classes, ...props }) => {
   
   useEffect(async () => {
     const result = await fetch(
-      "http://localhost:60671/api/informe/getTrayectoria/" ,
+      "http://134.209.120.136:4000/api/informe/getTrayectoria/" ,
       {
         method: "GET",
         headers: { "Content-type": "application/json" },
@@ -100,7 +100,7 @@ const Trayectoria = ({ classes, ...props }) => {
     </div>
     )
     )}
-    { record.informe ? <a href={`http://localhost:60671/informes/${record.informe}`} target='_blank' rel='noopener noreferrer'>Ver Informe</a>
+    { record.informe ? <a href={`http://134.209.120.136:4000/informes/${record.informe}`} target='_blank' rel='noopener noreferrer'>Ver Informe</a>
     : ""}     
   </VerticalTimelineElement>
   ))}

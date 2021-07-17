@@ -44,7 +44,7 @@ const Comunicado = ({ idCurso, idInstitucion, ...props }) => {
   const jwt = cookie.get('jwt');
 
   useEffect(() => {
-    var url = "http://localhost:60671/api/comunicado/getComunicados/" + idInstitucion + "/" + idCurso + "?jwt="+jwt;
+    var url = "http://134.209.120.136:4000/api/comunicado/getComunicados/" + idInstitucion + "/" + idCurso + "?jwt="+jwt;
     console.log(url);
     fetch(url, {
       method: 'GET',

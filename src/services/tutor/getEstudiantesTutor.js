@@ -1,4 +1,4 @@
-const url = 'http://localhost:60671/api/tutor/6'
+const url = 'http://134.209.120.136:4000/api/tutor/6'
 
 export default function getEstudiantesTutor() {
     return fetch(url, {

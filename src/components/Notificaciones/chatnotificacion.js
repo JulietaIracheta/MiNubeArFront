@@ -21,7 +21,7 @@ export default () => {
     useEffect(() => {
 
         (async () => {
-            fetch("http://localhost:60671/api/usuario/getUsuarioChatEstudiante?jwt="+jwt, {
+            fetch("http://134.209.120.136:4000/api/usuario/getUsuarioChatEstudiante?jwt="+jwt, {
                 method: 'GET',
                 headers: { "Content-type": "application/json" },
                 credentials: "include",
@@ -38,7 +38,7 @@ export default () => {
         try {
 
             const conn = new HubConnectionBuilder()
-                .withUrl("http://localhost:60671/chatHub")
+                .withUrl("http://134.209.120.136:4000/chatHub")
                 .configureLogging(LogLevel.Information)
                 .build();
 

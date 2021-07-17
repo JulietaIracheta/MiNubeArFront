@@ -1,4 +1,4 @@
-const url = 'http://localhost:60671/api/persona/getEstudiantesAsignados/1'
+const url = 'http://134.209.120.136:4000/api/persona/getEstudiantesAsignados/1'
 
 export default function getEstudiantes() {
     return fetch(url, {

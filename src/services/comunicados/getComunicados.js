@@ -1,4 +1,4 @@
-const url = 'http://localhost:60671/api/comunicado/getComunicados'
+const url = 'http://134.209.120.136:4000/api/comunicado/getComunicados'
 
 export default async function getComunicados() {
     return await fetch(url, {

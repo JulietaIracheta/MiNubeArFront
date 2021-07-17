@@ -16,7 +16,7 @@ const EscuelasDocente = () => {
   const jwt = cookie.get('jwt');
 
   useEffect(async () => {
-    const result = await fetch('http://localhost:60671/api/docente/getInstitucion?jwt='+jwt, {
+    const result = await fetch('http://134.209.120.136:4000/api/docente/getInstitucion?jwt='+jwt, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -29,7 +29,7 @@ const EscuelasDocente = () => {
   }, [])
 
   useEffect(async () => {
-    const result = await fetch('http://localhost:60671/api/docente/getCursos?jwt='+jwt, {
+    const result = await fetch('http://134.209.120.136:4000/api/docente/getCursos?jwt='+jwt, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",

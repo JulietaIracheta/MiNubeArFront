@@ -8,7 +8,7 @@ import CardMateria from "../Estudiante/CardMateria";
 import { Grid } from "@material-ui/core";
 import "../../assets/css/fontawesome-all.css"
 
-const baseUrl = "http://localhost:60671/api/"
+const baseUrl = "http://134.209.120.136:4000/api/"
 
 const DocenteMaterias = ({ idCurso }) => {
     const cookie = new Cookies();

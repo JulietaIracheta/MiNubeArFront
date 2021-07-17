@@ -24,7 +24,7 @@ export default function Cuenta() {
     const jwt = cookie.get('jwt');
 
     useEffect(() => {
-        fetch("http://localhost:60671/api/usuario/getCuentaUsuario?jwt="+jwt, {
+        fetch("http://134.209.120.136:4000/api/usuario/getCuentaUsuario?jwt="+jwt, {
             method: 'GET',
             headers: { "Content-type": "application/json" },
             credentials: "include",
@@ -66,7 +66,7 @@ export default function Cuenta() {
         x.append('usuarioNombre', nombreUsuario);
         x.append('password', password);
 
-        await Axios.post("http://localhost:60671/api/usuario/actualizarCuentaUsuario", x).then(response => {
+        await Axios.post("http://134.209.120.136:4000/api/usuario/actualizarCuentaUsuario", x).then(response => {
             setCookie('avatarNombre', '', { path: '/' });
             setCookie('avatarPath', '', { path: '/' });
             if (response.status === 204 || response.status === 200) {
@@ -113,7 +113,7 @@ export default function Cuenta() {
                                                     style={{ height: "100px", width: "100px" }}>
                                                     {nombreAvatar ?
                                                         <img className="w-100 h-100"
-                                                            src={"http://localhost:60671/Avatares/" + nombreAvatar}
+                                                            src={"http://134.209.120.136:4000/Avatares/" + nombreAvatar}
                                                             style={{ objectFit: "cover" }} /> : nombre.charAt(0) + apellido.charAt(0)}
                                                 </Avatar>
                                             }

@@ -64,7 +64,7 @@ const ComunicadoForm = ({ handleClose, classes, idCurso, idInstitucion, comunica
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
   useEffect(() => {
-    fetch("http://localhost:60671/api/docente/getId?jwt="+jwt, {
+    fetch("http://134.209.120.136:4000/api/docente/getId?jwt="+jwt, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",

@@ -10,7 +10,7 @@ const RecuperarPassword = ({open, handleClose}) => {
     const enviarMail = async (e) => {
       //      e.preventDefault();
         
-            const response = await fetch("http://localhost:60671/api/mail/passwordrecovery", {
+            const response = await fetch("http://134.209.120.136:4000/api/mail/passwordrecovery", {
               method: 'POST',
               headers: { 'content-type': 'application/x-www-form-urlencoded' },
               body: qs.stringify(data),

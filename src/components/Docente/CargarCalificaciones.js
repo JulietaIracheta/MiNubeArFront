@@ -65,7 +65,7 @@ const CargarCalificaciones = () => {
   };
   
   useEffect(async () => {
-    const result = await fetch('http://localhost:60671/api/materias', {
+    const result = await fetch('http://134.209.120.136:4000/api/materias', {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -79,7 +79,7 @@ const CargarCalificaciones = () => {
   }, []);
 
   useEffect(async () => {
-    const result = await fetch('http://localhost:60671/api/usuario/estudiantes', {
+    const result = await fetch('http://134.209.120.136:4000/api/usuario/estudiantes', {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -94,7 +94,7 @@ const CargarCalificaciones = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:60671/api/boletin/", {
+    const response = await fetch("http://134.209.120.136:4000/api/boletin/", {
       method: "POST",
       headers: {
         "Content-type": "application/json",

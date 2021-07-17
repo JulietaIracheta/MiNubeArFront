@@ -26,7 +26,7 @@ export default () => {
 
     useEffect(() => {
         (async () => {
-            await fetch("http://localhost:60671/api/usuario/getChatsDocente?jwt="+jwt, {
+            await fetch("http://134.209.120.136:4000/api/usuario/getChatsDocente?jwt="+jwt, {
                 method: 'GET',
                 headers: { "Content-type": "application/json" },
                 credentials: "include",
@@ -42,7 +42,7 @@ export default () => {
     const joinRoom = async (nombreSala) => {
         try {
             const conn = new HubConnectionBuilder()
-                .withUrl("http://localhost:60671/chatHub")
+                .withUrl("http://134.209.120.136:4000/chatHub")
                 .configureLogging(LogLevel.Information)
                 .build();
 

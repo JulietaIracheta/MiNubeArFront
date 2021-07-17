@@ -1,4 +1,4 @@
-const url = 'http://localhost:60671/api/notificacion/';
+const url = 'http://134.209.120.136:4000/api/notificacion/';
 
 export default function eliminarNotificacion(id) {
     return fetch(url + id, {

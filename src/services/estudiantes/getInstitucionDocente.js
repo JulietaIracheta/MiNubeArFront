@@ -1,7 +1,7 @@
 
-const urlBase='http://localhost:60671/api/docente/';
+const urlBase='http://134.209.120.136:4000/api/docente/';
 
-const URL_DOCENTE = 'http://localhost:60671/api/docente/getInstitucionesDeUnDocente/'
+const URL_DOCENTE = 'http://134.209.120.136:4000/api/docente/getInstitucionesDeUnDocente/'
 
 
 export default async function getInstitucionDocente(id) {
