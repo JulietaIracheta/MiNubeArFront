@@ -31,7 +31,7 @@ export default function MateriaUnidad({ id }) {
       })();
       },[]);
       useEffect(function(){
-        const url = 'http://localhost:60671/api/contenido/getContenidoDeEstudiante/'+id+"?jwt="+jwt;
+        const url = 'http://134.209.120.136:4000/api/contenido/getContenidoDeEstudiante/'+id+"?jwt="+jwt;
 
         return fetch(url, {
             method: 'GET'

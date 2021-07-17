@@ -12,7 +12,7 @@ const VideoContenido = ({ idMateria,contenido,setAct }) => {
     }, []);*/
     useEffect(() => {
         (async () => {
-          const response = await fetch("http://localhost:60671/api/contenido/"+contenido, {
+          const response = await fetch("http://134.209.120.136:4000/api/contenido/"+contenido, {
             headers: { "Content-type": "application/json" },
             credentials: "include",
           });
@@ -25,7 +25,7 @@ const VideoContenido = ({ idMateria,contenido,setAct }) => {
         <div className="p-2">
             {
                 contenidos?
-                <ReactPlayer url={"http://localhost:60671/videos/" + contenidos.video} controls width="80%" height="50%" onEnded={()=>setAct(true)} />
+                <ReactPlayer url={"http://134.209.120.136:4000/videos/" + contenidos.video} controls width="80%" height="50%" onEnded={()=>setAct(true)} />
 
                 :""
             }
