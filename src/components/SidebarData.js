@@ -1,6 +1,8 @@
-import { BorderColor, Business, Group, LocalLibrary, MeetingRoom } from '@material-ui/icons'
+import { BorderColor, Business, Group, LocalLibrary, MeetingRoom  } from '@material-ui/icons'
+import AssignmentIcon from '@material-ui/icons/Assignment';
+import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import React from 'react'
-
+import CategoryIcon from '@material-ui/icons/Category';
 export const SidebarData = [
     {
         title: 'Instituciones', 
@@ -31,15 +33,19 @@ export const SidebarData = [
     },
     {
         title: 'Asignar Cursos a Institución', 
-        icon: <MeetingRoom />,
+        icon: <AssignmentIcon />,
         link: "/asignarCursos"
     },
 
     {
         title: 'Asignar Estudiantes a Cursos', 
-        icon: <MeetingRoom />,
+        icon: <AssignmentIndIcon />,
         link: "/asignarEstudiantes"
     },
-    
+    {
+        title: 'Estadisticas', 
+        icon: <CategoryIcon />,
+        link: "/estadisticas"
+    },
 
 ] 

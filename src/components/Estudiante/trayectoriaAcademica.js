@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Cookies, useCookies } from 'react-cookie';
+import { Cookies } from 'react-cookie';
 import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
 import Zoom from '@material-ui/core/Zoom';
 import Typography from '@material-ui/core/Typography';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import NavAdmin from "../Registro/NavAdmin";
+import Sidebar from '../Sidebar';
+import { SidebarData } from '../SidebarData';
 
 const HtmlTooltip = withStyles((theme) => ({
     tooltip: {
@@ -39,6 +41,8 @@ export default function TrayectoriaAcademica() {
     return (
         <div>
             <NavAdmin />
+            <div className="d-flex mt-1">
+            <Sidebar data={SidebarData} />
 
             <div className="w-100 mt-5">
                 <h2 className="text-center">Estadísticas de los usuarios de MiNube</h2>
@@ -143,6 +147,7 @@ export default function TrayectoriaAcademica() {
                     </div>
                 </>
                     : ""}
+            </div>
             </div>
         </div>
     );

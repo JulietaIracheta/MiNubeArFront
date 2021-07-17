@@ -27,17 +27,18 @@ const RecuperarPassword = ({open, handleClose}) => {
     return (
        
         <Dialog open={open} onClose={handleClose}>
-                    <div className="container p-4">
-                    <h3>Por favor ingrese su email</h3>
-                    <div className="form-group">
-                        <label>Email:</label>
-                        <input type="text" name="email" className="form-control" id="email" 
-                                value = {email}
-                                onChange = { handleInputChange }
-                                />
-                         </div> 
-                    <button type="submit" className="btn btn-outline-primary float-right ml-1 mt-2" onClick = { () => enviarMail()}>Enviar</button>
-                    <button className="btn btn-secondary float-right mt-2"    onClick={handleClose}>Cancelar</button> 
+                    <div className="container p-4 pt-5 pt-6">
+                        <h3>Reestablecer Contraseña</h3>
+                        <p>Ingrese su email y le enviaremos un enlace a su correo para reestablecer la contraseña.</p>
+                        <div className="form-group">
+                            <label className="m-0">Email:</label>
+                            <input type="text" name="email" className="form-control" id="email" 
+                                    value = {email}
+                                    onChange = { handleInputChange }
+                                    />
+                            </div> 
+                        <button type="submit" className="btn btn-primary float-right ml-1 mt-2" onClick = { () => enviarMail()}>Enviar</button>
+                        <button className="btn btn-secondary float-right mt-2"    onClick={handleClose}>Cancelar</button> 
                     </div>
             </Dialog>
         );

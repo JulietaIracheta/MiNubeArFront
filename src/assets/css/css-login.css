@@ -1,54 +1,43 @@
-.login-form{
-  display: flex;
-  align-items: center;
-  width: 100%;
-  min-width: 800px;
-  padding: 10px;
-  margin: auto;
-  height: 100%;
-  margin-top: 3em;
+
+  .logo{
+    height: auto;
+    max-width: 200px;
+  }
+
+  .login-container{
+    width: 100%;
+    max-width: 840px;
+    background-color: #f5f5f5;
+  }
+
+  .card {
+    max-width: 400px;
   }
   
-  .logo{
-    height: 200px;
-    max-width: 330px;
+  .title {
+    color: #444;
+  }
+  
+  .or {
+    text-align: center;
+    border-bottom: 2px solid rgb(245 239 239);
+    line-height: 0.1em;
+    margin: 25px 0;
+  }
+  
+  .or span {
+    background: #fff;
+    padding: 0 10px;
   }
 
-  .login-button{
-    width: 100%;
-  }
-  .logo-container{
-    height: 500px;
-    display: flex;
-    align-items: center;
-    border: 1px solid black;
-    background: #f5f5f5;
-    padding: 50px;
-    margin-right: 4em;
-  }
-  .boton-login{
-    background: #555250 !important;
-    font-size: 1em;
+  
+  .cta-btn {
+    background-color: #222888;
   }
 
-  @media only screen and (max-width: 800px) {
-    /* For tablets: */
-    .login-form{
-      display: flex;
-    flex-direction: column;
-    width: 100%;
-    min-width: 400px;
-    margin: 0 auto;
-    height: 100%;
-      }
-    .logo-container {
-        display: flex;
-        align-items: center;
-        border: 1px solid black;
-        background: #f5f5f5;
-        padding: 50px;
-        margin-right: 0px;
-        margin-bottom: 2em;
-        height: 250px;
+
+  @media (min-width: 768px) { 
+    .login-container{
+      background-color: #f5f5f5;
     }
   }

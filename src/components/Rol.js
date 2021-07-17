@@ -18,6 +18,7 @@ export default function Rol(){
       });
 
       const content = await response.json();  
+      cookie.set('rol', content);
       
       console.log( content );
 

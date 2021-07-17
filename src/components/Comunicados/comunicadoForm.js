@@ -154,7 +154,7 @@ const ComunicadoForm = ({ handleClose, classes, idCurso, idInstitucion, comunica
               variant="contained"
               color="primary"
               type="submit"
-              className="btn p-3 font-size-24"
+              className="btn p-3 "
             >
               Enviar
             </button>

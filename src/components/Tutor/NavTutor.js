@@ -16,7 +16,7 @@ import { Calendar2Event, Bell, PersonCircle } from "react-bootstrap-icons";
 import logo from '../../assets/img/logoGris.png'
 import CheckIcon from '@material-ui/icons/Check';
 import eliminarNotificacion from "../../services/notificaciones/eliminarNotificacion";
-import { Cookies } from 'react-cookie';
+import { Cookies,useCookies } from 'react-cookie';
 import { Avatar } from "@material-ui/core";
 
 
@@ -38,6 +38,7 @@ const NavBar = (props) => {
     cookie.remove("apellidoPersona");
     cookie.remove("email");
     cookie.remove("avatarNombre");
+    
   }
   
   useEffect(async function () {

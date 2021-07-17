@@ -90,7 +90,7 @@ const Trayectoria = ({ classes, ...props }) => {
   <VerticalTimelineElement
     className="vertical-timeline-element--work"
       date={record.año}
-    iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+    iconStyle={{ background:'#b61915', color: '#fff' }}
     icon={<School />}
   >
     <span><b><i>{record.curso}</i></b></span><br />

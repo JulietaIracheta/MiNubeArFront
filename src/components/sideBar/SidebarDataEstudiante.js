@@ -1,4 +1,4 @@
-import { BorderColor,Business, CastForEducation, Group, MenuBook, Portrait, School } from '@material-ui/icons'
+import { BorderColor,Business, CastForEducation, ContactPhoneTwoTone, Group, History, MenuBook, Portrait, School } from '@material-ui/icons'
 import React from 'react'
 import ChatIcon from '@material-ui/icons/Chat';
 export const SidebarDataEstudiante = [
@@ -31,5 +31,10 @@ export const SidebarDataEstudiante = [
         title: 'Trayectoria Escolar', 
         icon: <School />,
         link: "/estudiante/trayectoria"
+    },
+    {
+        title: 'Historial de contenidos', 
+        icon: <History />,
+        link: "/estudiante/contenidosHistoricos"
     }
 ] 
