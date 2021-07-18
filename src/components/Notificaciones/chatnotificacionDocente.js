@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Message from "./Message";
 import {
     HubConnectionBuilder,
     LogLevel,
-    HttpTransportType
 } from "@microsoft/signalr";
 import Chat from './chat';
 import NavDocente from '../Docente/NavDocente';
@@ -34,7 +32,7 @@ export default () => {
                 if (!res.ok) throw new Error('Response is NOT ok')
                 return res.json()
             }).then(res => {
-                    setCursosDocente(res);
+                setCursosDocente(res);
             });
         })();
     }, []);
@@ -90,32 +88,30 @@ export default () => {
     }
 
     return (
-        <div>
+        <>
             <NavDocente />
             <div className="flex">
                 <Sidebar data={SidebarDataDocente} />
-                <div className="container">
-                    <h2 className="mt-2">Salas de chat</h2>
+                <main className="main w-100 pr-2 pt-4">
+                    <div className="mb-3 pl-3 pl-sm-2">
+                        <span className="tituloadmin tituloDocente">Salas de chat</span>
+                    </div>
                     {!connection
                         ?
-                        <div className="row">
+                        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 m-0">
                         {cursosDocente.map((u, idx) =>
-                        <div className="col-md-6">
-                        <div className="bordes mb-3">
-                          <div className="card-body colorDoc font-weight-bold">
-                            <h5 className="card-title font-weight-bold colorDoc">
-                            Sala: {u}
+                        <div className="col mb-4">
+                          <div className="card container bordes">
+                            <h5 className="card-title pt-3 pl-2 card-title-docente">
+                                {u}
                             </h5>
-                            <div className="text-left">
-                              <div class="d-flex flex-row-reverse">
-                              <button key={idx} class="btn btn-lg ml-2 text-white" style={{background:"#2d2f85"}}
+                            <div className="card-body">
+                              <button key={idx} class="btn btn-md ml-0 ml-sm-2  text-white float-right" style={{background:"#2d2f85"}}
                                 onClick={() => joinRoom(u)}>
                                 <InsertCommentIcon />
                                 Unirse</button>
-                              </div>
                             </div>
                           </div>
-                        </div>
                       </div>
                         )}
                         </div>
@@ -125,9 +121,9 @@ export default () => {
                             closeConnection={closeConnection}
                             users={users} />
                     }
-                </div>
+                </main>
             </div>
-
-        </div>
+          
+        </>
     );
 };
