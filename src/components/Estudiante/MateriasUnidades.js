@@ -14,18 +14,29 @@ export default function MateriaUnidad({ id }) {
     const jwt = cookie.get('jwt');
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
-    
+    const [promedioVisto, setPromedioVisto] = useState(0);
+    const [promedioActividadResuelta, setPromedioActividadResuelta] = useState(0);
+    const [contenidoResumen, setContenidoResumen] = useState('');
+    const [actividadResumen, setActividadResumen] = useState('');
     useEffect(() => {
         (async () => {
           const response = await fetch(url, {
             headers: { "Content-type": "application/json" },
             credentials: "include",
           });
-      
-          const content = await response.json();  
           
-          console.log( content );
-      
+          const content = await response.json();  
+        
+          const contenidoPromedio = await fetch(baseUrl+"Contenido/ContenidoPromedio?jwt="+jwt, {
+            headers: { "Content-type": "application/json" },
+            credentials: "include",
+          });
+          contenidoPromedio.json().then(e=>{
+            setPromedioVisto(e.contenidoVisto);
+            setPromedioActividadResuelta(e.actividadResuelta);
+            setContenidoResumen(e.contenidoResumen);
+            setActividadResumen(e.actividadResumen);
+          });
           //setData(content);
           setLoading(true);
       })();
@@ -53,14 +64,14 @@ export default function MateriaUnidad({ id }) {
             <Encabezado texto={"Contenidos y actividades"} />
             <div className="chart-est-container">
                 <div className="chart-item">
-                    <h5>Actividades vistas</h5>
-                    <ChartEstudainte porcentaje={0} />
-                    <div>Al día</div>
+                    <h5>Contenido visto</h5>
+                    <ChartEstudainte porcentaje={promedioVisto} />
+                    <div>{contenidoResumen}</div>
                 </div>
                 <div  className="chart-item">
-                    <h5>Actividades resueltas</h5>
-                    <ChartEstudainte porcentaje={0} />
-                    <div>A mejorar</div>
+                    <h5>Actividades correctas</h5>
+                    <ChartEstudainte porcentaje={promedioActividadResuelta} />
+                    <div>{actividadResumen}</div>
                 </div>
             </div>
             <div className="unidad-container">

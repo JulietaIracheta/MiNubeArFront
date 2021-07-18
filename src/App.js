@@ -118,7 +118,7 @@ const app = () => (
         <MyRoute path='/cursos/asignar_estudiante' exact component={AsignarEstudiantes} />   
         <Route path='/Estuduante' exact component={Estudiante}/>
         <Route path='/estudiante/materias/:id' exact component={MateriaUnidad}/>
-        <Route path='/estudiante/materias/:id/:unidad/video' exact component={MateriaActividad}/>
+        <Route path='/estudiante/materias/:id/:contenido/video' exact component={MateriaActividad}/>
         <Route path='/estudiante/contenidosHistoricos' exact component={ContenidosHistoricos}/>
         <MyRoute path='/cursos/asignar_estudiante' exact component={AsignarEstudiantes} /> 
         <Route path="*" render={NotFound} />     
