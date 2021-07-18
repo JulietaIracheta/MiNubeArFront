@@ -131,7 +131,10 @@ const Login = () => {
           cookie.set('jwt', res.jwt);
         }
         cookie.set('nombrePersona', res.nombre);
+         setCookie('jwt', res.jwt, { path: '/' });
         cookie.set('jwt', res.jwt);
+        setCookie('rol', res.rolId);
+        console.log(res.rolId);
         cookie.set('apellidoPersona', res.apellido);
         
         setCookie('email', email, { path: '/' });

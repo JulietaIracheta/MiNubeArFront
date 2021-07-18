@@ -1,6 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import logo from './assets/img/logoColor.jpeg'
-
 
 const NotFound = () => {
         return (
@@ -10,7 +10,7 @@ const NotFound = () => {
                    <h1 className="text-center display-3">404</h1>  
                    <h3 className="text-center text-secondary">Página no encontrada</h3>
                    <p className="text-center text-secondary">La página que estas buscando no esta disponible.</p>
-                   <a href="/login" className="mt-3 btn w-auto btn-sm btn-primary m-auto rounded rounded-sm-pill">Volver al Inicio</a>
+                   <Link to="/rol" className="mt-3 btn w-auto btn-sm btn-primary m-auto rounded rounded-sm-pill">Volver al Inicio</Link>
                 </div>
             </div>
         )

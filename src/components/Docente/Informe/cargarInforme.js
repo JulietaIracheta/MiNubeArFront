@@ -167,6 +167,7 @@ const CargarInforme = ({ handleClose, classes, ...props }) => {
       const form = new FormData();
       form.append("idUsuario", idUsuario);
       form.append("idCurso", idCurso);
+      form.append("idInstitucion", idInstitucion);
       form.append("año", año);
       form.append("formFile", archivo);
       form.append("Informe", fileName)

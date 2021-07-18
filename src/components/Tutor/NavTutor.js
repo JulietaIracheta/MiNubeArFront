@@ -71,7 +71,7 @@ const NavBar = (props) => {
     <div >
       <Navbar className="menuNavBarTutor" expand="md" light>
         <img src={logo}/>
-        <NavbarBrand className="colorBrand navbar-brand" href="/tutor">MI NUBE AR</NavbarBrand>
+        <NavbarBrand className="colorBrand navbar-brand" href="/rol">MI NUBE AR</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
             <Nav className="mr-auto"></Nav>

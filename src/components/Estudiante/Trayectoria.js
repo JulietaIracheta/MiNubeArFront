@@ -83,7 +83,7 @@ const Trayectoria = ({ classes, ...props }) => {
                   <hr class="hr-color w-100" />
         </div>
         <div className='demo-app'>
-          <div className='demo-app-main'>
+          <div className='demo-app-main-trayectoria'>
 
 <VerticalTimeline>
   {informes.map((record) => (
@@ -93,10 +93,13 @@ const Trayectoria = ({ classes, ...props }) => {
     iconStyle={{ background:'#b61915', color: '#fff' }}
     icon={<School />}
   >
+    <span><b><i>{record.institucion}</i></b></span><br />
     <span><b><i>{record.curso}</i></b></span><br />
     {record.materiaCalificacion.map((mat) =>(
       <div>
-    <span><small><b>{mat.materia} :{mat.calificacion} </b></small></span><br />
+        
+    <span><small><b>{mat.materia}</b> :{mat.calificacion} </small></span><br />
+  
     </div>
     )
     )}

@@ -21,7 +21,6 @@ const HtmlTooltip = withStyles((theme) => ({
 export default function TrayectoriaAcademica() {
     // const cookieNombreEstudiante = new Cookies();
 
-
     const [x, setX] = useState();
     useEffect(() => {
         fetch("http://localhost:60671/api/boletin/getBoletinesEstudiante/" + 1, {
