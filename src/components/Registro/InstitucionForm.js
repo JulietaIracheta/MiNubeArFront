@@ -95,16 +95,21 @@ const InstitucionForm = ({ handleClose, classes, ...props }) => {
 
   return (
     <div>
-      <h6 className="mt-5 ml-5">Complete el formulario para registrar una institucion </h6>
+      <h6 className="pt-4 text-center">Complete el formulario para registrar una institucion </h6>
+      <div className="container pb-3">
       <form
         autoComplete="off"
         noValidate
         className={classes.root}
         onSubmit={handleSubmit}
       >
-        <Grid container>
+        <Grid container
+          spacing={0}
+          direction="column"
+          alignItems="center"
+          justify="center"
+        >
           <Grid item xs={12}>
-         
             <TextField
               name="nombre"
               variant="outlined"
@@ -113,9 +118,6 @@ const InstitucionForm = ({ handleClose, classes, ...props }) => {
               onChange={handleInputChange}
               {...(errors.nombre && { error: true, helperText: errors.nombre })}
             />
-          </Grid>
-          <Grid item xs={12}>
-         
             <TextField
               name="direccion"
               variant="outlined"
@@ -126,7 +128,7 @@ const InstitucionForm = ({ handleClose, classes, ...props }) => {
             />
           </Grid>
           
-          <Grid item xs={12}>
+          <Grid item xs={12} className="mr-auto">
             <TextField
               name="email"
               variant="outlined"
@@ -135,6 +137,7 @@ const InstitucionForm = ({ handleClose, classes, ...props }) => {
               onChange={handleInputChange}
               {...(errors.email && { error: true, helperText: errors.email })}
             />
+          </Grid>
             <div>
               <Button
                 variant="contained"
@@ -159,9 +162,10 @@ const InstitucionForm = ({ handleClose, classes, ...props }) => {
                 Salir
               </Button>
             </div>
-          </Grid>
+          
         </Grid>
       </form>
+      </div>
     </div>
   );
 };
