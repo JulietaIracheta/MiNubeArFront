@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import {
-    Grid,
-    TextField,
     Button,
     Select,
     MenuItem,
@@ -12,19 +10,9 @@ import {
 import NavAdmin from './NavAdmin';
 import Sidebar from "../Sidebar";
 import { SidebarData } from "../SidebarData";
-
-const useStyles = makeStyles((theme) => ({
-  formControl: {
-    minWidth: 120,
-    marginLeft: 25
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
-}));
+import url from "../../url"
 
 const AsignarCursosAInstituciones = () => {
-    const classes = useStyles();
     const [instituciones, setInstituciones] = useState([]);
     const [cursos, setCursos] = useState([]);
     const [institucion, setInstitucion] = useState();
@@ -45,7 +33,7 @@ const AsignarCursosAInstituciones = () => {
       };
 
       useEffect(async () => {
-        const result = await fetch('http://134.209.120.136:4000/api/institucion', {
+        const result = await fetch(`${url.url}/api/institucion`, {
           method: 'GET',
           headers: { "Content-type": "application/json" },
           credentials: "include",
@@ -59,7 +47,7 @@ const AsignarCursosAInstituciones = () => {
       }, []);
       
       useEffect(async () => {
-        const result = await fetch('http://134.209.120.136:4000/api/cursos', {
+        const result = await fetch(`${url.url}/api/cursos`, {
           method: 'GET',
           headers: { "Content-type": "application/json" },
           credentials: "include",
@@ -74,7 +62,7 @@ const AsignarCursosAInstituciones = () => {
 
       const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch("http://134.209.120.136:4000/api/institucioncurso/", {
+        const response = await fetch(`${url.url}/api/institucioncurso/`, {
           method: "POST",
           headers: {
             "Content-type": "application/json",
@@ -90,82 +78,64 @@ const AsignarCursosAInstituciones = () => {
       return (
         <div>
           <NavAdmin />
-    
-          <div className="d-flex mt-1">
+          <div className="d-flex">
             <Sidebar data={SidebarData} />
-            <div className="container cardContainer ">
-              <div>
-                <h4>Asignar Cursos a Institución</h4>
-                <hr className="hr-colorAdm" />
-                <h6 className="mt-5 mb-5">
+            <div className="main w-100 pr-2 pt-4">
+              <div className="d-flex d-sm-block flex-column  flex-sm-row justify-content-between">
+                <h4 className="tituloadmin text-center text-sm-left">Asignar Cursos a Institución</h4>
+                <h6 className="mt-4 mb-4 text-secondary">
                   Complete el formulario para asignar los cursos a cada Institución
                 </h6>
               </div>
-              <form autoComplete="off" noValidate onSubmit={handleSubmit}>
-                <div
-                  style={{
-                    display: "flex",
-                    width:"100%",
-                    justifyContent: "center",
-                  }}
+              <form autoComplete="off" noValidate onSubmit={handleSubmit} className="d-flex mt-4 formulario-asignacion flex-column p-2 p-md-5 bg-white" style={{border:"1px solid #edf2f9"}}>
+                <FormControl fullWidth variant="outlined" className="mb-3">
+                   <InputLabel id="demo-simple-select-outlined-label">Institucion</InputLabel>
+
+                <Select
+                  name="idInstitucion"
+                  id="demo-simple-select-outlined"
+                  value={institucion}
+                  onChange={handleInputChangeInstitucion}
+                  label="Institucion"
+                
                 >
-              <Grid container spacing={3}>
-                <Grid item md={6} xl={6} lg={6}> 
-            <FormControl fullWidth variant="outlined" className={classes.formControl}>
-            <InputLabel id="demo-simple-select-outlined-label">Institucion</InputLabel>
+                  {instituciones.map((i) => (
+                    <MenuItem value={i.idInstitucion}>
+                      {i.nombre}
+                    </MenuItem>
+                  ))}
+                </Select>
+                </FormControl>
 
-            <Select
-              name="idInstitucion"
-              id="demo-simple-select-outlined"
-              value={institucion}
-              onChange={handleInputChangeInstitucion}
-              label="Institucion"
-            
-            >
-              {instituciones.map((i) => (
-                <MenuItem value={i.idInstitucion}>
-                  {i.nombre}
-                </MenuItem>
-              ))}
-            </Select>
-            </FormControl>
-            </Grid>    
-            <Grid item md={6} xl={6} lg={6}>
-
-<FormControl fullWidth variant="outlined" className={classes.formControl}>
-            <InputLabel id="demo-simple-select-outlined-label">Curso</InputLabel>
-
-            <Select
-              name="idCurso"
-              id="demo-simple-select-outlined"
-              value={curso}
-              onChange={handleInputChangeCurso}
-              label="Curso"
-                multiple
-            >
-              {cursos.map((c) => (
-                <MenuItem value={c.idCurso}>
-                  {c.nombre}
-                </MenuItem>
-              ))}
-            </Select>
-            </FormControl>
-            </Grid>    
-            </Grid>    
-            <Button
+                <FormControl fullWidth variant="outlined" className="mb-3">
+                  <InputLabel id="demo-simple-select-outlined-label">Curso</InputLabel>
+                  <Select
+                    name="idCurso"
+                    id="demo-simple-select-outlined"
+                    value={curso}
+                    onChange={handleInputChangeCurso}
+                    label="Curso"
+                      multiple
+                  >
+                    {cursos.map((c) => (
+                      <MenuItem value={c.idCurso}>
+                        {c.nombre}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>  
+                <Button
                   type="submit"
-                  variant="outlined"
-                  className="ml-5"
+                  className="btn bg-primary text-white w-50 ml-auto"
+                  color="primary"
                 >
                   Enviar
                 </Button>
-
-</div>
-</form>
-</div>
-</div>
-</div>
-);
+          </form>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default AsignarCursosAInstituciones;

@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import '../../assets/css/admin/admin.css'
 import {
-  Collapse,
   Navbar,
-  NavbarToggler,
   NavbarBrand,
   Nav,
   NavItem, UncontrolledDropdown,
@@ -12,10 +10,10 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
-import { IconContext } from "react-icons";
-import { ChatLeftTextFill, Bell, BellFill, PersonCircle, PersonCheckFill } from "react-bootstrap-icons";
+import {  PersonCircle } from "react-bootstrap-icons";
 import logo from '../../assets/img/logoColor.jpeg'
 import { BorderColor, Business, Group } from "@material-ui/icons";
+import url from "../../url"
 
 let size_icon = 25
 
@@ -25,7 +23,7 @@ const NavBar = (props) => {
   const toggle = () => setIsOpen(!isOpen);
  
   const logout = async () => {
-    await fetch('http://134.209.120.136:4000/api/usuario/logout', {
+    await fetch(`${url.url}/api/usuario/logout`, {
       method: 'POST',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -57,6 +55,17 @@ const NavBar = (props) => {
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
+
+          <NavItem className="marginMN sidebarResponsive">
+            <a href="/Instituciones"> <Business className="icon-menu" /></a>
+          </NavItem>
+          <NavItem className="marginMN sidebarResponsive">
+            <a href="/usuarios"> <Group className="icon-menu" /></a>
+          </NavItem>
+          <NavItem className="marginMN sidebarResponsive">
+            <a href="#"> <BorderColor className="icon-menu" /></a>
+          </NavItem>
+
           </Nav>
       </Navbar>
     </div>

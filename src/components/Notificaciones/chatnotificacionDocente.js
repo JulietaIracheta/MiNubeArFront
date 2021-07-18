@@ -13,6 +13,7 @@ import './chat.css';
 import { useCookies } from "react-cookie";
 import InsertCommentIcon from '@material-ui/icons/InsertComment';
 import { Cookies } from 'react-cookie';
+import url from "../../url"
 
 export default () => {
     const [messages, setMessages] = useState([]);
@@ -26,7 +27,7 @@ export default () => {
 
     useEffect(() => {
         (async () => {
-            await fetch("http://134.209.120.136:4000/api/usuario/getChatsDocente?jwt="+jwt, {
+            await fetch( `${url.url}/api/usuario/getChatsDocente?jwt=`+jwt, {
                 method: 'GET',
                 headers: { "Content-type": "application/json" },
                 credentials: "include",
@@ -42,7 +43,7 @@ export default () => {
     const joinRoom = async (nombreSala) => {
         try {
             const conn = new HubConnectionBuilder()
-                .withUrl("http://134.209.120.136:4000/chatHub")
+                .withUrl( `${url.url}/chatHub`)
                 .configureLogging(LogLevel.Information)
                 .build();
 

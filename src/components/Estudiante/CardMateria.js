@@ -7,7 +7,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import Grid from "@material-ui/core/Grid";
 import "../../assets/css/fontawesome-all.css"
 function CardMateria(props, key) {
-console.log(props);
+
   const enlace = props.class!=="docente" ? 'estudiante/materias/'+props.idMateria :"/docente/" + props.idCurso + "/" + props.idMateria + "/contenido";
 
   return (

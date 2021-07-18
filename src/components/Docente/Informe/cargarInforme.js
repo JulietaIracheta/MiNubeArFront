@@ -18,7 +18,7 @@ import Sidebar from "../../Sidebar";
 import { SidebarDataDocente } from "../../sideBar/SidebarDataDocente";
 import NavDocente from "../NavDocente";
 import { Cookies } from 'react-cookie';
-
+import url from "../../../url"
 
 const styles = (theme) => ({
   root: {
@@ -103,7 +103,7 @@ const CargarInforme = ({ handleClose, classes, ...props }) => {
   const jwt = cookie.get('jwt');
   useEffect(async () => {
     const result = await fetch(
-      "http://134.209.120.136:4000/api/docente/getInstitucion/?jwt="+jwt,
+      `${url.url}/api/docente/getInstitucion/?jwt=`+jwt,
       {
         method: "GET",
         headers: { "Content-type": "application/json" },
@@ -119,7 +119,7 @@ const CargarInforme = ({ handleClose, classes, ...props }) => {
   }, []);
 
   useEffect(async () => {
-    const result = await fetch('http://134.209.120.136:4000/api/docente/getCursos/?jwt='+jwt, {
+    const result = await fetch(`${url.url}/api/docente/getCursos/?jwt=`+jwt, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -134,7 +134,7 @@ const CargarInforme = ({ handleClose, classes, ...props }) => {
 
   useEffect(async () => {
     const result = await fetch(
-      "http://134.209.120.136:4000/api/docente/getEstudiantesPorCurso/" + idInstitucion +"/" + idCurso,
+      `${url.url}/api/docente/getEstudiantesPorCurso/` + idInstitucion +"/" + idCurso,
       {
         method: "GET",
         headers: { "Content-type": "application/json" },
@@ -157,7 +157,7 @@ const CargarInforme = ({ handleClose, classes, ...props }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const urlCargaInforme = "http://134.209.120.136:4000/api/informe/cargarInforme";
+    const urlCargaInforme = `${url.url}/api/informe/cargarInforme`;
     
     if (validate()) {
       const onSuccess = () => {
@@ -167,11 +167,12 @@ const CargarInforme = ({ handleClose, classes, ...props }) => {
       const form = new FormData();
       form.append("idUsuario", idUsuario);
       form.append("idCurso", idCurso);
+      form.append("idInstitucion", idInstitucion);
       form.append("año", año);
       form.append("formFile", archivo);
       form.append("Informe", fileName)
       try{
-      const response = await axios.post("http://134.209.120.136:4000/api/informe/cargarInforme",
+      const response = await axios.post(`${url.url}/api/informe/cargarInforme`,
         form);
           console.log(response);
         }catch(err) {

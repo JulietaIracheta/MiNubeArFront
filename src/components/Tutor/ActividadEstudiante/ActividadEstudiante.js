@@ -6,22 +6,26 @@ import '../../../assets/css/css-actividad-estudiante.css'
 import BotonVolver from "../../BotonVolver/botonVolver";
 import Sidebar from "../../Sidebar";
 import axios from 'axios';
+import url from "../../../url"
 import {SidebarDataTutor} from '../../sideBar/SidebarDataTutor';
+import { Cookies } from 'react-cookie';
 
 export default function ApexChart(props) {
     const [serie, setSerie] = useState(0);
     const chartAct = Chart({ series : parseInt(serie) });
     const chartCont = Chart({ series : 68 });
     const [video, setVideo] = useState([]);
-    const urlBase = 'http://134.209.120.136:4000/api/contenido/?id=3'
+    const urlBase = `${url.url}/api/contenido/?id=3`
     const [videoFilePath, setVideoFilePath] = useState(null);
     const [archivo, setFile] = useState();
-    var urlVideo = 'http://134.209.120.136:4000/videos/';
+    var urlVideo = `${url.url}/videos/`;
     const id = props.match.params.id
     const [calificacion, setCalificacion] = useState('');
+    const cookie = new Cookies();
+    const jwt = cookie.get('jwt');
 
     useEffect(function () {
-        fetch('http://134.209.120.136:4000/api/actividades/calcularAvance/' + id, {
+        fetch(`${url.url}/api/actividades/calcularAvance/` + id +"?jwt="+jwt, {
             method: 'GET'
         }).then(res => {
             if (!res.ok) alert('error')

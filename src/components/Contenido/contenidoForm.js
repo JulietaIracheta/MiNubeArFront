@@ -11,6 +11,9 @@ import { useToasts } from "react-toast-notifications";
 import "../../assets/css/css.css";
 import * as actions from "../../actions/contenido";
 import axios from 'axios';
+import url from "../../url"
+
+
 const styles = (theme) => ({
   root: {
     "& .MuiTextField-root": {
@@ -53,7 +56,7 @@ const ContenidoForm = ({ handleClose, classes, ...props }) => {
 
     if (fieldValues == values) return Object.values(temp).every((x) => x == "");
   };
-  console.log(props);
+  
 
   const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
     useForm(initialFieldValues, validate, props.setCurrentId);
@@ -72,7 +75,7 @@ const ContenidoForm = ({ handleClose, classes, ...props }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const urlCargaVideo = "http://134.209.120.136:4000/api/contenido/crearContenido";
+    const urlCargaVideo = `${url.url}/api/contenido/crearContenido`;
     
     if (validate()) {
       const onSuccess = () => {
@@ -87,7 +90,7 @@ const ContenidoForm = ({ handleClose, classes, ...props }) => {
       form.append("materia", props.idMateria);
       if(archivo)
         form.append("file", archivo[0]);
-      await axios.post("http://134.209.120.136:4000/api/contenido/crearContenido",
+      await axios.post(`${url.url}/api/contenido/crearContenido`,
         form)
         .then(response => {
           window.location.reload();

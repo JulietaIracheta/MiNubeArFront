@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Cookies } from 'react-cookie';
 import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
-import Zoom from '@material-ui/core/Zoom';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import NavAdmin from "../Registro/NavAdmin";
 import Sidebar from '../Sidebar';
 import { SidebarData } from '../SidebarData';
+import url from "../../url"
 
 const HtmlTooltip = withStyles((theme) => ({
     tooltip: {
@@ -20,12 +20,11 @@ const HtmlTooltip = withStyles((theme) => ({
 }))(Tooltip);
 
 export default function TrayectoriaAcademica() {
-    const cookieNombreEstudiante = new Cookies();
-
+    // const cookieNombreEstudiante = new Cookies();
 
     const [x, setX] = useState();
     useEffect(() => {
-        fetch("http://134.209.120.136:4000/api/boletin/getBoletinesEstudiante/" + 1, {
+        fetch(`${url.url}/api/boletin/getBoletinesEstudiante/` + 1, {
             method: "GET",
             headers: { "Content-type": "application/json" },
             credentials: "include",
@@ -41,14 +40,19 @@ export default function TrayectoriaAcademica() {
     return (
         <div>
             <NavAdmin />
-            <div className="d-flex mt-1">
+            <div className="d-flex">
             <Sidebar data={SidebarData} />
-
-            <div className="w-100 mt-5">
-                <h2 className="text-center">Estadísticas de los usuarios de MiNube</h2>
+            <div className="main w-100 pr-2 pt-4">
+                <div className="d-flex d-sm-block flex-column flex-sm-row justify-content-between">
+                    <h4 className="tituloadmin text-left">Estadísticas de MiNube</h4>
+                    <h6 className="mt-4 mb-4 text-secondary w-75">
+                        En esta sección podemos ver las estadisticas de los usuarios de MiNube,<br/> 
+                        como por ejemplo cuantos estudiantes utilizan la plataforma como<br/> 
+                        complemento para estudiar.
+                    </h6>
+                </div>
                 {x ?
-                <>
-                    <div class="content-trayectoria" style={{marginTop:"4rem"}}>
+                    <div class="content-trayectoria mt-5 mt-md-0">
                         <div class="hexagon">
                             <HtmlTooltip
                                 title={
@@ -145,12 +149,9 @@ export default function TrayectoriaAcademica() {
                             </HtmlTooltip>
                         </div>
                     </div>
-                </>
                     : ""}
             </div>
             </div>
         </div>
     );
-
-
 }

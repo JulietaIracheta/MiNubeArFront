@@ -1,7 +1,8 @@
-const url = 'http://134.209.120.136:4000/api/persona/getEstudiantesAsignados/1'
+import url from "../../url"
+const urlB = `${url.url}/api/persona/getEstudiantesAsignados/1`
 
 export default function getEstudiantes() {
-    return fetch(url, {
+    return fetch(urlB, {
         method: 'GET'
     }).then(res => {
         if (!res.ok) throw new Error('Response is NOT ok')

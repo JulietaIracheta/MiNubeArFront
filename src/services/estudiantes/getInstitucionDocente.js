@@ -1,7 +1,7 @@
+import url from "../../url"
+const urlBase=`${url.url}/api/docente/`;
 
-const urlBase='http://134.209.120.136:4000/api/docente/';
-
-const URL_DOCENTE = 'http://134.209.120.136:4000/api/docente/getInstitucionesDeUnDocente/'
+const URL_DOCENTE = `${url.url}/api/docente/getInstitucionesDeUnDocente/`
 
 
 export default async function getInstitucionDocente(id) {

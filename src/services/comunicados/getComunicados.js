@@ -1,7 +1,9 @@
-const url = 'http://134.209.120.136:4000/api/comunicado/getComunicados'
+
+import url from "../../url"
+const urlB = `${url.url}/api/comunicado/getComunicados`
 
 export default async function getComunicados() {
-    return await fetch(url, {
+    return await fetch(urlB, {
         method: 'GET'
     }).then(res => {
         if (!res.ok) throw new Error('Response is NOT ok')

@@ -7,10 +7,10 @@ import Encabezado from "./Encabezado.js";
 import CardMateria from "./CardMateria";
 import { Grid } from "@material-ui/core";
 import { Cookies, useCookies } from 'react-cookie';
-
+import url from "../../url"
 //import getMaterias from "../../services/estudiantes/getMaterias"
 
-const baseUrl = "http://134.209.120.136:4000/api/"
+const baseUrl =  `${url.url}/api/`
 
 const EstudianteMaterias = (props) => {
   

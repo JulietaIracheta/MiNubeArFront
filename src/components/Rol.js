@@ -3,16 +3,18 @@ import Docente from './Docente/Page';
 import Estudiante from './Estudiante/Page/index';
 import Tutor from './Tutor/Page';
 import Registro from './Registro/Registro'; 
-import Cookies from 'universal-cookie';
+import { Cookies, useCookies } from "react-cookie";
+import url from "../url"
 
 export default function Rol(){
   const [rol, setRol] = useState("");
   const cookie = new Cookies();
   const jwt = cookie.get('jwt');
+  const [cookies, setCookie] = useCookies(["usuario"]);
   
   useEffect(() => {
     (async () => {
-      const response = await fetch("http://134.209.120.136:4000/api/rol/getRolByUsuario?jwt="+jwt, {
+      const response = await fetch(`${url.url}/api/rol/getRolByUsuario?jwt=`+jwt, {
         headers: { "Content-type": "application/json" },
         credentials: "include"
       });
@@ -20,9 +22,8 @@ export default function Rol(){
       const content = await response.json();  
       cookie.set('rol', content);
       
-      console.log( content );
-
       setRol(content);
+     
 })();
   },[]);
 return (

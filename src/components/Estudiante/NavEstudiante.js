@@ -22,6 +22,7 @@ import eliminarNotificacion from "../../services/notificaciones/eliminarNotifica
 import { Business, Group } from '@material-ui/icons'
 import ChatIcon from '@material-ui/icons/Chat';
 import '../../assets/css/notificaciones/css-notificacion.css';
+import url from "../../url"
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,9 +34,11 @@ const NavBar = (props) => {
   const nombrePathGoogle = cookieNombreEstudiante.get('avatarPathGoogle');
   const [notificaciones, setNotificaciones] = useState([]);
   const jwt = cookieNombreEstudiante.get('jwt');
+  const rol = cookieNombreEstudiante.get('rol');
+  const rolId = cookieNombreEstudiante.get('rolId');
 
   const logout = async () => {
-    await fetch('http://134.209.120.136:4000/api/usuario/logout', {
+    await fetch( `${url.url}/api/usuario/logout`, {
       method: 'POST',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -44,6 +47,8 @@ const NavBar = (props) => {
     cookieNombreEstudiante.remove("apellidoPersona");
     cookieNombreEstudiante.remove("email");
     cookieNombreEstudiante.remove("jwt");
+    cookieNombreEstudiante.remove("rol");
+    cookieNombreEstudiante.remove("rolId");
 
     setCookie('nombreAvatar', '', { path: '/' });
     setCookie('avatarPath', '', { path: '/' });
@@ -55,8 +60,8 @@ const NavBar = (props) => {
   }
 
   useEffect(async function () {
-    const url = 'http://134.209.120.136:4000/api/notificacion/getByUsuario?jwt='+jwt
-    return await fetch(url, {
+    const urlB =  `${url.url}/api/notificacion/getByUsuario?jwt=`+jwt
+    return await fetch(urlB, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -130,7 +135,7 @@ const NavBar = (props) => {
                   <Avatar className="icon-perfil text-white" style={{ background: "#B0211D" }}>
                     {nombreAvatar ? nombreAvatar :
                       <img className="w-100 h-100"
-                        src={"http://134.209.120.136:4000/Avatares/" + nombrePath}
+                        src={ `${url.url}/Avatares/` + nombrePath}
                         style={{ objectFit: "cover" }} />
                     }</Avatar>
                 }

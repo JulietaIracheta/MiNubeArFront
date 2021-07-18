@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import ReactPlayer from 'react-player';
+import swal from 'sweetalert';
 import getContenidos from '../../services/contenido/getContenidos';
+import url from "../../url"
 
 const VideoContenido = ({ idMateria,contenido,setAct }) => {
 
@@ -12,11 +14,14 @@ const VideoContenido = ({ idMateria,contenido,setAct }) => {
     }, []);*/
     useEffect(() => {
         (async () => {
-          const response = await fetch("http://134.209.120.136:4000/api/contenido/"+contenido, {
+          const response = await fetch(`${url.url}/api/contenido/`+contenido, {
             headers: { "Content-type": "application/json" },
             credentials: "include",
           });
-          const res = await response.json();    
+          const res = await response.json();   
+          if(!res.video){
+            setAct(true);
+          }
           setContenidos(res);
         })();
       },[]);
@@ -25,7 +30,7 @@ const VideoContenido = ({ idMateria,contenido,setAct }) => {
         <div className="p-2">
             {
                 contenidos?
-                <ReactPlayer url={"http://134.209.120.136:4000/videos/" + contenidos.video} controls width="80%" height="50%" onEnded={()=>setAct(true)} />
+                <ReactPlayer url={`${url.url}/videos/` + contenidos.video} controls width="80%" height="50%" onEnded={()=>{swal("Video visto","puede realizar actividad","success"); setAct(true)}} />
 
                 :""
             }

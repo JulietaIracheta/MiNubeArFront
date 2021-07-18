@@ -13,6 +13,7 @@ import AddIcon from '@material-ui/icons/Add';
 import Dialog from '@material-ui/core/Dialog';
 import { ToastProvider } from 'react-toast-notifications';
 import VisibilityIcon from '@material-ui/icons/Visibility';
+import url from "../../url"
 
 import {
     Grid,
@@ -52,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
 export default function RecipeReviewCard({ id, idCurso,control, idMateria, unidad, descripcion, titulo, video, actividad }) {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
-    const url = "http://134.209.120.136:4000/videos/" + video;
+    const urlVideo = `${url.url}/videos/` + video;
     const [abrirModalCrearActividad, setAbrirModalCrearActividad] = React.useState(false);
     const [abrirDetalleActividad, setAbrirDetalleActividad] = React.useState(false);
     const [detalleActividad, setDetalleActividad] = React.useState();
@@ -104,7 +105,7 @@ export default function RecipeReviewCard({ id, idCurso,control, idMateria, unida
     };
 
     useEffect(async () => {
-        const result = await fetch('http://134.209.120.136:4000/api/cursos', {
+        const result = await fetch(`${url.url}/api/cursos`, {
             method: 'GET',
             headers: { "Content-type": "application/json" },
             credentials: "include",
@@ -118,7 +119,7 @@ export default function RecipeReviewCard({ id, idCurso,control, idMateria, unida
     }, [])
 
     useEffect(async () => {
-        const result = await fetch('http://134.209.120.136:4000/api/materias', {
+        const result = await fetch(`${url.url}/api/materias`, {
             method: 'GET',
             headers: { "Content-type": "application/json" },
             credentials: "include",
@@ -131,7 +132,7 @@ export default function RecipeReviewCard({ id, idCurso,control, idMateria, unida
             });
     }, [])
     const eliminarActividad = async () => {
-        const response = await fetch("http://134.209.120.136:4000/api/contenido?id=" + id, {
+        const response = await fetch(`${url.url}/api/contenido?id=` + id, {
             method: "DELETE",
             headers: {
                 "Content-type": "application/json",
@@ -147,7 +148,7 @@ export default function RecipeReviewCard({ id, idCurso,control, idMateria, unida
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch("http://134.209.120.136:4000/api/question/", {
+        const response = await fetch(`${url.url}/api/question/`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
@@ -174,7 +175,7 @@ export default function RecipeReviewCard({ id, idCurso,control, idMateria, unida
     };
     return (
         <Card className={classes.root}>
-            <ReactPlayer url={url} controls={control} width="100%" height="12rem" style={{ minHeight: "12rem" }} />
+            <ReactPlayer url={urlVideo} controls={control} width="100%" height="12rem" style={{ minHeight: "12rem" }} />
             <CardContent>
                 <span>Unidad - {unidad}</span>
                 <p className="font-weight-bold">{titulo}</p>

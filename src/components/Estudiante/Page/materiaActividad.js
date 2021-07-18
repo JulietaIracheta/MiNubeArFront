@@ -10,22 +10,24 @@ import Sidebar from "../../Sidebar";
 import { SidebarDataEstudiante } from "../../sideBar/SidebarDataEstudiante";
 import { Cookies } from 'react-cookie';
 import BotonVolver from '../../BotonVolver/botonVolver';
+import url from "../../../url"
 
-const baseUrl = "http://134.209.120.136:4000/api/"
+const baseUrl = `${url.url}/api/`
 
 const MateriaActividad = ({ match }) => {
 
   const idMateria = match.params.id;
-  const unidad = match.params.unidad;
+  const contenido = match.params.contenido;
   const cookie = new Cookies();
   const jwt = cookie.get('jwt');
-  const urlActividades = baseUrl + `Actividades/getActidades/${idMateria}/${unidad}` + "?jwt=" + jwt;
+  const urlActividades = baseUrl + `Actividades/getActidades/${idMateria}/${contenido}` + "?jwt=" + jwt;
   const urlMaterias = baseUrl + `Materias/${idMateria}`;
 
   const [actividades, setActividades] = useState([]);
   const [materia, setMateria] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [stateAct, setStateAct] = useState(false);
+  const [vioActividad, setVioActividad] = useState(false);
+
   useEffect(() => {
     (async () => {
       const response = await fetch(urlActividades, {
@@ -34,10 +36,7 @@ const MateriaActividad = ({ match }) => {
       });
 
       const content = await response.json();
-
       setActividades(content);
-      console.log(content);
-
     })();
   }, []);
   const [ac, setAct] = useState(false);
@@ -54,37 +53,50 @@ const MateriaActividad = ({ match }) => {
       setLoading(true);
     })();
   }, []);
+  useEffect(() => {
+    (async () => {
+      const response = await fetch(`${url.url}/api/contenido/`+contenido, {
+        headers: { "Content-type": "application/json" },
+        credentials: "include",
+      });
 
+      const f= await response.json();
+      setVioActividad(f.visto);
+
+      if(!f.video){
+        setVioActividad(true);
+      }
+    })();
+  }, []);
   return (
     <div>
-
       <NavEstudiante />
       <div className="flex">
         <Sidebar data={SidebarDataEstudiante} />
         <div className="content">
           <div className="w-100 d-flex align-items-center">
             <BotonVolver ruta={"/estudiante/materias/" + idMateria} />
-            <Encabezado className="w-100" texto={materia + " - Contenido de la unidad " + unidad} />
+            <Encabezado className="w-100" texto={materia + " - Contenido n°" + contenido} />
           </div>
           <Router>
             <div className="text-right">
               <Link className="btn btn-outline-dark mr-2"
-                to={`/estudiante/materias/${idMateria}/${unidad}/video`}>Clase grabada</Link>
-              {ac ?
+                to={`/estudiante/materias/${idMateria}/${contenido}/video`}>Clase grabada</Link>
+              {vioActividad ?
                 <Link className="btn btn-outline-dark mr-2"
-                  to={`/estudiante/materias/${idMateria}/${unidad}/actividad`}>Actividad</Link>
+                  to={`/estudiante/materias/${idMateria}/${contenido}/actividad`}>Actividad</Link>
                 :
                 ""
               }
             </div>
             <Switch>
-              <Route path={`/estudiante/materias/${idMateria}/${unidad}/video`}>
-                <VideoContenido idMateria={idMateria} contenido={unidad} setAct={setAct} />
+              <Route path={`/estudiante/materias/${idMateria}/${contenido}/video`}>
+                <VideoContenido idMateria={idMateria} contenido={contenido} setAct={setVioActividad} />
               </Route>
 
-              <Route path={`/estudiante/materias/${idMateria}/${unidad}/actividad`}>
-                <ActividadContenido titulo={actividades[0]?.titulo} unidad={unidad}
-                  idActividad={actividades[0]?.idActividad} />
+              <Route path={`/estudiante/materias/${idMateria}/${contenido}/actividad`}>
+                <ActividadContenido titulo={actividades[0]?.contenido} unidad={contenido}
+                  idActividad={actividades[0]?.contenido} materia={idMateria}/>
               </Route>
             </Switch>
           </Router>

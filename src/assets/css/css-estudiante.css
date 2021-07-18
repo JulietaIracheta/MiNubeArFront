@@ -333,3 +333,43 @@
 .bg-estudiante{
   background: #B61915 !important;
 }
+#checkboxes{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+.whatever{
+  background-color: #ebebeb;
+  display: inline-block;
+  width: 250px;
+  height: 125px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+.container-respuesta{
+  height: 125px;
+  width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.respuesta{
+  position: relative;
+  top: 0;
+  left: -50%;
+  cursor: pointer;
+
+}
+#checkboxes input[type=checkbox]{
+  display: none;
+}
+
+#checkboxes input[type=checkbox]:checked + .whatever{
+  /*background-color: #808CFF;*/
+  background: rgba(102, 117, 245, 58%);
+}
+.btn-subir{
+  background: rgba(102, 117, 245,58%) !important;
+}

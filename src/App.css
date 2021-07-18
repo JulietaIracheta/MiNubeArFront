@@ -1,8 +1,19 @@
 .content-trayectoria {
-  position: absolute;
-  left: 50%;
-  top: 50%;
+  position: relative;
+  margin-left: 280px;
+  left: 0%;
+  top: 48%;
 }
+
+@media screen and (min-width:576px){
+  .content-trayectoria {
+    position: absolute;
+    left: 50%;
+    top: 48%;
+    margin-left: 0;
+  }
+}
+
 
 .hexagon {
   position: absolute;
@@ -649,7 +660,7 @@ button.bg-docente.border.btn.btn-secondary.menuadmin{
   background:#212888 !important;
 }
 
-.demo-app-main{
+.demo-app-main-trayectoria{
   background-color: #dbdbdb;
 }*/
 

@@ -115,16 +115,22 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
 
   return (
     <div>
-      <h6 className="mt-5 ml-5">
+      <h6 className="pt-4 text-center">
         Complete el formulario para registrar un estudiante{" "}
       </h6>
+      <div className="container pb-3">
       <form
         autoComplete="off"
         noValidate
         className={classes.root}
         onSubmit={handleSubmit}
       >
-        <Grid container>
+        <Grid container
+              spacing={0}
+              direction="column"
+              alignItems="center"
+              justify="center"
+        >
           <Grid item xs={12}>
             <TextField
               name="nombre"
@@ -168,6 +174,8 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
                 helperText: errors.password,
               })}
             />
+          </Grid>
+          <Grid item xs={12}>
             <TextField
               name="telefono"
               variant="outlined"
@@ -218,6 +226,7 @@ const UsuarioFormEst = ({ handleClose, classes, ...props }) => {
           </Grid>
         </Grid>
       </form>
+      </div>
     </div>
   );
 };

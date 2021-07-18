@@ -1,5 +1,5 @@
-
-const urlBase='http://134.209.120.136:4000/api/docente/getId';
+import url from "../../url"
+const urlBase=`${url.url}/api/docente/getId`;
 
 const getId = async () =>{
     const url=urlBase

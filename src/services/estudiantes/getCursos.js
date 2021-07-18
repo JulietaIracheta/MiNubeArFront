@@ -1,6 +1,6 @@
+import url from "../../url"
 
-
-const urlBase='http://134.209.120.136:4000/api/cursos/';
+const urlBase=`${url.url}/api/cursos/`;
 
 export default function getCursos() {
     const url=urlBase
@@ -17,7 +17,7 @@ export default function getCursos() {
 }
 
 
-const urlBaseCursosDeInstitucion='http://134.209.120.136:4000/api/cursos/getCursosDeUnaInstitucion/';
+const urlBaseCursosDeInstitucion=`${url.url}/api/cursos/getCursosDeUnaInstitucion/`;
 
 export function getCursosDeUnaInstitucion(id) {
     const url= `${urlBaseCursosDeInstitucion}${id}`

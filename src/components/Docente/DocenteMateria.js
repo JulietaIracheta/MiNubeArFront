@@ -3,12 +3,13 @@ import { Fragment } from "react";
 //import {store} from '../../actions/store'
 import { Cookies } from 'react-cookie';
 import axios from "axios";
+import url from "../../url"
 
 import CardMateria from "../Estudiante/CardMateria";
 import { Grid } from "@material-ui/core";
 import "../../assets/css/fontawesome-all.css"
 
-const baseUrl = "http://134.209.120.136:4000/api/"
+const baseUrl = `${url.url}/api/`
 
 const DocenteMaterias = ({ idCurso }) => {
     const cookie = new Cookies();

@@ -6,6 +6,7 @@ import Sidebar from "../Sidebar";
 import { SidebarDataDocente } from '../sideBar/SidebarDataDocente';
 import CursosAsignadosDocente from "./CursosAsignadosDocente";
 import { Cookies } from 'react-cookie';
+import url from "../../url"
 
 const EscuelasDocente = () => {
   const [institucion, SetInstitucion] = useState([]);
@@ -16,7 +17,7 @@ const EscuelasDocente = () => {
   const jwt = cookie.get('jwt');
 
   useEffect(async () => {
-    const result = await fetch('http://134.209.120.136:4000/api/docente/getInstitucion?jwt='+jwt, {
+    const result = await fetch(`${url.url}/api/docente/getInstitucion?jwt=`+jwt, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -29,7 +30,7 @@ const EscuelasDocente = () => {
   }, [])
 
   useEffect(async () => {
-    const result = await fetch('http://134.209.120.136:4000/api/docente/getCursos?jwt='+jwt, {
+    const result = await fetch(`${url.url}/api/docente/getCursos?jwt=`+jwt, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",

@@ -11,6 +11,7 @@ import * as actions from "../../actions/comunicado";
 import getEstudiantesPorCurso from '../../services/docente/getEstudiantesPorCurso';
 import Select from 'react-select'
 import { Cookies } from 'react-cookie';
+import url from "../../url"
 
 
 const styles = (theme) => ({
@@ -64,7 +65,7 @@ const ComunicadoForm = ({ handleClose, classes, idCurso, idInstitucion, comunica
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
   useEffect(() => {
-    fetch("http://134.209.120.136:4000/api/docente/getId?jwt="+jwt, {
+    fetch(`${url.url}/api/docente/getId?jwt=`+jwt, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",

@@ -18,6 +18,7 @@ import CheckIcon from '@material-ui/icons/Check';
 import eliminarNotificacion from "../../services/notificaciones/eliminarNotificacion";
 import { Cookies,useCookies } from 'react-cookie';
 import { Avatar } from "@material-ui/core";
+import url from "../../url"
 
 
 const NavBar = (props) => {
@@ -29,7 +30,7 @@ const NavBar = (props) => {
 
   const toggle = () => setIsOpen(!isOpen);
   const logout = async () => {
-    await fetch('http://134.209.120.136:4000/api/usuario/logout', {
+    await fetch(`${url.url}/api/usuario/logout`, {
       method: 'POST',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -42,8 +43,8 @@ const NavBar = (props) => {
   }
   
   useEffect(async function () {
-    const url = 'http://134.209.120.136:4000/api/notificacion/getByUsuario?jwt='+jwt
-    return await fetch(url, {
+    const urlBase = `${url.url}/api/notificacion/getByUsuario?jwt=`+jwt
+    return await fetch(urlBase, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -71,7 +72,7 @@ const NavBar = (props) => {
     <div >
       <Navbar className="menuNavBarTutor" expand="md" light>
         <img src={logo}/>
-        <NavbarBrand className="colorBrand navbar-brand" href="/tutor">MI NUBE AR</NavbarBrand>
+        <NavbarBrand className="colorBrand navbar-brand" href="/rol">MI NUBE AR</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
             <Nav className="mr-auto"></Nav>

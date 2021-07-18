@@ -15,8 +15,11 @@ import {
     TableBody,
   withStyles
 } from "@material-ui/core";
+import url from "../../url"
+import { Cookies } from 'react-cookie';
 import { Document, Page, pdfjs } from 'react-pdf';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+
 
 const drawerWidth = 200;
 
@@ -57,15 +60,16 @@ const TrayectoriaEscolar = ({ classes, ...props }) => {
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
   const [pdf, setPdf] = useState('');
-  const url="http://134.209.120.136:4000/informes/"+pdf;
-  
+  const urlB=`${url.url}/informes/`+pdf;
+  const cookie = new Cookies();
+  const jwt = cookie.get('jwt');
 
     const handleInputChange = (e) => {
       SetAño(e.target.value)
       }
   
       useEffect(async () => {
-        const result = await fetch('http://134.209.120.136:4000/api/boletin/año/', {
+        const result = await fetch(`${url.url}/api/boletin/año/`+ "?jwt=" + jwt, {
           method: 'GET',
           headers: { "Content-type": "application/json" },
           credentials: "include",
@@ -74,14 +78,12 @@ const TrayectoriaEscolar = ({ classes, ...props }) => {
         })
           .then(response => {
             setAños(response)
-            console.log(años)
-            console.log(año)
             
            });
       }, []);
 
   useEffect(async () => {
-    const result = await fetch('http://134.209.120.136:4000/api/boletin/trayectoria/' + año, {
+    const result = await fetch(`${url.url}/api/boletin/trayectoria/` + año, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -94,7 +96,7 @@ const TrayectoriaEscolar = ({ classes, ...props }) => {
   }, [año]);
 
   useEffect(async () => {
-    const result = await fetch('http://134.209.120.136:4000/api/informe/getInformeTrayectoria/' + año, {
+    const result = await fetch(`${url.url}/api/informe/getInformeTrayectoria/` + año + "?jwt=" + jwt, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -189,7 +191,7 @@ const TrayectoriaEscolar = ({ classes, ...props }) => {
               <div>
                 <h3 className="mt-4 mb-4 text-center">Informe Anual</h3>
                <Document
-          file={url}
+          file={urlB}
             options={{ workerSrc: "/pdf.worker.js" }}
             onLoadSuccess={onDocumentLoadSuccess}
             >

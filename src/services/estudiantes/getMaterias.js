@@ -1,6 +1,6 @@
 import axios from "axios";
-
-const baseUrl = "http://134.209.120.136:4000/api/"
+import url from "../../url"
+const baseUrl = `${url.url}/api/`
 
 export default async function getMaterias() {
     const url = baseUrl + 'estiduante/materias';

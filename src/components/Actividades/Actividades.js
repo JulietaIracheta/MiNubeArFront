@@ -5,7 +5,7 @@ import NavEstudiante from "../Estudiante/NavEstudiante";
 import { Grid } from "@material-ui/core";
 import BotonVolver from '../BotonVolver/botonVolver'
 import getQuestions from '../../services/getQuestions';
-
+import url from "../../url"
 
 export default function Actividades(props) {
 	
@@ -30,7 +30,7 @@ export default function Actividades(props) {
 
 		console.log(score)
 
-		fetch("http://134.209.120.136:4000/api/puntaje/", {
+		fetch(`${url.url}/api/puntaje/`, {
 		  method: "POST",
 		  headers: {
 			"Content-type": "application/json",

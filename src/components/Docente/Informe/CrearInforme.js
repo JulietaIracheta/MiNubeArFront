@@ -14,6 +14,7 @@ import NavDocente from "../NavDocente";
 import { makeStyles } from "@material-ui/core/styles";
 import jsPDF from "jspdf";
 import { Cookies } from 'react-cookie';
+import url from "../../../url"
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -70,7 +71,7 @@ const CrearInforme = () => {
     pdf.save(`${nombre}_${apellido}.pdf`);
 
     const response = fetch(
-      "http://134.209.120.136:4000/api/informe/crearInformeTrayectoria",
+      `${url.url}/api/informe/crearInformeTrayectoria`,
       {
         method: "POST",
         headers: {
@@ -119,7 +120,7 @@ const CrearInforme = () => {
   const jwt = cookie.get('jwt');
   useEffect(async () => {
     const result = await fetch(
-      "http://134.209.120.136:4000/api/docente/getInstitucion/?jwt="+jwt,
+      `${url.url}/api/docente/getInstitucion/?jwt=`+jwt,
       {
         method: "GET",
         headers: { "Content-type": "application/json" },
@@ -138,7 +139,7 @@ const CrearInforme = () => {
 
   useEffect(async () => {
     const result = await fetch(
-      "http://134.209.120.136:4000/api/docente/getCursos/?jwt="+jwt,
+      `${url.url}/api/docente/getCursos/?jwt=`+jwt,
       {
         method: "GET",
         headers: { "Content-type": "application/json" },
@@ -155,7 +156,7 @@ const CrearInforme = () => {
   
   useEffect(async () => {
     const result = await fetch(
-      "http://134.209.120.136:4000/api/materias/getMateriasDocente/"+curso + "?jwt="+ jwt,
+      `${url.url}/api/materias/getMateriasDocente/`+curso + "?jwt="+ jwt,
       {
         method: "GET",
         headers: { "Content-type": "application/json" },
@@ -173,7 +174,7 @@ const CrearInforme = () => {
 
   useEffect(async () => {
     const result = await fetch(
-      "http://134.209.120.136:4000/api/docente/getEstudiantesPorCurso/"+ curso, 
+      `${url.url}/api/docente/getEstudiantesPorCurso/`+ curso, 
       {
         method: "GET",
         headers: { "Content-type": "application/json" },

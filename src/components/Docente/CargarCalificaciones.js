@@ -12,6 +12,7 @@ import Sidebar from "../Sidebar";
 import { SidebarDataDocente } from "../sideBar/SidebarDataDocente";
 import NavDocente from "../Docente/NavDocente";
 import { makeStyles } from '@material-ui/core/styles';
+import url from "../../url"
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -65,7 +66,7 @@ const CargarCalificaciones = () => {
   };
   
   useEffect(async () => {
-    const result = await fetch('http://134.209.120.136:4000/api/materias', {
+    const result = await fetch(`${url.url}/api/materias`, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -79,7 +80,7 @@ const CargarCalificaciones = () => {
   }, []);
 
   useEffect(async () => {
-    const result = await fetch('http://134.209.120.136:4000/api/usuario/estudiantes', {
+    const result = await fetch(`${url.url}/api/usuario/estudiantes`, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -94,7 +95,7 @@ const CargarCalificaciones = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://134.209.120.136:4000/api/boletin/", {
+    const response = await fetch(`${url.url}/api/boletin/`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",

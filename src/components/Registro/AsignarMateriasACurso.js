@@ -9,6 +9,7 @@ import {
 import NavAdmin from './NavAdmin';
 import Sidebar from "../Sidebar";
 import { SidebarData } from "../SidebarData";
+import url from "../../url"
 
 const AsignarMateriasACurso = () => {
   // const classes = useStyles();
@@ -32,7 +33,7 @@ const AsignarMateriasACurso = () => {
   };
 
   useEffect(async () => {
-    const result = await fetch('http://134.209.120.136:4000/api/materias', {
+    const result = await fetch( `${url.url}/api/materias`, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -46,7 +47,7 @@ const AsignarMateriasACurso = () => {
   }, []);
 
   useEffect(async () => {
-    const result = await fetch('http://134.209.120.136:4000/api/cursos', {
+    const result = await fetch( `${url.url}/api/cursos`, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -61,7 +62,7 @@ const AsignarMateriasACurso = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://134.209.120.136:4000/api/materiacurso/", {
+    const response = await fetch(`${url.url}/api/materiacurso/`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",

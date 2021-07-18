@@ -7,9 +7,10 @@ import { useParams } from "react-router-dom";
 import NavTutor from './NavTutor'
 import Sidebar from "../Sidebar";
 import {SidebarDataTutor} from '../sideBar/SidebarDataTutor';
+import url from "../../url"
 
 
-const baseUrl = "http://134.209.120.136:4000/api/"
+const baseUrl =  `${url.url}/api/`
 
 const MateriasTutorEstudiante = (props) => {
   let listMaterias = [];

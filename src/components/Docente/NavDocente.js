@@ -20,6 +20,7 @@ import { Cookies, useCookies } from 'react-cookie';
 import { Business } from "@material-ui/icons";
 import ChatIcon from '@material-ui/icons/Chat';
 import '../../assets/css/css-docente.css'
+import url from "../../url"
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,7 +32,7 @@ const NavBar = (props) => {
   const nombrePathGoogle = cookieNombreEstudiante.get('avatarPathGoogle');
 
   const logout = async () => {
-    await fetch('http://134.209.120.136:4000/api/usuario/logout', {
+    await fetch(`${url.url}/api/usuario/logout`, {
       method: 'POST',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -79,7 +80,7 @@ const NavBar = (props) => {
                   <Avatar className="icon-perfil text-white" style={{ background: "#212888" }}>
                     {nombreAvatar ? nombreAvatar :
                       <img className="w-100 h-100"
-                        src={"http://134.209.120.136:4000/Avatares/" + nombrePath}
+                        src={`${url.url}/Avatares/` + nombrePath}
                         style={{ objectFit: "cover" }} />
                     }</Avatar>
                 }

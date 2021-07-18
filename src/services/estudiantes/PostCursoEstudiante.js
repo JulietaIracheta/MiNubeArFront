@@ -1,5 +1,5 @@
-
-const urlBaseAsignaEstudiantesAcurso = 'http://134.209.120.136:4000/api/cursos/AsignaEstudiandesAcurso/';
+import url from "../../url"
+const urlBaseAsignaEstudiantesAcurso = `${url.url}/api/cursos/AsignaEstudiandesAcurso/`;
 
 export function AsignaEstudiandesAcurso(data, onSuccess) {
     const url= `${urlBaseAsignaEstudiantesAcurso}`

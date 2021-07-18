@@ -14,6 +14,7 @@ import Sidebar from "../Sidebar";
 import { SidebarDataDocente } from "../sideBar/SidebarDataDocente";
 import NavDocente from "../Docente/NavDocente";
 import { makeStyles } from '@material-ui/core/styles';
+import url from "../../url"
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -91,16 +92,14 @@ const CrearActividad = () => {
   const onValueChangeMateria = (event) => {
     const value = event.target.value;
     setMateria(value);
-    console.log(idMateria)
   };
 
   const onValueChangeCurso = (event) => {
     const value = event.target.value;
     setCurso(value);
-    console.log(idMateria)
   };
   useEffect(async () => {
-    const result = await fetch('http://134.209.120.136:4000/api/cursos', {
+    const result = await fetch(`${url.url}/api/cursos`, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -114,7 +113,7 @@ const CrearActividad = () => {
   }, [])
   
   useEffect(async () => {
-    const result = await fetch('http://134.209.120.136:4000/api/materias', {
+    const result = await fetch(`${url.url}/api/materias`, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -129,8 +128,7 @@ const CrearActividad = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("XD");
-    const response = await fetch("http://134.209.120.136:4000/api/question/", {
+    const response = await fetch(`${url.url}/api/question/`, {
       method: "POST",
       headers: {
         'Accept':'application/json',
