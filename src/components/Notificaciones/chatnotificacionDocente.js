@@ -93,8 +93,12 @@ export default () => {
             <div className="flex">
                 <Sidebar data={SidebarDataDocente} />
                 <main className="main w-100 pr-2 pt-4">
-                    <div className="mb-3 pl-3 pl-sm-2">
+                    <div className="mb-4 pl-3 pl-sm-2">
                         <span className="tituloadmin tituloDocente">Salas de chat</span>
+                        <p className="text-secondary">
+                            En esta sección tiene todas las salas de chat<br/>
+                            por cada uno de los cursos que tiene a cargo.
+                        </p>
                     </div>
                     {!connection
                         ?
