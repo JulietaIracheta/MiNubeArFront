@@ -15,12 +15,11 @@ import url from "../../../url"
 const baseUrl = `${url.url}/api/`
 
 const MateriaActividad = ({ match }) => {
-
   const idMateria = match.params.id;
   const contenido = match.params.contenido;
   const cookie = new Cookies();
   const jwt = cookie.get('jwt');
-  const urlActividades = baseUrl + `Actividades/getActidades/${idMateria}/${contenido}` + "?jwt=" + jwt;
+  const urlActividades = baseUrl + `Actividades/getActidades/${idMateria}/${contenido}?jwt=` + jwt;
   const urlMaterias = baseUrl + `Materias/${idMateria}`;
 
   const [actividades, setActividades] = useState([]);
