@@ -107,9 +107,11 @@ const Login = () => {
   const submit = async (e, rol) => {
     e.preventDefault();
 
-    const response = await fetch("http://http://134.209.120.136:4000/api/usuario/login", {
+    const response = await fetch("http://134.209.120.136:4000/api/usuario/login", {
       method: "POST",
-      headers: { "Content-type": "application/json" },
+      headers: { 
+        'content-type': 'application/json',
+      },
       credentials: "include",
       body: JSON.stringify({
         UsuarioNombre: email,
@@ -118,6 +120,7 @@ const Login = () => {
     })
       .then(res => {
         if (!res.ok) throw new Error('Response is NOT ok')
+        console.log(res);
         return res.json()
       }).then(res => {
         if(!res.avatar){
