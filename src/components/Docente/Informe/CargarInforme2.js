@@ -84,11 +84,11 @@ const CargarInforme2 = () => {
         },
         body: JSON.stringify({
           Año: año,
+          IdEstudiante : estudiante,
           Calificaciones: [
-            { materia: 'dfgdfg', calificacion: 'calificacion1' },
-            { materia: 'ateria2', calificacion: 'calificacion2' },
-            { materia: 'materia3', calificacion: 'calificacion3' },
+            { materia: materia, calificacion: calificacion }
           ],
+          IdInforme : 0
             
         }),
       }
@@ -102,10 +102,11 @@ const CargarInforme2 = () => {
     setAño(value);
   };
 
-  const onValueChangeMateria = (event) => {
-    const value = event.target.value;
-    setMateria(value);
+  const onValueChangeMateria =  (event) => {
+    event = event.target.value;
+    setMateria(event);
   };
+
 
   const onValueChangeCalificacion = (event) => {
     const value = event.target.value;
@@ -297,8 +298,7 @@ const CargarInforme2 = () => {
                    {materias.map((mat) =>(
                   
                   <FormControl className={classes.formControl}>
-                 
-                 {mat.nombre} : 
+                 <p onChange={onValueChangeMateria}> {mat.nombre} :</p> 
                     <Select
                       label="Calificación"
                       labelId="demo-simple-select-label"
