@@ -38,6 +38,7 @@ useEffect(() => {
 })();
 },[]);
 
+
   if (loading) {
     try {
       listMaterias = materias.map((materia) => (

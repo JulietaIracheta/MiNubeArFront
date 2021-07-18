@@ -59,8 +59,8 @@ const CalendarioEst = ({ classes, ...props }) => {
     <div className="d-flex">
       <Sidebar data={SidebarDataEstudiante}/>
       <main className={classes.content}>
-          <div className={classes.toolbar} id="coco" />
-          <div id="coco">
+          <div className={classes.toolbar}  />
+          <div >
             <div className="adminContent">
               <span className="tituloadmin">Calendario</span>
         <hr className="hr-color" />

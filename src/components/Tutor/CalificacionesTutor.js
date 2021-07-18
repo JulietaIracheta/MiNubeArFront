@@ -87,8 +87,8 @@ const CalificacionesTutor = ({ classes, ...props }) => {
     <div className="d-flex mt-1">
       <Sidebar data={SidebarDataTutor}/>
       <main className={classes.content}>
-          <div className={classes.toolbar} id="coco" />
-          <div id="coco">
+          <div className={classes.toolbar} />
+          <div>
             <div className="adminContent">
                 <h3>Calificaciones de los estudiantes</h3>
         <hr className="hr-colorTut" />

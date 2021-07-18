@@ -117,8 +117,8 @@ const CursoInstitucion = ({ classes, ...props }) => {
       <div className={classes.root}>
         <Sidebar data={SidebarData} />
         <main className={classes.content}>
-          <div className={classes.toolbar} id="coco" />
-          <div id="coco">
+          <div className={classes.toolbar}  />
+          <div>
             <div className="adminContent">
               <span className="tituloadmin">Asignar Cursos a Institución</span>
               <div className="agregarcurso">

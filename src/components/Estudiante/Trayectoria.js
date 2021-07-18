@@ -76,9 +76,9 @@ const Trayectoria = ({ classes, ...props }) => {
       <div className="d-flex mt-1">
         <Sidebar data={SidebarDataEstudiante}/>
         <main className={classes.content}>
-            <div className={classes.toolbar} id="coco" />
-            <div id="coco">
-              <div className="adminContent">
+            <div className={classes.toolbar}  />
+            <div >
+              <div style={{marginTop:"-3rem"}}>
                   <h3 className="ml-4">Trayectoria Escolar</h3>
                   <hr class="hr-color w-100" />
         </div>

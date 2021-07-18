@@ -75,8 +75,8 @@ const TimeLine = ({ classes, ...props }) => {
       <div className="d-flex mt-1">
         <Sidebar data={SidebarDataEstudiante}/>
         <main className={classes.content}>
-            <div className={classes.toolbar} id="coco" />
-            <div id="coco">
+            <div className={classes.toolbar}  />
+            <div>
               <div className="adminContent">
                   <h3 className="ml-4">Trayectoria Escolar</h3>
                   <hr class="hr-color w-100" />

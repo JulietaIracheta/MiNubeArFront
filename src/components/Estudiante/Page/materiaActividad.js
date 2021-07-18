@@ -26,7 +26,7 @@ const MateriaActividad = ({ match }) => {
   const [materia, setMateria] = useState([]);
   const [loading, setLoading] = useState(false);
   const [vioActividad, setVioActividad] = useState(false);
-
+  console.log(match);
   useEffect(() => {
     (async () => {
       const response = await fetch(urlActividades, {

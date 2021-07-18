@@ -275,7 +275,7 @@ const app = () => (
           component={MateriaUnidad}
         />
         <Route
-          path="/estudiante/materias/:id/:unidad/video"
+          path="/estudiante/materias/:id/:contenido/video"
           exact
           component={MateriaActividad}
         />

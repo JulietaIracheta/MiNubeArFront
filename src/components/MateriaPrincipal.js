@@ -7,7 +7,7 @@ export default class MateriaPrincipal extends Component {
         
     <div className="container cardContainer">
         <div>
-            <h2>Hola Lolo!, ¿Que estudiamos hoy?</h2>
+            <h2 className="h2-responsive">Hola Lolo!, ¿Que estudiamos hoy?</h2>
             <hr className="hr-color"/>
         </div>
         

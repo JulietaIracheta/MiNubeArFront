@@ -13,7 +13,11 @@
     margin-left: 0;
   }
 }
-
+@media screen and (max-width:400px){
+  h2{
+    text-align: center !important;
+  }
+}
 
 .hexagon {
   position: absolute;
@@ -307,10 +311,10 @@ margin-right : 'auto';
   color:#0062cc;
 }
 
-#coco{
-  border-left: 1px solid #7e7e7c;
-}
 
+.h2-responsive{
+  text-align: center;
+}
 
 @media only screen and (max-width: 800px) {
   .adminContent{

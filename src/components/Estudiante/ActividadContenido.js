@@ -17,7 +17,6 @@ const ActividadContenido = (props) => {
 	const [visto, setVisto] = useState(false);  
 	const cookie = new Cookies();
 	const jwt = cookie.get('jwt');
-
 	useEffect(() => {
 		(async () => {
 			const response = await fetch("http://localhost:60671/api/contenido/" + props.unidad, {

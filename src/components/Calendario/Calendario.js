@@ -100,8 +100,8 @@ const onDelete = (id) => {
     <div className="d-flex mt-1">
       <Sidebar data={SidebarDataDocente}/>
       <main className={classes.content}>
-          <div className={classes.toolbar} id="coco" />
-          <div id="coco">
+          <div className={classes.toolbar} />
+          <div >
             <div className="adminContent">
               <span className="tituloadmin">Calendario</span>
            <Button

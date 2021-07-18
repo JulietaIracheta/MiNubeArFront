@@ -11,7 +11,7 @@ export default function ComunicadosEstudiante() {
     const jwt = cookie.get('jwt');
 
     useEffect(async function () {
-        const url = 'http://localhost:60671/api/comunicado/getComunicadosByEstudiante?jwt='+jwt
+        const url = 'http://localhost:60671/api/comunicado/getComunicadosByEstudiante?jwt=' + jwt
         return await fetch(url, {
             method: 'GET',
             headers: { "Content-type": "application/json" },
@@ -34,20 +34,22 @@ export default function ComunicadosEstudiante() {
                         <hr class="hr-color w-100" />
                         <div className="container-fluid comunicados-container">
                             <div className=" py-3 h-100 comunicados-overflow">
-                                {comunicados.map((c, index) => {
-                                    return <div key={index}>
-                                        <div className="d-flex flex-column mt-3" style={{ borderBottom: "1px solid #707070" }}>
-                                            <span style={{ fontSize: "14px", color: "#2d2f85" }} className="font-weight-bold">
-                                                {c.fecha}
-                                            </span>
-                                            <p>
-                                                <span className="font-weight-bold">
-                                                    {c.docente}
-                                                </span>{": "}{c.descripcion}
-                                            </p>
+                                {comunicados.length ?
+                                    comunicados.map((c, index) => {
+                                        return <div key={index}>
+                                            <div className="d-flex flex-column mt-3" style={{ borderBottom: "1px solid #707070" }}>
+                                                <span style={{ fontSize: "14px", color: "#2d2f85" }} className="font-weight-bold">
+                                                    {c.fecha}
+                                                </span>
+                                                <p>
+                                                    <span className="font-weight-bold">
+                                                        {c.docente}
+                                                    </span>{": "}{c.descripcion}
+                                                </p>
+                                            </div>
                                         </div>
-                                    </div>
-                                })}
+                                    })
+                                    : <h6>Parece que todavía no tiene ningún comunicado.</h6>}
                             </div>
                         </div>
                     </div>
