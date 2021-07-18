@@ -205,7 +205,8 @@ const CargarCalificaciones = () => {
                   size="medium"
                   type="submit"
                   color= "#fff"
-                  className="ml-5 bg-primary text-white float-right"
+                  className="ml-5 text-white float-right"
+                  style= {{backgroundColor:"#2d2f85"}}
                 >
                   Enviar
                 </Button>

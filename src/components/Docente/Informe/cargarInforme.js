@@ -3,12 +3,12 @@ import {
   Grid,
   TextField,
   withStyles,
-  Button,
   Select,
   MenuItem,
   FormControl,
   InputLabel,
 } from "@material-ui/core";
+import { CloudArrowUpFill } from "react-bootstrap-icons";
 import useForm from "../../Registro/useForm";
 import { connect } from "react-redux";
 import "../../../assets/css/css.css";
@@ -42,7 +42,6 @@ const initialFieldValues = {
 };
 
 const CargarInforme = ({ handleClose, classes, ...props }) => {
-  //toast msg.
  
     const [estudiantes, setEstudiantes] = useState([])
     const [idUsuario, setIdUsuario] = useState(0)
@@ -54,8 +53,6 @@ const CargarInforme = ({ handleClose, classes, ...props }) => {
     const [cursos, setCursos] = useState([]);
     const [instituciones, setInstituciones] = useState([])
 
-  //validate()
-  //validate({fullName:'jenny'})
   const validate = (fieldValues = values) => {
     let temp = { ...errors };
    
@@ -179,8 +176,6 @@ const CargarInforme = ({ handleClose, classes, ...props }) => {
         }
         resetForm();
       }
-    
-//    handleClose();
   };
   
 
@@ -189,127 +184,154 @@ const CargarInforme = ({ handleClose, classes, ...props }) => {
     <div>
  <NavDocente />
 
- <div className="d-flex mt-1">
+ <div className="d-flex">
    <Sidebar data={SidebarDataDocente} />
-   <div className="container-fluid mt-1">
-     <div>
-       <h4>Cargar Informe</h4>
-       <hr className="hr-colorDoc" />
+   <div className="main w-100 pr-2 pt-4">
+     <div className="mb-4 pl-3 pl-sm-2">
+       <span className="tituloadmin tituloDocente">Cargar Informe</span>
+       <p className="text-secondary mt-1">
+        Complete el formulario para cargar las calificaciones <br/>
+        correspondientes a cada trimestre de los alumnos.
+      </p>
      </div>
-    <div className=" w-100 align-items-center">
       <form
         autoComplete="off"
         noValidate
-        className={classes.root}
+        className="d-flex mt-4 formulario-asignacion flex-column p-4 p-md-5 bg-white" 
+        style={{border:"1px solid #edf2f9"}}
         onSubmit={handleSubmit}
       >
-        <Grid container>
-          <Grid item xs={6}>
+        <div
+          style={{
+            display: "inline-block",
+            justifyContent: "center",
+          }}
+        >
+        <Grid item xs={12} className="mb-4 mb-md-2 d-flex w-100 justify-content-between">
           <FormControl
-                    fullWidth
-                    variant="outlined"
-                    className={classes.formControl}
-                  >
-                    <InputLabel id="demo-simple-select-outlined-label">
-                      Institución
-                    </InputLabel>
+            fullWidth
+            variant="outlined"
+            className="w-100 mb-4"
+          >
+            <InputLabel id="demo-simple-select-outlined-label" style={{zIndex:"0"}}>
+              Institución
+            </InputLabel>
 
-                    <Select
-                      name="idInstitucion"
-                      id="demo-simple-select-outlined"
-                      value={idInstitucion}
-                      onChange={handleInputChangeInstitucion}
-                      label="Institución"
-                      
-                    >
-                      {instituciones.map((c) => (
-                        <MenuItem value={c.idInstitucion}>{c.nombre}</MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
+            <Select
+              name="idInstitucion"
+              id="demo-simple-select-outlined"
+              value={idInstitucion}
+              onChange={handleInputChangeInstitucion}
+              label="Institución"
+            >
+              {instituciones.map((c) => (
+                <MenuItem value={c.idInstitucion}>{c.nombre}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
           <FormControl
-                    fullWidth
-                    variant="outlined"
-                    className={classes.formControl}
-                  >
-                    <InputLabel id="demo-simple-select-outlined-label">
-                      Curso
-                    </InputLabel>
+            fullWidth
+            variant="outlined"
+            className="ml-md-4 mb-4 w-100"
+          >
+            <InputLabel id="demo-simple-select-outlined-label" style={{zIndex:"0"}}>
+              Curso
+            </InputLabel>
 
-                    <Select
-                      name="idCurso"
-                      id="demo-simple-select-outlined"
-                      value={idCurso}
-                      onChange={handleInputChangeCurso}
-                      label="Curso"
-                      
-                    >
-                      {cursos.map((c) => (
-                        <MenuItem value={c.idCurso}>{c.nombre}</MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
+            <Select
+              name="idCurso"
+              id="demo-simple-select-outlined"
+              value={idCurso}
+              onChange={handleInputChangeCurso}
+              label="Curso"
+              
+            >
+              {cursos.map((c) => (
+                <MenuItem value={c.idCurso}>{c.nombre}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
           <FormControl
-                    fullWidth
-                    variant="outlined"
-                    className={classes.formControl}
-                  >
-                    <InputLabel id="demo-simple-select-outlined-label">
-                      Estudiante
-                    </InputLabel>
+                fullWidth
+                variant="outlined"
+                className="ml-md-4">
+                <InputLabel id="demo-simple-select-outlined-label" style={{zIndex:"0"}}>
+                  Estudiante
+                </InputLabel>
 
-                    <Select
-                      name="idEstudiante"
-                      id="demo-simple-select-outlined"
-                      value={idUsuario}
-                      onChange={handleInputChangeEstudiante}
-                      label="Estudiante"
-                      
-                    >
-                      {estudiantes.map((c) => (
-                        <MenuItem value={c.idUsuario}>{c.apellido}{" "}{c.nombre}</MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-                
-                  <div className="mt-4 mb-4">   
-                  Año :
-                    <TextField name="año" className="ml-2" value={año} onChange={onValueChangeAño} /> 
-                    </div>
+                <Select
+                  name="idEstudiante"
+                  id="demo-simple-select-outlined"
+                  value={idUsuario}
+                  onChange={handleInputChangeEstudiante}
+                  label="Estudiante"
+                  
+                >
+                  {estudiantes.map((c) => (
+                    <MenuItem value={c.idUsuario}>{c.apellido}{" "}{c.nombre}</MenuItem>
+                  ))}
+                </Select>
+            </FormControl>
           </Grid>
-          <Grid item xs={12}>
-            <div class="form-group">
-            <label for="file">Elija el informe...</label>
-                <input
-                  name="file"
-                  type="file"
-                  class="form-control-input"
-                  value={values.file}
-                  onChange={subirArchivos}
-                  {...(errors.file && { error: true, helperText: errors.file })}
-                />
-            </div>
-          </Grid>
-          <div className="w-100 d-flex justify-content-center p-3 btn-accion-crear-salir-responsive">
+          <Grid item xs={12} className="mb-4 mb-md-2 d-flex w-100 justify-content-between">
+             <FormControl
+                fullWidth
+                variant="outlined"
+                className="">
+              <TextField 
+                name="año" 
+                label="Año" 
+                variant="outlined" 
+                className="mb-4" 
+                value={año} 
+                onChange={onValueChangeAño}
+                style={{zIndex:"0"}}
+              />
+              </FormControl>
+              <FormControl
+                fullWidth
+                variant="outlined"
+                // className={classes.formControl}
+                className="ml-md-4">
+              <div class="input-group mb-3 pl-0 mt-3">
+                <div class="input-group-prepend">
+                  <CloudArrowUpFill className="input-group-text p-1" size={39} color="#5D7392" id="inputGroupFileAddon01" />
+                </div>
+                <div class="custom-file">
+                  <input 
+                      name="file"
+                      type="file"
+                      class="custom-file-input" 
+                      id="inputGroupFile01" 
+                      aria-describedby="inputGroupFileAddon01" 
+                      value={values.file}
+                      onChange={subirArchivos}
+                      {...(errors.file && { error: true, helperText: errors.file })}
+                   />
+                  <label class="custom-file-label" for="inputGroupFile01" style={{zIndex:"0"}}>Elija Informe</label>
+                </div>
+              </div>
+            </FormControl>
+        </Grid>
+          <div className="w-100 d-flex justify-content-end">
             <button
               variant="contained"
-              color="primary"
               type="submit"
-              className="btn btn-lg btn-outline-dark mr-3"
+              className="btn btn-md text-white btn-outline-dark mr-3 border-0"
+              style= {{backgroundColor:"#2d2f85"}}
             >
               Guardar
                 </button>
             <button
               variant="contained"
-              className="btn btn-lg btn-outline-danger"
+              className="btn btn-md bg-secondary text-white"
               onClick={resetForm}
             >
               Reset
                 </button>
           </div>
-        </Grid>
+        </div>
       </form>
-    </div>
     </div>
     </div>
     </div>
