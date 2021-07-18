@@ -5,6 +5,7 @@ import { SidebarDataEstudiante } from "../sideBar/SidebarDataEstudiante";
 import { Button, ButtonGroup } from "@material-ui/core";
 import NavEstudiante from './NavEstudiante'
 import url from "../../url"
+import { Cookies } from 'react-cookie';
 import { Document, Page, pdfjs } from 'react-pdf';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -13,9 +14,11 @@ export default function InformeEstudiante(props) {
     const [numPages, setNumPages] = useState(null);
     const [pageNumber, setPageNumber] = useState(1);
     const [pdf, setPdf] = useState('');
+    const getCookie = new Cookies();
+    const jwt = getCookie.get('jwt');
 
     useEffect(async () => {
-        const result = await fetch(`${url.url}/api/informe/getInformeByEstudiante/1`, {
+        const result = await fetch(`${url.url}/api/informe/getInformeByEstudiante/1`+"?jwt="+jwt, {
           method: 'GET',
           headers: { "Content-type": "application/json" },
           credentials: "include",
