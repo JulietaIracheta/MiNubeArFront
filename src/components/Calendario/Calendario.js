@@ -5,13 +5,11 @@ import FullCalendar, { formatDate } from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
-import axios from "axios";
 import NavDocente from '../Docente/NavDocente'
 import Sidebar from '../Sidebar'
 import {SidebarDataDocente} from '../sideBar/SidebarDataDocente'
 import ModalDialog from "./ModalDialog";
 import { Button } from "reactstrap";
-import esLocale from '@fullcalendar/core/locales/es';
 import getEventos from '../../services/docente/getEventos'
 import {
   withStyles
@@ -95,59 +93,56 @@ const onDelete = (id) => {
 
   
   return (
-      <div>
+    <div>
       <NavDocente />
-    <div className="d-flex mt-1">
-      <Sidebar data={SidebarDataDocente}/>
-      <main className={classes.content}>
-          <div className={classes.toolbar} id="coco" />
-          <div id="coco">
-            <div className="adminContent">
-              <span className="tituloadmin">Calendario</span>
-           <Button
-                className="btn btn-danger menuadmin"
-                onClick={handleOpen}
-              >
-                Nuevo Evento
-              </Button>
-              <ModalDialog open={open} handleClose={handleClose} />
-        <hr className="hr-colorDoc" />
-      </div>
-      <div className='demo-app'>
-        <div className='demo-app-main'>
-          <FullCalendar
-            locale={esLocale}
-            plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-            headerToolbar={{
-              left: 'prev,next today',
-              center: 'title',
-              right: 'dayGridMonth,timeGridWeek,timeGridDay'
-            }}
-            initialView='dayGridMonth'
-            editable={true}
-            selectable={true}
-            selectMirror={true}
-            dayMaxEvents={true}
-       //     weekends={weekendsVisible}
-            events={eventos} // alternatively, use the `events` setting to fetch from a feed
-            select={handleDateSelect}
-            eventContent={renderEventContent} // custom render function
-            eventClick={handleEventClick}
-            
-            //eventsSet={handleEvents} // called after events are initialized/added/changed/removed
-            /* you can update a remote database when these fire:
-            eventAdd={function(){}}
-            eventChange={function(){}}
-           eventRemove={function(){}}*/
-           
-          />
+      <div className="d-flex">
+        <Sidebar data={SidebarDataDocente}/>
+        <main className="main w-100 pr-2 pt-4">
+          <div className="mb-4 pl-3 pl-sm-2">
+            <span className="tituloadmin tituloDocente">Calendario</span>
+            <Button
+              className="btn-md text-white float-right mt-0 mt-md-2"
+              onClick={handleOpen}
+              style= {{backgroundColor:"#212888"}}
+            >
+              Nuevo Evento
+            </Button>
+            <ModalDialog open={open} handleClose={handleClose} />
+        </div>
+        <div className='p-5 bg-white' style={{border:"1px solid #edf2f9"}}>
+          <div className='demo-app-main'>
+            <FullCalendar
+              contentHeight={650}
+              windowResizeDelay={true}
+              plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+              headerToolbar={{
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay'
+              }}
+              initialView='dayGridMonth'
+              editable={true}
+              selectable={true}
+              selectMirror={true}
+              dayMaxEvents={true}
+        //     weekends={weekendsVisible}
+              events={eventos} // alternatively, use the `events` setting to fetch from a feed
+              select={handleDateSelect}
+              eventContent={renderEventContent} // custom render function
+              eventClick={handleEventClick}
+              
+              //eventsSet={handleEvents} // called after events are initialized/added/changed/removed
+              /* you can update a remote database when these fire:
+              eventAdd={function(){}}
+              eventChange={function(){}}
+            eventRemove={function(){}}*/
+            />
+          </div>
+        </div>
+        </main>
         </div>
       </div>
-      </div>
-      </main>
-      </div>
-      </div>
-    )
+  )
   
   function  handleDateSelect () {
     handleOpen();

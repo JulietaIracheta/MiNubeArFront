@@ -88,9 +88,21 @@
   font-size: 1em;
 }
 
-.react-calendar{
+/* .react-calendar{
   width: 100% !important;
+} */
+
+.fc-toolbar-chunk > .fc-toolbar-title{
+  font-size: 1.5em !important;
+  display: none;
 }
+
+@media screen and (min-width:768px){
+  .fc-toolbar-chunk > .fc-toolbar-title{
+    display: block;
+  }
+}
+
  .bg-docente{
    background: #212888 !important;
  }
