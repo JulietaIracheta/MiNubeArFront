@@ -1,7 +1,7 @@
+import url from "../../url"
+const urlBase=`${url.url}/api/docente/`;
 
-const urlBase='http://localhost:60671/api/docente/';
-
-const URL_DOCENTE = 'http://localhost:60671/api/docente/getInstitucionesDeUnDocente/'
+const URL_DOCENTE = `${url.url}/api/docente/getInstitucionesDeUnDocente/`
 
 
 export default async function getInstitucionDocente(id) {

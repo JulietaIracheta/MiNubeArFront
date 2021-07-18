@@ -13,6 +13,7 @@ import {
 import {  PersonCircle } from "react-bootstrap-icons";
 import logo from '../../assets/img/logoColor.jpeg'
 import { BorderColor, Business, Group } from "@material-ui/icons";
+import url from "../../url"
 
 let size_icon = 25
 
@@ -22,7 +23,7 @@ const NavBar = (props) => {
   const toggle = () => setIsOpen(!isOpen);
  
   const logout = async () => {
-    await fetch('http://localhost:60671/api/usuario/logout', {
+    await fetch(`${url.url}/api/usuario/logout`, {
       method: 'POST',
       headers: { "Content-type": "application/json" },
       credentials: "include",

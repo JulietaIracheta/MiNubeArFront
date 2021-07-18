@@ -1,4 +1,6 @@
-const urlBase = 'http://localhost:60671/api/question/'
+
+import url from "../url"
+const urlBase =  `${url.url}/api/question/`
 
 export default function getQuestions(id) {
     const url=urlBase+`${id}`

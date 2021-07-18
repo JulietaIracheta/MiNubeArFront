@@ -4,6 +4,7 @@ import Sidebar from "../Sidebar";
 import { SidebarDataEstudiante } from "../sideBar/SidebarDataEstudiante";
 import { Button, ButtonGroup } from "@material-ui/core";
 import NavEstudiante from './NavEstudiante'
+import url from "../../url"
 import { Document, Page, pdfjs } from 'react-pdf';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -12,10 +13,9 @@ export default function InformeEstudiante(props) {
     const [numPages, setNumPages] = useState(null);
     const [pageNumber, setPageNumber] = useState(1);
     const [pdf, setPdf] = useState('');
-    const url="";
 
     useEffect(async () => {
-        const result = await fetch('http://localhost:60671/api/informe/getInformeByEstudiante/1', {
+        const result = await fetch(`${url.url}/api/informe/getInformeByEstudiante/1`, {
           method: 'GET',
           headers: { "Content-type": "application/json" },
           credentials: "include",
@@ -56,7 +56,7 @@ export default function InformeEstudiante(props) {
           <div className="container-flex">
           {pdf === null ? <div><p>No tiene informe cargado</p></div> :    <div>
         <Document
-          file={"http://localhost:60671/informes/"+pdf}
+          file={`${url.url}/informes/`+pdf}
             options={{ workerSrc: "/pdf.worker.js" }}
             onLoadSuccess={onDocumentLoadSuccess}
             

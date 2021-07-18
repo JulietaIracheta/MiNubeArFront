@@ -15,6 +15,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import "../../App.css";
+import url from "../../url"
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -63,7 +64,7 @@ const CargarInforme = () => {
 
   useEffect(async () => {
     const result = await fetch(
-      "http://localhost:60671/api/usuario/estudiantes",
+      `${url.url}/api/usuario/estudiantes`,
       {
         method: "GET",
         headers: { "Content-type": "application/json" },
@@ -80,7 +81,7 @@ const CargarInforme = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:60671/api/informe/", {
+    const response = await fetch(`${url.url}/api/informe/`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",

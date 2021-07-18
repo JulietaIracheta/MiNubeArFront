@@ -1,5 +1,6 @@
 import axios from "axios";
-const baseUrl = "http://localhost:60671/api/"
+import url from "../url"
+const baseUrl = `${url.url}/api/`
 
 export default {
 

@@ -18,7 +18,7 @@ import Sidebar from "../../Sidebar";
 import { SidebarDataDocente } from "../../sideBar/SidebarDataDocente";
 import NavDocente from "../NavDocente";
 import { Cookies } from 'react-cookie';
-
+import url from "../../../url"
 
 const styles = (theme) => ({
   root: {
@@ -103,7 +103,7 @@ const CargarInforme = ({ handleClose, classes, ...props }) => {
   const jwt = cookie.get('jwt');
   useEffect(async () => {
     const result = await fetch(
-      "http://localhost:60671/api/docente/getInstitucion/?jwt="+jwt,
+      `${url.url}/api/docente/getInstitucion/?jwt=`+jwt,
       {
         method: "GET",
         headers: { "Content-type": "application/json" },
@@ -119,7 +119,7 @@ const CargarInforme = ({ handleClose, classes, ...props }) => {
   }, []);
 
   useEffect(async () => {
-    const result = await fetch('http://localhost:60671/api/docente/getCursos/?jwt='+jwt, {
+    const result = await fetch(`${url.url}/api/docente/getCursos/?jwt=`+jwt, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -134,7 +134,7 @@ const CargarInforme = ({ handleClose, classes, ...props }) => {
 
   useEffect(async () => {
     const result = await fetch(
-      "http://localhost:60671/api/docente/getEstudiantesPorCurso/" + idInstitucion +"/" + idCurso,
+      `${url.url}/api/docente/getEstudiantesPorCurso/` + idInstitucion +"/" + idCurso,
       {
         method: "GET",
         headers: { "Content-type": "application/json" },
@@ -157,7 +157,7 @@ const CargarInforme = ({ handleClose, classes, ...props }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const urlCargaInforme = "http://localhost:60671/api/informe/cargarInforme";
+    const urlCargaInforme = `${url.url}/api/informe/cargarInforme`;
     
     if (validate()) {
       const onSuccess = () => {
@@ -172,7 +172,7 @@ const CargarInforme = ({ handleClose, classes, ...props }) => {
       form.append("formFile", archivo);
       form.append("Informe", fileName)
       try{
-      const response = await axios.post("http://localhost:60671/api/informe/cargarInforme",
+      const response = await axios.post(`${url.url}/api/informe/cargarInforme`,
         form);
           console.log(response);
         }catch(err) {

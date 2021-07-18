@@ -3,7 +3,7 @@ import React from 'react'
 import { PersonCircle } from 'react-bootstrap-icons';
 import '../../assets/css/css-estudiante.css';
 import { Avatar } from "@material-ui/core";
-
+import url from "../../url"
 
 export default function DatoEstudiante({ avatar, nombre, apellido,id}) {
     return (
@@ -14,7 +14,7 @@ export default function DatoEstudiante({ avatar, nombre, apellido,id}) {
                         {avatar ? 
                               <Avatar className="icon-perfil text-white w-100 h-100" style={{ background: "#B0211D" }}>
                               <img className="w-100 h-100"
-                                src={"http://localhost:60671/Avatares/" + avatar}
+                                src={`${url.url}/Avatares/` + avatar}
                                 style={{ objectFit: "cover" }} />
                             </Avatar>
                         : <PersonCircle className="rounded-circle h-100 icono-estudiante"/>}

@@ -1,4 +1,5 @@
-const urlBase = 'http://localhost:60671/api/docente/getEstudiantesPorCurso/'
+import url from "../../url"
+const urlBase = `${url.url}/api/docente/getEstudiantesPorCurso/`
 
 export default function getEstudiantesCurso(idInstitucion, idCurso) {
     const url=urlBase+`${idInstitucion}/${idCurso}`;

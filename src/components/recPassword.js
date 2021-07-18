@@ -3,6 +3,7 @@ import { Button, Form, FormGroup, Input } from "reactstrap";
 import logo from "../assets/img/logo.png";
 import "../assets/css/css-login.css";
 import { Redirect } from "react-router";
+import url from "../url"
 
 const RecPassword = () => {
   const [email, setEmail] = useState("");  
@@ -13,7 +14,7 @@ const RecPassword = () => {
   const submit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("http://localhost:60671/api/usuario/modificarPassword", {
+    const response = await fetch(`${url.url}/api/usuario/modificarPassword`, {
       method: "POST",
       headers: { "Content-type": "application/json" },
       credentials: "include",

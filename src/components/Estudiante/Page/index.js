@@ -8,6 +8,7 @@ import EstudianteMaterias from "../EstudianteMaterias";
 import MateriasUnidades from "../MateriasUnidades";
 import { SidebarDataEstudiante } from "../../sideBar/SidebarDataEstudiante";
 import { Cookies } from 'react-cookie';
+import url from "../../../url"
 
 export default function Estudiante() {
   const [nombre, setNombre] = useState("");
@@ -17,7 +18,7 @@ export default function Estudiante() {
   useEffect(() => {
     (async () => {
       const response = await fetch(
-        "http://localhost:60671/api/persona/getPersonaByUsuario?jwt="+jwt,
+        `${url.url}/api/persona/getPersonaByUsuario?jwt=`+jwt,
         {
           method: "GET",
           headers: { "Content-type": "application/json" },

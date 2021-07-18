@@ -10,6 +10,7 @@ import {
 import NavAdmin from './NavAdmin';
 import Sidebar from "../Sidebar";
 import { SidebarData } from "../SidebarData";
+import url from "../../url"
 
 const AsignarCursosAInstituciones = () => {
     const [instituciones, setInstituciones] = useState([]);
@@ -32,7 +33,7 @@ const AsignarCursosAInstituciones = () => {
       };
 
       useEffect(async () => {
-        const result = await fetch('http://localhost:60671/api/institucion', {
+        const result = await fetch(`${url.url}/api/institucion`, {
           method: 'GET',
           headers: { "Content-type": "application/json" },
           credentials: "include",
@@ -46,7 +47,7 @@ const AsignarCursosAInstituciones = () => {
       }, []);
       
       useEffect(async () => {
-        const result = await fetch('http://localhost:60671/api/cursos', {
+        const result = await fetch(`${url.url}/api/cursos`, {
           method: 'GET',
           headers: { "Content-type": "application/json" },
           credentials: "include",
@@ -61,7 +62,7 @@ const AsignarCursosAInstituciones = () => {
 
       const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch("http://localhost:60671/api/institucioncurso/", {
+        const response = await fetch(`${url.url}/api/institucioncurso/`, {
           method: "POST",
           headers: {
             "Content-type": "application/json",

@@ -6,11 +6,14 @@ import {withStyles} from "@material-ui/core";
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import { School } from '@material-ui/icons'
+import url from "../../url"
+import { Cookies } from 'react-cookie';
 import { Document, Page, pdfjs } from 'react-pdf';
 import './timeline.css';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
-
+const cookie = new Cookies();
+const jwt = cookie.get('jwt');
 const drawerWidth = 200;
 
 const styles = (theme) => ({
@@ -49,7 +52,7 @@ const Trayectoria = ({ classes, ...props }) => {
   
   useEffect(async () => {
     const result = await fetch(
-      "http://localhost:60671/api/informe/getTrayectoria/" ,
+      `${url.url}/api/informe/getTrayectoria/`+ "?jwt=" + jwt ,
       {
         method: "GET",
         headers: { "Content-type": "application/json" },
@@ -103,7 +106,7 @@ const Trayectoria = ({ classes, ...props }) => {
     </div>
     )
     )}
-    { record.informe ? <a href={`http://localhost:60671/informes/${record.informe}`} target='_blank' rel='noopener noreferrer'>Ver Informe</a>
+    { record.informe ? <a href={`${url.url}/informes/${record.informe}`} target='_blank' rel='noopener noreferrer'>Ver Informe</a>
     : ""}     
   </VerticalTimelineElement>
   ))}

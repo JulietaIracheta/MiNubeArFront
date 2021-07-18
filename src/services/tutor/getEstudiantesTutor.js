@@ -1,7 +1,9 @@
-const url = 'http://localhost:60671/api/tutor/6'
+import url from "../../url"
+
+const urlBase = `${url.url}/api/tutor/6`
 
 export default function getEstudiantesTutor() {
-    return fetch(url, {
+    return fetch(urlBase, {
         method: 'GET',
         headers: { "Content-type": "application/json" },
         credentials: "include",

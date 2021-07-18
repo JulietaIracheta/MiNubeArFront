@@ -5,13 +5,14 @@ import Encabezado from "./Encabezado";
 import { ChartEstudainte } from "./ChartEstudiante";
 import { CardUnidad } from "./CardUnidad";
 import { Cookies } from 'react-cookie';
+import url from "../../url"
 
 export default function MateriaUnidad({ id }) {
 
-    const baseUrl = 'http://localhost:60671/api/';
-    const url = baseUrl + `Actividades/getActidades/${id}`;
+    const baseUrl = `${url.url}/api/`;
     const cookie = new Cookies();
     const jwt = cookie.get('jwt');
+    const urlB = baseUrl + `Actividades/getActidades/${id}`+"?jwt="+jwt;
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [promedioVisto, setPromedioVisto] = useState(0);
@@ -20,7 +21,7 @@ export default function MateriaUnidad({ id }) {
     const [actividadResumen, setActividadResumen] = useState('');
     useEffect(() => {
         (async () => {
-          const response = await fetch(url, {
+          const response = await fetch(urlB, {
             headers: { "Content-type": "application/json" },
             credentials: "include",
           });
@@ -42,9 +43,9 @@ export default function MateriaUnidad({ id }) {
       })();
       },[]);
       useEffect(function(){
-        const url = 'http://localhost:60671/api/contenido/getContenidoDeEstudiante/'+id+"?jwt="+jwt;
+        const urlBB = `${url.url}/api/contenido/getContenidoDeEstudiante/`+id+"?jwt="+jwt;
 
-        return fetch(url, {
+        return fetch(urlBB, {
             method: 'GET'
         }).then(res => {
             if (!res.ok) throw new Error('Response is NOT ok')

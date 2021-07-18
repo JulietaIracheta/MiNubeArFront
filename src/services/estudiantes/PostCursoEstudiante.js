@@ -1,5 +1,5 @@
-
-const urlBaseAsignaEstudiantesAcurso = 'http://localhost:60671/api/cursos/AsignaEstudiandesAcurso/';
+import url from "../../url"
+const urlBaseAsignaEstudiantesAcurso = `${url.url}/api/cursos/AsignaEstudiandesAcurso/`;
 
 export function AsignaEstudiandesAcurso(data, onSuccess) {
     const url= `${urlBaseAsignaEstudiantesAcurso}`
