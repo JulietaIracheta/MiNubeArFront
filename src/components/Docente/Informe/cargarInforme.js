@@ -19,6 +19,7 @@ import { SidebarDataDocente } from "../../sideBar/SidebarDataDocente";
 import NavDocente from "../NavDocente";
 import { Cookies } from 'react-cookie';
 import url from "../../../url"
+import swal from 'sweetalert';
 
 const styles = (theme) => ({
   root: {
@@ -157,12 +158,6 @@ const CargarInforme = ({ handleClose, classes, ...props }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const urlCargaInforme = `${url.url}/api/informe/cargarInforme`;
-    
-    if (validate()) {
-      const onSuccess = () => {
-        resetForm();
-      };
     
       const form = new FormData();
       form.append("idUsuario", idUsuario);
@@ -174,15 +169,15 @@ const CargarInforme = ({ handleClose, classes, ...props }) => {
       try{
       const response = await axios.post(`${url.url}/api/informe/cargarInforme`,
         form);
-          console.log(response);
-        }catch(err) {
-          console.log(err);
-        }
-        resetForm();
+        swal("Informe cargado con exito!",'' , "success");
+        resetForm()
       }
-    
-//    handleClose();
-  };
+      catch(e){
+        swal("Ese Usuario ya tiene informe cargado en ese año!",'' , "error");
+      }
+
+      } 
+
   
 
   return (

@@ -44,12 +44,10 @@ import CalificacionesTutor from "./components/Tutor/CalificacionesTutor";
 import AsignarMateriasACurso from "./components/Registro/AsignarMateriasACurso";
 import AsignarCursosAInstituciones from "./components/Registro/AsignarCursoAInstitucion";
 import ComunicadosTutor from "./components/Tutor/Comunicados";
-import NotFound from "../src/NotFound";
 import CuentaEstudiante from "./components/Estudiante/Cuenta";
 import CuentaDocente from "./components/Docente/Cuenta";
 import InformeEstudiante from "./components/Estudiante/Informe";
 import { Cookies, useCookies } from "react-cookie";
-import TrayectoriaEscolar from "./components/Estudiante/TrayectoriaEscolar";
 import CargarInforme2 from "./components/Docente/Informe/cargarInforme";
 import AsignarEstudiantesACursos from "./components/Registro/AsignarEstudiantesACurso";
 import CrearInforme from "./components/Docente/Informe/CargarInforme2";
@@ -62,6 +60,7 @@ import Ahorcado from "./components/Estudiante/Game/Ahorcado/App";
 import Sudoku from "./components/Estudiante/Game/Sudoku/src/index";
 import game2048 from "./components/Estudiante/Game/2048/src/index";
 import Gamificacion from "./components/Estudiante/Gamificacion";
+import NotFound from "../src/NotFound";
 
 const MyRoute = (props) =>
   isAuthenticated() ? <Route {...props} /> : <Redirect to="/login" />;
@@ -274,11 +273,7 @@ const app = () => (
           exact
           component={MateriaUnidad}
         />
-        <Route
-          path="/estudiante/materias/:id/:unidad/video"
-          exact
-          component={MateriaActividad}
-        />
+       <MyRoute path='/estudiante/materias/:id/:contenido/video' exact component={MateriaActividad}/>
         <Route
           path="/estudiante/contenidosHistoricos"
           exact

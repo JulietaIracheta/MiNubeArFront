@@ -13,6 +13,7 @@ import { SidebarDataDocente } from "../sideBar/SidebarDataDocente";
 import NavDocente from "../Docente/NavDocente";
 import { makeStyles } from '@material-ui/core/styles';
 import url from "../../url"
+import swal from 'sweetalert';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -109,8 +110,15 @@ const CargarCalificaciones = () => {
           t3 : T3
 
       }),
-    }).then((response) => response.json());
-    resetForm();
+    }).then(res => {
+      if (res.status === 400) {
+      swal("Ese alumno ya tiene cargada nota para esa materia y ese año!",'' , "error")
+      }else
+      {res.json()
+        resetForm();
+      };
+    
+    })
   };
 
   return (

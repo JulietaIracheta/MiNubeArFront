@@ -12,7 +12,7 @@ export default function MateriaUnidad({ id }) {
     const baseUrl = `${url.url}/api/`;
     const cookie = new Cookies();
     const jwt = cookie.get('jwt');
-    const urlB = baseUrl + `Actividades/getActidades/${id}`+"?jwt="+jwt;
+    const urlB = baseUrl + `Actividades/getActidades/${id}?jwt=`+jwt;
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [promedioVisto, setPromedioVisto] = useState(0);
@@ -28,7 +28,7 @@ export default function MateriaUnidad({ id }) {
           
           const content = await response.json();  
         
-          const contenidoPromedio = await fetch(baseUrl+"Contenido/ContenidoPromedio?jwt="+jwt, {
+          const contenidoPromedio = await fetch(baseUrl+"Contenido/ContenidoPromedio?materiaId="+id+"&jwt="+jwt, {
             headers: { "Content-type": "application/json" },
             credentials: "include",
           });
@@ -52,6 +52,7 @@ export default function MateriaUnidad({ id }) {
             return res.json()
         }).then(res => {
             setData(res);
+            console.log(data)
         });
     }, []);
     const listaUnidades = data.map((data,key) => (
