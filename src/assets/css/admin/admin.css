@@ -23,6 +23,7 @@
 
     .ancho1{
       min-width: 260px;
+      z-index: 100
     }
 
     .menuadmin{
