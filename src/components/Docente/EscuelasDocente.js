@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { Gear } from "react-bootstrap-icons";
+import { GearFill } from "react-bootstrap-icons";
 import "../../assets/css/css-docente.css";
 import Sidebar from "../Sidebar";
 import { SidebarDataDocente } from '../sideBar/SidebarDataDocente';
@@ -53,7 +52,7 @@ const EscuelasDocente = () => {
   return (
     <div className="d-flex mt-1">
       <Sidebar data={SidebarDataDocente} />
-      <div className="container cardContainer ">
+      <div className="main w-100 pr-2 pt-4">
         {click ? 
           <CursosAsignadosDocente
            cursoId={seleccion.curso} 
@@ -63,36 +62,40 @@ const EscuelasDocente = () => {
            setearClick={setearClick}></CursosAsignadosDocente>
         :
         <div>
-          <div>
-            <h2 className="font-weight-bold colorDoc">Mis Escuelas</h2>
-            <hr className="hr-colorDoc" />
-          </div>
+           <div className="mb-4 pl-3 pl-sm-2">
+              <span className="tituloadmin tituloDocente">Mis Escuelas</span>
+              <p className="text-secondary">
+                Es esta sección puede ver los cursos que tiene asignado<br/>
+                ordenados por institución.
+              </p>
+
+           </div>
         {institucion.map((inst) => 
-            <div className="row">
+            <div className="row row-cols-1 row-cols-md-2 row-cols-xl-3 m-0">
               {curso.map((c) => 
-                <div className="col-md-6">
-                  <div className="bordes mb-3">
-                    <div className="card-body colorDoc font-weight-bold">
-                      <h5 className="card-title font-weight-bold colorDoc">
+                <div className="col mb-4">
+                  <div className="card container bordes">
+                      <h5 className="card-title pt-3 pl-2 pb-2 card-title-docente">
                         Curso : <>{c.nombre}</>
                         <hr />
                         Institución : {inst.nombre}
                         <hr />
                       </h5>
-                      <div className="text-left">
+                      <div className="card-body">
                         <div class="d-flex flex-row-reverse">
-                          {/*<Link to={`/curso/${inst.nombre}/${c.nombre}/${c.idCurso}`} 
-                        className="link-escuela-docente-responsive">*/
-                          <Gear className="icono-escuela-docente-responsive" 
-                          onClick={() =>seleccionar(c,inst)}/>
-                        }
+                            <GearFill 
+                              onClick={() =>seleccionar(c,inst)}
+                              size= {26}
+                              color= {"#2d2f85"}
+                              cursor={"pointer"}
+                            />
                         </div>
                       </div>
-                    </div>
                   </div>
                 </div>
               )}</div>
-          )}</div>
+          )}
+          </div>
         }
       </div>
     </div>

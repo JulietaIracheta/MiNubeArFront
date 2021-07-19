@@ -15,8 +15,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
-    minWidth: 120,
-    marginLeft: 25
+    marginBottom: 15
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
@@ -115,67 +114,65 @@ const CargarCalificaciones = () => {
   return (
     <div>
       <NavDocente />
-
-      <div className="d-flex mt-1">
+      <div className="d-flex">
         <Sidebar data={SidebarDataDocente} />
-        <div className="container cardContainer ">
-          <div>
-            <h4>Carga de Calificaciones</h4>
-            <hr className="hr-colorDoc" />
-            <h6 className="mt-5 mb-5">
-              Complete el formulario para cargar las caliicaciones de los alumnos
-            </h6>
+        <main className="main w-100 pr-2 pt-4">
+          <div className="mb-4 pl-3 pl-sm-2">
+            <span className="tituloadmin tituloDocente">Carga de Calificaciones</span>
+            <p className="text-secondary mt-1">
+              Complete el formulario para cargar las calificaciones <br/>
+              correspondientes a cada trimestre de los alumnos.
+            </p>
           </div>
-          <form autoComplete="off" noValidate onSubmit={handleSubmit}>
+          <form autoComplete="off" noValidate onSubmit={handleSubmit}  className="d-flex mt-4 formulario-asignacion flex-column p-4 p-md-5 bg-white" style={{border:"1px solid #edf2f9"}}>
             <div
               style={{
                 display: "inline-block",
                 justifyContent: "center",
               }}
             >
-              <Grid item xs={12} className="mb-4 d-flex w-100 justify-content-between">
-              <FormControl fullWidth variant="outlined" className={classes.formControl}>
-            <InputLabel id="demo-simple-select-outlined-label" >Estudiante</InputLabel>
-            <Select
-              name="idEstudiante"
-              id="demo-simple-select-outlined"
-              value={estudiante}
-              onChange={onValueChangeEstudiante}
-              label="Estudiante"
-            >
-              {estudiantes.map((record, index) => (
-                <MenuItem key={index} value={record.idUsuario}>
-                  {record.apellido}, {record.nombre}
-                </MenuItem>
-              ))}
-            </Select>
-            </FormControl>
-            <FormControl fullWidth variant="outlined" className={classes.formControl}>
-            <InputLabel id="demo-simple-select-outlined-label" >Materia</InputLabel>
-            <Select
-              name="Materia"
-              id="demo-simple-select-outlined"
-              
-              value={materia}
-              onChange={onValueChangeMateria}
-              label="Materia"
-            >
-              {materias.map((record) => (
-                <MenuItem value={record.nombre}>
-                  {record.nombre}
-                </MenuItem>
-              ))}
-            </Select>
-            </FormControl>
-            </Grid>        
-            <Grid item xs={12} className="mb-4">               
+            <Grid item xs={12} className="mb-4 mb-md-2 d-flex w-100 justify-content-between">
+              <FormControl fullWidth variant="outlined" className="w-100 mb-4">
+                <InputLabel id="demo-simple-select-outlined-label" >Estudiante</InputLabel>
+                <Select
+                  name="idEstudiante"
+                  id="demo-simple-select-outlined"
+                  value={estudiante}
+                  onChange={onValueChangeEstudiante}
+                  label="Estudiante"
+                >
+                  {estudiantes.map((record, index) => (
+                    <MenuItem key={index} value={record.idUsuario}>
+                      {record.apellido}, {record.nombre}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+              <FormControl fullWidth variant="outlined" className="ml-md-4 w-100">
+                <InputLabel id="demo-simple-select-outlined-label" >Materia</InputLabel>
+                <Select
+                  name="Materia"
+                  id="demo-simple-select-outlined"
+                  value={materia}
+                  onChange={onValueChangeMateria}
+                  label="Materia"
+                >
+                  {materias.map((record) => (
+                    <MenuItem value={record.nombre}>
+                      {record.nombre}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} className="mb-4 mb-md-2 d-flex w-100 justify-content-between">               
                 <TextField
                   name="año"
                   variant="outlined"
                   label="Año"
                   value={año}
                   onChange={onValueChangeAño}
-                  className="ml-4"
+                  className="mb-4 w-100"
                 />
                 <TextField
                   name="T1"
@@ -183,17 +180,17 @@ const CargarCalificaciones = () => {
                   label="Nota 1T"
                   value={T1}
                   onChange={onValueChangeT1}
-                  className="ml-4"
+                  className="ml-md-4 w-100"
                 />
-                </Grid>
-                <Grid item xs={12} className="mb-4">
+            </Grid>
+            <Grid item xs={12} className="mb-4 mb-md-2 d-flex w-100 justify-content-between">
                 <TextField
                   name="T2"
                   variant="outlined"
                   label="Nota 2T"
                   value={T2}
                   onChange={onValueChangeT2}
-                  className="ml-4"
+                  className="w-100 mb-4"
                 />
                 <TextField
                   name="T3"
@@ -201,21 +198,21 @@ const CargarCalificaciones = () => {
                   label="Nota 3T"
                   value={T3}
                   onChange={onValueChangeT3}
-                  className="ml-4"
+                  className="w-100 ml-md-4"
                 />
-              </Grid>
+          </Grid>
                 <Button
-                  size="small"
+                  size="medium"
                   type="submit"
-                  variant="outlined"
-                  className="ml-5"
+                  color= "#fff"
+                  className="ml-5 text-white float-right"
+                  style= {{backgroundColor:"#2d2f85"}}
                 >
                   Enviar
                 </Button>
-
             </div>
           </form>
-        </div>
+        </main>
       </div>
     </div>
   );

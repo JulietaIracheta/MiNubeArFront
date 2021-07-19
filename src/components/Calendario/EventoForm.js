@@ -94,8 +94,8 @@ const EventoForm = ({ handleClose, classes, ...props }) => {
   }, [props.currentId]);
 
   return (
-    <div style={{width:"540px"}} className="d-flex flex-column align-items-center py-5">
-      <h6>Crear un evento </h6>
+    <div className="d-flex flex-column align-items-center py-4 px-5">
+      <h5>Crear un evento</h5>
       <form
         autoComplete="off"
         noValidate

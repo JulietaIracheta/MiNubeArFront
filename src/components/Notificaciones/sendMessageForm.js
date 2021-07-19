@@ -7,15 +7,16 @@ const SendMessageForm = ({ sendMessage }) => {
         e.preventDefault();
         sendMessage(message);
         setMessage('');
-    }}>
-        <div class="input-group mb-3">
+    }}
+    className="d-flex flex-column align-items-end">
+        <div class="input-group mb-3 mt-auto">
             <input className="form-control" type="text" placeholder="Mensaje.."
                 onChange={e => setMessage(e.target.value)} value={message}>
             </input>
             <div class="input-group-append">
                 <button className="input-group-text bg-primary text-light cursor-pointer" type="submit" disabled={!message}>
                     <SendIcon>
-                        </SendIcon>Enviar
+                        </SendIcon>
                 </button>
             </div>
         </div>
