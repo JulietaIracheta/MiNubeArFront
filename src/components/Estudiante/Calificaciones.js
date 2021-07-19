@@ -41,7 +41,7 @@ const Calificaciones = ({ classes, ...props }) => {
             <span className="tituloadmin tituloEstudiante">Trayectoria Escolar</span>
           </div>
             <Table responsive className="mt-3 d-block d-sm-table bg-white table-responsive" style={{border:"1px solid #edf2f9"}}>
-              <TableHead style={{backgroundColor:"rgba(182, 25, 21, .7)"}}>
+              <TableHead style={{backgroundColor:"rgb(18, 38, 63)"}}>
                 <TableRow>
                   <TableCell className="font-weight-bold text-white text-uppercase">Materia</TableCell>
                   <TableCell className="font-weight-bold text-white text-uppercase">Nota T1</TableCell>

@@ -50,35 +50,36 @@ export default function InformeEstudiante(props) {
         <NavEstudiante />
       <div className="d-flex mt-1 borde-tutor">
         <Sidebar data={SidebarDataEstudiante}/>
-        <div className="container mt-2">
-          <h2>Informe Alumno</h2>
-          <hr class="hr-color w-100" />
-          <div className="container-flex">
+        <div className="main w-100 pr-2 pt-4">
+          <div className="mb-4 pl-3 pl-sm-2">
+            <h2 className="tituloadmin tituloEstudiante">Informe Alumno</h2>
+          </div>
+          {/* <hr class="hr-color w-100" /> */}
+          <div className="container-flex mt-3">
           {pdf === null ? <div><p>No tiene informe cargado</p></div> :    <div>
-        <Document
-          file={"http://localhost:60671/informes/"+pdf}
-            options={{ workerSrc: "/pdf.worker.js" }}
-            onLoadSuccess={onDocumentLoadSuccess}
-            
-        >
-        <Page pageNumber={pageNumber} />
-      </Document>
-        <p className="paginas">
-          Página {pageNumber || (numPages ? 1 : "--")} of {numPages || "--"}
-        </p>
-        <ButtonGroup className="botonera">
-        <Button type="button" className="buttonn" disabled={pageNumber <= 1} onClick={previousPage}>
-          Anterior
-        </Button>
-        <Button
-          type="button"
-          className="buttonn"
-          disabled={pageNumber >= numPages}
-          onClick={nextPage}
-        >
-          Próxima
-        </Button>
-        </ButtonGroup> 
+            <Document
+              file={"http://localhost:60671/informes/"+pdf}
+                options={{ workerSrc: "/pdf.worker.js" }}
+                onLoadSuccess={onDocumentLoadSuccess}
+            >
+            <Page pageNumber={pageNumber} />
+            </Document>
+              <p className="paginas">
+                Página {pageNumber || (numPages ? 1 : "--")} of {numPages || "--"}
+              </p>
+            <ButtonGroup className="botonera">
+              <Button type="button" className="buttonn" disabled={pageNumber <= 1} onClick={previousPage}>
+                Anterior
+              </Button>
+              <Button
+                type="button"
+                className="buttonn"
+                disabled={pageNumber >= numPages}
+                onClick={nextPage}
+              >
+                Próxima
+              </Button>
+            </ButtonGroup> 
       </div>}
  </div>
           </div>

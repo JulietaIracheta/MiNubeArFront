@@ -62,6 +62,7 @@ const Trayectoria = ({ classes, ...props }) => {
       .then((response) => {
         setInformes(response);
       });
+      // document.body.style.backgroundColor = "#e9f0f5"
   }, []);
   function dosDecimales(n) {
     let t=n.toString();
@@ -75,13 +76,13 @@ const Trayectoria = ({ classes, ...props }) => {
         <NavEstudiante />
       <div className="d-flex mt-1">
         <Sidebar data={SidebarDataEstudiante}/>
-        <main className={classes.content}>
-            <div className={classes.toolbar}  />
-            <div >
-              <div style={{marginTop:"-3rem"}}>
-                  <h3 className="ml-4">Trayectoria Escolar</h3>
-                  <hr class="hr-color w-100" />
-        </div>
+        <main className="main w-100 pr-2 pt-4">
+            {/* <div className={classes.toolbar}  /> */}
+            <div className="mb-4 pl-3 pl-sm-2">
+              {/* <div style={{marginTop:"-3rem"}}> */}
+                  <h3 className="tituloadmin tituloEstudiante">Trayectoria Escolar</h3>
+                  {/* <hr class="hr-color w-100" /> */}
+            </div>
         <div className='demo-app'>
           <div className='demo-app-main-trayectoria'>
 
@@ -89,9 +90,11 @@ const Trayectoria = ({ classes, ...props }) => {
   {informes.map((record) => (
   <VerticalTimelineElement
     className="vertical-timeline-element--work"
-      date={record.año}
+    date={record.año}
     iconStyle={{ background:'#b61915', color: '#fff' }}
     icon={<School />}
+    // contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
+    // contentStyle={ { border: '3px solid   rgba(33, 150, 243,.5)' } }
   >
     <span><b><i>{record.institucion}</i></b></span><br />
     <span><b><i>{record.curso}</i></b></span><br />
@@ -111,7 +114,7 @@ const Trayectoria = ({ classes, ...props }) => {
 
       </div>
       </div>
-      </div>
+      {/* </div> */}
       </main>
       </div>
       </div>

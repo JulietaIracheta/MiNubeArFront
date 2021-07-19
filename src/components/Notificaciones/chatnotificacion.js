@@ -104,7 +104,7 @@ export default () => {
                         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 m-0">
                             <div className="col mb-4">
                                     <div className="card-body card-materia-estudiante font-weight-bold">
-                                        <h5 className="card-title font-weight-bold" style={{color:"#B61915"}}>
+                                        <h5 className="font-weight-bold" style={{color:"rgba(182, 25, 21, .75)"}}>
                                             Sala de mi curso
                                         </h5>
                                         <div className="text-left">

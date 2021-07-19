@@ -45,13 +45,13 @@ export default function () {
     }, []);
 
     return (
-        <div>
+        <>
             <NavEstudiante />
             <div className="d-flex mt-1">
                 <Sidebar data={SidebarDataEstudiante} />
-                <div className="container">
-                <h2 className="mt-2">Contenidos de años anteriores</h2>
-                <hr class="hr-color"></hr>
+                <div className="main w-100 pr-2 pt-4">
+                    <h2 className="tituloadmin tituloEstudiante">Contenidos de años anteriores</h2>
+                {/* <hr class="hr-color"></hr> */}
                     <div className="row">
                     {contenidos ?
                         contenidos.map((contenido => (
@@ -216,6 +216,6 @@ export default function () {
             </Dialog>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
