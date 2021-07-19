@@ -7,6 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import NavAdmin from "../Registro/NavAdmin";
 import Sidebar from '../Sidebar';
 import { SidebarData } from '../SidebarData';
+import url from "../../url"
 
 const HtmlTooltip = withStyles((theme) => ({
     tooltip: {
@@ -23,7 +24,7 @@ export default function TrayectoriaAcademica() {
 
     const [x, setX] = useState();
     useEffect(() => {
-        fetch("http://localhost:60671/api/boletin/getBoletinesEstudiante/" + 1, {
+        fetch(`${url.url}/api/boletin/getBoletinesEstudiante/` + 1, {
             method: "GET",
             headers: { "Content-type": "application/json" },
             credentials: "include",

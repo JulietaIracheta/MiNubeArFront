@@ -62,8 +62,7 @@ const Calendario = ({ classes, ...props }) => {
     };
   
   useEffect(function () {
-    getEventos().then(even => setEventos(even))   
-    console.log(eventos)    
+    getEventos().then(even => setEventos(even))      
 }, [])
 
 const reload = () => {

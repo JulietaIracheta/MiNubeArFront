@@ -4,6 +4,7 @@ import Estudiante from './Estudiante/Page/index';
 import Tutor from './Tutor/Page';
 import Registro from './Registro/Registro'; 
 import { Cookies, useCookies } from "react-cookie";
+import url from "../url"
 
 export default function Rol(){
   const [rol, setRol] = useState("");
@@ -13,7 +14,7 @@ export default function Rol(){
   
   useEffect(() => {
     (async () => {
-      const response = await fetch("http://localhost:60671/api/rol/getRolByUsuario?jwt="+jwt, {
+      const response = await fetch(`${url.url}/api/rol/getRolByUsuario?jwt=`+jwt, {
         headers: { "Content-type": "application/json" },
         credentials: "include"
       });

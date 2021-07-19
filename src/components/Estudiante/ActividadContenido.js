@@ -4,6 +4,7 @@ import { useState } from 'react';
 import swal from 'sweetalert';
 import getQuestions from '../../services/getQuestions';
 import { Cookies } from 'react-cookie';
+import url from "../../url"
 
 const ActividadContenido = (props) => {
 
@@ -17,9 +18,10 @@ const ActividadContenido = (props) => {
 	const [visto, setVisto] = useState(false);  
 	const cookie = new Cookies();
 	const jwt = cookie.get('jwt');
+
 	useEffect(() => {
 		(async () => {
-			const response = await fetch("http://localhost:60671/api/contenido/" + props.unidad, {
+			const response = await fetch(`${url.url}/api/contenido/` + props.unidad, {
 				headers: { "Content-type": "application/json" },
 				credentials: "include",
 			});
@@ -88,7 +90,7 @@ const ActividadContenido = (props) => {
 
 		}
 
-		fetch("http://localhost:60671/api/puntaje/", {
+		fetch(`${url.url}/api/puntaje/`, {
 			method: "POST",
 			headers: {
 				"Content-type": "application/json",

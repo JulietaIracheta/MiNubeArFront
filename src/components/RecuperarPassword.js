@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Dialog from '@material-ui/core/Dialog';
 import qs from 'qs'
+import url from "../url"
 
 
 const RecuperarPassword = ({open, handleClose}) => {
@@ -10,7 +11,7 @@ const RecuperarPassword = ({open, handleClose}) => {
     const enviarMail = async (e) => {
       //      e.preventDefault();
         
-            const response = await fetch("http://localhost:60671/api/mail/passwordrecovery", {
+            const response = await fetch(`${url.url}/api/mail/passwordrecovery`, {
               method: 'POST',
               headers: { 'content-type': 'application/x-www-form-urlencoded' },
               body: qs.stringify(data),

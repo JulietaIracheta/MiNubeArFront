@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import * as actions from "../../actions/comunicado";
 import { withStyles } from "@material-ui/core";
 import { Cookies } from 'react-cookie';
+import url from "../../url"
 
 const drawerWidth = 200;
 
@@ -44,14 +45,12 @@ const Comunicado = ({ idCurso, idInstitucion, ...props }) => {
   const jwt = cookie.get('jwt');
 
   useEffect(() => {
-    var url = "http://localhost:60671/api/comunicado/getComunicados/" + idInstitucion + "/" + idCurso + "?jwt="+jwt;
-    console.log(url);
-    fetch(url, {
+    var url1 = `${url.url}/api/comunicado/getComunicados/` + idInstitucion + "/" + idCurso + "?jwt="+jwt;
+    fetch(url1, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",
     }).then(function (response) {
-      console.log(response);
       return response.json();
     }).then(response => {
       setComunicados(response);

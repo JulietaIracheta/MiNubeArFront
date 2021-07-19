@@ -4,13 +4,13 @@ import logo from "../assets/img/logo.png";
 import GoogleLogin from "react-google-login";
 import MicrosoftLogin from 'react-microsoft-login'
 import { GoogleLoginButton, MicrosoftLoginButton } from "react-social-login-buttons";
-
 import "../assets/css/css-login.css";
 import { Redirect } from "react-router";
 import { Cookies, useCookies } from "react-cookie";
 import swal from "sweetalert";
 import RecuperarPassword from './RecuperarPassword';
 import config from "../config";
+import url from "../url"
 
 const Login = () => {
   const [cookies, setCookie] = useCookies(["usuario"]);
@@ -44,7 +44,7 @@ const Login = () => {
     setCookie('Name', res.profileObj.name, { path: '/' });
     const imageGoogle= res.profileObj.imageUrl;
 
-    const response = await fetch("http://localhost:60671/api/usuario/loginGoogle?email=" + emailGoogle, {
+    const response = await fetch(`${url.url}/api/usuario/loginGoogle?email=` + emailGoogle, {
       method: "POST",
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -70,7 +70,7 @@ const Login = () => {
 
     if(!data) return;
     console.log(data);
-    const response = await fetch("http://localhost:60671/api/usuario/loginMicrosoft?email=" + data.userPrincipalName, {
+    const response = await fetch(`${url.url}/api/usuario/loginMicrosoft?email=` + data.userPrincipalName, {
       method: "POST",
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -107,7 +107,7 @@ const Login = () => {
   const submit = async (e, rol) => {
     e.preventDefault();
 
-    const response = await fetch("http://localhost:60671/api/usuario/login", {
+    const response = await fetch(`${url.url}/api/usuario/login`, {
       method: "POST",
       headers: { "Content-type": "application/json" },
       credentials: "include",

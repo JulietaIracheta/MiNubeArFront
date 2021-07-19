@@ -6,6 +6,7 @@ import { Avatar } from '@material-ui/core';
 import Axios from 'axios';
 import { Cookies, useCookies } from 'react-cookie';
 import swal from 'sweetalert';
+import url from "../../url"
 
 export default function Cuenta() {
 
@@ -22,9 +23,11 @@ export default function Cuenta() {
     const [cookies, setCookie] = useCookies(["usuario"]);
     const cookie = new Cookies();
     const jwt = cookie.get('jwt');
+    
+
 
     useEffect(() => {
-        fetch("http://localhost:60671/api/usuario/getCuentaUsuario?jwt="+jwt, {
+        fetch(`${url.url}/api/usuario/getCuentaUsuario?jwt=`+jwt, {
             method: 'GET',
             headers: { "Content-type": "application/json" },
             credentials: "include",
@@ -66,7 +69,7 @@ export default function Cuenta() {
         x.append('usuarioNombre', nombreUsuario);
         x.append('password', password);
 
-        await Axios.post("http://localhost:60671/api/usuario/actualizarCuentaUsuario", x).then(response => {
+        await Axios.post(`${url.url}/api/usuario/actualizarCuentaUsuario`, x).then(response => {
             setCookie('avatarNombre', '', { path: '/' });
             setCookie('avatarPath', '', { path: '/' });
             if (response.status === 204 || response.status === 200) {
@@ -116,7 +119,7 @@ export default function Cuenta() {
                                                     style={{ height: "120px", width: "120px" }}>
                                                     {nombreAvatar ?
                                                         <img className="w-100 h-100"
-                                                            src={"http://localhost:60671/Avatares/" + nombreAvatar}
+                                                            src={`${url.url}/Avatares/` + nombreAvatar}
                                                             style={{ objectFit: "cover" }} /> : nombre.charAt(0) + apellido.charAt(0)}
                                                 </Avatar>
                                             }

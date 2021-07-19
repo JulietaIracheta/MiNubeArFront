@@ -3,6 +3,7 @@ import NavEstudiante from '../Estudiante/NavEstudiante'
 import Sidebar from '../Sidebar'
 import {SidebarDataEstudiante} from '../sideBar/SidebarDataEstudiante'
 import { Cookies } from 'react-cookie';
+import url from "../../url"
 
 import {
     Table,
@@ -19,7 +20,7 @@ const Calificaciones = ({ classes, ...props }) => {
   const jwt = cookie.get('jwt');
   
   useEffect(async () => {
-    const result = await fetch('http://localhost:60671/api/boletin/estudiante/?jwt='+jwt, {
+    const result = await fetch(`${url.url}/api/boletin/estudiante/?jwt=`+jwt, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",

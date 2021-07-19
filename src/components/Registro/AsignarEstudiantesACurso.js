@@ -12,6 +12,7 @@ import {
 import NavAdmin from "./NavAdmin";
 import Sidebar from "../Sidebar";
 import { SidebarData } from "../SidebarData";
+import url from "../../url"
 
 const AsignarEstudiantesACursos = () => {
   const [instituciones, setInstituciones] = useState([]);
@@ -42,7 +43,7 @@ const AsignarEstudiantesACursos = () => {
   };
 
   useEffect(async () => {
-    const result = await fetch("http://localhost:60671/api/institucion", {
+    const result = await fetch(`${url.url}/api/institucion`, {
       method: "GET",
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -57,7 +58,7 @@ const AsignarEstudiantesACursos = () => {
 
   useEffect(async () => {
     const result = await fetch(
-      "http://localhost:60671/api/institucioncurso/cursos/" + institucion,
+      `${url.url}/api/institucioncurso/cursos/` + institucion,
       {
         method: "GET",
         headers: { "Content-type": "application/json" },
@@ -74,7 +75,7 @@ const AsignarEstudiantesACursos = () => {
 
   useEffect(async () => {
     const result = await fetch(
-      "http://localhost:60671/api/persona/getEstudiantesAsignados/1",
+      `${url.url}/api/persona/getEstudiantesAsignados/1`,
       {
         method: "GET",
         headers: { "Content-type": "application/json" },
@@ -92,7 +93,7 @@ const AsignarEstudiantesACursos = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch(
-      "http://localhost:60671/api/estudiantecurso/",
+      `${url.url}/api/estudiantecurso/`,
       {
         method: "POST",
         headers: {

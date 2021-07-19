@@ -1,5 +1,5 @@
-
-const urlBase='http://localhost:60671/api/docente/getId';
+import url from "../../url"
+const urlBase=`${url.url}/api/docente/getId`;
 
 const getId = async () =>{
     const url=urlBase

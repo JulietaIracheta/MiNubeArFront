@@ -23,6 +23,7 @@ import { Business, Group } from '@material-ui/icons'
 import ChatIcon from '@material-ui/icons/Chat';
 import { makeStyles } from '@material-ui/core/styles';
 import '../../assets/css/notificaciones/css-notificacion.css';
+import url from "../../url"
 
 
 let size_icon = 25
@@ -55,7 +56,7 @@ const NavBar = (props) => {
   const rolId = cookieNombreEstudiante.get('rolId');
 
   const logout = async () => {
-    await fetch('http://localhost:60671/api/usuario/logout', {
+    await fetch( `${url.url}/api/usuario/logout`, {
       method: 'POST',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -77,8 +78,8 @@ const NavBar = (props) => {
   }
 
   useEffect(async function () {
-    const url = 'http://localhost:60671/api/notificacion/getByUsuario?jwt='+jwt
-    return await fetch(url, {
+    const urlB =  `${url.url}/api/notificacion/getByUsuario?jwt=`+jwt
+    return await fetch(urlB, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -151,7 +152,7 @@ const NavBar = (props) => {
                   <Avatar className={classes.default} style={{ background: "#B0211D" }}>
                     {nombreAvatar ? nombreAvatar :
                       <img className="w-100 h-100"
-                        src={"http://localhost:60671/Avatares/" + nombrePath}
+                        src={ `${url.url}/Avatares/` + nombrePath}
                         style={{ objectFit: "cover" }} />
                     }</Avatar>
                 }

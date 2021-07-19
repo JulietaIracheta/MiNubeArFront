@@ -17,6 +17,7 @@ import { Avatar } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 import { Cookies, useCookies } from 'react-cookie';
 import '../../assets/css/css-docente.css'
+import url from "../../url"
 
 let size_icon = 25
 
@@ -42,7 +43,7 @@ const NavBar = (props) => {
   const nombrePathGoogle = cookieNombreEstudiante.get('avatarPathGoogle');
 
   const logout = async () => {
-    await fetch('http://localhost:60671/api/usuario/logout', {
+    await fetch(`${url.url}/api/usuario/logout`, {
       method: 'POST',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -85,7 +86,7 @@ const NavBar = (props) => {
                   <Avatar className={classes.default}>
                     {nombreAvatar ? nombreAvatar :
                       <img className="w-100 h-100"
-                        src={"http://localhost:60671/Avatares/" + nombrePath}
+                        src={`${url.url}/Avatares/` + nombrePath}
                         style={{ objectFit: "cover" }} />
                     }</Avatar>
                 }

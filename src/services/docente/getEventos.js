@@ -1,8 +1,10 @@
-const url = 'http://localhost:60671/api/evento/'
+import url from "../../url"
+
+const urlB = `${url.url}/api/evento/`
 
 export default function getEventos() {
     
-    return fetch(url, {
+    return fetch(urlB, {
         method: 'GET'
     }).then(res => {
         if (!res.ok) throw new Error('Response is NOT ok')

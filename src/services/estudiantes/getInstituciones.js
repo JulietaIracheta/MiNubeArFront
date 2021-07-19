@@ -1,9 +1,11 @@
-const url='http://localhost:60671/api/institucion/';
-const URL_ESTUDIANTE = 'http://localhost:60671/api/institucion/getInstitucionesDeUnEstudiante/'
-const URL_INSTITUCION_DE_ESTUDIANTE = 'http://localhost:60671/api/institucion/getInstitucionDeUnEstudiante/'
+import url from "../../url"
+
+const urlBase=`${url.url}/api/institucion/`;
+const URL_ESTUDIANTE = `${url.url}/api/institucion/getInstitucionesDeUnEstudiante/`
+const URL_INSTITUCION_DE_ESTUDIANTE = `${url.url}/api/institucion/getInstitucionDeUnEstudiante/`
 
 export default function getInstituciones() {
-    return fetch(url, {
+    return fetch(urlBase, {
         method: 'GET'
     }).then(res => {
         if (!res.ok) throw new Error('Response is NOT ok')

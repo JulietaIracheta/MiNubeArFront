@@ -1,7 +1,9 @@
+import url from "../../url"
 
-const urlBase = 'http://localhost:60671/api/persona/getPerfil/'
-const URL_BASE_ESTUDIANTES_DE_TUTOR = 'http://localhost:60671/api/usuario/getEstudiantesDeUnTutor/'
-const URL_BASE_ESTUDIANTES = 'http://localhost:60671/api/usuario/getEstudiantes/'
+
+const urlBase = `${url.url}/api/persona/getPerfil/`
+const URL_BASE_ESTUDIANTES_DE_TUTOR = `${url.url}/api/usuario/getEstudiantesDeUnTutor/`
+const URL_BASE_ESTUDIANTES = `${url.url}/api/usuario/getEstudiantes/`
 
 export default function getEstudiante(id) {
     const url=urlBase+`${id}`;
@@ -42,7 +44,7 @@ export function getEstudiantesDeUnTutor(id) {
 }
 
 
-const URL_BASE_ESTUDIANTES_DE_INSTITUCION = 'http://localhost:60671/api/institucion/getEstudiantesDeUnaInstitucion/'
+const URL_BASE_ESTUDIANTES_DE_INSTITUCION = `${url.url}/api/institucion/getEstudiantesDeUnaInstitucion/`
 
 export function getEstudiantesDeUnaInstitucion(id) {
     const url=URL_BASE_ESTUDIANTES_DE_INSTITUCION+`${id}`;

@@ -44,12 +44,10 @@ import CalificacionesTutor from "./components/Tutor/CalificacionesTutor";
 import AsignarMateriasACurso from "./components/Registro/AsignarMateriasACurso";
 import AsignarCursosAInstituciones from "./components/Registro/AsignarCursoAInstitucion";
 import ComunicadosTutor from "./components/Tutor/Comunicados";
-import NotFound from "../src/NotFound";
 import CuentaEstudiante from "./components/Estudiante/Cuenta";
 import CuentaDocente from "./components/Docente/Cuenta";
 import InformeEstudiante from "./components/Estudiante/Informe";
 import { Cookies, useCookies } from "react-cookie";
-import TrayectoriaEscolar from "./components/Estudiante/TrayectoriaEscolar";
 import CargarInforme2 from "./components/Docente/Informe/cargarInforme";
 import AsignarEstudiantesACursos from "./components/Registro/AsignarEstudiantesACurso";
 import CrearInforme from "./components/Docente/Informe/CargarInforme2";
@@ -62,6 +60,7 @@ import Ahorcado from "./components/Estudiante/Game/Ahorcado/App";
 import Sudoku from "./components/Estudiante/Game/Sudoku/src/index";
 import game2048 from "./components/Estudiante/Game/2048/src/index";
 import Gamificacion from "./components/Estudiante/Gamificacion";
+import NotFound from "../src/NotFound";
 
 const MyRoute = (props) =>
   isAuthenticated() ? <Route {...props} /> : <Redirect to="/login" />;
@@ -76,7 +75,7 @@ const app = () => (
   <Provider store={store}>
     <Router>
       <Switch>
-     {/*                                        
+        {/*                                        
         <MyRoute path='/usuarios' exact component={Usuario}></MyRoute>
         <Route path='/' exact component={Login} />
         <Route path='/login' exact component={Login} />
@@ -269,17 +268,18 @@ const app = () => (
           component={AsignarEstudiantes}
         />
         <Route path="/Estuduante" exact component={Estudiante} />
-        <Route
+
+        <MyRoute
           path="/estudiante/materias/:id"
           exact
           component={MateriaUnidad}
         />
-        <Route
+        <MyRoute
           path="/estudiante/materias/:id/:contenido/video"
           exact
           component={MateriaActividad}
         />
-        <Route
+        <MyRoute
           path="/estudiante/contenidosHistoricos"
           exact
           component={ContenidosHistoricos}
@@ -289,10 +289,10 @@ const app = () => (
           exact
           component={AsignarEstudiantes}
         />
-        <MyRoute 
-        path='/estadisticas'
-        exact 
-        component={TrayectoriaAcademica} 
+        <MyRoute
+          path='/estadisticas'
+          exact
+          component={TrayectoriaAcademica}
         />
 
         <MyRoute path="/estudiante/juegos" exact component={Gamificacion} />

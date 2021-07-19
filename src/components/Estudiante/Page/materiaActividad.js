@@ -10,16 +10,16 @@ import Sidebar from "../../Sidebar";
 import { SidebarDataEstudiante } from "../../sideBar/SidebarDataEstudiante";
 import { Cookies } from 'react-cookie';
 import BotonVolver from '../../BotonVolver/botonVolver';
+import url from "../../../url"
 
-const baseUrl = "http://localhost:60671/api/"
+const baseUrl = `${url.url}/api/`
 
 const MateriaActividad = ({ match }) => {
-
   const idMateria = match.params.id;
   const contenido = match.params.contenido;
   const cookie = new Cookies();
   const jwt = cookie.get('jwt');
-  const urlActividades = baseUrl + `Actividades/getActidades/${idMateria}/${contenido}` + "?jwt=" + jwt;
+  const urlActividades = baseUrl + `Actividades/getActidades/${idMateria}/${contenido}?jwt=` + jwt;
   const urlMaterias = baseUrl + `Materias/${idMateria}`;
 
   const [actividades, setActividades] = useState([]);
@@ -54,7 +54,7 @@ const MateriaActividad = ({ match }) => {
   }, []);
   useEffect(() => {
     (async () => {
-      const response = await fetch("http://localhost:60671/api/contenido/"+contenido, {
+      const response = await fetch(`${url.url}/api/contenido/`+contenido, {
         headers: { "Content-type": "application/json" },
         credentials: "include",
       });

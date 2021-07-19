@@ -6,6 +6,7 @@ import '../../../assets/css/css-actividad-estudiante.css'
 import BotonVolver from "../../BotonVolver/botonVolver";
 import Sidebar from "../../Sidebar";
 import {SidebarDataTutor} from '../../sideBar/SidebarDataTutor';
+import url from "../../../url"
 
 export default function ApexChart() {
     const [serie, setSerie] = useState(0);
@@ -13,7 +14,7 @@ export default function ApexChart() {
     const chartCont = Chart({ series : 68 });
     
     useEffect(function () {
-        fetch('http://localhost:60671/api/actividades/calcularAvance', {
+        fetch(`${url.url}/api/actividades/calcularAvance`, {
             method: 'GET'
         }).then(res => {
             if (!res.ok) alert('error')

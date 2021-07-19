@@ -16,6 +16,7 @@ import {
   withStyles
 } from "@material-ui/core";
 import GetEstudiantesTutor from "../../services/tutor/getEstudiantesTutor";
+import url from "../../url"
 
 const drawerWidth = 200;
 
@@ -62,12 +63,11 @@ const CalificacionesTutor = ({ classes, ...props }) => {
 
     const handleInputChange = (e) => {
       SetEstudiante(e.target.value)
-      console.log(estudiante)
     }
   
 
   useEffect(async () => {
-    const result = await fetch('http://localhost:60671/api/boletin/estudiante/' + estudiante, {
+    const result = await fetch(`${url.url}/api/boletin/estudiante/` + estudiante, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",

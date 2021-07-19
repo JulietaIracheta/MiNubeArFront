@@ -12,6 +12,8 @@ import Sidebar from "../Sidebar";
 import { SidebarDataDocente } from "../sideBar/SidebarDataDocente";
 import NavDocente from "../Docente/NavDocente";
 import { makeStyles } from '@material-ui/core/styles';
+import url from "../../url"
+import swal from 'sweetalert';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -64,7 +66,7 @@ const CargarCalificaciones = () => {
   };
   
   useEffect(async () => {
-    const result = await fetch('http://localhost:60671/api/materias', {
+    const result = await fetch(`${url.url}/api/materias`, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -78,7 +80,7 @@ const CargarCalificaciones = () => {
   }, []);
 
   useEffect(async () => {
-    const result = await fetch('http://localhost:60671/api/usuario/estudiantes', {
+    const result = await fetch(`${url.url}/api/usuario/estudiantes`, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -93,7 +95,7 @@ const CargarCalificaciones = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:60671/api/boletin/", {
+    const response = await fetch(`${url.url}/api/boletin/`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -107,8 +109,15 @@ const CargarCalificaciones = () => {
           t3 : T3
 
       }),
-    }).then((response) => response.json());
-    resetForm();
+    }).then(res => {
+      if (res.status === 400) {
+      swal("Ese alumno ya tiene cargada nota para esa materia y ese año!",'' , "error")
+      }else
+      {res.json()
+        resetForm();
+      };
+    
+    })
   };
 
   return (

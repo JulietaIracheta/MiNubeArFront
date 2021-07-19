@@ -14,13 +14,12 @@ import { BellFill,Calendar2DayFill } from "react-bootstrap-icons";
 import logo from '../../assets/img/logoColor.jpeg'
 import CheckIcon from '@material-ui/icons/Check';
 import eliminarNotificacion from "../../services/notificaciones/eliminarNotificacion";
-import { Cookies,useCookies } from 'react-cookie';
+import { Cookies } from 'react-cookie';
 import { Avatar } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
-
+import url from "../../url"
 
 let size_icon = 25
-
 
 const useStyles = makeStyles(theme => ({
   default: {
@@ -33,8 +32,6 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-
-
 const NavBar = (props) => {
   const classes = useStyles();
   const [isOpen, setIsOpen] = useState(false);
@@ -44,7 +41,7 @@ const NavBar = (props) => {
   const jwt = cookie.get('jwt');
 
   const logout = async () => {
-    await fetch('http://localhost:60671/api/usuario/logout', {
+    await fetch(`${url.url}/api/usuario/logout`, {
       method: 'POST',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -57,8 +54,8 @@ const NavBar = (props) => {
   }
   
   useEffect(async function () {
-    const url = 'http://localhost:60671/api/notificacion/getByUsuario?jwt='+jwt
-    return await fetch(url, {
+    const urlBase = `${url.url}/api/notificacion/getByUsuario?jwt=`+jwt
+    return await fetch(urlBase, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",

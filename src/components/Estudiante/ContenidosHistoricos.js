@@ -7,7 +7,6 @@ import { Card, CardActions, CardContent, IconButton } from '@material-ui/core';
 import ReactPlayer from 'react-player';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import Moment from 'moment';
-
 import {
     Grid,
     TextField,
@@ -21,6 +20,7 @@ import {
 } from "@material-ui/core";
 import Dialog from '@material-ui/core/Dialog';
 import { ToastProvider } from 'react-toast-notifications';
+import url from "../../url"
 
 export default function () {
     const cookie = new Cookies();
@@ -30,8 +30,8 @@ export default function () {
     const [detalleActividad, setDetalleActividad] = useState();
 
     useEffect(() => {
-        var url = "http://localhost:60671/api/contenido/getContenidosHistoricos?jwt=" + jwt;
-        fetch(url, {
+        var urlN = `${url.url}/api/contenido/getContenidosHistoricos?jwt=` + jwt;
+        fetch(urlN, {
             method: 'GET',
             headers: { "Content-type": "application/json" },
             credentials: "include",
@@ -58,7 +58,7 @@ export default function () {
                             <div className="col-md-4">
                                 <Card>
                                     {contenido.video != "" ? 
-                                    <ReactPlayer url={"http://localhost:60671/videos/"+contenido.video} 
+                                    <ReactPlayer url={`${url.url}/videos/`+contenido.video} 
                                     controls width="100%" height="12rem" style={{ minHeight: "12rem" }} 
                                                                        />
                                     :<div className="w-100" style={{height:"12rem",minHeight: "12rem"}}>
