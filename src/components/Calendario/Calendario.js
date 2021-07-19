@@ -11,6 +11,8 @@ import {SidebarDataDocente} from '../sideBar/SidebarDataDocente'
 import ModalDialog from "./ModalDialog";
 import { Button } from "reactstrap";
 import getEventos from '../../services/docente/getEventos'
+import esLocale from '@fullcalendar/core/locales/es';
+
 import {
   withStyles
 } from "@material-ui/core";
@@ -113,6 +115,7 @@ const onDelete = (id) => {
           <div className='demo-app-main'>
             <FullCalendar
               contentHeight={650}
+              locale={esLocale}
               windowResizeDelay={true}
               plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
               headerToolbar={{

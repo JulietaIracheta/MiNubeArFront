@@ -55,50 +55,47 @@ const CalendarioEst = ({ classes, ...props }) => {
   
   return (
       <div>
-      <NavEstudiante />
-    <div className="d-flex">
-      <Sidebar data={SidebarDataEstudiante}/>
-      <main className={classes.content}>
-          <div className={classes.toolbar}  />
-          <div >
-            <div className="adminContent">
-              <span className="tituloadmin">Calendario</span>
-        <hr className="hr-color" />
+       <NavEstudiante />
+       <div className="d-flex">
+        <Sidebar data={SidebarDataEstudiante}/>
+        <main className="main w-100 pr-2 pt-4">
+          <div className="mb-4 pl-3 pl-sm-2">
+              <span className="tituloadmin tituloEstudiante">Calendario</span>
+          </div>
+          <div className='p-5 bg-white' style={{border:"1px solid #edf2f9"}}>
+            <div className='demo-app-main'>
+              <FullCalendar
+                contentHeight={650}
+                locale={esLocale}
+                plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+                headerToolbar={{
+                  left: 'prev,next today',
+                  center: 'title',
+                  right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                }}
+                initialView='dayGridMonth'
+                editable={false}
+                selectable={true}
+                selectMirror={true}
+                dayMaxEvents={true}
+          //     weekends={weekendsVisible}
+                events={eventos} // alternatively, use the `events` setting to fetch from a feed
+        //       select={handleDateSelect}
+                eventContent={renderEventContent} // custom render function
+        //       eventClick={handleEventClick}
+                
+                //eventsSet={handleEvents} // called after events are initialized/added/changed/removed
+                /* you can update a remote database when these fire:
+                eventAdd={function(){}}
+                eventChange={function(){}}
+              eventRemove={function(){}}*/
+              
+              />
+            </div>
+          </div>
+       </main>
       </div>
-      <div className='demo-app'>
-        <div className='demo-app-main'>
-          <FullCalendar
-            locale={esLocale}
-            plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-            headerToolbar={{
-              left: 'prev,next today',
-              center: 'title',
-              right: 'dayGridMonth,timeGridWeek,timeGridDay'
-            }}
-            initialView='dayGridMonth'
-            editable={false}
-            selectable={true}
-            selectMirror={true}
-            dayMaxEvents={true}
-       //     weekends={weekendsVisible}
-            events={eventos} // alternatively, use the `events` setting to fetch from a feed
-     //       select={handleDateSelect}
-            eventContent={renderEventContent} // custom render function
-     //       eventClick={handleEventClick}
-            
-            //eventsSet={handleEvents} // called after events are initialized/added/changed/removed
-            /* you can update a remote database when these fire:
-            eventAdd={function(){}}
-            eventChange={function(){}}
-           eventRemove={function(){}}*/
-           
-          />
-        </div>
-      </div>
-      </div>
-      </main>
-      </div>
-      </div>
+    </div>
     )
   /*
   function  handleDateSelect (selectInfo) {
