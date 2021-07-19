@@ -3,11 +3,12 @@ import SendMessageForm from "./sendMessageForm";
 import UsuariosConectados from './usuariosConectados';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
-const Chat = ({ messages, sendMessage, closeConnection, users }) => <div>
-    <div className="leave-room">
-        <button className="btn btn-danger" onClick={() => closeConnection()}><ExitToAppIcon/>Abandonar sala</button>
+const Chat = ({ messages, sendMessage, closeConnection, users }) => 
+<div className="bg-white p-0 p-md-3 pt-4 chat-container" style={{border:"1px solid #edf2f9"}}>
+    <div className="leave-room pr-3">
+        <button className="btn btn-outline-danger" onClick={() => closeConnection()}><ExitToAppIcon/>Abandonar sala</button>
     </div>
-    <div className="d-flex w-100 mt-2 container-message">
+    <div className="d-flex w-100 container-message p-0 p-md-3">
         <UsuariosConectados users={users} />
         <div className="chat w-100 text-dark">
             <MessageContainer messages={messages} />

@@ -1,7 +1,10 @@
+.chat-container{
+    height: calc(100% - 200px)
+}
+
 .chat {
     display: grid;
-    background-color: #f5f5f5;
-    border-radius: 15px;
+    background-color:#f8f6ff;
     padding: 20px;
 }
 .leave-room {
@@ -10,19 +13,21 @@
 }
 
 .user-list {
-    background: #f5f5f5;
-    padding: 5px;
-    text-align: center;
-    color: black;
-    width: 200px;
-    height: 500px;
+    background: #f8f6ff;
+    width: 400px;
+    height: auto;
+    min-height: 730px;
     overflow-y: auto;
-    margin-right: 4px;
+    margin-right: 2px;
+}
+
+.user-list h6{
+    color: #212888;
 }
 
 .message-container {
-    height: 400px;    
-    background-color: #f5f5f5;
+    height: 300px;    
+    background-color: #f8f6ff; 
     overflow: auto;
     border-radius: 15px;
     margin-bottom: 2px;
@@ -32,16 +37,21 @@
     text-align: right;
     padding-right: 5px;
     font-size: 18px;
+    max-width: 650px;
+    width:fit-content;
+    overflow: hidden;
+    margin-left: auto;
 }
 
 .message {
-    display: inline-flex;
     margin: 0px auto 0px auto;
     padding: 5px 15px;
     font-size: 18px;
     color:white;
     border-radius: 20px;
     margin-top: 3px;
+    max-width: 650px;
+    word-wrap: break-word;
 }
 .messageFirst {
     background: #b31a85;

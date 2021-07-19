@@ -124,6 +124,7 @@ export default () => {
                             sendMessage={sendMessage}
                             closeConnection={closeConnection}
                             users={users} />
+                            
                     }
                 </main>
             </div>
