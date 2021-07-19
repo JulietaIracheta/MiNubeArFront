@@ -18,28 +18,28 @@ export default function EstudiantesTutor() {
 
   return (
     <div>
-      <div className="d-flex mt-1 borde-tutor">
+      <div className="d-flex">
         <Sidebar data={SidebarDataTutor}/>
-        <div className="container mt-2">
-          <h2 className="font-weight-bold colorTut">Mis Estudiantes</h2>
-          <hr className="hr-colorTut" />
-          <div className="row w-100">
+        <div className="main w-100 pr-2 pt-4">
+          <h2 className="tituloadmin tituloTutor mb-4">Mis Estudiantes</h2>
+          {/* <hr className="hr-colorTut" /> */}
+          <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 m-0">
             {estudiantes.map((est) => (
-              <div className="col-md-4 alumno mt-2">
-                <div className="row w-100">
-                  <div className="card min-w card-tutor ml-2" style={{ minHeight: "10rem" }}>
+              <div className="col mb-4">
+                <div className="w-100">
+                  <div className="card-tutor">
                     <div className="card-body row">
                        <div className="col-md-4 col-sm-12">
                           <PersonCircle className="w-100 h-100" ></PersonCircle>
                       </div>
                       <div className="col-md-8 col-sm-12 d-flex flex-column justify-content-around">
-                        <span className="font-weight-bold" style={{fontSize:"1.4rem"}}>
+                        <span className="font-weight-bold mt-2 mb-2" style={{fontSize:"1.1em"}}>
                           {est.nombre}{", "}
                           {est.apellido}
                         </span>
 
                         <div className="btn-group float-right">
-                          <Link to={`/materiasTutorEstudiante/${est.idUsuario}`}  className="text-decoration-none btn btn-outline-dark btn-sm x">Actividad</Link>
+                          <Link to={`/materiasTutorEstudiante/${est.idUsuario}`}  className="text-decoration-none btn btn-outline-success btn-sm x">Ver Actividad</Link>
                         </div>
                       </div>
                     </div>
