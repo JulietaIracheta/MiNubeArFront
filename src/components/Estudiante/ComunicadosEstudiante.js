@@ -28,16 +28,18 @@ export default function ComunicadosEstudiante() {
             <NavEstudiante />
             <div className="flex">
                 <Sidebar data={SidebarDataEstudiante} />
-                <div className="container-fluid">
+                <div className="main w-100 pr-2 pt-4">
                     <div className="row container">
-                        <h2 className="d-block w-100">Comunicados</h2>
-                        <hr class="hr-color w-100" />
+                        <h2 className="tituloadmin tituloEstudiante">Comunicados</h2>
+                    </div>
+                    <div className="row m-0">
+                        {/* <hr class="hr-color w-100" /> */}
                         <div className="container-fluid comunicados-container">
-                            <div className=" py-3 h-100 comunicados-overflow">
+                            <div className="py-3 h-100 comunicados-overflow">
                                 {comunicados.length ?
                                     comunicados.map((c, index) => {
                                         return <div key={index}>
-                                            <div className="d-flex flex-column mt-3" style={{ borderBottom: "1px solid #707070" }}>
+                                            <div className="d-flex flex-column mt-3 p-2" style={{ borderBottom: "1px solid #cecece", backgroundColor:"rgba(182, 25, 21, .08)" }}>
                                                 <span style={{ fontSize: "14px", color: "#2d2f85" }} className="font-weight-bold">
                                                     {c.fecha}
                                                 </span>
@@ -49,13 +51,14 @@ export default function ComunicadosEstudiante() {
                                             </div>
                                         </div>
                                     })
-                                    : <h6>Parece que todavía no tiene ningún comunicado.</h6>}
+                                    : <h6 className="text-left">Parece que todavía no tiene ningún comunicado.</h6>}
                             </div>
                         </div>
                     </div>
                 </div>
+                </div>
             </div>
 
-        </div>
+       
     )
 }
