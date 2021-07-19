@@ -695,3 +695,10 @@ button.bg-docente.border.btn.btn-secondary.menuadmin{
     padding-left: 30px;
   }
 }
+
+
+.vertical-timeline-element-content{
+  box-shadow: -16px 18px 19px -5px rgba(0,0,0,0.67) !important;
+  -webkit-box-shadow: -16px 18px 19px -5px rgba(0,0,0,0.67) !important;
+  -moz-box-shadow: -16px 18px 19px -5px rgba(0,0,0,0.67) !important;
+}

@@ -41,6 +41,9 @@ export default function EstudiantesTutor() {
                         <div className="btn-group float-right">
                           <Link to={`/materiasTutorEstudiante/${est.idUsuario}`}  className="text-decoration-none btn btn-outline-success btn-sm x">Ver Actividad</Link>
                         </div>
+                        <div className="btn-group float-right mt-2">
+                          <Link to={`/tutor/trayectoria/${est.idUsuario}`}  className="text-decoration-none btn btn-outline-success btn-sm x">Ver Trayectoria</Link>
+                        </div>
                       </div>
                     </div>
                   </div>

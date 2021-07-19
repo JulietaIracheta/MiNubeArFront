@@ -31,8 +31,6 @@ useEffect(() => {
 
     const content = await response.json();  
     
-    console.log( content );
-
     setMaterias(content);
     setLoading(true);
 })();

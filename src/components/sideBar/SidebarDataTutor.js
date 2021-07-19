@@ -10,7 +10,7 @@ export const SidebarDataTutor = [
     {
         title: 'Calificaciones', 
         icon: <BorderColor />,
-        link: "/calificacionesTutor"
+        link: "/tutor/calificacion"
     },
    /* {
         title: 'Informes', 
@@ -20,6 +20,6 @@ export const SidebarDataTutor = [
     {
         title: 'Comunicados', 
         icon: <Email />,
-        link: "/tutor/comunicados"
+        link: "/tutor/comunicado"
     }
 ] 

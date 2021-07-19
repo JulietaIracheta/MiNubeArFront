@@ -76,7 +76,6 @@ const CalificacionesTutor = ({ classes, ...props }) => {
     })
       .then(response => {
         setBoletin(response)
-        console.log(boletin)
        });
   }, [estudiante]);
 
@@ -117,6 +116,7 @@ const CalificacionesTutor = ({ classes, ...props }) => {
                 
                   <TableRow className="colorTab">
                     <TableCell className="colorTab">Materia</TableCell>
+                    <TableCell className="colorTab">Año</TableCell>
                     <TableCell className="colorTab">Nota T1</TableCell>
                     <TableCell className="colorTab">Nota T2</TableCell>
                     <TableCell className="colorTab">Nota T3</TableCell>
@@ -143,6 +143,7 @@ const CalificacionesTutor = ({ classes, ...props }) => {
              return (
                 <TableRow key={index} hover>
                   <TableCell>{notas.materia}</TableCell>
+                  <TableCell>{notas.año}</TableCell>
                   <TableCell>{notas.t1}</TableCell>
                   <TableCell>{notas.t2}</TableCell>
                   <TableCell>{notas.t3}</TableCell>

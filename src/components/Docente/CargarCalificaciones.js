@@ -66,7 +66,7 @@ const CargarCalificaciones = () => {
   };
   
   useEffect(async () => {
-    const result = await fetch(`${url.url}/api/materias`, {
+    const result = await fetch(`${url.url}/api/estudiante/materiasDeEstudiante/`+estudiante, {
       method: 'GET',
       headers: { "Content-type": "application/json" },
       credentials: "include",
@@ -77,7 +77,7 @@ const CargarCalificaciones = () => {
         setMaterias(response);
         
       });
-  }, []);
+  }, [estudiante]);
 
   useEffect(async () => {
     const result = await fetch(`${url.url}/api/usuario/estudiantes`, {

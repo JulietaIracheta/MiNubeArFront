@@ -39,7 +39,7 @@ const Calificaciones = ({ classes, ...props }) => {
           <Sidebar data={SidebarDataEstudiante}/>
           <main className="main w-100 pr-2 pt-4">
           <div>
-            <span className="tituloadmin tituloEstudiante">Trayectoria Escolar</span>
+            <span className="tituloadmin tituloEstudiante">Mis Calificaciones</span>
           </div>
             <Table responsive className="mt-3 d-block d-sm-table bg-white table-responsive" style={{border:"1px solid #edf2f9"}}>
               <TableHead style={{backgroundColor:"rgb(18, 38, 63)"}}>

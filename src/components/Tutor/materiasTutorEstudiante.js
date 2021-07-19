@@ -20,15 +20,11 @@ const MateriasTutorEstudiante = (props) => {
   const [materias, setMaterias] = useState([]);
   const [loading, setLoading] = useState(false);
 
-
-
   useEffect( () => {
       
      const result = axios.get(url)
             .then(response => {
                 // handle success
-                console.log("getMaterias: ");
-                console.log(response);                                              
                 
                 setMaterias(response.data);
                 setLoading(true);
@@ -42,7 +38,7 @@ const MateriasTutorEstudiante = (props) => {
   if (loading) {
     try {
       listMaterias = materias.map((materia, key) => (
-        <CardMateria nombre={materia.nombre} icon={materia.icon} key={key} id={materia.idMateria}/>
+        <CardMateria key={key} nombre={materia.nombre} icon={materia.icon} key={key} id={materia.idMateria} idUsuario={idUsuario}/>
       ));
     } catch (error) {
       console.log(error)

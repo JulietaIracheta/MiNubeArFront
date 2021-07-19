@@ -61,6 +61,7 @@ import Sudoku from "./components/Estudiante/Game/Sudoku/src/index";
 import game2048 from "./components/Estudiante/Game/2048/src/index";
 import Gamificacion from "./components/Estudiante/Gamificacion";
 import NotFound from "../src/NotFound";
+import TrayectoriaTutor from '../src/components/Tutor/Trayectoria';
 
 const MyRoute = (props) =>
   isAuthenticated() ? <Route {...props} /> : <Redirect to="/login" />;
@@ -141,8 +142,9 @@ const app = () => (
         />
         <MyRoute path="/actividades/:Unidad" exact component={Actividades} />
         <MyRoute path="/calificaciones" exact component={Calificaciones} />
+        <MyRoute path="/estudiante/calificacion" exact component={Calificaciones} />
         <MyRoute
-          path="/calificacionesTutor"
+          path="/tutor/calificacion"
           exact
           component={CalificacionesTutor}
         />
@@ -178,7 +180,7 @@ const app = () => (
           exact
           component={CalendarioEst}
         />
-        <MyRoute path="/calendariotutor" exact component={CalendarioTut} />
+        <MyRoute path="/tutor/calendario" exact component={CalendarioTut} />
         <MyRoute path="/cursos/" exact component={Curso} />
         <MyRoute
           path="/cursosInstitucion/"
@@ -207,7 +209,7 @@ const app = () => (
           component={CursosAsignadosDocente}
         />
         <MyRoute
-          path="/tutor/ActividadEstudiante/:nombre/:id"
+          path="/tutor/ActividadEstudiante/:nombre/:id/:idEstudiante"
           exact
           component={ActividadEstudiante}
         />
@@ -242,7 +244,7 @@ const app = () => (
           exact
           component={chatnotificacionDocente}
         />
-        <MyRoute path="/tutor/comunicados" exact component={ComunicadosTutor} />
+        <MyRoute path="/tutor/comunicado" exact component={ComunicadosTutor} />
         <MyRoute path="/estudiante/cuenta" exact component={CuentaEstudiante} />
         <MyRoute path="/docente/cuenta" exact component={CuentaDocente} />
         <MyRoute path="/estudiante/trayectoria" exact component={Trayectoria} />
@@ -294,7 +296,11 @@ const app = () => (
           exact
           component={TrayectoriaAcademica}
         />
-
+        <MyRoute
+          path='/tutor/trayectoria/:idEstudiante'
+          exact
+          component={TrayectoriaTutor}
+        />
         <MyRoute path="/estudiante/juegos" exact component={Gamificacion} />
         <MyRoute path="/estudiante/juegos/2048" exact component={game2048} />
         <MyRoute path="/estudiante/juegos/sudoku" exact component={Sudoku} />

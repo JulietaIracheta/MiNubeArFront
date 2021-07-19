@@ -12,8 +12,8 @@ export default function ComunicadosEstudiante() {
     const jwt = cookie.get('jwt');
 
     useEffect(async function () {
-        const url = `${url.url}/api/comunicado/getComunicadosByTutor?jwt=`+jwt
-        return await fetch(url, {
+        const urlComunicado = `${url.url}/api/comunicado/getComunicadosByTutor?jwt=`+jwt
+        return await fetch(urlComunicado, {
             method: 'GET',
             headers: { "Content-type": "application/json" },
             credentials: "include",

@@ -41,7 +41,7 @@ const DocenteMaterias = ({ idCurso }) => {
     if (loading) {
         try {
             listMaterias = materias.map((materia, key) => (
-                <CardMateria idMateria={materia.idMateria} nombre={materia.nombre} idCurso={idCurso} icon={materia.icon} url="/video"class="docente" key={key} />
+                <CardMateria idMateria={materia.idMateria} nombre={materia.nombre} idCurso={idCurso} icon={materia.icon} url="/video" class="docente" key={key} />
             ));
         } catch (error) {
             console.log(error)

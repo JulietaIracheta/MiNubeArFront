@@ -79,6 +79,7 @@ const Trayectoria = ({ classes, ...props }) => {
         <NavEstudiante />
       <div className="d-flex mt-1">
         <Sidebar data={SidebarDataEstudiante}/>
+        {console.log(informes)}
         <main className="main w-100 pr-2 pt-4">
             {/* <div className={classes.toolbar}  /> */}
             <div className="mb-4 pl-3 pl-sm-2">
@@ -90,8 +91,9 @@ const Trayectoria = ({ classes, ...props }) => {
           <div className='demo-app-main-trayectoria'>
 
 <VerticalTimeline>
-  {informes.map((record) => (
+  {informes.map((record, index) => (
   <VerticalTimelineElement
+    key={index}
     className="vertical-timeline-element--work"
     date={record.año}
     iconStyle={{ background:'#b61915', color: '#fff' }}

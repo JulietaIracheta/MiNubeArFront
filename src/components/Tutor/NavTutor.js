@@ -88,7 +88,7 @@ const NavBar = (props) => {
         </NavbarBrand>
         <Nav className="d-flex justify-content-center align-items-center pr-2">
             <NavItem className="pt-1 pl-2">
-                <Link to="/calendariotutor"> <Calendar2DayFill size={size_icon} color="#5D7392" /></Link>
+                <Link to="/tutor/calendario"> <Calendar2DayFill size={size_icon} color="#5D7392" /></Link>
             </NavItem>
             <NavItem className="marginMN notif mr-1">
               <UncontrolledDropdown nav>
@@ -100,7 +100,7 @@ const NavBar = (props) => {
                   {notificaciones.length ?
                     notificaciones.map((notificacion, index) => {
                       return <div key={index}>
-                        <Link to={"/estudiante/"+notificacion.urlTipoNotificacion} className="d-block text-decoration-none">
+                        <Link to={"/tutor/"+notificacion.urlTipoNotificacion} className="d-block text-decoration-none">
                           <p className="text-estudiante font-weight-bold">{notificacion.descripcion}</p>
                           <span>{notificacion.mensaje}</span>
                         </Link>

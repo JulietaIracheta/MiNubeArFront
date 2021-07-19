@@ -11,16 +11,16 @@ import "../../assets/css/fontawesome-all.css";
 
 export default function CardMateria(props, key) {
 const id = props.id;
-const nombre = props.nombre
+const nombre = props.nombre;
+const idUsuario = props.idUsuario;
   return (
     <Grid item xs={12} md={6} lg={4} className="ml-4">
       <Card component={Router} to="#" key={key}>
         <CardActionArea className="card-materia-tutor">
           <CardContent>
             <h4>{props.nombre}</h4>
-            
-            <a href={`/tutor/ActividadEstudiante/${nombre}/${id}`} class="text-dark">
-            <i className={"icon-mat fas fa-3x fa-" + props.icon}></i>
+            <a href={`/tutor/ActividadEstudiante/${nombre}/${id}/${idUsuario}`} class="text-dark">
+              <i className={"icon-mat fas fa-3x fa-" + props.icon}></i>
             </a>
           </CardContent>
          
