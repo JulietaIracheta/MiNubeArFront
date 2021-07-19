@@ -68,11 +68,11 @@ const NavBar = (props) => {
             <NavItem className="pt-1 pr-2 pl-2">
               <Link to="/calendario"> <Calendar2DayFill  size={size_icon} color="#5D7392" /></Link>
             </NavItem>
-             <NavItem className="pt-1 pr-2 pl-2">
+             {/* <NavItem className="pt-1 pr-2 pl-2">
               <Link to="#">
                 <BellFill size={26} color="#5D7392"/>
               </Link>
-            </NavItem>
+            </NavItem> */}
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav className="p-0 pr-2 pl-2">
                 {nombrePathGoogle ?

@@ -4,7 +4,7 @@
 
 .chat {
     display: grid;
-    background-color:#f8f6ff;
+    background-color:#f3f1f1;/*#f8f6ff;*/
     padding: 20px;
 }
 .leave-room {
@@ -13,13 +13,21 @@
 }
 
 .user-list {
-    background: #f8f6ff;
+    background: #f3f1f1;
     width: 400px;
     height: auto;
-    min-height: 730px;
+    min-height: 200px;
     overflow-y: auto;
     margin-right: 2px;
 }
+
+@media screen and (min-width:540px){
+    
+    .user-list {
+        min-height: 630px;
+    }
+}
+
 
 .user-list h6{
     color: #212888;
@@ -27,7 +35,7 @@
 
 .message-container {
     height: 300px;    
-    background-color: #f8f6ff; 
+    background-color:#f3f1f1;
     overflow: auto;
     border-radius: 15px;
     margin-bottom: 2px;

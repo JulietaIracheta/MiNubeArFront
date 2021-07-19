@@ -54,17 +54,6 @@ const NavBar = (props) => {
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
-
-          <NavItem className="marginMN sidebarResponsive">
-            <a href="/Instituciones"> <Business className="icon-menu" /></a>
-          </NavItem>
-          <NavItem className="marginMN sidebarResponsive">
-            <a href="/usuarios"> <Group className="icon-menu" /></a>
-          </NavItem>
-          <NavItem className="marginMN sidebarResponsive">
-            <a href="#"> <BorderColor className="icon-menu" /></a>
-          </NavItem>
-
           </Nav>
       </Navbar>
     </div>
