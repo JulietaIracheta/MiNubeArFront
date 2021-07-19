@@ -12,12 +12,12 @@ console.log(props);
 
   return (
 
-    <Grid item xs={12} md={6} lg={4} spacing={4} >
+    <Grid item xs={12}  md={4} lg={4} spacing={4} >
         <Card component={Link} to={ enlace } key={key}>
             <CardActionArea className=
-              {props.class ? "card-materia-docente" : "card-materia-estudiante"}>
+              {props.class ? props.class : "card-materia-estudiante"}>
               <CardContent >
-                <h4>{props.nombre}</h4>
+                <h4 className="card-materia-estudiante_nombre">{props.nombre}</h4>
                 <i className={"icon-mat fas fa-3x fa-"+ props.icon}></i>
               </CardContent>               
         </CardActionArea>

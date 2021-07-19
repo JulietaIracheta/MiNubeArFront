@@ -31,14 +31,14 @@ export default function Estudiante() {
   }, []);
 
   return (
-    <div>
+    <>
       <NavEstudiante />
       <div className="flex">
         <Sidebar data={SidebarDataEstudiante}/>
-        <div className="content">
+        <div className="main w-100 pr-3 pt-4">
           <EstudianteMaterias nombre={nombre}/>
         </div>
       </div>
-    </div>
+    </>
   );
 }
