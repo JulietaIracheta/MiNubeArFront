@@ -41,7 +41,7 @@
 }
 
 .card-materia-estudiante{
-  border-color: #B61915 !important;
+  border-color: rgba(182, 25, 21, .75) !important;
   border-width: 2px !important;
   border-style: solid !important;
   border-radius: 5px !important;

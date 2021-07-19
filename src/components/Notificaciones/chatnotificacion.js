@@ -90,13 +90,19 @@ export default () => {
             <NavEstudiante />
             <div className="flex">
                 <Sidebar data={SidebarDataEstudiante} />
-                <div className="container">
-                    <h2 className="mt-2">Salas de chat</h2>
+                <div className="main w-100 pr-2 pt-4">
+                    {/* <h2 className="mt-2">Salas de chat</h2> */}
+                    <div className="mb-4 pl-3 pl-sm-2">
+                        <span className="tituloadmin tituloEstudiante">Salas de chat</span>
+                        <p className="text-secondary">
+                            En esta sección tiene todas las salas de chat<br/>
+                            por cada uno de los cursos que estas cursando.
+                        </p>
+                    </div>
                     {!connection
                         ?
-                        <div className="row">
-                            <div className="col-md-6">
-                                <div className="mb-3">
+                        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 m-0">
+                            <div className="col mb-4">
                                     <div className="card-body card-materia-estudiante font-weight-bold">
                                         <h5 className="card-title font-weight-bold" style={{color:"#B61915"}}>
                                             Sala de mi curso
@@ -110,7 +116,6 @@ export default () => {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                             </div>
                         </div>
                         :
