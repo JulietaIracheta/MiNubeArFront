@@ -1,33 +1,48 @@
 import React, { useEffect, useState } from "react";
 import {Link} from 'react-router-dom';
 import {
-  Collapse,
   Navbar,
-  NavbarToggler,
   NavbarBrand,
   Nav,
   NavItem,
-  NavbarText, UncontrolledDropdown,
+  UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
-import { Calendar2Event, Bell, PersonCircle } from "react-bootstrap-icons";
-import logo from '../../assets/img/logoGris.png'
+import { BellFill,Calendar2DayFill } from "react-bootstrap-icons";
+import logo from '../../assets/img/logoColor.jpeg'
 import CheckIcon from '@material-ui/icons/Check';
 import eliminarNotificacion from "../../services/notificaciones/eliminarNotificacion";
 import { Cookies,useCookies } from 'react-cookie';
 import { Avatar } from "@material-ui/core";
+import { makeStyles } from '@material-ui/core/styles';
+
+
+let size_icon = 25
+
+
+const useStyles = makeStyles(theme => ({
+  default: {
+    width: theme.spacing(7/2),
+    height: theme.spacing(7/2),
+    color: "#fff",
+    backgroundColor: "#212888",
+    marginTop: theme.spacing(1/2),
+    fontSize: theme.spacing(2),
+  },
+}));
+
 
 
 const NavBar = (props) => {
+  const classes = useStyles();
   const [isOpen, setIsOpen] = useState(false);
   const [notificaciones, setNotificaciones] = useState([]);
   const cookie = new Cookies();
   const nombre = cookie.get('avatar');
   const jwt = cookie.get('jwt');
 
-  const toggle = () => setIsOpen(!isOpen);
   const logout = async () => {
     await fetch('http://localhost:60671/api/usuario/logout', {
       method: 'POST',
@@ -69,24 +84,19 @@ const NavBar = (props) => {
 
   return (
     <div >
-      <Navbar className="menuNavBarTutor" expand="md" light>
-        <img src={logo}/>
-        <NavbarBrand className="colorBrand navbar-brand" href="/rol">MI NUBE AR</NavbarBrand>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-            <Nav className="mr-auto"></Nav>
-            <Nav>
-            <NavbarText className="misCursos">Mis Estudiantes</NavbarText>
-            <NavbarText className="misCursos">|</NavbarText>
-            </Nav>
-            <Nav navbar>
-            <NavItem className="marginMN">
-            <Link to="/calendariotutor"> <Calendar2Event className="icon-menu color-negro" /></Link>
+      <Navbar className="menuNavBarReg menuNavBarTutor d-flex justify-content-between p-0" expand="md" light>
+        <NavbarBrand className="colorBrand d-flex align-items-center" href="/rol">
+          <img className="nav_logo" src={logo} width="100px" /> 
+          <span className="d-none d-sm-block pt-2 logo__titulo">MI NUBE AR</span>
+        </NavbarBrand>
+        <Nav className="d-flex justify-content-center align-items-center pr-2">
+            <NavItem className="pt-1 pl-2">
+                <Link to="/calendariotutor"> <Calendar2DayFill size={size_icon} color="#5D7392" /></Link>
             </NavItem>
-            <NavItem className="marginMN notif">
+            <NavItem className="marginMN notif mr-1">
               <UncontrolledDropdown nav>
-                <DropdownToggle nav>
-                  <Bell className="icon-menu" />
+                <DropdownToggle nav className="pt-2 mt-1 pr-0 pl-0">
+                  <BellFill size={26} color="#5D7392" />
                   <span id="notificacion-numero" className="badge rounded-circle">{notificaciones.length}</span>
                 </DropdownToggle>
                 <DropdownMenu right className="notificaciones-modal notificaciones-overflow">
@@ -105,14 +115,13 @@ const NavBar = (props) => {
                         </div>
                         <hr />
                       </div>
-                    }) : "No hay notificaciones nuevas"}
+                    }) : <span className="pl-3">No hay notificaciones nuevas</span>}
                 </DropdownMenu>
               </UncontrolledDropdown>
             </NavItem>
-
             <UncontrolledDropdown nav inNavbar>
             <DropdownToggle nav>
-                <Avatar className="icon-perfil text-white" style={{ background: "#67a147" }}>{nombre}</Avatar>
+                <Avatar className={classes.default} style={{ background: "#67a147" }}>{nombre}</Avatar>
               </DropdownToggle>
             <DropdownMenu right>
                 <DropdownItem>
@@ -121,7 +130,6 @@ const NavBar = (props) => {
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
-        </Collapse>
       </Navbar>
     </div>
   );

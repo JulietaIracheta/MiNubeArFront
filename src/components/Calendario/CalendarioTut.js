@@ -56,18 +56,16 @@ const CalendarioTut = ({ classes, ...props }) => {
   return (
       <div>
       <NavTutor />
-    <div className="d-flex mt-1">
+      <div className="d-flex">
       <Sidebar data={SidebarDataTutor}/>
-      <main className={classes.content}>
-          <div className={classes.toolbar} />
-          <div >
-            <div className="adminContent">
-              <span className="tituloadmin">Calendario</span>
-        <hr className="hr-colorTut" />
-      </div>
-      <div className='demo-app'>
+      <main className="main w-100 pr-2 pt-4">
+          <div className="mb-4 pl-3 pl-sm-2">
+              <span className="tituloadmin tituloTutor">Calendario</span>
+          </div>
+      <div  className='p-5 bg-white' style={{border:"1px solid #edf2f9"}}>
         <div className='demo-app-main'>
           <FullCalendar
+            contentHeight={650}
             locale={esLocale}
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
             headerToolbar={{
@@ -94,12 +92,11 @@ const CalendarioTut = ({ classes, ...props }) => {
            
           />
         </div>
-      </div>
-      </div>
+        </div>
       </main>
-      </div>
-      </div>
-    )
+    </div>
+  </div>
+  )
   /*
   function  handleDateSelect (selectInfo) {
     let title = prompt('Por favor Ingrese Evento')
