@@ -28,7 +28,7 @@ export default function MateriaUnidad({ id }) {
           
           const content = await response.json();  
         
-          const contenidoPromedio = await fetch(baseUrl+"Contenido/ContenidoPromedio?materiaId="+id+"&jwt="+jwt, {
+          const contenidoPromedio = await fetch(baseUrl+"Contenido/ContenidoPromedio/"+id+"?jwt="+jwt, {
             headers: { "Content-type": "application/json" },
             credentials: "include",
           });

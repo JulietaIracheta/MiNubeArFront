@@ -268,11 +268,7 @@ const app = () => (
           component={AsignarEstudiantes}
         />
         <Route path="/Estuduante" exact component={Estudiante} />
-        <Route
-          path="/estudiante/materias/:id"
-          exact
-          component={MateriaUnidad}
-        />
+        <Route path='/estudiante/materias/:id' exact component={MateriaUnidad}/>
        <MyRoute path='/estudiante/materias/:id/:contenido/video' exact component={MateriaActividad}/>
         <Route
           path="/estudiante/contenidosHistoricos"

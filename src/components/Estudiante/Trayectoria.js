@@ -52,7 +52,7 @@ const Trayectoria = ({ classes, ...props }) => {
   
   useEffect(async () => {
     const result = await fetch(
-      `${url.url}/api/informe/getTrayectoria/`+ "?jwt=" + jwt ,
+      `${url.url}/api/informe/getTrayectoria?jwt=` + jwt ,
       {
         method: "GET",
         headers: { "Content-type": "application/json" },

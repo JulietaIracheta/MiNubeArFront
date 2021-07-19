@@ -18,7 +18,7 @@ export default function InformeEstudiante(props) {
     const jwt = getCookie.get('jwt');
 
     useEffect(async () => {
-        const result = await fetch(`${url.url}/api/informe/getInformeByEstudiante/1`+"?jwt="+jwt, {
+        const result = await fetch(`${url.url}/api/informe/getInformeByEstudiante?jwt=`+jwt, {
           method: 'GET',
           headers: { "Content-type": "application/json" },
           credentials: "include",
