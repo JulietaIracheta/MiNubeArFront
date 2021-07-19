@@ -5,7 +5,6 @@ import {SidebarDataEstudiante} from '../sideBar/SidebarDataEstudiante'
 import { Cookies } from 'react-cookie';
 
 import {
-    TableContainer,
     Table,
     TableHead,
     TableRow,
@@ -13,38 +12,6 @@ import {
     TableBody,
   withStyles
 } from "@material-ui/core";
-
-const drawerWidth = 200;
-
-const styles = (theme) => ({
-  root: {
-    display: "flex",
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-    [theme.breakpoints.up("sm")]: {
-      display: "none",
-    },
-  },
-  // necessary for content to be below app bar
-  toolbar: theme.mixins.toolbar,
-  drawerPaper: {
-    width: drawerWidth,
-    top: "unset !important",
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(1),
-    margin: 0,
-    paddingTop: 0,
-  },
-  paper: {
-    margin: theme.spacing(2),
-    padding: theme.spacing(2),
-  },
-});
-
-
 
 const Calificaciones = ({ classes, ...props }) => {
   const [boletin, setBoletin] = useState([]);
@@ -66,65 +33,56 @@ const Calificaciones = ({ classes, ...props }) => {
   
   return (
       <div>
-      <NavEstudiante />
-    <div className="d-flex mt-1">
-      <Sidebar data={SidebarDataEstudiante}/>
-      <main className={classes.content}>
-          <div className={classes.toolbar}  />
-          <div >
-            <div className="adminContent">
-            <h3 className="ml-4">Trayectoria Escolar</h3>
-                  <hr class="hr-color w-100" />
-      </div>
-      <div className='demo-app'>
-        <div className='demo-app-main'>
-        <TableContainer>
-              <Table>
-                
-                  <TableRow className="colorTab">
-                    <TableCell className="colorTab">Materia</TableCell>
-                    <TableCell className="colorTab">Nota T1</TableCell>
-                    <TableCell className="colorTab">Nota T2</TableCell>
-                    <TableCell className="colorTab">Nota T3</TableCell>
-                    <TableCell className="colorTab">Promedio</TableCell>
-                   </TableRow>
-                <TableBody>
-        {boletin.map((notas, index) => {
-          var total=0;
-            if(notas.t1){
-              total=total+1;
-            }else{
-              notas.t1=0;
-            }
-            if(notas.t2){
-              total=total+1;
-            }else{
-              notas.t2=0;
-            }
-            if(notas.t3){
-              total=total+1;
-            }else{
-              notas.t3=0;
-            }
-             return (
-                <TableRow key={index} hover>
-                  <TableCell>{notas.materia}</TableCell>
-                  <TableCell>{notas.t1}</TableCell>
-                  <TableCell>{notas.t2}</TableCell>
-                  <TableCell>{notas.t3}</TableCell>
-                  <TableCell>{Math.round((notas.t1 + notas.t2 + notas.t3) /total)}</TableCell>
+        <NavEstudiante />
+        <div className="d-flex">
+          <Sidebar data={SidebarDataEstudiante}/>
+          <main className="main w-100 pr-2 pt-4">
+          <div>
+            <span className="tituloadmin tituloEstudiante">Trayectoria Escolar</span>
+          </div>
+            <Table responsive className="mt-3 d-block d-sm-table bg-white table-responsive" style={{border:"1px solid #edf2f9"}}>
+              <TableHead style={{backgroundColor:"rgba(182, 25, 21, .7)"}}>
+                <TableRow>
+                  <TableCell className="font-weight-bold text-white text-uppercase">Materia</TableCell>
+                  <TableCell className="font-weight-bold text-white text-uppercase">Nota T1</TableCell>
+                  <TableCell className="font-weight-bold text-white text-uppercase">Nota T2</TableCell>
+                  <TableCell className="font-weight-bold text-white text-uppercase">Nota T3</TableCell>
+                  <TableCell className="font-weight-bold text-white text-uppercase">Promedio</TableCell>
                 </TableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-        </div>
+              </TableHead>
+              <TableBody>
+              {boletin.map((notas, index) => {
+                var total=0;
+                  if(notas.t1){
+                    total=total+1;
+                  }else{
+                    notas.t1=0;
+                  }
+                  if(notas.t2){
+                    total=total+1;
+                  }else{
+                    notas.t2=0;
+                  }
+                  if(notas.t3){
+                    total=total+1;
+                  }else{
+                    notas.t3=0;
+                  }
+                  return (
+                      <TableRow key={index} hover>
+                        <TableCell className="text-dark">{notas.materia}</TableCell>
+                        <TableCell className="text-dark">{notas.t1}</TableCell>
+                        <TableCell className="text-dark">{notas.t2}</TableCell>
+                        <TableCell className="text-dark">{notas.t3}</TableCell>
+                        <TableCell className="text-dark">{Math.round((notas.t1 + notas.t2 + notas.t3) /total)}</TableCell>
+                      </TableRow>
+                    );
+                  })}
+              </TableBody>
+            </Table>
+        </main>
       </div>
-      </div>
-      </main>
-      </div>
-      </div>
+    </div>
     )
   }
-export default (withStyles(styles)(Calificaciones));
+export default (Calificaciones);
