@@ -131,7 +131,7 @@ export default function Cuenta() {
                                         </div>
                                     </div>
                                     <div className="col-md-8 col-lg-7 col-xl-5 bg-white pt-3 p-1 p-md-3" style={{border:"1px solid #edf2f9"}}>
-                                        <div className="row">
+                                        <div className="row m-0">
                                             <div className="col-md-12">
                                                 <p className="font-weight-bold" style={{color:"rgba(45, 47, 133, .75)"}}>Datos personales</p>
                                             </div>
