@@ -264,7 +264,12 @@ margin-right : 'auto';
   color: white;
   font-size: 20px;
 }
-
+.juegos{
+    justify-content: center;
+    display: flex;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
 .lupa{
   float: right;
   width: 30px;

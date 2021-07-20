@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../actions/materia";
 import {
@@ -22,6 +22,10 @@ import { MoreVert } from "@material-ui/icons";
 import {SidebarData}   from '../SidebarData';
 import MateriaForm from "./MateriaForm";
 import Swal from 'sweetalert2';
+import MateriaModalEditar from "./MateriaModalEditar";
+import { materias } from "../../reducers/materia";
+
+
 
 const drawerWidth = 200;
 
@@ -29,9 +33,25 @@ const reload = () => {
     window.location.reload(true);
 }
 const Materia = ({ classes, ...props }) => {
+  const [openChangeModalUpdate, setOpenChangeModalUpdate] = useState(false);
+  const [datos, setDatos] = useState({
+    id: '',
+    nombre: '',
+  });
+
   useEffect(() => {
     props.fetchAllMaterias();
-  },[] ); 
+  },[materias] ); 
+
+  const modalFadeState = () =>{
+    setOpenChangeModalUpdate(!openChangeModalUpdate)
+  }
+
+  const onChange = (curso) => {
+    setDatos(curso)
+    modalFadeState();
+    
+  }
 
   const onDelete = (id) => {
     Swal.fire({
@@ -82,7 +102,7 @@ const Materia = ({ classes, ...props }) => {
                               <MoreVert  />
                             </DropdownToggle>
                             <DropdownMenu >
-                              <DropdownItem>
+                              <DropdownItem  onClick = { () => onChange(record)}>
                                   Editar
                                 
                                 </DropdownItem>
@@ -99,6 +119,12 @@ const Materia = ({ classes, ...props }) => {
                 </TableBody>
               </Table>
         </main>
+        <MateriaModalEditar
+          open = {openChangeModalUpdate}
+          datos = {datos}
+          modalFadeState = {modalFadeState}
+        >
+        </MateriaModalEditar>
       </div>
     </Provider>
   );
