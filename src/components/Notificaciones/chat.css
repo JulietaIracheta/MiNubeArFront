@@ -1,10 +1,10 @@
 .chat-container{
-    height: calc(100% - 200px)
+  
 }
 
 .chat {
     display: grid;
-    background-color:#f3f1f1;/*#f8f6ff;*/
+    background-color:#f7f4f4;/*#f8f6ff;*/
     padding: 20px;
 }
 .leave-room {
@@ -13,39 +13,50 @@
 }
 
 .user-list {
-    background: #f3f1f1;
-    width: 400px;
+    background: #f7f4f4;
+    width: 100%;
     height: auto;
-    min-height: 200px;
+    min-height: 150px;
     overflow-y: auto;
     margin-right: 2px;
-}
-
-@media screen and (min-width:540px){
     
-    .user-list {
-        min-height: 630px;
-    }
 }
 
+.user-list > h6{
+    font-size: .9em;
+}
 
 .user-list h6{
     color: #212888;
 }
 
+.user-list h4{
+    font-size: 1.2em;
+}
+
 .message-container {
-    height: 300px;    
-    background-color:#f3f1f1;
+    height: 330px;  
+    background-color:#f7f4f4;
     overflow: auto;
     border-radius: 15px;
     margin-bottom: 2px;
+    text-align: right;
+    padding-right: 5px;
+    font-size: 16px;
+    max-width: 300px;
+    width:fit-content;
+    /* overflow: hidden; */
+    margin-left: auto;
+    max-width: 95%;
+    width: auto;
 }
+
 
 .user-message {
     text-align: right;
     padding-right: 5px;
-    font-size: 18px;
-    max-width: 650px;
+    font-size: 14px;
+    max-width: calc(100% - 5px);/* 75%; /*300px;650px;*/
     width:fit-content;
     overflow: hidden;
     margin-left: auto;
@@ -54,11 +65,11 @@
 .message {
     margin: 0px auto 0px auto;
     padding: 5px 15px;
-    font-size: 18px;
+    font-size: 14px;
     color:white;
-    border-radius: 20px;
+    border-radius: 10px;
     margin-top: 3px;
-    max-width: 650px;
+    /* max-width: 650px; */
     word-wrap: break-word;
 }
 .messageFirst {
@@ -67,21 +78,44 @@
 .messageLast{
     background: #b31a85;
 }
+
 .from-user {
     font-size: small;
-    margin-bottom: 3px;
+    margin-bottom: 4px;
     margin-right: 5px;
     font-weight: bold;
 }
 
+
+@media screen and (min-width:768px){
+    .user-list {
+        height: 100vh;
+        max-height: calc(100vh - 400px);
+        min-height: 350px;
+    }
+
+    .user-list{
+        max-width: 300px;
+    }
+
+    .chat{
+        /* width: 60%; */
+    }
+
+    .message{
+        max-width: 500px;
+    }
+
+    .message-container {
+        height: 100%;
+        max-height: 550px;
+    }
+}
+
+
 @media only screen and (max-width: 800px){
     .container-message{
         flex-direction: column;
-        margin-bottom: 2rem;
-    }
-    .user-list {
-        width: 100%;
-        height: 8rem;
         margin-bottom: 2rem;
     }
 }
