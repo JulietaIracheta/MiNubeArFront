@@ -38,7 +38,7 @@ const MateriasTutorEstudiante = (props) => {
   if (loading) {
     try {
       listMaterias = materias.map((materia, key) => (
-        <CardMateria key={key} nombre={materia.nombre} icon={materia.icon} key={key} id={materia.idMateria} idUsuario={idUsuario}/>
+        <CardMateria key={key} nombre={materia.nombre} icon={materia.icon} key={key} id={materia.idMateria} idUsuario={idUsuario} />
       ));
     } catch (error) {
       console.log(error)
@@ -49,18 +49,17 @@ const MateriasTutorEstudiante = (props) => {
   return (
       <div>
       <NavTutor />
-      
-        <div className="d-flex mt-1 borde-tutor">
+        <div className="d-flex">
       <Sidebar data={SidebarDataTutor}/>
-      <div className="container mt-2">
-        <h2 className="font-weight-bold colorTut">Mis Estudiantes</h2>
-        <hr className="hr-colorTut" />
+      <div className="main w-100 pr-2 pt-4">
+        <h2 className="tituloadmin tituloTutor mb-4">Mis Estudiantes</h2>
+        {/* <hr className="hr-colorTut" /> */}
         <div className="row w-100">
-    <Fragment>      
-      <Grid container spacing={3}>
-        { loading ? (listMaterias) : "LOADING ..."}
-      </Grid>      
-    </Fragment>
+        <Fragment>      
+          <Grid container spacing={3}>
+            { loading ? (listMaterias) : "LOADING ..."}
+          </Grid>      
+        </Fragment>
             
     </div>
 

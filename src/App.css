@@ -498,7 +498,7 @@ color: white;
 }
 
 .card-materia-tutor{
-  border-color: #67a147 !important;
+  border-color: rgba(103, 161, 71, 1) !important;
   border-width: 2px !important;
   border-style: solid !important;
   border-radius: 5px !important;
