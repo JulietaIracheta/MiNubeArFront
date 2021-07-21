@@ -1,6 +1,6 @@
 import { BorderColor,Business, CastForEducation, ContactPhoneTwoTone, Group, History, MenuBook, Portrait, School } from '@material-ui/icons'
 import React from 'react'
-import ChatIcon from '@material-ui/icons/Chat';
+import VideogameAssetIcon from '@material-ui/icons/VideogameAsset';import ChatIcon from '@material-ui/icons/Chat';
 export const SidebarDataEstudiante = [
     {
         title: 'Materias', 
@@ -36,5 +36,10 @@ export const SidebarDataEstudiante = [
         title: 'Historial de contenidos', 
         icon: <History />,
         link: "/estudiante/contenidosHistoricos"
+    },
+    {
+        title: 'Juegos', 
+        icon: <VideogameAssetIcon />,
+        link: "/estudiante/juegos"
     }
 ] 
