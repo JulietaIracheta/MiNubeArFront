@@ -276,7 +276,12 @@ margin-right : 'auto';
   color: white;
   font-size: 20px;
 }
-
+.juegos{
+    justify-content: center;
+    display: flex;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
 .lupa{
   float: right;
   width: 30px;
@@ -713,4 +718,11 @@ button.bg-docente.border.btn.btn-secondary.menuadmin{
   box-shadow: -16px 18px 19px -5px rgba(0,0,0,0.67) !important;
   -webkit-box-shadow: -16px 18px 19px -5px rgba(0,0,0,0.67) !important;
   -moz-box-shadow: -16px 18px 19px -5px rgba(0,0,0,0.67) !important;
+}
+.bg-docente{
+  background: #2d2f85;
+}
+.docente-card {
+  padding-left: 85%;
+  color: #2d2f85;
 }

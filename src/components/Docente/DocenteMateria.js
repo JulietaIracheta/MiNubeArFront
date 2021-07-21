@@ -21,6 +21,7 @@ const DocenteMaterias = ({ idCurso }) => {
     const [materias, setMaterias] = useState([]);
     const [loading, setLoading] = useState(false);
     const [x,setX] = useState(false);
+    
     useEffect(async () => {
         const result = await fetch(url, {
             method: 'GET',

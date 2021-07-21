@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {useState,  useEffect } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../actions/curso";
 import {
@@ -22,6 +22,8 @@ import { MoreVert } from "@material-ui/icons";
 import {SidebarData}   from '../SidebarData';
 import CursoForm from "./CursoForm";
 import Swal from 'sweetalert2';
+import CursoModalEditar from "./CursoModalEditar";
+import { cursos } from "../../reducers/curso";
 
 const drawerWidth = 200;
 
@@ -29,10 +31,25 @@ const reload = () => {
     window.location.reload(true);
 }
 const Curso = ({ ...props }) => {
+  const [openChangeModalUpdate, setOpenChangeModalUpdate] = useState(false);
+  const [datos, setDatos] = useState({
+    id: '',
+    nombre: '',
+  });
 
   useEffect(() => {
     props.fetchAllCursos();
-  },[] ); 
+  },[cursos] ); 
+
+  const modalFadeState = () =>{
+    setOpenChangeModalUpdate(!openChangeModalUpdate)
+  }
+
+  const onChange = (curso) => {
+    setDatos(curso)
+    modalFadeState();
+    
+  }
 
   const onDelete = (id) => {
     Swal.fire({
@@ -84,6 +101,7 @@ const Curso = ({ ...props }) => {
                             </DropdownToggle>
                             <DropdownMenu >
                               <DropdownItem  
+                                onClick = { () => onChange(record)}
                               >
                                   Editar
                               </DropdownItem>
@@ -100,6 +118,12 @@ const Curso = ({ ...props }) => {
                 </TableBody>
               </Table>
         </main>
+        <CursoModalEditar
+          open = {openChangeModalUpdate}
+          datos = {datos}
+          modalFadeState = {modalFadeState}
+        >
+        </CursoModalEditar>
       </div>
     </Provider>
   );

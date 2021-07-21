@@ -14,7 +14,7 @@ import { BellFill,Calendar2DayFill } from "react-bootstrap-icons";
 import logo from '../../assets/img/logoColor.png'
 import CheckIcon from '@material-ui/icons/Check';
 import eliminarNotificacion from "../../services/notificaciones/eliminarNotificacion";
-import { Cookies } from 'react-cookie';
+import { Cookies, useCookies } from 'react-cookie';
 import { Avatar } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 import url from "../../url"
@@ -34,6 +34,7 @@ const useStyles = makeStyles(theme => ({
 
 const NavBar = (props) => {
   const classes = useStyles();
+  const [cookies, setCookie] = useCookies(['usuario']);
   const [isOpen, setIsOpen] = useState(false);
   const [notificaciones, setNotificaciones] = useState([]);
   const cookie = new Cookies();
@@ -49,8 +50,15 @@ const NavBar = (props) => {
     cookie.remove("nombrePersona");
     cookie.remove("apellidoPersona");
     cookie.remove("email");
-    cookie.remove("avatarNombre");
-    
+    cookie.remove("jwt");
+    cookie.remove("rol");
+    cookie.remove("rolId");
+    setCookie('nombreAvatar', '', { path: '/' });
+    setCookie('email', '', { path: '/' });
+    setCookie('avatarNombre', '', { path: '/' });
+    setCookie('avatarPath', '', { path: '/' });
+    setCookie('avatarPathGoogle', '', { path: '/' });
+    setCookie('jwt', '', { path: '/' });
   }
   
   useEffect(async function () {

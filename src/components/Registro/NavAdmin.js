@@ -14,11 +14,14 @@ import {  PersonCircle } from "react-bootstrap-icons";
 import logo from '../../assets/img/logoColor.png'
 import { BorderColor, Business, Group } from "@material-ui/icons";
 import url from "../../url"
+import { Cookies, useCookies } from 'react-cookie';
 
 let size_icon = 25
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const cookie = new Cookies();
+  const [cookies, setCookie] = useCookies(['usuario']);
 
   const toggle = () => setIsOpen(!isOpen);
  
@@ -28,7 +31,18 @@ const NavBar = (props) => {
       headers: { "Content-type": "application/json" },
       credentials: "include",
     });
-
+    cookie.remove("nombrePersona");
+    cookie.remove("apellidoPersona");
+    cookie.remove("email");
+    cookie.remove("jwt");
+    cookie.remove("rol");
+    cookie.remove("rolId");
+    setCookie('nombreAvatar', '', { path: '/' });
+    setCookie('avatarNombre', '', { path: '/' });
+    setCookie('email', '', { path: '/' });
+    setCookie('avatarPath', '', { path: '/' });
+    setCookie('avatarPathGoogle', '', { path: '/' });
+    setCookie('jwt', '', { path: '/' });
   }
 
   return (

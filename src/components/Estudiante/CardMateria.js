@@ -13,13 +13,13 @@ function CardMateria(props, key) {
   return (
 
     <Grid item xs={12}  md={4} lg={4} spacing={4} >
-        <Card component={Link} to={ enlace } key={key}>
+        <Card component={Link} to={ enlace } key={key} className="text-decoration-none">
             <CardActionArea className=
               {props.class =="docente" ? "card-materia-docente" : "card-materia-estudiante"}>
               <CardContent >
-                <h4 className="card-materia-docente_nombre">{props.nombre}</h4>
-                <i className={"icon-mat fas fa-3x fa-"+ props.icon}></i>
-              </CardContent>               
+                <h4 className="text-dark card-materia-docente_nombre">{props.nombre}</h4>
+                <i className={props.class =="docente" ? "docente-card fas fa-3x fa-"+props.icon :"icon-mat fas fa-3x fa-"+ props.icon}></i>
+              </CardContent>
         </CardActionArea>
       </Card>
     </Grid>

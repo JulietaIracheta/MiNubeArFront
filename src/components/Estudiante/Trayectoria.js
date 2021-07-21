@@ -15,7 +15,6 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 const cookie = new Cookies();
 const jwt = cookie.get('jwt');
 const drawerWidth = 200;
-
 const styles = (theme) => ({
   root: {
     display: "flex",
@@ -49,6 +48,7 @@ const styles = (theme) => ({
 const Trayectoria = ({ classes, ...props }) => {
   const [informes, setInformes] = useState([])
   const [materias, setMaterias] = useState([])
+  const [loading, setLoading] = useState(false);
   
   useEffect(async () => {
     const result = await fetch(
@@ -60,6 +60,7 @@ const Trayectoria = ({ classes, ...props }) => {
       }
     )
       .then(function (response) {
+        setLoading(true);
         return response.json();
       })
       .then((response) => {
@@ -67,11 +68,6 @@ const Trayectoria = ({ classes, ...props }) => {
       });
       // document.body.style.backgroundColor = "#e9f0f5"
   }, []);
-  function dosDecimales(n) {
-    let t=n.toString();
-    let regex=/(\d*.\d{0,2})/;
-    return t.match(regex)[0];
-  }
 
 
     return (
@@ -79,7 +75,7 @@ const Trayectoria = ({ classes, ...props }) => {
         <NavEstudiante />
       <div className="d-flex mt-1">
         <Sidebar data={SidebarDataEstudiante}/>
-        {console.log(informes)}
+        {loading ? 
         <main className="main w-100 pr-2 pt-4">
             {/* <div className={classes.toolbar}  /> */}
             <div className="mb-4 pl-3 pl-sm-2">
@@ -121,6 +117,7 @@ const Trayectoria = ({ classes, ...props }) => {
       </div>
       {/* </div> */}
       </main>
+      : "Cargando..."}
       </div>
       </div>
     )

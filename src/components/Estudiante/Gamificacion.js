@@ -17,14 +17,15 @@ const Gamificacion = () => {
       <div className="d-flex mt-1 borde-tutor">
         <Sidebar data={SidebarDataEstudiante}/>
         <div className="container mt-2">
-            <div className=""> 
-            <Link to='2048'><img src={j2048}/></Link>
+        <h3 className="tituloadmin tituloEstudiante mb-4">Juegos</h3>
+            <div className="juegos"> 
+            <Link to='/estudiante/juegos/2048'><img src={j2048} className="mr-4"/></Link>
             
-            <Link to='ahorcado'><img src={Ahorcado}/></Link>
+            <Link to='/estudiante/juegos/ahorcado'><img src={Ahorcado} className="mr-4"/></Link>
             </div>
-            <div className="">
-            <Link to='tateti'><img src={Tateti}/></Link>
-            <Link to='sudoku'><img src={Sudoku}/></Link>
+            <div className="juegos">
+            <Link to='/estudiante/juegos/tateti'><img src={Tateti} className="mr-4"/></Link>
+            <Link to='/estudiante/juegos/sudoku'><img src={Sudoku} className="mr-4"/></Link>
           </div>
           </div>
         </div>

@@ -12,6 +12,7 @@ import "../../assets/css/css.css";
 import * as actions from "../../actions/contenido";
 import axios from 'axios';
 import url from "../../url"
+import { ProgressBar } from "react-bootstrap";
 
 
 const styles = (theme) => ({
@@ -40,6 +41,7 @@ const initialFieldValues = {
 const ContenidoForm = ({ handleClose, classes, ...props }) => {
   //toast msg.
   const { addToast } = useToasts();
+  const [progress, setProgress] = useState()
 
   //validate()
   //validate({fullName:'jenny'})
@@ -91,7 +93,12 @@ const ContenidoForm = ({ handleClose, classes, ...props }) => {
       if(archivo)
         form.append("file", archivo[0]);
       await axios.post(`${url.url}/api/contenido/crearContenido`,
-        form)
+        form,{
+          onUploadProgress:data=>{
+            console.log(data)
+            setProgress(Math.round((100 * data.loaded) / data.total))
+          }
+        })
         .then(response => {
           window.location.reload();
         }).catch(err => {
@@ -165,6 +172,11 @@ const ContenidoForm = ({ handleClose, classes, ...props }) => {
                 />
             </div>
           </Grid>
+          <div className="container py-3">
+            {progress && <ProgressBar className="w-100" now={progress} label={`${progress}%`} />}
+
+          </div>
+
           <div className="w-100 d-flex justify-content-center p-3 btn-accion-crear-salir-responsive">
             <button
               variant="contained"
