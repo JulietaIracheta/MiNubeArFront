@@ -17,7 +17,7 @@ import {
 } from "@material-ui/core";
 import GetEstudiantesTutor from "../../services/tutor/getEstudiantesTutor";
 import url from "../../url"
-
+import { Cookies } from 'react-cookie';
 const drawerWidth = 200;
 
 const styles = (theme) => ({
@@ -53,11 +53,14 @@ const styles = (theme) => ({
 const CalificacionesTutor = ({ classes, ...props }) => {
   const [boletin, setBoletin] = useState([]);
   const [estudiantes, SetEstudiantes] = useState([]);
-  const [estudiante, SetEstudiante] = useState(8);
-  
+  const [estudiante, SetEstudiante] = useState(0);
+  const cookie = new Cookies();
+  const jwt = cookie.get('jwt');
   useEffect(
     function () {
-      GetEstudiantesTutor().then((estudiante) => SetEstudiantes(estudiante));
+      GetEstudiantesTutor(jwt).then((estudiante) => {
+        SetEstudiantes(estudiante)
+      });
       
     },[]);
 
