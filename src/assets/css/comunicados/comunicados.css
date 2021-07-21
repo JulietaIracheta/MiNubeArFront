@@ -20,6 +20,19 @@
     border-radius: 10px;  
   }
 
+ .comunicados-container .btn-nuevo-comunicado{
+    background-color: rgba(45, 47, 133, .9);
+    border: none;
+    color: white;
+    border-radius: 5px;
+    padding: 8px;
+  }
+
+  .comunicados-container .btn-nuevo-comunicado:hover{
+    background-color: rgba(45, 47, 133, 1);
+  }
+  
+
 @media only screen and (max-width: 800px) {
   .comunicados-container{
     height: 100% !important;

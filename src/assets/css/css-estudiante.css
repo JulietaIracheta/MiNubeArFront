@@ -54,20 +54,31 @@
 }
 
 .unidad-item{
-  border-color: #B61915;
+  /* border-color: rgba(182, 25, 21, .75); */
   border-width: 2px;
   border-style: solid;
   border-radius: 5px;
   padding: 10px;
-  width: 30em;
+  /* width: 30em; */
+  width: 100%;
   margin-top: 30px;
+  color: #5D7392 ;/* rgba(182, 25, 21, .8);*/
+  border: 2px solid rgba(182, 25, 21, .8);
+  /* background-color:rgba(182, 25, 21, .6) ; */
 }
 
-.unidad-container{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+@media screen  and (min-width: 768px){
+  .unidad-item{
+    width: 20em;
+  }
 }
+
+@media screen  and (min-width: 992px){
+  .unidad-item{
+    width: 30em;
+  }
+}
+
 
 .marginMN {
   margin-left: 15px;
@@ -348,13 +359,26 @@
 .bg-estudiante{
   background: #B61915 !important;
 }
+
 #checkboxes{
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-top: 2rem;
   gap: 1rem;
 }
+
+.video-container{
+  max-width: 1200px;
+}
+
+@media screen and (min-width:768px){
+  #checkboxes{
+    flex-direction: row;
+  }
+}
+
 .whatever{
   background-color: #ebebeb;
   display: inline-block;
@@ -364,18 +388,21 @@
   cursor: pointer;
 }
 .container-respuesta{
-  height: 125px;
-  width: 250px;
+  /* height: 125px;
+  width: 250px; */
+  height: 100px;
+  width: 230px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 20px;
 }
 .respuesta{
   position: relative;
   top: 0;
   left: -50%;
   cursor: pointer;
-
+  font-size: 1.3em;
 }
 #checkboxes input[type=checkbox]{
   display: none;
@@ -383,7 +410,7 @@
 
 #checkboxes input[type=checkbox]:checked + .whatever{
   /*background-color: #808CFF;*/
-  background: rgba(102, 117, 245, 58%);
+  background: rgba(102, 117, 245, 35%);
 }
 .btn-subir{
   background: rgba(102, 117, 245,58%) !important;

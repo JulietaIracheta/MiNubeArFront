@@ -11,7 +11,7 @@ import {
   DropdownItem,
 } from "reactstrap";
 import {  PersonCircle } from "react-bootstrap-icons";
-import logo from '../../assets/img/logoColor.jpeg'
+import logo from '../../assets/img/logoColor.png'
 import { BorderColor, Business, Group } from "@material-ui/icons";
 import url from "../../url"
 

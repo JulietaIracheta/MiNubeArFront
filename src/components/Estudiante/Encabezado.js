@@ -3,7 +3,7 @@ import React from 'react';
 const Encabezado = (props) => {
    
     return (          
-        <div className="w-100">
+        <div className="w-100 pt-4">
             <h2 className="tituloadmin tituloEstudiante text-left">{props.texto}</h2>
             <p className="subtituloEstudiante">
                 Acá podras ver las materias que estas cursando actualmente<br/>

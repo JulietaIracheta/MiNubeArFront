@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import logo from './assets/img/logoColor.jpeg'
+import logo from './assets/img/logoColor_bggris.jpeg'
 
 const NotFound = () => {
         return (

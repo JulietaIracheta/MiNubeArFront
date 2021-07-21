@@ -69,7 +69,7 @@ const Comunicado = ({ idCurso, idInstitucion, ...props }) => {
         <div className="row comunicados-container" style={{ border: "1px solid #707070" }}>
           <div className="col-md-3">
             <div className="w-100 d-flex flex-column py-3">
-              <button className="btn btn-outline-dark btn-lg" onClick={clickNuevoComunicado}>Nuevo +</button>
+              <button className="btn-nuevo-comunicado" onClick={clickNuevoComunicado}>Nuevo +</button>
             </div>
             <ModalDialogComunicado open={dialogComunicado} comunicados={comunicados} setComunicados={setComunicados} handleClose={cerrarModal} idCurso={idCurso} idInstitucion={idInstitucion} />
           </div>

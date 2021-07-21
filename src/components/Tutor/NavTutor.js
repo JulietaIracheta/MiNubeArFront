@@ -11,7 +11,7 @@ import {
   DropdownItem,
 } from "reactstrap";
 import { BellFill,Calendar2DayFill } from "react-bootstrap-icons";
-import logo from '../../assets/img/logoColor.jpeg'
+import logo from '../../assets/img/logoColor.png'
 import CheckIcon from '@material-ui/icons/Check';
 import eliminarNotificacion from "../../services/notificaciones/eliminarNotificacion";
 import { Cookies } from 'react-cookie';
@@ -81,7 +81,7 @@ const NavBar = (props) => {
 
   return (
     <div >
-      <Navbar className="menuNavBarReg menuNavBarTutor d-flex justify-content-between p-0" expand="md" light>
+      <Navbar className="menuNavBarReg menuNavBarTutor d-flex justify-content-between p-0 bg-white" expand="md" light>
         <NavbarBrand className="colorBrand d-flex align-items-center" href="/rol">
           <img className="nav_logo" src={logo} width="100px" /> 
           <span className="d-none d-sm-block pt-2 logo__titulo">MI NUBE AR</span>

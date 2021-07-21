@@ -51,7 +51,7 @@ const EscuelasDocente = () => {
   }
 
   return (
-    <div className="d-flex mt-1">
+    <div className="d-flex">
       <Sidebar data={SidebarDataDocente} />
       <div className="main w-100 pr-2 pt-4">
         {click ? 

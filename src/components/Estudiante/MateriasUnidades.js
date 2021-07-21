@@ -5,6 +5,7 @@ import { ChartEstudainte } from "./ChartEstudiante";
 import { CardUnidad } from "./CardUnidad";
 import { Cookies } from 'react-cookie';
 import url from "../../url"
+import { Link } from 'react-router-dom'
 
 export default function MateriaUnidad({ id }) {
 
@@ -55,33 +56,28 @@ export default function MateriaUnidad({ id }) {
         });
     }, []);
     const listaUnidades = data.map((data, key) => (
-        <div className="col-md-6">
-            <CardUnidad key={key} contenido={data.idContenido} materia={id} unidad={data.unidad} tema={data.titulo} />
-        </div>
+        <CardUnidad key={key} contenido={data.idContenido} materia={id} unidad={data.unidad} tema={data.titulo} />
     ));
 
     return (
         <>
             <Encabezado texto={"Contenidos y actividades"} />
-            <div className="chart-est-container">
+            <div className="chart-est-containerTODO d-flex flex-column justify-content-around flex-md-row">
                 <div className="chart-item">
                     <h5>Contenido visto</h5>
                     <ChartEstudainte porcentaje={promedioVisto} />
-                    <div>{contenidoResumen}</div>
+                    <div className="font-weight-bold">{contenidoResumen}</div>
                 </div>
                 <div className="chart-item">
                     <h5>Actividades correctas</h5>
                     <ChartEstudainte porcentaje={promedioActividadResuelta} />
-                    <div>{actividadResumen}</div>
+                    <div className="font-weight-bold">{actividadResumen}</div>
                 </div>
             </div>
-            <div className="unidad-container">
-                <div className="row">
+                <div className="row d-flex justify-content-around">
 
-                    {loading ? (listaUnidades) : "LOADING ..."}
-
+                    {loading ? (listaUnidades) : "LOADING ..."}     
                 </div>
-            </div>
 
         </>
     )

@@ -15,7 +15,7 @@ export const ChartEstudainte = ({porcentaje}) => {
                     plotOptions: {
                         radialBar: {
                             hollow: {
-                                size: '70%',
+                                size: '60%',
                                 }
                             },
                     },

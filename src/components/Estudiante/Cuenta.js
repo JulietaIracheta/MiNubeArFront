@@ -107,7 +107,7 @@ export default function Cuenta() {
                     </div>
                             <form onSubmit={modificarUsuario}>
                                 <div className="row m-0">
-                                    <div className="bg-white pt-4 pb-4 pt-md-0 col-md-4 col-lg-3 col-xl-2 p-1 p-md-3 d-flex flex-column justify-content-center w-100 mb-4 mb-md-0" style={{border:"1px solid #edf2f9"}}>
+                                    <div className="bg-white pt-4 pb-4 pt-md-0 col-md-4 col-lg-3 col-xl-3 p-1 p-md-3 d-flex flex-column justify-content-center w-100 mb-4 mb-md-0" style={{border:"1px solid #edf2f9"}}>
                                         <div className="d-flex flex-column align-items-center">
 
                                             {seleccionoAvatar ?
@@ -130,7 +130,7 @@ export default function Cuenta() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-md-8 col-lg-7 col-xl-5 bg-white pt-3 p-1 p-md-3" style={{border:"1px solid #edf2f9"}}>
+                                    <div className="col-md-8 col-lg-9 col-xl-6 bg-white pt-3 p-1 p-md-3" style={{border:"1px solid #edf2f9"}}>
                                         <div className="row m-0">
                                             <div className="col-md-12">
                                                 <p className="font-weight-bold" style={{color:"rgba(45, 47, 133, .75)"}}>Datos personales</p>

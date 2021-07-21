@@ -72,7 +72,7 @@ const MateriaActividad = ({ match }) => {
       <NavEstudiante />
       <div className="flex">
         <Sidebar data={SidebarDataEstudiante} />
-        <div className="content">
+        <div className="main w-100 pr-2 pt-2">
           <div className="w-100 d-flex align-items-center">
             <BotonVolver ruta={"/estudiante/materias/" + idMateria} />
             <Encabezado className="w-100" texto={materia + " - Contenido n°" + contenido} />
@@ -82,7 +82,7 @@ const MateriaActividad = ({ match }) => {
               <Link className="btn btn-outline-dark mr-2"
                 to={`/estudiante/materias/${idMateria}/${contenido}/video`}>Clase grabada</Link>
               {vioActividad ?
-                <Link className="btn btn-outline-dark mr-2"
+                <Link className="btn btn-outline-primary mr-2"
                   to={`/estudiante/materias/${idMateria}/${contenido}/actividad`}>Actividad</Link>
                 :
                 ""

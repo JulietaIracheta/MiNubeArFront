@@ -3,14 +3,16 @@
   margin-left: 280px;
   left: 0%;
   top: 48%;
+  margin-top: 80px;
 }
 
 @media screen and (min-width:576px){
   .content-trayectoria {
-    position: relative;
+    /* position: relative; */
     left: 50%;
-    top: 75%;
+    /* top: 75%; */
     margin-left: 0;
+    margin-top: 130px;
   }
 }
 
@@ -18,7 +20,7 @@
 @media screen and (min-width:768px){
   .content-trayectoria {
     position: absolute;
-    top: 400px;
+    top:350px;
   }
 }
 

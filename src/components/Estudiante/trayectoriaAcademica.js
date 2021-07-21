@@ -52,7 +52,7 @@ export default function TrayectoriaAcademica() {
                     </h6>
                 </div>
                 {x ?
-                    <div class="content-trayectoria mt-5 mt-md-0">
+                    <div class="content-trayectoria">
                         <div class="hexagon">
                             <HtmlTooltip
                                 title={

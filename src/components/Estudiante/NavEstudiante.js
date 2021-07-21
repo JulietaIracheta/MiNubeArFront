@@ -14,7 +14,7 @@ import {
 } from "reactstrap";
 import { Calendar2Event, Bell, Calendar2DayFill, BellFill } from "react-bootstrap-icons";
 import { Cookies, useCookies } from 'react-cookie';
-import logo from '../../assets/img/logoColor.jpeg'
+import logo from '../../assets/img/logoColor.png'
 import "../../assets/css/css-estudiante.css";
 import { Avatar } from "@material-ui/core";
 import CheckIcon from '@material-ui/icons/Check';
@@ -105,7 +105,7 @@ const NavBar = (props) => {
 
   return (
     <div>
-      <Navbar className="menuNavBarReg menuNavBarEstudiante d-flex justify-content-between p-0" expand="md" light>
+      <Navbar className="menuNavBarReg menuNavBarEstudiante d-flex justify-content-between p-0 bg-white" expand="md" light>
         <NavbarBrand className="colorBrand d-flex align-items-center" href="/rol">
           <img className="nav_logo" src={logo} width="100px" /> 
           <span className="d-none d-sm-block pt-2 logo__titulo">MI NUBE AR</span>
