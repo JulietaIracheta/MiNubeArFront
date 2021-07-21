@@ -50,7 +50,7 @@ const App = createReactClass({
 				<Grid grid={grid} status={status} {...this.props}/>
 
 				<button
-					className='check'
+					className='btn btn-primary'
 					disabled={isSolved}
 					onClick={() => {
 						if (isSolvable(grid)) {
@@ -66,7 +66,7 @@ const App = createReactClass({
 					Chequear
 				</button>
 				<button
-					className='solve'
+					className='btn btn-warning ml-2'
 					onClick={() => store.dispatch(solve())}
 				>
 					Resolver

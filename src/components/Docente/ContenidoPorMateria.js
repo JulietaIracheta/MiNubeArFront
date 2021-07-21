@@ -42,7 +42,6 @@ export default function ContenidoPorMateria({ id, set, ...props }) {
             <NavDocente></NavDocente>
             <div className="d-flex mt-1 borde-tutor">
                 <Sidebar data={SidebarDataDocente} />
-                {console.log(contenidos)}
                 <div className="main w-100 pr-2 pt-4">
                     <div className="d-flex align-items-center mt-1 w-100 justify-content-between contenido-container-accion-responsive">
                         {/* <div className="w-100 d-flex justify-content-center"> */}

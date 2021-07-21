@@ -11,8 +11,8 @@ export default function EstudiantesAsignados({ institucion = 'unlam', idCurso, i
 
     return (
         <div>
-            <div className="container-fluid p-0">
-                <div className="d-flex flex-row flex-wrap flex-sm-nowrap">
+            <div className="container p-0">
+                <div className="row">
                     <ListaDeEStudiantes estudiantes={estudiantes}>
                     </ListaDeEStudiantes>
                 </div>

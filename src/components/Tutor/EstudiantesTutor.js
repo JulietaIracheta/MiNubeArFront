@@ -6,13 +6,16 @@ import "../../assets/css/css-tutor.css";
 import GetEstudiantesTutor from "../../services/tutor/getEstudiantesTutor";
 import Sidebar from "../Sidebar";
 import {SidebarDataTutor} from '../sideBar/SidebarDataTutor';
+import { Cookies } from 'react-cookie';
 
 export default function EstudiantesTutor() {
   const [estudiantes, SetEstudiantes] = useState([]);
-  
+  const cookie = new Cookies();
+    const jwt = cookie.get('jwt');
+
   useEffect(
     function () {
-      GetEstudiantesTutor().then((estudiante) => SetEstudiantes(estudiante));
+      GetEstudiantesTutor(jwt).then((estudiante) => SetEstudiantes(estudiante));
       console.log(estudiantes);
     },[]);
 

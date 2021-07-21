@@ -79,10 +79,10 @@ class App extends Component {
     allowOutsideClick: false,
     title: 'Compartí esta sala con tu amigo',
     text: this.roomId,
-    width: 275,
-    padding: '0.7em',
+    width: "80%",
     // Custom CSS
     customClass: {
+      height:"258px",
         heightAuto: false,
         title: 'title-class',
         popup: 'popup-class',
@@ -108,8 +108,8 @@ class App extends Component {
       showCancelButton: true,
       confirmButtonColor: 'rgb(208,33,41)',
       confirmButtonText: 'OK',
-      width: 350,
-      padding: '0.7em',
+      width: "80%",
+      height:"100%",
       customClass: {
         heightAuto: false,
         popup: 'popup-class',
@@ -157,8 +157,8 @@ class App extends Component {
             allowOutsideClick: false,
             title: 'Error',
             text: 'Juego en progreso. Intente con otra sala',
-            width: 275,
-            padding: '0.7em',
+            width: "80%",
+      height:"100%",
             customClass: {
                 heightAuto: false,
                 title: 'title-class',
@@ -213,13 +213,13 @@ class App extends Component {
                   
                 <div className="button-container">
                   <button 
-                    className="create-button "
+                    className="btn btn-primary mt-4 "
                     disabled={this.state.isDisabled}
                     onClick={(e) => this.onPressCreate()}
                     > Crear
                   </button>
                   <button 
-                    className="join-button"
+                    className="btn btn-warning mt-4 ml-2"
                     onClick={(e) => this.onPressJoin()}
                     > Unirse
                   </button>

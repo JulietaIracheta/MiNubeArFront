@@ -1,8 +1,9 @@
 import url from "../../url"
 
-const urlBase = `${url.url}/api/tutor/6`
 
-export default function getEstudiantesTutor() {
+export default function getEstudiantesTutor(jwt) {
+const urlBase = `${url.url}/api/tutor?jwt=`+jwt
+
     return fetch(urlBase, {
         method: 'GET',
         headers: { "Content-type": "application/json" },
