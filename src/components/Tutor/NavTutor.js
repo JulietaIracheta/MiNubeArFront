@@ -54,6 +54,8 @@ const NavBar = (props) => {
     cookie.remove("rol");
     cookie.remove("rolId");
     setCookie('nombreAvatar', '', { path: '/' });
+    setCookie('email', '', { path: '/' });
+    setCookie('avatarNombre', '', { path: '/' });
     setCookie('avatarPath', '', { path: '/' });
     setCookie('avatarPathGoogle', '', { path: '/' });
     setCookie('jwt', '', { path: '/' });

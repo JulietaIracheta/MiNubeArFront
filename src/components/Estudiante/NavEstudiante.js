@@ -69,6 +69,8 @@ const NavBar = (props) => {
     cookieNombreEstudiante.remove("rolId");
 
     setCookie('nombreAvatar', '', { path: '/' });
+    setCookie('avatarNombre', '', { path: '/' });
+    setCookie('email', '', { path: '/' });
     setCookie('avatarPath', '', { path: '/' });
     setCookie('avatarPathGoogle', '', { path: '/' });
     setCookie('jwt', '', { path: '/' });
