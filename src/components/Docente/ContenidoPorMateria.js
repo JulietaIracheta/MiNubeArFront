@@ -43,17 +43,17 @@ export default function ContenidoPorMateria({ id, set, ...props }) {
             <div className="d-flex mt-1 borde-tutor">
                 <Sidebar data={SidebarDataDocente} />
                 {console.log(contenidos)}
-                <div className="container-fluid mt-2 ">
+                <div className="main w-100 pr-2 pt-4">
                     <div className="d-flex align-items-center mt-1 w-100 justify-content-between contenido-container-accion-responsive">
-                        <div className="w-100 d-flex justify-content-center">
+                        {/* <div className="w-100 d-flex justify-content-center"> */}
                             {materia ?
-                                <h3 className="m-0 p-0 color-docente borde-docente">{materia.nombre}</h3>
+                                <h3 className="tituloadmin tituloDocente">{materia.nombre}</h3>
                                 : ""
                             }
-                        </div>
-                        <div className="d-flex justify-content-around contenido-acciones-responsive">
+                        {/* </div> */}
+                        <div className="d-flex justify-content-end contenido-acciones-responsive">
                             <Link to="/video" className="btn btn-outline-dark font-weight-bold">Clase en vivo</Link>
-                            <button className="btn btn-outline-dark font-weight-bold" onClick={clickNuevaActividad}>Nueva clase grabada</button>
+                            <button className="btn btn-outline-dark font-weight-bold ml-3" onClick={clickNuevaActividad}>Nueva clase grabada</button>
                             <ModalDialogContenido
                                 idCurso={props.match.params.cursoId}
                                 idMateria={props.match.params.materiaId}
