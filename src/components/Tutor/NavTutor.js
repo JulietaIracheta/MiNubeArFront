@@ -55,8 +55,12 @@ const NavBar = (props) => {
     cookie.remove("rolId");
     setCookie('nombreAvatar', '', { path: '/' });
     setCookie('email', '', { path: '/' });
-    setCookie('avatarNombre', '', { path: '/' });
+    setCookie('rol', '', { path: '/' });
+    setCookie('rol', '', { path: '/' });
+    setCookie('apellidoPersona', '', { path: '/' });
+    setCookie('nombrePersona', '', { path: '/' });
     setCookie('avatarPath', '', { path: '/' });
+    setCookie('avatarNombre', '', { path: '/' });
     setCookie('avatarPathGoogle', '', { path: '/' });
     setCookie('jwt', '', { path: '/' });
   }
