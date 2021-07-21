@@ -16,12 +16,12 @@ export default function CursosAsignadosDocente({ cursoId,cursoNombre, institucio
                     <div>
                         <div className="w-100 d-flex justify-content-center mb-4">
                             <a href="#">                              
-                               <ArrowLeftCircleFill fill="black" fontSize="2rem"  
+                               <ArrowLeftCircleFill fill="#444" fontSize="2rem"  
                                 onClick={()=>setearClick(false)}>
                                 </ArrowLeftCircleFill> 
                             </a> 
-                            <h3 className="m-0 p-0 color-docente borde-docente">{institucionNombre} - {cursoNombre}</h3>
-                            <hr className="hr-colorDoc" />
+                            <h3 className="m-0 p-0 pl-3 tituloAdmin tituloDocente w-100">{institucionNombre} - {cursoNombre}</h3>
+                            {/* <hr className="hr-colorDoc" /> */}
                         </div>
                         <TabMenu curso={cursoId} institucion={institucionId}/>
                     </div>

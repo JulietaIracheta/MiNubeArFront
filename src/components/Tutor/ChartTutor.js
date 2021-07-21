@@ -13,7 +13,7 @@ export const ChartTutor = ({porcentaje}) => {
                     plotOptions: {
                         radialBar: {
                             hollow: {
-                                size: '70%',
+                                size: '60%',
                                 }
                             },
                     },

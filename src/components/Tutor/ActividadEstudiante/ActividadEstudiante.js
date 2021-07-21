@@ -50,26 +50,26 @@ export default function ApexChart(props) {
     return (
         <div>
             <NavTutor></NavTutor>
-            <div className="d-flex mt-1 borde-tutor">
+            <div className="d-flex">
                 <Sidebar data={SidebarDataTutor} />
-                <div className="container-fluid mt-2 ">
+                <div className="main w-100 pr-2 pt-4">
                     <div className="d-flex align-items-center mt-1">
                         <BotonVolver ruta="/rol"></BotonVolver>
-                        <h3 className="m-0 p-0"
-                            style={{
-                                borderBottom: "2px solid #67A147", width: "100%", fontWeight: "bold", color: "#67A147"
-                            }}
+                        <h3 className="m-0 p-0 tituloadmin tituloTutor"
+                            // style={{
+                            //     borderBottom: "2px solid #67A147", width: "100%", fontWeight: "bold", color: "#67A147"
+                            // }}
                         >{props.match.params.nombre}
                         </h3>
                     </div>
-                    <div className="row mt-2">
-                        <div className="chart-est-container w-100">
-                            <div className="chart-item">
+                    <div className="row m-0 mt-5">
+                        <div className="chart-est-container w-100 d-flex justify-content-around bg-white">
+                            <div className="chart-item mt-4">
                                 <h5>Contenido visto</h5>
                                 <ChartTutor porcentaje={promedioVisto} />
                                 <div>{contenidoResumen}</div>
                             </div>
-                            <div className="chart-item">
+                            <div className="chart-item mt-4">
                                 <h5>Actividades correctas</h5>
                                 <ChartTutor porcentaje={promedioActividadResuelta} />
                                 <div>{actividadResumen}</div>

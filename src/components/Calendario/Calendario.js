@@ -99,7 +99,7 @@ const onDelete = (id) => {
       <div className="d-flex">
         <Sidebar data={SidebarDataDocente}/>
         <main className="main w-100 pr-2 pt-4">
-          <div className="mb-4 pl-3 pl-sm-2">
+          <div className="mb-2 pl-3 pl-sm-2">
             <span className="tituloadmin tituloDocente">Calendario</span>
             <Button
               className="btn-md text-white float-right mt-0 mt-md-2"
@@ -110,10 +110,10 @@ const onDelete = (id) => {
             </Button>
             <ModalDialog open={open} handleClose={handleClose} />
         </div>
-        <div className='p-5 bg-white' style={{border:"1px solid #edf2f9"}}>
-          <div className='demo-app-main'>
+        <div className='p-4 bg-white' style={{border:"1px solid #edf2f9"}}>
+          <div className='demo-app-main p-0'>
             <FullCalendar
-              contentHeight={650}
+              contentHeight={"auto"}
               locale={esLocale}
               windowResizeDelay={true}
               plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}

@@ -3,16 +3,28 @@
   margin-left: 280px;
   left: 0%;
   top: 48%;
+  margin-top: 80px;
 }
 
 @media screen and (min-width:576px){
   .content-trayectoria {
-    position: absolute;
+    /* position: relative; */
     left: 50%;
-    top: 48%;
+    /* top: 75%; */
     margin-left: 0;
+    margin-top: 130px;
   }
 }
+
+
+@media screen and (min-width:768px){
+  .content-trayectoria {
+    position: absolute;
+    top:350px;
+  }
+}
+
+
 @media screen and (max-width:400px){
   h2{
     text-align: center !important;
@@ -493,7 +505,7 @@ color: white;
 }
 
 .card-materia-tutor{
-  border-color: #67a147 !important;
+  border-color: rgba(103, 161, 71, 1) !important;
   border-width: 2px !important;
   border-style: solid !important;
   border-radius: 5px !important;

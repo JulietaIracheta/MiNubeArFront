@@ -23,7 +23,7 @@ export default function EstudiantesTutor() {
         <div className="main w-100 pr-2 pt-4">
           <h2 className="tituloadmin tituloTutor mb-4">Mis Estudiantes</h2>
           {/* <hr className="hr-colorTut" /> */}
-          <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 m-0">
+          <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-2 row-cols-xl-3 m-0">
             {estudiantes.map((est) => (
               <div className="col mb-4">
                 <div className="w-100">
@@ -33,7 +33,7 @@ export default function EstudiantesTutor() {
                           <PersonCircle className="w-100 h-100" ></PersonCircle>
                       </div>
                       <div className="col-md-8 col-sm-12 d-flex flex-column justify-content-around">
-                        <span className="font-weight-bold mt-2 mb-2" style={{fontSize:"1.1em"}}>
+                        <span className="font-weight-bold mt-2 mb-2" style={{fontSize:"1em"}}>
                           {est.nombre}{", "}
                           {est.apellido}
                         </span>

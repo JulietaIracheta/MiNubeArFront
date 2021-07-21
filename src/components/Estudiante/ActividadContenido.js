@@ -107,32 +107,38 @@ const ActividadContenido = (props) => {
 
 	return (
 		<>
+			<div className="container-fuid mr-auto">
 			<h2>{props.titulo}</h2>
 			{visto ?
-				<div className='score-section'>
-					<div className="container">
-						Acertaste {puntaje} de {totalCorrectosDetalle}
-					</div>
+				// <div className='score-section ml-auto mr-auto mt-4'>
+				// 	<div className="container">
+				// 	<p className="text-center text-primary">Acertaste {puntaje} de {totalCorrectosDetalle} </p>
+				// 	</div>
+				// </div>
+				<div class="alert alert-dismissible alert-success mt-5 mt-sm-0" style={{maxWidth:"230px"}}>
+					Acertaste <strong>{puntaje}</strong> de <strong>{totalCorrectosDetalle}</strong>
 				</div>
 				: ""
 			}
 			<form onSubmit={submit}>
 				<div className='question-section'>
-					<ol>
+					<ol className="p-0">
 						{questions.map((question, index) => (
 							<>
-								<div className="d-flex flex-column justify-content-center" style={{ width: "100%", height: "4rem", background: "#ebebeb", borderRadius: "25px" }}>
+								{/* <div className="d-flex flex-column justify-content-center text-white" style={{ width: "100%", height: "4rem", background: "#5D7392", borderRadius: "10px" }}>
 									<h6 className="text-center m-0" style={{ fontSize: "1.6rem" }}>{question.content}</h6>
+								</div> */}
+								<div class="alert alert-dismissible alert-primary pt-5 pb-5 text-center mb-5">
+									<strong>{question.content}</strong> 
 								</div>
 								<div id="checkboxes">
 									{question.answers.map((answer) => (
 										<>
-											<div className="container-respuesta">
+											<div className="container-respuesta ">
 												<input type="checkbox" name={answer.id} id={answer.id}
 													value={answer.correct}
 												/>
-												<label className="whatever" for={answer.id}>
-												</label>
+												<label className="whatever" for={answer.id}></label>
 												<span className="respuesta font-weight-bold">{answer.content}</span>
 											</div>
 										</>
@@ -144,9 +150,10 @@ const ActividadContenido = (props) => {
 					</ol>
 				</div>
 				<div className="w-100 d-flex justify-content-center mt-2">
-					<button disabled={visto} type="submit" className="btn btn-subir btn-lg mb-5">Enviar resultados</button>
+					<button disabled={visto} type="submit" className="btn btn-outline-primary btn-lg mb-5">Enviar resultados</button>
 				</div>
 			</form>
+			</div>
 		</>
 	)
 }

@@ -8,6 +8,10 @@
   margin-left: 15px;
 }
 
+.fc-time-grid .fc-slats td {
+  height: 20px !important;
+}
+
 .icon-menu {
   width: 40px;
   height: auto;
@@ -91,6 +95,10 @@
 /* .react-calendar{
   width: 100% !important;
 } */
+
+.card.card-estudiantes-a-cargo{
+  border: 2px solid rgba(45, 47, 133, .5);
+}
 
 .fc-toolbar-chunk > .fc-toolbar-title{
   font-size: 1.5em !important;

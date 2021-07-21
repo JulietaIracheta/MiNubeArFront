@@ -20,7 +20,7 @@ const idUsuario = props.idUsuario;
           <CardContent>
             <h4>{props.nombre}</h4>
             <a href={`/tutor/ActividadEstudiante/${nombre}/${id}/${idUsuario}`} class="text-dark">
-              <i className={"icon-mat fas fa-3x fa-" + props.icon}></i>
+              <i className={"icon-mat fas fa-3x tituloTutor fa-" + props.icon}></i>
             </a>
           </CardContent>
          

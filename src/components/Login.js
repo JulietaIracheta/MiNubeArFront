@@ -148,7 +148,7 @@ const Login = () => {
   }
 
   return (
-    <div className="bg-light d-flex justify-content-center align-items-center w-100 pl-3 pr-4 pt-5" style={{height:"100vh",}}>
+    <div className="bg-light d-flex justify-content-center align-items-center w-100 pl-3 pr-4 pt-0" style={{height:"100vh",}}>
       <div className="login-container d-flex flex-column flex-md-row justify-content-between w-100 w-lg-75">
         <div className="logo-container d-md-block d-md-flex align-self-center m-auto p-5">
           <img src={logo} className="logo"></img>

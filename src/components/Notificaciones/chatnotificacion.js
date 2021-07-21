@@ -103,7 +103,7 @@ export default () => {
                     </div>
                     {!connection
                         ?
-                        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 m-0">
+                        <div className="row row-cols-1 row-cols-sm-2 row-cols-xl-3 m-0">
                             <div className="col mb-4">
                                     <div className="card-body card-materia-estudiante font-weight-bold">
                                         <h5 className="font-weight-bold" style={{color:"rgba(182, 25, 21, .75)"}}>

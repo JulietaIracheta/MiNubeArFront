@@ -83,83 +83,77 @@ const CalificacionesTutor = ({ classes, ...props }) => {
   return (
       <div>
       <NavTutor />
-    <div className="d-flex mt-1">
-      <Sidebar data={SidebarDataTutor}/>
-      <main className={classes.content}>
-          <div className={classes.toolbar} />
-          <div>
-            <div className="adminContent">
-                <h3>Calificaciones de los estudiantes</h3>
-        <hr className="hr-colorTut" />
-      </div>
-      <div className='demo-app'>
-        <div className='demo-app-main'>
-        <FormControl variant="outlined" className="mb-3 mt-3 ml-3">
-            <InputLabel id="demo-simple-select-outlined-label">Estudiante</InputLabel>
-            <Select
-              name="idEstudiante"
-              id="demo-simple-select-outlined"
-              value={estudiante}
-              onChange={handleInputChange}
-              label="Estudiante"
-            >
-              {estudiantes.map((est) => (
-                <MenuItem value={est.idUsuario}>
-                  {est.nombre}{" "}{est.apellido}
-                </MenuItem>
-              ))}
-            </Select>
-            </FormControl>
-           
-            <TableContainer>
-              <Table>
+        <div className="d-flex">
+          <Sidebar data={SidebarDataTutor}/>
+          <main className="main w-100 pr-2 pt-4">
+            <h3 className="tituloadmin tituloTutor">Calificaciones de los estudiantes</h3>
+            <div className='demo-app'>
+              <div className='demo-app-main'>
+              <FormControl variant="outlined" className="mb-3 mt-3">
+                  <InputLabel id="demo-simple-select-outlined-label">Estudiante</InputLabel>
+                  <Select
+                    name="idEstudiante"
+                    id="demo-simple-select-outlined"
+                    className="bg-white"
+                    value={estudiante}
+                    onChange={handleInputChange}
+                    label="Estudiante"
+                    style={{minWidth:"150px"}}
+                  >
+                    {estudiantes.map((est) => (
+                      <MenuItem value={est.idUsuario}>
+                        {est.nombre}{" "}{est.apellido}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                  </FormControl>
                 
-                  <TableRow className="colorTab">
-                    <TableCell className="colorTab">Materia</TableCell>
-                    <TableCell className="colorTab">Año</TableCell>
-                    <TableCell className="colorTab">Nota T1</TableCell>
-                    <TableCell className="colorTab">Nota T2</TableCell>
-                    <TableCell className="colorTab">Nota T3</TableCell>
-                    <TableCell className="colorTab">Promedio</TableCell>
-                   </TableRow>
-                <TableBody>
-        {boletin.map((notas, index) => {
-        var total=0;
-        if(notas.t1){
-          total=total+1;
-        }else{
-          notas.t1=0;
-        }
-        if(notas.t2){
-          total=total+1;
-        }else{
-          notas.t2=0;
-        }
-        if(notas.t3){
-          total=total+1;
-        }else{
-          notas.t3=0;
-        }
-             return (
-                <TableRow key={index} hover>
-                  <TableCell>{notas.materia}</TableCell>
-                  <TableCell>{notas.año}</TableCell>
-                  <TableCell>{notas.t1}</TableCell>
-                  <TableCell>{notas.t2}</TableCell>
-                  <TableCell>{notas.t3}</TableCell>
-                  <TableCell>{parseInt((parseInt(notas.t1) + parseInt(notas.t2) + parseInt(notas.t3)) /total)}</TableCell>
-                </TableRow>
-
-              );
-            })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-               </div>
-      </div>
-      </div>
-      </main>
-      </div>
+                    <Table responsive className="mt-3 d-block d-sm-table bg-white table-responsive" style={{border:"1px solid #edf2f9"}}>
+                      <TableHead style={{backgroundColor:"#12263f"}}>
+                        <TableRow>
+                          <TableCell className="font-weight-bold text-white">Materia</TableCell>
+                          <TableCell className="font-weight-bold text-white text-center">Año</TableCell>
+                          <TableCell className="font-weight-bold text-white text-center">Nota T1</TableCell>
+                          <TableCell className="font-weight-bold text-white text-center">Nota T2</TableCell>
+                          <TableCell className="font-weight-bold text-white text-center">Nota T3</TableCell>
+                          <TableCell className="font-weight-bold text-white text-center">Promedio</TableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+              {boletin.map((notas, index) => {
+                  var total=0;
+                  if(notas.t1){
+                    total=total+1;
+                  }else{
+                    notas.t1=0;
+                  }
+                  if(notas.t2){
+                    total=total+1;
+                  }else{
+                    notas.t2=0;
+                  }
+                  if(notas.t3){
+                    total=total+1;
+                  }else{
+                    notas.t3=0;
+                  }
+                  return (
+                      <TableRow key={index} hover>
+                        <TableCell className="text-dark">{notas.materia}</TableCell>
+                        <TableCell className="text-dark text-center">{notas.año}</TableCell>
+                        <TableCell className="text-dark text-center">{notas.t1}</TableCell>
+                        <TableCell className="text-dark text-center">{notas.t2}</TableCell>
+                        <TableCell className="text-dark text-center">{notas.t3}</TableCell>
+                        <TableCell className="text-dark text-center">{parseInt((parseInt(notas.t1) + parseInt(notas.t2) + parseInt(notas.t3)) /total)}</TableCell>
+                      </TableRow>
+                    );
+                  })}
+                </TableBody>
+              </Table>
+            </div>
+          </div>
+          </main>
+        </div>
       </div>
     )
   }

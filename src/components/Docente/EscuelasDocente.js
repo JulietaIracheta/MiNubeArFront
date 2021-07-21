@@ -51,7 +51,7 @@ const EscuelasDocente = () => {
   }
 
   return (
-    <div className="d-flex mt-1">
+    <div className="d-flex">
       <Sidebar data={SidebarDataDocente} />
       <div className="main w-100 pr-2 pt-4">
         {click ? 
@@ -76,14 +76,14 @@ const EscuelasDocente = () => {
               {curso.map((c) => 
                 <div className="col mb-4">
                   <div className="card container bordes">
-                      <h5 className="card-title pt-3 pl-2 pb-2 card-title-docente">
+                      <h5 className="card-title pt-3 pl-2 pb-0 mb-0 card-title-docente">
                         Curso : <>{c.nombre}</>
                         <hr />
                         Institución : {inst.nombre}
                         <hr />
                       </h5>
-                      <div className="card-body">
-                        <div class="d-flex flex-row-reverse">
+                      <div className="card-body p-0 pb-2">
+                        <div class="d-flex flex-row-reverse p-0 m-0">
                             <GearFill 
                               onClick={() =>seleccionar(c,inst)}
                               size= {26}
