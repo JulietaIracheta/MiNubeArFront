@@ -6,6 +6,7 @@
     display: grid;
     background-color:#f7f4f4;/*#f8f6ff;*/
     padding: 20px;
+    max-height: 350px;
 }
 .leave-room {
     text-align: right;
@@ -93,7 +94,7 @@
         max-height: calc(100vh - 400px);
         min-height: 350px;
     }
-
+    
     .user-list{
         max-width: 300px;
     }
