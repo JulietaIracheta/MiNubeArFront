@@ -37,7 +37,7 @@ export const update = (id, data, onSuccess) => dispatch => {
                 type: ACTION_TYPES.UPDATE,
                 payload: { id, ...data }
             })
-            onSuccess()
+            onSuccess(res)
         })
         .catch(err => console.log(err))
 }

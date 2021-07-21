@@ -62,6 +62,7 @@ import game2048 from "./components/Estudiante/Game/2048/src/index";
 import Gamificacion from "./components/Estudiante/Gamificacion";
 import NotFound from "../src/NotFound";
 import TrayectoriaTutor from '../src/components/Tutor/Trayectoria';
+import esta from './components/Registro/Chart'
 
 const MyRoute = (props) =>
   isAuthenticated() ? <Route {...props} /> : <Redirect to="/login" />;
@@ -128,6 +129,7 @@ const app = () => (
         <MyRoute path='/cursos/asignar_estudiante' exact component={AsignarEstudiantes} /> 
         <Route path="*" render={NotFound} />     
 */}
+<Route path="/esta" exact component={esta} />
         <MyRoute path="/usuarios" exact component={Usuario}></MyRoute>
         <Route path="/" exact component={Login} />
         <Route path="/login" exact component={Login} />

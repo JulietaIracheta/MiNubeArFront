@@ -108,7 +108,7 @@ class App extends Component {
       showCancelButton: true,
       confirmButtonColor: 'rgb(208,33,41)',
       confirmButtonText: 'OK',
-      width: 275,
+      width: 350,
       padding: '0.7em',
       customClass: {
         heightAuto: false,
