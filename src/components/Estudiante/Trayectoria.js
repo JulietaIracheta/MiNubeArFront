@@ -67,11 +67,6 @@ const Trayectoria = ({ classes, ...props }) => {
       });
       // document.body.style.backgroundColor = "#e9f0f5"
   }, []);
-  function dosDecimales(n) {
-    let t=n.toString();
-    let regex=/(\d*.\d{0,2})/;
-    return t.match(regex)[0];
-  }
 
 
     return (
@@ -79,7 +74,6 @@ const Trayectoria = ({ classes, ...props }) => {
         <NavEstudiante />
       <div className="d-flex mt-1">
         <Sidebar data={SidebarDataEstudiante}/>
-        {console.log(informes)}
         <main className="main w-100 pr-2 pt-4">
             {/* <div className={classes.toolbar}  /> */}
             <div className="mb-4 pl-3 pl-sm-2">

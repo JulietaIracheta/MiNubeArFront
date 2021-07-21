@@ -52,6 +52,8 @@ const NavBar = (props) => {
     cookieNombreEstudiante.remove("apellidoPersona");
     cookieNombreEstudiante.remove("jwt");
     cookieNombreEstudiante.remove("email");
+    cookieNombreEstudiante.remove("rol");
+    cookieNombreEstudiante.remove("rolId");
     setCookie('nombreAvatar', '', { path: '/' });
     setCookie('avatarPath', '', { path: '/' });
     setCookie('avatarPathGoogle', '', { path: '/' });
