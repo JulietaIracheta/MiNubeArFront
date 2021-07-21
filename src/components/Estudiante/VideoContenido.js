@@ -30,7 +30,7 @@ const VideoContenido = ({ idMateria,contenido,setAct }) => {
         <div className="p-2 video-container">
             {
                 contenidos?
-                <ReactPlayer url={`${url.url}/videos/` + contenidos.video} controls width="100%" height="auto" onEnded={()=>{swal("Video visto","puede realizar actividad","success"); setAct(true)}} />
+                <ReactPlayer url={`${url.url}/Videos/` + contenidos.video} controls width="100%" height="auto" onEnded={()=>{swal("Video visto","puede realizar actividad","success"); setAct(true)}} />
 
                 :""
             }

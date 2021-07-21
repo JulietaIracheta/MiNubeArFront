@@ -17,7 +17,7 @@ const MateriaUnidad = ({ match }) => {
       <NavEstudiante />
       <div className="flex">
       <Sidebar data={SidebarDataEstudiante}/>
-        <div className="main w-100 pr-2 pt-2">
+        <div className="main w-100 pt-2">
            <MateriasUnidades id={id} />
         </div>
       </div>

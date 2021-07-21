@@ -58,7 +58,7 @@ export default function () {
                             <div className="col-md-4">
                                 <Card>
                                     {contenido.video != "" ? 
-                                    <ReactPlayer url={`${url.url}/videos/`+contenido.video} 
+                                    <ReactPlayer url={`${url.url}/Videos/`+contenido.video} 
                                     controls width="100%" height="12rem" style={{ minHeight: "12rem" }} 
                                                                        />
                                     :<div className="w-100" style={{height:"12rem",minHeight: "12rem"}}>

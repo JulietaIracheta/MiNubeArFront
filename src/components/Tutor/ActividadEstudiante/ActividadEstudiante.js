@@ -18,7 +18,7 @@ export default function ApexChart(props) {
     const urlBase = `${url.url}/api/contenido/?id=3`
     const [videoFilePath, setVideoFilePath] = useState(null);
     const [archivo, setFile] = useState();
-    var urlVideo = `${url.url}/videos/`;
+    var urlVideo = `${url.url}/Videos/`;
     const id = props.match.params.id
     const idEstudiante = props.match.params.idEstudiante;
     const [calificacion, setCalificacion] = useState('');

@@ -74,7 +74,7 @@ export default function MateriaUnidad({ id }) {
                     <div className="font-weight-bold">{actividadResumen}</div>
                 </div>
             </div>
-                <div className="row d-flex justify-content-around">
+                <div className="row d-flex justify-content-around m-0">
 
                     {loading ? (listaUnidades) : "LOADING ..."}     
                 </div>

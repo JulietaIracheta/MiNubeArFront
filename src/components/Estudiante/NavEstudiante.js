@@ -67,13 +67,21 @@ const NavBar = (props) => {
     cookieNombreEstudiante.remove("jwt");
     cookieNombreEstudiante.remove("rol");
     cookieNombreEstudiante.remove("rolId");
+    cookieNombreEstudiante.remove("avatarNombre");
+    cookieNombreEstudiante.remove("nombreAvatar");
+    cookieNombreEstudiante.remove("email");
+    cookieNombreEstudiante.remove("avatarPathGoogle");
+    cookieNombreEstudiante.remove("avatarPath");
 
-    setCookie('nombreAvatar', '', { path: '/' });
+    /*setCookie('nombreAvatar', '', { path: '/' });
     setCookie('avatarNombre', '', { path: '/' });
     setCookie('email', '', { path: '/' });
+    setCookie('rol', '', { path: '/' });
+    setCookie('apellidoPersona', '', { path: '/' });
+    setCookie('nombrePersona', '', { path: '/' });
     setCookie('avatarPath', '', { path: '/' });
     setCookie('avatarPathGoogle', '', { path: '/' });
-    setCookie('jwt', '', { path: '/' });
+    setCookie('jwt', '', { path: '/' });*/
 
     window.localStorage.clear();
    

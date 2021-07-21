@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
 export default function RecipeReviewCard({ id, idCurso,control, idMateria, unidad, descripcion, titulo, video, actividad }) {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
-    const urlVideo = `${url.url}/videos/` + video;
+    const urlVideo = `${url.url}/Videos/` + video;
     const [abrirModalCrearActividad, setAbrirModalCrearActividad] = React.useState(false);
     const [abrirDetalleActividad, setAbrirDetalleActividad] = React.useState(false);
     const [detalleActividad, setDetalleActividad] = React.useState();

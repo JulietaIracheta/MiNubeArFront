@@ -160,7 +160,7 @@ const ContenidoForm = ({ handleClose, classes, ...props }) => {
             </div>
           </Grid>
           <Grid item xs={12}>
-            <div class="form-group p-3 file-select my-2 d-flex justify-content-center m-auto m-0" style={{width:"30rem"}} id="src-video" >
+            <div class="form-group p-3 file-select my-2 d-flex justify-content-center m-auto m-0" style={{width:"80%"}} id="src-video" >
                 <input
                   name="src-video"
                   aria-label="Video"
